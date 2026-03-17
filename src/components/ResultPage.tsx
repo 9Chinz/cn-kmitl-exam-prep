@@ -3,12 +3,12 @@ import { useQuizStore } from "../store/quizStore";
 import { formatTime } from "../lib/utils";
 
 const lectureNames: Record<string, string> = {
-  "Lec8-Ethernet": "Lec 8 · Ethernet & Data Link",
-  "Lec9A-NetworkLayer": "Lec 9A · Network Layer & IPv4",
-  "Lec9B-Subnetting": "Lec 9B · Subnetting & VLSM",
-  "Lec10-VLAN": "Lec 10 · VLAN, DHCP & IPv6",
-  "Lec11-Routing": "Lec 11 · Routing",
-  "Lec12-Transport": "Lec 12 · Transport & App Layer",
+  "Lec8-Ethernet": "Lec 8 \u00b7 Ethernet & Data Link",
+  "Lec9A-NetworkLayer": "Lec 9A \u00b7 Network Layer & IPv4",
+  "Lec9B-Subnetting": "Lec 9B \u00b7 Subnetting & VLSM",
+  "Lec10-VLAN": "Lec 10 \u00b7 VLAN, DHCP & IPv6",
+  "Lec11-Routing": "Lec 11 \u00b7 Routing",
+  "Lec12-Transport": "Lec 12 \u00b7 Transport & App Layer",
 };
 
 const lectureOrder = [
@@ -21,7 +21,7 @@ const lectureOrder = [
 ];
 
 export function ResultPage() {
-  const { questions, answers, level, totalElapsedTime, questionTimes, setPage, setLevel, resetQuiz } = useQuizStore();
+  const { questions, answers, level, totalElapsedTime, questionTimes, setPage, resetQuiz } = useQuizStore();
   const [showReview, setShowReview] = useState(false);
 
   const totalQuestions = questions.length;
@@ -30,7 +30,6 @@ export function ResultPage() {
   ).length;
   const percentage = Math.round((correctCount / totalQuestions) * 100);
 
-  // Per-lecture stats
   const lectureStats = lectureOrder.map((lecKey) => {
     const indices = questions
       .map((q, i) => (q.lecture === lecKey ? i : -1))
@@ -53,7 +52,6 @@ export function ResultPage() {
   const bestLecture = lectureStats.reduce((a, b) => (a.percentage >= b.percentage ? a : b), lectureStats[0]);
   const worstLecture = lectureStats.reduce((a, b) => (a.percentage <= b.percentage ? a : b), lectureStats[0]);
 
-  // Time stats
   const avgTimePerQuestion = totalQuestions > 0 ? totalElapsedTime / totalQuestions : 0;
   const timeEntries = Object.entries(questionTimes).map(([idx, time]) => ({
     index: Number(idx),
@@ -66,13 +64,12 @@ export function ResultPage() {
     ? timeEntries.reduce((a, b) => (a.time > b.time ? a : b))
     : null;
 
-  // Weak areas
   const weakAreas = lectureStats.filter((s) => s.percentage < 60);
 
   const getScoreColor = (pct: number) => {
-    if (pct >= 80) return "text-green-600";
-    if (pct >= 60) return "text-yellow-600";
-    return "text-red-600";
+    if (pct >= 80) return "text-green-600 dark:text-green-400";
+    if (pct >= 60) return "text-yellow-600 dark:text-yellow-400";
+    return "text-red-600 dark:text-red-400";
   };
 
   const getBarColor = (pct: number) => {
@@ -100,10 +97,10 @@ export function ResultPage() {
             const userAnswer = answers[i];
             const isCorrect = userAnswer === q.correctAnswer;
             return (
-              <div key={i} className={`p-4 rounded-xl border-2 ${isCorrect ? "border-green-200 bg-green-50/50" : "border-red-200 bg-red-50/50"}`}>
+              <div key={i} className={`p-4 rounded-xl border-2 ${isCorrect ? "border-green-500/30 bg-green-500/5" : "border-red-500/30 bg-red-500/5"}`}>
                 <div className="flex items-start gap-2 mb-2">
                   <span className={`shrink-0 text-xs font-bold px-2 py-0.5 rounded ${isCorrect ? "bg-green-500 text-white" : "bg-red-500 text-white"}`}>
-                    {isCorrect ? "✓" : "✗"}
+                    {isCorrect ? "\u2713" : "\u2717"}
                   </span>
                   <span className="text-sm font-medium">{i + 1}. {q.question}</span>
                 </div>
@@ -112,8 +109,8 @@ export function ResultPage() {
                     <div
                       key={c.key}
                       className={`${
-                        c.key === q.correctAnswer ? "text-green-700 font-medium" :
-                        c.key === userAnswer && c.key !== q.correctAnswer ? "text-red-500 line-through" :
+                        c.key === q.correctAnswer ? "text-green-700 dark:text-green-400 font-medium" :
+                        c.key === userAnswer && c.key !== q.correctAnswer ? "text-red-500 dark:text-red-400 line-through" :
                         "text-muted-foreground"
                       }`}
                     >
@@ -160,13 +157,13 @@ export function ResultPage() {
             </div>
             {fastest && (
               <div className="text-center p-2 bg-muted/50 rounded-lg">
-                <div className="text-lg font-bold font-mono text-green-600">{fastest.time.toFixed(1)}s</div>
+                <div className="text-lg font-bold font-mono text-green-600 dark:text-green-400">{fastest.time.toFixed(1)}s</div>
                 <div className="text-xs text-muted-foreground">เร็วสุด (ข้อ {fastest.index + 1})</div>
               </div>
             )}
             {slowest && (
               <div className="text-center p-2 bg-muted/50 rounded-lg">
-                <div className="text-lg font-bold font-mono text-red-600">{slowest.time.toFixed(1)}s</div>
+                <div className="text-lg font-bold font-mono text-red-600 dark:text-red-400">{slowest.time.toFixed(1)}s</div>
                 <div className="text-xs text-muted-foreground">ช้าสุด (ข้อ {slowest.index + 1})</div>
               </div>
             )}
@@ -202,33 +199,33 @@ export function ResultPage() {
         {/* Best & Worst */}
         <div className="grid grid-cols-2 gap-3 mb-4">
           {bestLecture && (
-            <div className="bg-green-50 border border-green-200 rounded-xl p-3">
-              <div className="text-xs text-green-600 font-medium mb-1">เก่งที่สุด</div>
-              <div className="text-xs font-bold text-green-800">{bestLecture.name}</div>
-              <div className="text-lg font-bold text-green-600">{bestLecture.percentage}%</div>
+            <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-3">
+              <div className="text-xs text-green-600 dark:text-green-400 font-medium mb-1">เก่งที่สุด</div>
+              <div className="text-xs font-bold text-green-800 dark:text-green-300">{bestLecture.name}</div>
+              <div className="text-lg font-bold text-green-600 dark:text-green-400">{bestLecture.percentage}%</div>
             </div>
           )}
           {worstLecture && (
-            <div className="bg-red-50 border border-red-200 rounded-xl p-3">
-              <div className="text-xs text-red-600 font-medium mb-1">ต้องปรับปรุง</div>
-              <div className="text-xs font-bold text-red-800">{worstLecture.name}</div>
-              <div className="text-lg font-bold text-red-600">{worstLecture.percentage}%</div>
+            <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-3">
+              <div className="text-xs text-red-600 dark:text-red-400 font-medium mb-1">ต้องปรับปรุง</div>
+              <div className="text-xs font-bold text-red-800 dark:text-red-300">{worstLecture.name}</div>
+              <div className="text-lg font-bold text-red-600 dark:text-red-400">{worstLecture.percentage}%</div>
             </div>
           )}
         </div>
 
         {/* Weak areas suggestion */}
         {weakAreas.length > 0 && (
-          <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-4">
-            <h3 className="font-bold text-sm text-amber-800 mb-2">แนะนำให้ทบทวน</h3>
+          <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-4 mb-4">
+            <h3 className="font-bold text-sm text-amber-800 dark:text-amber-300 mb-2">แนะนำให้ทบทวน</h3>
             <ul className="space-y-1">
               {weakAreas.map((w) => (
-                <li key={w.lecture} className="text-xs text-amber-700">
+                <li key={w.lecture} className="text-xs text-amber-700 dark:text-amber-400">
                   • {w.name} — ได้ {w.percentage}% (ต่ำกว่า 60%)
                 </li>
               ))}
             </ul>
-            <p className="text-xs text-amber-600 mt-2">
+            <p className="text-xs text-amber-600 dark:text-amber-500 mt-2">
               หัวข้อที่ใช้เวลานาน อาจเป็นจุดที่ยังไม่มั่นใจ ลองทบทวนเนื้อหาและทำซ้ำอีกครั้ง
             </p>
           </div>

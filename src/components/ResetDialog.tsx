@@ -27,7 +27,7 @@ export function ResetDialog({ open, onClose }: ResetDialogProps) {
               resetQuiz();
               onClose();
             }}
-            className="w-full py-3 px-4 bg-destructive text-white font-medium rounded-xl text-sm hover:opacity-90 active:scale-[0.98] transition-all"
+            className="w-full py-3 px-4 bg-red-500 text-white font-medium rounded-xl text-sm hover:opacity-90 active:scale-[0.98] transition-all"
           >
             รีเซ็ตกลับไปข้อ 1
           </button>

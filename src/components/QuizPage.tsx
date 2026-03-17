@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { useQuizStore } from "../store/quizStore";
 import { ResetDialog } from "./ResetDialog";
 import { formatTime } from "../lib/utils";
@@ -9,6 +9,8 @@ const levelColors = {
   normal: "bg-yellow-500",
   hard: "bg-red-500",
 };
+
+const displayLabels = ["A", "B", "C", "D"];
 
 export function QuizPage() {
   const {
@@ -40,30 +42,39 @@ export function QuizPage() {
   const question = questions[currentIndex];
   if (!question || !level) return null;
 
-  const selectedAnswer = answers[currentIndex];
-  const isAnswered = selectedAnswer !== undefined;
-  const isCorrect = selectedAnswer === question.correctAnswer;
+  // shuffledChoices[currentIndex] = e.g. ["C", "A", "D", "B"]
+  // This means: display position A shows original choice C's text,
+  //             display position B shows original choice A's text, etc.
   const choiceOrder = shuffledChoices[currentIndex] || ["A", "B", "C", "D"];
+
+  // The user's answer is stored as the ORIGINAL key (e.g. "C")
+  const selectedOriginalKey = answers[currentIndex];
+  const isAnswered = selectedOriginalKey !== undefined;
+  const isCorrect = selectedOriginalKey === question.correctAnswer;
   const isLastQuestion = currentIndex === questions.length - 1;
   const answeredCount = Object.keys(answers).length;
 
-  const getChoiceStyle = (key: string) => {
+  // Map: which display label maps to which original key
+  // displayLabels[i] shows content from choiceOrder[i]
+  const getOriginalKeyForDisplay = (displayIndex: number) => choiceOrder[displayIndex];
+
+  const getChoiceStyle = (originalKey: string) => {
     if (!isAnswered) {
       return "bg-card border-border hover:border-primary/50 hover:bg-primary/5 active:scale-[0.99]";
     }
-    if (key === question.correctAnswer) {
-      return "bg-green-50 border-green-500 text-green-800";
+    if (originalKey === question.correctAnswer) {
+      return "bg-green-500/10 border-green-500 text-green-700 dark:text-green-400";
     }
-    if (key === selectedAnswer && key !== question.correctAnswer) {
-      return "bg-red-50 border-red-500 text-red-800";
+    if (originalKey === selectedOriginalKey && originalKey !== question.correctAnswer) {
+      return "bg-red-500/10 border-red-500 text-red-700 dark:text-red-400";
     }
     return "bg-card border-border opacity-50";
   };
 
-  const getChoiceIcon = (key: string) => {
+  const getChoiceIcon = (originalKey: string) => {
     if (!isAnswered) return null;
-    if (key === question.correctAnswer) return "✓";
-    if (key === selectedAnswer && key !== question.correctAnswer) return "✗";
+    if (originalKey === question.correctAnswer) return "\u2713";
+    if (originalKey === selectedOriginalKey && originalKey !== question.correctAnswer) return "\u2717";
     return null;
   };
 
@@ -109,33 +120,34 @@ export function QuizPage() {
       <div className="flex-1 px-4 py-6 max-w-lg mx-auto w-full">
         <div className="mb-1">
           <span className="text-xs text-muted-foreground">
-            {question.lecture.replace("Lec8-Ethernet", "Lec 8 · Ethernet")
-              .replace("Lec9A-NetworkLayer", "Lec 9A · Network Layer")
-              .replace("Lec9B-Subnetting", "Lec 9B · Subnetting")
-              .replace("Lec10-VLAN", "Lec 10 · VLAN/DHCP/IPv6")
-              .replace("Lec11-Routing", "Lec 11 · Routing")
-              .replace("Lec12-Transport", "Lec 12 · Transport/App Layer")}
+            {question.lecture.replace("Lec8-Ethernet", "Lec 8 \u00b7 Ethernet")
+              .replace("Lec9A-NetworkLayer", "Lec 9A \u00b7 Network Layer")
+              .replace("Lec9B-Subnetting", "Lec 9B \u00b7 Subnetting")
+              .replace("Lec10-VLAN", "Lec 10 \u00b7 VLAN/DHCP/IPv6")
+              .replace("Lec11-Routing", "Lec 11 \u00b7 Routing")
+              .replace("Lec12-Transport", "Lec 12 \u00b7 Transport/App Layer")}
           </span>
         </div>
         <h2 className="text-base font-semibold text-foreground mb-5 leading-relaxed">
           {currentIndex + 1}. {question.question}
         </h2>
 
-        {/* Choices */}
+        {/* Choices - always A, B, C, D in order, content shuffled */}
         <div className="space-y-2.5 mb-6">
-          {choiceOrder.map((key) => {
-            const choice = question.choices.find((c) => c.key === key);
+          {displayLabels.map((label, displayIndex) => {
+            const originalKey = getOriginalKeyForDisplay(displayIndex);
+            const choice = question.choices.find((c) => c.key === originalKey);
             if (!choice) return null;
-            const icon = getChoiceIcon(key);
+            const icon = getChoiceIcon(originalKey);
             return (
               <button
-                key={key}
+                key={displayIndex}
                 disabled={isAnswered}
-                onClick={() => answerQuestion(key)}
-                className={`w-full text-left p-3.5 rounded-xl border-2 transition-all flex items-start gap-3 ${getChoiceStyle(key)}`}
+                onClick={() => answerQuestion(originalKey)}
+                className={`w-full text-left p-3.5 rounded-xl border-2 transition-all flex items-start gap-3 ${getChoiceStyle(originalKey)}`}
               >
                 <span className="shrink-0 w-7 h-7 rounded-full bg-muted flex items-center justify-center text-xs font-bold">
-                  {icon || key}
+                  {icon || label}
                 </span>
                 <span className="text-sm leading-relaxed pt-0.5">{choice.text}</span>
               </button>
@@ -147,12 +159,12 @@ export function QuizPage() {
         {isAnswered && (
           <div className={`p-4 rounded-xl border-2 mb-6 ${
             isCorrect
-              ? "bg-green-50 border-green-200"
-              : "bg-red-50 border-red-200"
+              ? "bg-green-500/10 border-green-200 dark:border-green-800"
+              : "bg-red-500/10 border-red-200 dark:border-red-800"
           }`}>
             <div className="flex items-center gap-2 mb-2">
-              <span className={`text-sm font-bold ${isCorrect ? "text-green-700" : "text-red-700"}`}>
-                {isCorrect ? "ถูกต้อง!" : "ไม่ถูกต้อง"}
+              <span className={`text-sm font-bold ${isCorrect ? "text-green-700 dark:text-green-400" : "text-red-700 dark:text-red-400"}`}>
+                {isCorrect ? "\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07!" : "\u0e44\u0e21\u0e48\u0e16\u0e39\u0e01\u0e15\u0e49\u0e2d\u0e07"}
               </span>
             </div>
             <p className="text-sm text-foreground/80 leading-relaxed">
@@ -168,8 +180,8 @@ export function QuizPage() {
             className="w-full py-3.5 bg-primary text-primary-foreground font-semibold rounded-xl text-base hover:opacity-90 active:scale-[0.98] transition-all"
           >
             {isLastQuestion && answeredCount === questions.length
-              ? "ดูผลสอบ"
-              : "ข้อถัดไป"}
+              ? "\u0e14\u0e39\u0e1c\u0e25\u0e2a\u0e2d\u0e1a"
+              : "\u0e02\u0e49\u0e2d\u0e16\u0e31\u0e14\u0e44\u0e1b"}
           </button>
         )}
       </div>
