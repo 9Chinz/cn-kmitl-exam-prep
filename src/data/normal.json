@@ -1,0 +1,1502 @@
+[
+  {
+    "id": 1,
+    "lecture": "Lec8-Ethernet",
+    "question": "เหตุใด Switch จึงไม่จำเป็นต้องใช้ CSMA/CD ในการสื่อสาร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "เพราะ Switch แบ่ง Collision Domain ต่อ Port ทำให้เป็น Full-Duplex"
+      },
+      {
+        "key": "B",
+        "text": "เพราะ Switch ทำงานที่ Layer 3 จึงไม่เกี่ยวข้องกับ Collision"
+      },
+      {
+        "key": "C",
+        "text": "เพราะ Switch ใช้ IP Address แทน MAC ในการส่งข้อมูล"
+      },
+      {
+        "key": "D",
+        "text": "เพราะ Switch มีหน่วยความจำสูงจึงไม่เกิดการชนของข้อมูล"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Switch แบ่ง Collision Domain เป็นแต่ละ Port ทำให้แต่ละ Port สามารถส่งและรับข้อมูลพร้อมกันแบบ Full-Duplex ได้ จึงไม่จำเป็นต้องใช้ CSMA/CD"
+  },
+  {
+    "id": 2,
+    "lecture": "Lec8-Ethernet",
+    "question": "ถ้า Switch ได้รับ Frame ที่มี Destination MAC ไม่อยู่ใน MAC Address Table จะทำอย่างไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "ทิ้ง Frame นั้นทันทีเพราะไม่ทราบปลายทางที่ถูกต้อง"
+      },
+      {
+        "key": "B",
+        "text": "ส่ง Frame นั้นไปยังทุก Port ยกเว้น Port ต้นทางที่ส่งเข้ามา"
+      },
+      {
+        "key": "C",
+        "text": "ส่ง Frame กลับไปยัง Port ต้นทางเพื่อขอ MAC ใหม่"
+      },
+      {
+        "key": "D",
+        "text": "เก็บ Frame ไว้ใน Buffer จนกว่าจะอัปเดตตารางเสร็จ"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "เมื่อ Switch ไม่พบ Destination MAC ใน MAC Address Table จะทำ Unknown Unicast Flooding คือส่ง Frame ออกไปทุก Port ยกเว้น Port ที่รับ Frame เข้ามา"
+  },
+  {
+    "id": 3,
+    "lecture": "Lec8-Ethernet",
+    "question": "ARP Request ใช้การส่งแบบ Broadcast แต่ ARP Reply ใช้แบบ Unicast เพราะเหตุใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "เพราะ Reply ต้องยืนยันกับทุกอุปกรณ์ว่าได้รับ Request แล้ว"
+      },
+      {
+        "key": "B",
+        "text": "เพราะ Reply ใช้ Multicast เพื่อลดปริมาณ Traffic ในเครือข่าย"
+      },
+      {
+        "key": "C",
+        "text": "เพราะผู้ตอบรู้ MAC ของผู้ถามจาก Request จึงส่งตรงได้เลย"
+      },
+      {
+        "key": "D",
+        "text": "เพราะ Switch บังคับให้ ARP Reply ต้องเป็น Unicast เสมอ"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "ARP Request ต้อง Broadcast เพราะผู้ถามยังไม่รู้ MAC ปลายทาง แต่เมื่อผู้ตอบได้รับ Request จะทราบ MAC ของผู้ถามจาก Source MAC ใน Frame จึงตอบกลับแบบ Unicast ได้"
+  },
+  {
+    "id": 4,
+    "lecture": "Lec8-Ethernet",
+    "question": "อุปกรณ์ใดที่สามารถแบ่ง Broadcast Domain ออกจากกันได้?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Hub เพราะทำหน้าที่กระจายสัญญาณไปทุกทิศทาง"
+      },
+      {
+        "key": "B",
+        "text": "Switch เพราะแต่ละ Port เป็น Collision Domain แยกกัน"
+      },
+      {
+        "key": "C",
+        "text": "Repeater เพราะสามารถขยายสัญญาณระหว่างเครือข่าย"
+      },
+      {
+        "key": "D",
+        "text": "Router เพราะทำงานที่ Layer 3 และแยกเครือข่ายได้"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Router ทำงานที่ Layer 3 สามารถแบ่ง Broadcast Domain ได้ ส่วน Switch แบ่งได้เฉพาะ Collision Domain เท่านั้น Hub และ Repeater ไม่สามารถแบ่ง Domain ใดได้เลย"
+  },
+  {
+    "id": 5,
+    "lecture": "Lec8-Ethernet",
+    "question": "Runt Frame คือ Frame ที่มีลักษณะอย่างไร และเกิดจากสาเหตุใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Frame ที่มีขนาดเกิน 1518 Bytes มักเกิดจาก MTU ไม่ตรงกัน"
+      },
+      {
+        "key": "B",
+        "text": "Frame ที่มีขนาดต่ำกว่า 64 Bytes มักเกิดจากการ Collision"
+      },
+      {
+        "key": "C",
+        "text": "Frame ที่ไม่มี FCS มักเกิดจากสาย Cable ชำรุดเสียหาย"
+      },
+      {
+        "key": "D",
+        "text": "Frame ที่มี Preamble ผิดพลาดมักเกิดจากอุปกรณ์ขัดข้อง"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Runt Frame คือ Frame ที่มีขนาดเล็กกว่า 64 Bytes ซึ่งเป็นขนาดขั้นต่ำของ Ethernet Frame โดยมักเกิดจากการ Collision ทำให้ Frame ถูกส่งไม่ครบ"
+  },
+  {
+    "id": 6,
+    "lecture": "Lec8-Ethernet",
+    "question": "MAC Address ส่วน OUI (Organizationally Unique Identifier) บอกข้อมูลอะไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "บอกหมายเลขเฉพาะของอุปกรณ์แต่ละชิ้นที่ผลิตออกมา"
+      },
+      {
+        "key": "B",
+        "text": "บอกเครือข่ายที่อุปกรณ์เชื่อมต่ออยู่ในปัจจุบันนี้"
+      },
+      {
+        "key": "C",
+        "text": "บอกผู้ผลิตอุปกรณ์โดยใช้ 24 Bit แรกของ MAC Address"
+      },
+      {
+        "key": "D",
+        "text": "บอกประเภทของ Protocol ที่อุปกรณ์รองรับการทำงาน"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "OUI คือ 24 Bit แรก (3 Bytes) ของ MAC Address ที่ IEEE กำหนดให้แต่ละผู้ผลิต ส่วน 24 Bit หลังเป็นหมายเลขเฉพาะของอุปกรณ์"
+  },
+  {
+    "id": 7,
+    "lecture": "Lec8-Ethernet",
+    "question": "Topology แบบ Star มีข้อได้เปรียบเหนือ Bus อย่างไรในระบบ LAN?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "ใช้สายน้อยกว่าเพราะอุปกรณ์ทุกตัวต่อสายร่วมกัน"
+      },
+      {
+        "key": "B",
+        "text": "หากสายของอุปกรณ์หนึ่งเสียจะไม่กระทบอุปกรณ์อื่น"
+      },
+      {
+        "key": "C",
+        "text": "ไม่ต้องใช้อุปกรณ์ศูนย์กลางจึงลดต้นทุนลงได้มาก"
+      },
+      {
+        "key": "D",
+        "text": "รองรับ Full-Duplex ได้โดยไม่ต้องมีอุปกรณ์ตัวกลาง"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Topology แบบ Star แต่ละอุปกรณ์ต่อสายตรงไปยังอุปกรณ์ศูนย์กลาง หากสายของอุปกรณ์ใดขาดจะกระทบเฉพาะอุปกรณ์นั้น ไม่กระทบทั้งระบบเหมือน Bus"
+  },
+  {
+    "id": 8,
+    "lecture": "Lec8-Ethernet",
+    "question": "ค่า Type Field ใน Ethernet Frame มีความสำคัญอย่างไรต่อการทำงาน?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "ระบุ Protocol ของ Layer 3 เพื่อให้ส่งต่อข้อมูลถูกต้อง"
+      },
+      {
+        "key": "B",
+        "text": "ระบุ Port ปลายทางเพื่อส่งข้อมูลไปยัง Application"
+      },
+      {
+        "key": "C",
+        "text": "ระบุขนาดของ Data ที่อยู่ภายใน Frame เพื่อตรวจสอบ"
+      },
+      {
+        "key": "D",
+        "text": "ระบุ MAC Address ของ Default Gateway ในเครือข่าย"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Type Field ใน Ethernet Frame ระบุ Protocol ของ Layer 3 ที่ Encapsulate อยู่ เช่น 0x0800=IPv4, 0x86DD=IPv6, 0x0806=ARP เพื่อให้อุปกรณ์ปลายทาง De-encapsulate ส่งต่อไปยัง Protocol ที่ถูกต้อง"
+  },
+  {
+    "id": 9,
+    "lecture": "Lec8-Ethernet",
+    "question": "ถ้าเครือข่ายมี Hub 1 ตัว ต่ออุปกรณ์ 5 เครื่อง จะมีกี่ Collision Domain?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "5 Domain เพราะแต่ละ Port เป็น Domain แยกกันอิสระ"
+      },
+      {
+        "key": "B",
+        "text": "6 Domain เพราะนับรวม Uplink Port ของ Hub ด้วยหนึ่ง"
+      },
+      {
+        "key": "C",
+        "text": "2 Domain เพราะ Hub แบ่งเป็นครึ่ง Duplex ซ้ายขวา"
+      },
+      {
+        "key": "D",
+        "text": "1 Domain เพราะ Hub ไม่แบ่ง Collision Domain ออกจากกัน"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Hub ทำงานที่ Layer 1 ไม่มีการแบ่ง Collision Domain ทุก Port อยู่ใน Collision Domain เดียวกัน ต่างจาก Switch ที่แบ่ง Collision Domain ต่อ Port"
+  },
+  {
+    "id": 10,
+    "lecture": "Lec8-Ethernet",
+    "question": "Switch เรียนรู้ MAC Address Table อย่างไรเมื่อได้รับ Frame เข้ามา?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "จดจำ Destination MAC Address คู่กับ Port ที่ Frame ออกไป"
+      },
+      {
+        "key": "B",
+        "text": "ส่ง ARP Request เพื่อถาม MAC Address ของทุกอุปกรณ์"
+      },
+      {
+        "key": "C",
+        "text": "จดจำ Source MAC Address คู่กับ Port ที่ Frame เข้ามา"
+      },
+      {
+        "key": "D",
+        "text": "จดจำทั้ง Source และ Destination MAC ใน Frame เข้ามา"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Switch เรียนรู้โดยจดจำ Source MAC Address ของ Frame ที่เข้ามาพร้อมกับหมายเลข Port ที่รับ Frame นั้น เพื่อใช้ในการ Forward Frame ในอนาคต"
+  },
+  {
+    "id": 11,
+    "lecture": "Lec9A-NetworkLayer",
+    "question": "ทำไม IPv4 จึงถูกเรียกว่าเป็น Connectionless และ Best Effort Protocol?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "เพราะไม่สร้าง Session ก่อนส่งและไม่รับประกันว่าจะถึง"
+      },
+      {
+        "key": "B",
+        "text": "เพราะสร้าง Session ก่อนส่งข้อมูลแต่ไม่รับประกันว่าจะถึง"
+      },
+      {
+        "key": "C",
+        "text": "เพราะไม่สร้าง Session แต่รับประกันการส่งข้อมูลถึงทุกครั้ง"
+      },
+      {
+        "key": "D",
+        "text": "เพราะสร้าง Session ก่อนส่งและรับประกันการส่งข้อมูลด้วย"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Connectionless หมายถึงไม่ต้องสร้าง Session/Connection ก่อนส่งข้อมูล และ Best Effort หมายถึงไม่มีกลไกรับประกันว่า Packet จะถึงปลายทาง"
+  },
+  {
+    "id": 12,
+    "lecture": "Lec9A-NetworkLayer",
+    "question": "เมื่อ Host ต้องการส่งข้อมูลไปยัง IP ปลายทาง จะใช้วิธีใดตัดสินว่าอยู่ Network เดียวกันหรือไม่?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "เปรียบเทียบ MAC Address ของตนเองกับ MAC ปลายทาง"
+      },
+      {
+        "key": "B",
+        "text": "ใช้ AND Operation ระหว่าง IP กับ Subnet Mask ทั้งสองฝั่ง"
+      },
+      {
+        "key": "C",
+        "text": "ส่ง Ping ไปยัง IP ปลายทางเพื่อตรวจสอบว่าตอบหรือไม่"
+      },
+      {
+        "key": "D",
+        "text": "ตรวจสอบจาก Routing Table ของตนเองว่ามี Route หรือไม่"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Host จะ AND IP Address ของตนเองและปลายทางกับ Subnet Mask หาก Network Address ตรงกันแสดงว่าอยู่ Network เดียวกัน ถ้าไม่ตรงจะส่งไปยัง Default Gateway"
+  },
+  {
+    "id": 13,
+    "lecture": "Lec9A-NetworkLayer",
+    "question": "ค่า TTL (Time to Live) ใน IPv4 Header มีหน้าที่อะไรและทำงานอย่างไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "กำหนดเวลาที่ Packet อยู่ใน Buffer ของ Router ก่อนส่งต่อ"
+      },
+      {
+        "key": "B",
+        "text": "กำหนดลำดับความสำคัญในการส่งข้อมูลผ่านเครือข่าย"
+      },
+      {
+        "key": "C",
+        "text": "ป้องกัน Packet วนลูปโดยลดค่าลง 1 ทุกครั้งที่ผ่าน Router"
+      },
+      {
+        "key": "D",
+        "text": "ระบุจำนวน Segment ที่ Packet ถูกแบ่งระหว่างทางส่ง"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "TTL ป้องกันไม่ให้ Packet วนลูปในเครือข่ายไปเรื่อย ๆ โดย Router แต่ละตัวจะลดค่า TTL ลง 1 เมื่อ TTL เหลือ 0 Router จะทิ้ง Packet และส่ง ICMP Time Exceeded กลับ"
+  },
+  {
+    "id": 14,
+    "lecture": "Lec9A-NetworkLayer",
+    "question": "ทำไม IPv6 จึงไม่รองรับ Fragmentation ที่ Router เหมือนกับ IPv4?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "เพราะต้องการลดภาระ Router โดยให้ต้นทางจัดการเรื่องนี้เอง"
+      },
+      {
+        "key": "B",
+        "text": "เพราะ IPv6 ใช้ TCP เท่านั้นซึ่งจัดการ Fragment ที่ต้นทาง"
+      },
+      {
+        "key": "C",
+        "text": "เพราะ IPv6 มี Header ขนาดเล็กจึงไม่จำเป็นต้อง Fragment"
+      },
+      {
+        "key": "D",
+        "text": "เพราะ IPv6 มี MTU ขนาดใหญ่จึงไม่มีทางเกินขนาดได้เลย"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "IPv6 ออกแบบให้ Router ไม่ต้อง Fragment เพื่อลดภาระการประมวลผล โดยให้ต้นทางค้นหา Path MTU แล้วจัดการ Fragment เอง ช่วยให้ Router ทำงานเร็วขึ้น"
+  },
+  {
+    "id": 15,
+    "lecture": "Lec9A-NetworkLayer",
+    "question": "ICMP Redirect Message ถูกส่งในสถานการณ์ใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "เมื่อ Packet ถูกส่งไปยังปลายทางที่ไม่มีอยู่ในเครือข่ายนี้"
+      },
+      {
+        "key": "B",
+        "text": "เมื่อ TTL ของ Packet เหลือ 0 และ Router ต้องทิ้ง Packet"
+      },
+      {
+        "key": "C",
+        "text": "เมื่อ Router ตรวจพบว่ามีเส้นทางที่ดีกว่าสำหรับ Host ต้นทาง"
+      },
+      {
+        "key": "D",
+        "text": "เมื่อ DNS Server ไม่ตอบสนองภายในเวลาที่กำหนดไว้"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "ICMP Redirect ถูกส่งเมื่อ Router ตรวจพบว่า Host ส่ง Packet มาทาง Router นี้แต่มี Router อื่นที่เป็นเส้นทางที่ดีกว่า จึงแจ้งให้ Host เปลี่ยนเส้นทาง"
+  },
+  {
+    "id": 16,
+    "lecture": "Lec9A-NetworkLayer",
+    "question": "IP Address กลุ่ม 169.254.x.x (APIPA) ถูกใช้ในสถานการณ์ใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "เมื่ออุปกรณ์เชื่อมต่อกับ VPN Server สำหรับเครือข่ายระยะไกล"
+      },
+      {
+        "key": "B",
+        "text": "เมื่ออุปกรณ์ต้องการ IP สำหรับ Loopback Interface โดยเฉพาะ"
+      },
+      {
+        "key": "C",
+        "text": "เมื่ออุปกรณ์ต้องการส่ง Multicast ไปยังกลุ่มเฉพาะในเครือข่าย"
+      },
+      {
+        "key": "D",
+        "text": "เมื่ออุปกรณ์ไม่สามารถรับ IP จาก DHCP Server ได้สำเร็จ"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "APIPA (169.254.0.0/16) จะถูกกำหนดให้อุปกรณ์อัตโนมัติเมื่อไม่สามารถติดต่อ DHCP Server ได้ ทำให้ยังสื่อสารกับอุปกรณ์อื่นใน Link-Local ได้"
+  },
+  {
+    "id": 17,
+    "lecture": "Lec9A-NetworkLayer",
+    "question": "ข้อใดอธิบายการทำงานของ NAT ได้ถูกต้องที่สุด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "แปลง MAC Address ให้เป็น IP Address ของเครือข่ายภายนอก"
+      },
+      {
+        "key": "B",
+        "text": "แปลง IP Address ส่วนตัวให้เป็น IP สาธารณะเพื่อออกอินเทอร์เน็ต"
+      },
+      {
+        "key": "C",
+        "text": "แปลง IPv4 Address ให้เป็น IPv6 Address เพื่อความเข้ากันได้"
+      },
+      {
+        "key": "D",
+        "text": "แปลง Domain Name ให้เป็น IP Address เพื่อระบุเซิร์ฟเวอร์"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "NAT (Network Address Translation) แปลง Private IP Address ให้เป็น Public IP Address เพื่อให้อุปกรณ์ในเครือข่ายภายในสามารถเข้าถึงอินเทอร์เน็ตได้"
+  },
+  {
+    "id": 18,
+    "lecture": "Lec9A-NetworkLayer",
+    "question": "Protocol Field ใน IPv4 Header มีค่า 6 หมายถึง Protocol ใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "ICMP ที่ใช้สำหรับตรวจสอบสถานะของเครือข่าย"
+      },
+      {
+        "key": "B",
+        "text": "UDP ที่ใช้สำหรับส่งข้อมูลแบบไม่ต้องตอบรับ"
+      },
+      {
+        "key": "C",
+        "text": "ARP ที่ใช้สำหรับแปลง IP เป็น MAC Address"
+      },
+      {
+        "key": "D",
+        "text": "TCP ที่ใช้สำหรับส่งข้อมูลแบบรับประกันการส่ง"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "ค่า Protocol Field = 6 หมายถึง TCP, ค่า 17 หมายถึง UDP, ค่า 1 หมายถึง ICMP โดยฟิลด์นี้ใช้ระบุ Protocol ของ Layer 4 ที่ Encapsulate อยู่ใน Packet"
+  },
+  {
+    "id": 19,
+    "lecture": "Lec9A-NetworkLayer",
+    "question": "เมื่อ Packet เดินทางผ่าน Router แต่ละตัว ค่าใดใน IPv4 Header จะเปลี่ยนแปลง?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Source IP และ Destination IP จะเปลี่ยนทุกครั้งที่ผ่าน"
+      },
+      {
+        "key": "B",
+        "text": "Source IP จะเปลี่ยนเป็น IP ของ Router ที่ผ่านแต่ละตัว"
+      },
+      {
+        "key": "C",
+        "text": "TTL จะลดลงทีละ 1 ส่วน IP Address ทั้งสองจะไม่เปลี่ยน"
+      },
+      {
+        "key": "D",
+        "text": "Protocol Field จะเปลี่ยนตาม Router ที่ Packet ผ่านไป"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "เมื่อ Packet ผ่าน Router ค่า TTL จะลดลง 1 แต่ Source IP และ Destination IP จะไม่เปลี่ยน (ยกเว้นกรณี NAT) เพราะเป็นข้อมูลสำหรับต้นทางและปลายทางจริง"
+  },
+  {
+    "id": 20,
+    "lecture": "Lec9A-NetworkLayer",
+    "question": "Longest Match Rule ใน Routing Table ทำงานอย่างไรเมื่อมีหลาย Route ตรง?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "เลือก Route ที่มี Prefix ยาวที่สุดเพราะระบุเครือข่ายแม่นยำ"
+      },
+      {
+        "key": "B",
+        "text": "เลือก Route ที่มี Metric ต่ำที่สุดโดยไม่สนใจค่า Prefix"
+      },
+      {
+        "key": "C",
+        "text": "เลือก Route ที่มี Prefix สั้นที่สุดเพราะครอบคลุมมากที่สุด"
+      },
+      {
+        "key": "D",
+        "text": "เลือก Route แรกที่ตรงตามลำดับที่ปรากฏในตารางเส้นทาง"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Longest Match Rule จะเลือก Route ที่มี Prefix ยาวที่สุด (เช่น /28 ดีกว่า /24) เพราะ Prefix ยาวหมายถึงเครือข่ายที่เจาะจงมากกว่า ทำให้ส่งข้อมูลได้แม่นยำ"
+  },
+  {
+    "id": 21,
+    "lecture": "Lec9B-Subnetting",
+    "question": "การทำ Subnetting ช่วยแก้ปัญหาใดได้ดีที่สุดในเครือข่ายขนาดใหญ่?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "ลดขนาด Broadcast Domain และเพิ่มความปลอดภัยในเครือข่าย"
+      },
+      {
+        "key": "B",
+        "text": "เพิ่มความเร็วในการส่งข้อมูลระหว่าง Router แต่ละตัว"
+      },
+      {
+        "key": "C",
+        "text": "ลดจำนวน Router ที่ต้องใช้ในเครือข่ายทั้งหมดลง"
+      },
+      {
+        "key": "D",
+        "text": "เพิ่มจำนวน IP Address ที่สามารถใช้งานได้มากขึ้น"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Subnetting ช่วยลดขนาด Broadcast Domain ทำให้ Broadcast Traffic ลดลง เพิ่มความปลอดภัยเพราะแยกกลุ่มเครือข่าย และจัดการ IP ได้มีประสิทธิภาพมากขึ้น"
+  },
+  {
+    "id": 22,
+    "lecture": "Lec9B-Subnetting",
+    "question": "เครือข่าย 192.168.10.0/26 สามารถรองรับ Host ได้สูงสุดกี่เครื่อง?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "64 เครื่อง เพราะ 2^6 = 64 ที่อยู่ทั้งหมดในซับเน็ต"
+      },
+      {
+        "key": "B",
+        "text": "62 เครื่อง เพราะต้องหัก Network และ Broadcast Address"
+      },
+      {
+        "key": "C",
+        "text": "30 เครื่อง เพราะต้องหัก Network และ Broadcast Address"
+      },
+      {
+        "key": "D",
+        "text": "32 เครื่อง เพราะ 2^5 = 32 ที่อยู่ทั้งหมดในซับเน็ต"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "/26 หมายถึงมี Host Bits 6 บิต จึงมี 2^6 = 64 ที่อยู่ แต่ต้องหัก Network Address และ Broadcast Address ออก เหลือ 62 เครื่องที่ใช้งานได้จริง"
+  },
+  {
+    "id": 23,
+    "lecture": "Lec9B-Subnetting",
+    "question": "Block Size คืออะไร และคำนวณอย่างไรจาก Subnet Mask?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "จำนวน Subnet ทั้งหมด คำนวณจาก 2 ยกกำลังจำนวน Network Bit"
+      },
+      {
+        "key": "B",
+        "text": "จำนวนที่อยู่ต่อ Subnet คำนวณจาก 256 ลบค่า Octet สุดท้ายของ Mask"
+      },
+      {
+        "key": "C",
+        "text": "ขนาดของ Broadcast Domain คำนวณจาก Host Bit ที่เหลือหลัง Mask"
+      },
+      {
+        "key": "D",
+        "text": "จำนวน Host ที่ใช้ได้ คำนวณจาก 2 ยกกำลัง Host Bit ลบ 2"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Block Size คือจำนวน IP Address ในแต่ละ Subnet คำนวณจาก 256 ลบค่า Octet สุดท้ายของ Subnet Mask เช่น Mask 255.255.255.192 → Block Size = 256-192 = 64"
+  },
+  {
+    "id": 24,
+    "lecture": "Lec9B-Subnetting",
+    "question": "เครือข่าย 10.0.0.0/8 ถูก Subnet เป็น /10 จะได้กี่ Subnet?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "2 Subnet เพราะยืม 2 บิตจาก Host มาเป็น Network Bit"
+      },
+      {
+        "key": "B",
+        "text": "8 Subnet เพราะยืม 8 บิตจาก Host มาเป็น Network Bit"
+      },
+      {
+        "key": "C",
+        "text": "4 Subnet เพราะยืม 2 บิตจาก Host มาเป็น Network Bit"
+      },
+      {
+        "key": "D",
+        "text": "10 Subnet เพราะค่า Prefix คือ 10 จึงได้ 10 Subnet"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "เดิม /8 มี Network Bit 8 บิต เปลี่ยนเป็น /10 จึงยืมมา 2 บิต ได้ Subnet = 2^2 = 4 Subnet"
+  },
+  {
+    "id": 25,
+    "lecture": "Lec9B-Subnetting",
+    "question": "ทำไม WAN Link ระหว่าง Router มักใช้ Subnet Mask /30?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "เพราะ /30 รองรับได้ 4 Host พอดีกับจำนวน Router ทั้งสองฝั่ง"
+      },
+      {
+        "key": "B",
+        "text": "เพราะ /30 เป็น Subnet มาตรฐานที่ ISP กำหนดไว้ให้ใช้"
+      },
+      {
+        "key": "C",
+        "text": "เพราะ /30 รองรับ Routing Protocol ได้ดีกว่า Subnet อื่น"
+      },
+      {
+        "key": "D",
+        "text": "เพราะ /30 เป็น Subnet ที่เล็กที่สุดที่ให้ 2 Host Address ได้"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "/30 มี Host Bit 2 บิต ให้ 2^2 = 4 ที่อยู่ หัก Network กับ Broadcast ออกเหลือ 2 Host Address พอดีสำหรับ Interface ของ Router ทั้งสองฝั่ง ไม่เสีย IP โดยเปล่า"
+  },
+  {
+    "id": 26,
+    "lecture": "Lec9B-Subnetting",
+    "question": "VLSM ต่างจาก Fixed-Length Subnetting อย่างไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "VLSM ใช้ Prefix ต่างกันในแต่ละ Subnet ลดการสูญเสีย IP"
+      },
+      {
+        "key": "B",
+        "text": "VLSM ใช้ Prefix เดียวกันทุก Subnet ต่างกันที่จำนวน Subnet"
+      },
+      {
+        "key": "C",
+        "text": "VLSM ใช้ได้เฉพาะกับ IPv6 ส่วน Fixed-Length ใช้กับ IPv4"
+      },
+      {
+        "key": "D",
+        "text": "VLSM ใช้ได้เฉพาะ Static Route ส่วน Fixed-Length ใช้ได้ทั้งหมด"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "VLSM (Variable Length Subnet Mask) อนุญาตให้ใช้ Prefix Length ต่างกันในแต่ละ Subnet ได้ ทำให้จัดสรร IP ได้ตามขนาดที่ต้องการจริง ลดการสูญเสีย IP Address"
+  },
+  {
+    "id": 27,
+    "lecture": "Lec9B-Subnetting",
+    "question": "IP Address 172.16.45.128/25 มี Network Address และ Broadcast Address คือข้อใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Network: 172.16.45.0 และ Broadcast: 172.16.45.127 ตามลำดับ"
+      },
+      {
+        "key": "B",
+        "text": "Network: 172.16.45.128 และ Broadcast: 172.16.45.255 ตามลำดับ"
+      },
+      {
+        "key": "C",
+        "text": "Network: 172.16.45.128 และ Broadcast: 172.16.45.191 ตามลำดับ"
+      },
+      {
+        "key": "D",
+        "text": "Network: 172.16.45.0 และ Broadcast: 172.16.45.255 ตามลำดับ"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "/25 แบ่ง Octet สุดท้ายเป็น 2 Subnet (Block Size=128) คือ .0-.127 และ .128-.255 เนื่องจาก .128 อยู่ใน Subnet ที่สอง Network Address คือ .128 และ Broadcast คือ .255"
+  },
+  {
+    "id": 28,
+    "lecture": "Lec9B-Subnetting",
+    "question": "ในการออกแบบ VLSM ทำไมจึงควรจัดสรร Subnet ที่ใหญ่ที่สุดก่อน?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "เพราะ Router ต้องใช้ Subnet ใหญ่ก่อนในการสร้าง Routing Table"
+      },
+      {
+        "key": "B",
+        "text": "เพราะ Subnet ใหญ่ต้องอยู่ที่ Address เริ่มต้นตามมาตรฐาน IEEE"
+      },
+      {
+        "key": "C",
+        "text": "เพราะป้องกัน Subnet ซ้อนทับกันและจัดสรร Address ได้ครบถ้วน"
+      },
+      {
+        "key": "D",
+        "text": "เพราะ Subnet ใหญ่มี Broadcast Traffic มากจึงต้องจัดสรรก่อน"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "การจัดสรร Subnet ใหญ่ก่อนช่วยป้องกันปัญหา Address Space ไม่พอสำหรับ Subnet ขนาดใหญ่ และป้องกัน Subnet ซ้อนทับกัน เพราะ Subnet ใหญ่ต้อง Align กับ Boundary ที่ใหญ่กว่า"
+  },
+  {
+    "id": 29,
+    "lecture": "Lec9B-Subnetting",
+    "question": "AND Operation ระหว่าง IP 192.168.5.200 กับ Subnet Mask 255.255.255.240 ได้ผลลัพธ์ใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "192.168.5.208 คือ Network Address ของ Subnet นี้"
+      },
+      {
+        "key": "B",
+        "text": "192.168.5.200 คือ Network Address ของ Subnet นี้"
+      },
+      {
+        "key": "C",
+        "text": "192.168.5.192 คือ Network Address ของ Subnet นี้"
+      },
+      {
+        "key": "D",
+        "text": "192.168.5.196 คือ Network Address ของ Subnet นี้"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Subnet Mask .240 = /28, Block Size = 256-240 = 16 ดังนั้น Subnet: .0, .16, .32, ..., .192, .208 เนื่องจาก 200 อยู่ระหว่าง .192 ถึง .207 Network Address จึงเป็น 192.168.5.192"
+  },
+  {
+    "id": 30,
+    "lecture": "Lec9B-Subnetting",
+    "question": "ถ้าต้องการแบ่งเครือข่าย 192.168.1.0/24 ให้รองรับ Subnet ละ 50 Host ควรใช้ Prefix ใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "/27 เพราะรองรับได้ 30 Host ต่อ Subnet ซึ่งเพียงพอแล้ว"
+      },
+      {
+        "key": "B",
+        "text": "/25 เพราะรองรับได้ 126 Host ต่อ Subnet ซึ่งเพียงพอแน่นอน"
+      },
+      {
+        "key": "C",
+        "text": "/28 เพราะรองรับได้ 14 Host ต่อ Subnet ประหยัด IP มากที่สุด"
+      },
+      {
+        "key": "D",
+        "text": "/26 เพราะรองรับได้ 62 Host ต่อ Subnet ซึ่งพอดีกับความต้องการ"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "ต้องการ 50 Host ต่อ Subnet → /26 ให้ 2^6-2 = 62 Host เพียงพอ ส่วน /27 ให้แค่ 30 ไม่พอ /25 ให้ 126 มากเกินไปสิ้นเปลือง IP จึงเลือก /26 ที่เหมาะสมที่สุด"
+  },
+  {
+    "id": 31,
+    "lecture": "Lec10-VLAN",
+    "question": "ทำไม Native VLAN บน Trunk Port ทั้งสองฝั่งต้องตั้งค่าให้ตรงกัน?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "เพราะ Native VLAN กำหนดความเร็วของ Trunk Link ทั้งสองฝั่ง"
+      },
+      {
+        "key": "B",
+        "text": "เพราะ Frame ของ Native VLAN ไม่ถูก Tag ถ้าไม่ตรงจะส่งผิด VLAN"
+      },
+      {
+        "key": "C",
+        "text": "เพราะ Native VLAN เป็น VLAN เดียวที่ส่งข้อมูลผ่าน Trunk ได้"
+      },
+      {
+        "key": "D",
+        "text": "เพราะ Native VLAN ใช้ Encryption จึงต้องตั้งค่าคีย์ให้ตรงกัน"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Frame ที่อยู่ใน Native VLAN จะไม่ถูกเพิ่ม 802.1Q Tag เมื่อส่งผ่าน Trunk หากทั้งสองฝั่งตั้ง Native VLAN ไม่ตรงกัน Frame จะถูกส่งไปผิด VLAN ทำให้การสื่อสารผิดพลาด"
+  },
+  {
+    "id": 32,
+    "lecture": "Lec10-VLAN",
+    "question": "802.1Q Tag ที่เพิ่มเข้าไปใน Ethernet Frame มีขนาดกี่ Byte และ VLAN ID มีกี่ Bit?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Tag ขนาด 2 Byte มี VLAN ID 8 Bit รองรับ 256 VLAN"
+      },
+      {
+        "key": "B",
+        "text": "Tag ขนาด 8 Byte มี VLAN ID 16 Bit รองรับ 65536 VLAN"
+      },
+      {
+        "key": "C",
+        "text": "Tag ขนาด 4 Byte มี VLAN ID 12 Bit รองรับ 4096 VLAN"
+      },
+      {
+        "key": "D",
+        "text": "Tag ขนาด 6 Byte มี VLAN ID 24 Bit รองรับ 16 ล้าน VLAN"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "802.1Q Tag มีขนาด 4 Byte ประกอบด้วย TPID (16-bit), Priority (3-bit), DEI (1-bit), VLAN ID (12-bit) จึงรองรับได้สูงสุด 2^12 = 4096 VLAN"
+  },
+  {
+    "id": 33,
+    "lecture": "Lec10-VLAN",
+    "question": "Router-on-a-Stick ทำ Inter-VLAN Routing ได้อย่างไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "ใช้ Physical Interface แยกแต่ละ VLAN ต่อสายคนละเส้น"
+      },
+      {
+        "key": "B",
+        "text": "ใช้ NAT แปลง IP ของแต่ละ VLAN ให้เป็นเครือข่ายเดียว"
+      },
+      {
+        "key": "C",
+        "text": "ใช้ SVI บน Switch เพื่อ Route ระหว่าง VLAN โดยตรง"
+      },
+      {
+        "key": "D",
+        "text": "ใช้ Sub-Interface บน Port เดียวรับ Tag ของแต่ละ VLAN"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Router-on-a-Stick ใช้ Physical Interface เดียวแบ่งเป็น Sub-Interface หลายตัว แต่ละ Sub-Interface รับ 802.1Q Tag ของ VLAN ที่กำหนด โดยเชื่อมกับ Switch ผ่าน Trunk Port"
+  },
+  {
+    "id": 34,
+    "lecture": "Lec10-VLAN",
+    "question": "DHCP DORA Process มีขั้นตอนอย่างไร และใช้ Protocol อะไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Discover-Offer-Request-Acknowledge ใช้ UDP Port 67/68"
+      },
+      {
+        "key": "B",
+        "text": "Detect-Open-Reply-Accept ใช้ UDP Port 53/80 ตามลำดับ"
+      },
+      {
+        "key": "C",
+        "text": "Discover-Offer-Request-Acknowledge ใช้ TCP Port 67/68"
+      },
+      {
+        "key": "D",
+        "text": "Detect-Open-Reply-Accept ใช้ TCP Port 67/68 ตามลำดับ"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "DHCP ใช้ UDP Port 67 (Server) และ 68 (Client) มีขั้นตอน DORA คือ Discover (Client Broadcast) → Offer (Server) → Request (Client) → Acknowledge (Server)"
+  },
+  {
+    "id": 35,
+    "lecture": "Lec10-VLAN",
+    "question": "IPv6 Address แบบ GUA (Global Unicast Address) ขึ้นต้นด้วย Prefix ใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "fe80::/10 สำหรับสื่อสารภายใน Link เดียวกันเท่านั้น"
+      },
+      {
+        "key": "B",
+        "text": "fc00::/7 สำหรับใช้งานภายในองค์กรเท่านั้นไม่ Route ออก"
+      },
+      {
+        "key": "C",
+        "text": "ff00::/8 สำหรับส่งข้อมูลแบบ Multicast ไปยังกลุ่ม"
+      },
+      {
+        "key": "D",
+        "text": "2000::/3 สำหรับใช้สื่อสารบนอินเทอร์เน็ตทั่วโลกได้"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "GUA (Global Unicast Address) ขึ้นต้นด้วย 2000::/3 เทียบได้กับ Public IP ใน IPv4 ส่วน fe80::/10 คือ LLA, fc00::/7 คือ Unique Local, ff00::/8 คือ Multicast"
+  },
+  {
+    "id": 36,
+    "lecture": "Lec10-VLAN",
+    "question": "EUI-64 ใน IPv6 สร้าง Interface ID อย่างไรจาก MAC Address?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "นำ MAC มาต่อกับ Prefix โดยตรงโดยไม่มีการแก้ไขเพิ่มเติม"
+      },
+      {
+        "key": "B",
+        "text": "Hash ค่า MAC Address ด้วย MD5 แล้วใช้ 64 Bit สุดท้าย"
+      },
+      {
+        "key": "C",
+        "text": "นำ MAC Address มาเข้ารหัสด้วย AES-128 แล้วตัดให้เหลือ 64 Bit"
+      },
+      {
+        "key": "D",
+        "text": "แทรก FF:FE ตรงกลาง MAC แล้วกลับ Bit ที่ 7 ของ Byte แรก"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "EUI-64 นำ MAC 48-bit แทรก FF:FE ตรงกลางระหว่าง OUI กับ Device ID ให้เป็น 64-bit แล้วกลับ Bit ที่ 7 (Universal/Local Bit) ของ Byte แรก"
+  },
+  {
+    "id": 37,
+    "lecture": "Lec10-VLAN",
+    "question": "ข้อใดเป็นความแตกต่างที่สำคัญระหว่าง IPv6 กับ IPv4?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "IPv6 มี Broadcast เหมือน IPv4 แต่ใช้ Address ขนาด 128 Bit"
+      },
+      {
+        "key": "B",
+        "text": "IPv6 ไม่รองรับ Multicast จึงใช้ Broadcast แทนทุกกรณี"
+      },
+      {
+        "key": "C",
+        "text": "IPv6 ใช้ NAT เหมือน IPv4 เพราะ Address ยังมีไม่เพียงพอ"
+      },
+      {
+        "key": "D",
+        "text": "IPv6 ไม่มี Broadcast ไม่มี Router Fragmentation และมี 128 Bit"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "IPv6 มี Address 128 Bit ไม่มี Broadcast (ใช้ Multicast แทน) และไม่อนุญาตให้ Router ทำ Fragmentation (ต้นทางจัดการเอง) ซึ่งเป็นความแตกต่างสำคัญจาก IPv4"
+  },
+  {
+    "id": 38,
+    "lecture": "Lec10-VLAN",
+    "question": "Layer 3 Switch ทำ Inter-VLAN Routing ได้อย่างไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "ใช้ Sub-Interface บน Port เดียวเหมือน Router-on-a-Stick"
+      },
+      {
+        "key": "B",
+        "text": "ต่อสาย Physical แยกแต่ละ VLAN ไปยัง Router ภายนอก"
+      },
+      {
+        "key": "C",
+        "text": "ใช้ NAT แปลง IP ระหว่าง VLAN ให้อยู่ในเครือข่ายเดียวกัน"
+      },
+      {
+        "key": "D",
+        "text": "ใช้ SVI (Switch Virtual Interface) เป็น Gateway ของแต่ละ VLAN"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Layer 3 Switch ใช้ SVI (Switch Virtual Interface) สร้าง Virtual Interface สำหรับแต่ละ VLAN เพื่อเป็น Default Gateway และ Route Traffic ระหว่าง VLAN ภายในตัว Switch เอง"
+  },
+  {
+    "id": 39,
+    "lecture": "Lec10-VLAN",
+    "question": "SLAAC ใน IPv6 ทำงานอย่างไรเมื่ออุปกรณ์ต้องการ IP Address?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "อุปกรณ์รับ Prefix จาก Router แล้วสร้าง Interface ID เองอัตโนมัติ"
+      },
+      {
+        "key": "B",
+        "text": "อุปกรณ์ขอ Address จาก DHCPv6 Server เหมือน DHCP ใน IPv4"
+      },
+      {
+        "key": "C",
+        "text": "อุปกรณ์สร้าง Address เองทั้งหมดโดยไม่ต้องข้อมูลจาก Router"
+      },
+      {
+        "key": "D",
+        "text": "ผู้ดูแลกำหนด Address ให้อุปกรณ์แต่ละตัวด้วยมือทีละเครื่อง"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "SLAAC (Stateless Address Autoconfiguration) อุปกรณ์รับ Prefix Information จาก Router Advertisement แล้วสร้าง Interface ID เอง (เช่น ด้วย EUI-64 หรือ Random) รวมกันเป็น IPv6 Address"
+  },
+  {
+    "id": 40,
+    "lecture": "Lec10-VLAN",
+    "question": "Voice VLAN ถูกแยกออกจาก Data VLAN เพราะเหตุใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "เพราะ Voice ต้องการจัดลำดับความสำคัญเพื่อลด Delay และ Jitter"
+      },
+      {
+        "key": "B",
+        "text": "เพราะ Voice ใช้ IPv6 ส่วน Data ใช้ IPv4 จึงต้องแยก VLAN"
+      },
+      {
+        "key": "C",
+        "text": "เพราะ Voice ใช้ TCP ส่วน Data ใช้ UDP จึงต้องแยกกันส่ง"
+      },
+      {
+        "key": "D",
+        "text": "เพราะ Voice ต้องใช้สายแยกต่างหากจึงต้องอยู่คนละ VLAN"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Voice Traffic ต้องการ Quality of Service (QoS) สูง ต้อง Delay และ Jitter ต่ำ การแยก VLAN ช่วยให้จัดลำดับความสำคัญ (Priority) ให้ Voice Traffic ได้อย่างมีประสิทธิภาพ"
+  },
+  {
+    "id": 41,
+    "lecture": "Lec11-Routing",
+    "question": "เมื่อ Packet เดินทางผ่าน Router แต่ละ Hop จะเกิดอะไรกับ Layer 2 Header?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Router สร้าง Layer 2 Header ใหม่ทุกครั้งที่ส่ง Packet ออกไป"
+      },
+      {
+        "key": "B",
+        "text": "Layer 2 Header ถูกลบทิ้งและไม่สร้างใหม่เมื่อออกจาก Router"
+      },
+      {
+        "key": "C",
+        "text": "Layer 2 Header คงเดิมไม่เปลี่ยนจนกว่าจะถึงปลายทางสุดท้าย"
+      },
+      {
+        "key": "D",
+        "text": "Router คัดลอก Layer 2 Header เดิมแต่เปลี่ยนเฉพาะ MAC ต้นทาง"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Router ทำ De-encapsulation ลบ Layer 2 Header เดิม จากนั้น Re-encapsulate สร้าง Layer 2 Header ใหม่ด้วย Source MAC ของ Interface ขาออกและ Destination MAC ของ Next Hop"
+  },
+  {
+    "id": 42,
+    "lecture": "Lec11-Routing",
+    "question": "Administrative Distance ใช้ตัดสินใจอย่างไรเมื่อมีหลาย Route ไปยังปลายทางเดียวกัน?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "เลือก Route ที่มี AD สูงที่สุดเพราะแสดงว่าน่าเชื่อถือมาก"
+      },
+      {
+        "key": "B",
+        "text": "เลือก Route ที่มี AD ต่ำที่สุดเพราะแสดงว่าน่าเชื่อถือมาก"
+      },
+      {
+        "key": "C",
+        "text": "เลือก Route ที่มี Hop Count น้อยที่สุดโดยไม่สนใจค่า AD"
+      },
+      {
+        "key": "D",
+        "text": "เลือก Route ที่ถูกเพิ่มเข้ามาก่อนตามลำดับเวลาที่เรียนรู้"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Administrative Distance ยิ่งต่ำยิ่งน่าเชื่อถือ เช่น Connected=0, Static=1, EIGRP=90, OSPF=110, RIP=120 Router จะเลือก Route ที่มี AD ต่ำที่สุดใส่ใน Routing Table"
+  },
+  {
+    "id": 43,
+    "lecture": "Lec11-Routing",
+    "question": "ทำไม RIP จึงไม่เหมาะกับเครือข่ายขนาดใหญ่?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "เพราะ RIP ใช้ Bandwidth เป็น Metric จึงคำนวณช้าในเครือข่ายใหญ่"
+      },
+      {
+        "key": "B",
+        "text": "เพราะ RIP ต้องใช้ Manual Configuration ทุก Router จึงยุ่งยาก"
+      },
+      {
+        "key": "C",
+        "text": "เพราะ RIP จำกัด Hop Count สูงสุด 15 ทำให้ไม่ถึงเครือข่ายไกล"
+      },
+      {
+        "key": "D",
+        "text": "เพราะ RIP ไม่รองรับ VLSM จึงเสีย IP Address เป็นจำนวนมาก"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "RIP ใช้ Hop Count เป็น Metric โดยจำกัดสูงสุดที่ 15 Hop (16 = Unreachable) ทำให้ไม่สามารถเข้าถึงเครือข่ายที่ห่างเกิน 15 Router จึงไม่เหมาะกับเครือข่ายขนาดใหญ่"
+  },
+  {
+    "id": 44,
+    "lecture": "Lec11-Routing",
+    "question": "Static Routing เหมาะกับเครือข่ายแบบใดมากกว่า Dynamic Routing?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "เครือข่ายขนาดใหญ่ที่มี Router จำนวนมากและซับซ้อนมาก"
+      },
+      {
+        "key": "B",
+        "text": "เครือข่ายที่มี Topology เปลี่ยนแปลงบ่อยต้องปรับเส้นทางเร็ว"
+      },
+      {
+        "key": "C",
+        "text": "เครือข่ายที่ต้องการ Load Balancing ระหว่างเส้นทางหลายเส้น"
+      },
+      {
+        "key": "D",
+        "text": "เครือข่ายขนาดเล็กที่มี Topology คงที่และไม่เปลี่ยนแปลงบ่อย"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Static Routing เหมาะกับเครือข่ายขนาดเล็กที่มี Topology คงที่ เพราะไม่ต้อง Overhead ของ Routing Protocol แต่ต้องตั้งค่าด้วยมือทุก Route หาก Topology เปลี่ยนต้องแก้ไขเอง"
+  },
+  {
+    "id": 45,
+    "lecture": "Lec11-Routing",
+    "question": "CEF (Cisco Express Forwarding) ต่างจาก Process Switching อย่างไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "CEF ใช้ FIB Table สำเร็จรูปทำให้ Forward เร็วกว่า Process Switching"
+      },
+      {
+        "key": "B",
+        "text": "CEF ส่ง Packet ไปยัง CPU ทุกตัวทำให้ช้ากว่า Process Switching"
+      },
+      {
+        "key": "C",
+        "text": "CEF ทำงานเฉพาะกับ Static Route ส่วน Process Switching ใช้ได้ทั้งหมด"
+      },
+      {
+        "key": "D",
+        "text": "CEF เหมาะกับเครือข่ายขนาดเล็กส่วน Process Switching เหมาะขนาดใหญ่"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "CEF สร้าง FIB (Forwarding Information Base) และ Adjacency Table ไว้ล่วงหน้า ทำให้ Forward Packet ได้เร็วมากโดยไม่ต้องส่งไปยัง CPU ทุก Packet เหมือน Process Switching"
+  },
+  {
+    "id": 46,
+    "lecture": "Lec11-Routing",
+    "question": "BGP จัดเป็น Routing Protocol ประเภทใด และใช้งานในบริบทไหน?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "IGP ใช้ภายใน Autonomous System เดียวกันระหว่าง Router"
+      },
+      {
+        "key": "B",
+        "text": "EGP ใช้เชื่อมต่อระหว่าง Autonomous System บนอินเทอร์เน็ต"
+      },
+      {
+        "key": "C",
+        "text": "IGP ใช้เฉพาะเครือข่ายขนาดเล็กที่มี Router ไม่กี่ตัว"
+      },
+      {
+        "key": "D",
+        "text": "EGP ใช้เฉพาะภายในองค์กรที่มีเครือข่ายหลายสาขา"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "BGP (Border Gateway Protocol) เป็น EGP (Exterior Gateway Protocol) ใช้สำหรับ Route ระหว่าง Autonomous System ต่าง ๆ บนอินเทอร์เน็ต ต่างจาก IGP (RIP, OSPF, EIGRP) ที่ใช้ภายใน AS"
+  },
+  {
+    "id": 47,
+    "lecture": "Lec11-Routing",
+    "question": "OSPF ใช้ Metric แบบใดในการเลือกเส้นทาง?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Hop Count โดยนับจำนวน Router ที่ Packet ต้องผ่านทั้งหมด"
+      },
+      {
+        "key": "B",
+        "text": "Bandwidth + Delay โดยคำนวณรวมกันเป็น Composite Metric"
+      },
+      {
+        "key": "C",
+        "text": "Cost ที่คำนวณจาก Bandwidth ของ Interface แต่ละ Link"
+      },
+      {
+        "key": "D",
+        "text": "Latency โดยวัดเวลาจริงที่ Packet ใช้เดินทางผ่านแต่ละ Link"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "OSPF ใช้ Cost เป็น Metric โดยคำนวณจาก Reference Bandwidth หารด้วย Interface Bandwidth ส่วน Hop Count เป็นของ RIP และ BW+Delay เป็นของ EIGRP"
+  },
+  {
+    "id": 48,
+    "lecture": "Lec11-Routing",
+    "question": "Default Route 0.0.0.0/0 ทำหน้าที่อะไรใน Routing Table?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "ปฏิเสธ Packet ทั้งหมดที่ไม่ตรงกับ Route ใด ๆ ในตาราง"
+      },
+      {
+        "key": "B",
+        "text": "ส่ง Packet กลับไปยังต้นทางเมื่อไม่พบเส้นทางปลายทาง"
+      },
+      {
+        "key": "C",
+        "text": "ใช้เฉพาะกับ Multicast Packet ที่ต้องส่งไปหลายปลายทาง"
+      },
+      {
+        "key": "D",
+        "text": "เป็นเส้นทางสำรองสำหรับ Packet ที่ไม่ตรงกับ Route อื่นใด"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Default Route (0.0.0.0/0) เป็น Route ที่ Match กับทุก Destination IP ใช้เป็นเส้นทางสำรอง (Gateway of Last Resort) เมื่อไม่มี Route อื่นที่เจาะจงกว่าตรงกับปลายทาง"
+  },
+  {
+    "id": 49,
+    "lecture": "Lec11-Routing",
+    "question": "Equal Cost Load Balancing ทำงานอย่างไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "กระจาย Traffic ไปยังเส้นทางที่มี Metric เท่ากันหลายเส้นทางพร้อมกัน"
+      },
+      {
+        "key": "B",
+        "text": "กระจาย Traffic ไปยังเส้นทางที่มี Metric ต่างกันตามสัดส่วน Metric"
+      },
+      {
+        "key": "C",
+        "text": "เลือกเส้นทางที่มี Metric ต่ำสุดเพียงเส้นทางเดียวเท่านั้น"
+      },
+      {
+        "key": "D",
+        "text": "สลับเส้นทางทุก ๆ 30 วินาทีเพื่อกระจาย Traffic ให้สม่ำเสมอ"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Equal Cost Load Balancing กระจาย Traffic ไปยังหลายเส้นทางที่มี Metric เท่ากัน ทำให้ใช้ Bandwidth ได้อย่างมีประสิทธิภาพ ต่างจาก Unequal Cost ที่ EIGRP รองรับเพิ่มเติม"
+  },
+  {
+    "id": 50,
+    "lecture": "Lec11-Routing",
+    "question": "ถ้า Router มี Route ไปยังปลายทางเดียวกันจาก OSPF (AD=110) และ EIGRP (AD=90) จะใช้ Route ใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "ใช้ทั้งสอง Route ทำ Load Balancing เพราะปลายทางเดียวกัน"
+      },
+      {
+        "key": "B",
+        "text": "ใช้ OSPF เพราะเป็น Open Standard ที่น่าเชื่อถือกว่า EIGRP"
+      },
+      {
+        "key": "C",
+        "text": "ใช้ EIGRP เพราะมี AD ต่ำกว่าแสดงว่าน่าเชื่อถือมากกว่า"
+      },
+      {
+        "key": "D",
+        "text": "ใช้ OSPF เพราะมี AD สูงกว่าแสดงว่าเส้นทางแม่นยำกว่า"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Router เลือก Route ที่มี Administrative Distance ต่ำกว่า EIGRP มี AD=90 ซึ่งต่ำกว่า OSPF ที่มี AD=110 จึงเลือกใช้เส้นทางจาก EIGRP"
+  },
+  {
+    "id": 51,
+    "lecture": "Lec12-Transport",
+    "question": "TCP 3-Way Handshake มีขั้นตอนอย่างไร และมีจุดประสงค์อะไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "SYN → SYN-ACK → ACK เพื่อสร้าง Connection ก่อนส่งข้อมูล"
+      },
+      {
+        "key": "B",
+        "text": "SYN → ACK → FIN เพื่อสร้างและปิดการเชื่อมต่อในคราวเดียว"
+      },
+      {
+        "key": "C",
+        "text": "ACK → SYN → FIN เพื่อตรวจสอบว่าปลายทางพร้อมรับข้อมูล"
+      },
+      {
+        "key": "D",
+        "text": "FIN → ACK → RST เพื่อรีเซ็ต Connection และเริ่มใหม่ทันที"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "TCP 3-Way Handshake: Client ส่ง SYN → Server ตอบ SYN-ACK → Client ส่ง ACK เพื่อสร้าง Connection ที่เชื่อถือได้ก่อนเริ่มส่งข้อมูลจริง"
+  },
+  {
+    "id": 52,
+    "lecture": "Lec12-Transport",
+    "question": "ทำไม UDP จึงถูกเลือกใช้สำหรับ DNS Query แทนที่จะใช้ TCP?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "เพราะ DNS ต้องการความน่าเชื่อถือสูงซึ่ง UDP รับประกันได้"
+      },
+      {
+        "key": "B",
+        "text": "เพราะ DNS Query มีขนาดเล็กต้องการความเร็วไม่ต้อง Handshake"
+      },
+      {
+        "key": "C",
+        "text": "เพราะ TCP ไม่รองรับ Port 53 ที่ DNS ใช้ในการสื่อสาร"
+      },
+      {
+        "key": "D",
+        "text": "เพราะ UDP รองรับ Multicast แต่ TCP ไม่รองรับการทำ Multicast"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "DNS Query มักมีขนาดเล็ก ต้องการความเร็วในการ Resolve ชื่อ UDP ไม่ต้องทำ 3-Way Handshake จึงเร็วกว่า TCP แต่ถ้า Response ใหญ่เกินหรือ Zone Transfer จะใช้ TCP แทน"
+  },
+  {
+    "id": 53,
+    "lecture": "Lec12-Transport",
+    "question": "Socket คืออะไร และประกอบด้วยข้อมูลอะไรบ้าง?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "คือการรวม MAC Address กับ Port Number เพื่อระบุอุปกรณ์"
+      },
+      {
+        "key": "B",
+        "text": "คือการรวม IP Address กับ MAC Address เพื่อระบุตำแหน่ง"
+      },
+      {
+        "key": "C",
+        "text": "คือการรวม IP Address กับ Port Number เพื่อระบุ Application"
+      },
+      {
+        "key": "D",
+        "text": "คือการรวม Protocol กับ Port Number เพื่อระบุชนิดบริการ"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Socket คือการรวม IP Address กับ Port Number เข้าด้วยกัน (เช่น 192.168.1.1:80) เพื่อระบุ Application หรือ Service เฉพาะบนอุปกรณ์นั้น"
+  },
+  {
+    "id": 54,
+    "lecture": "Lec12-Transport",
+    "question": "FTP ใช้ 2 Connection แยกกันเพราะเหตุใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "เพื่อแยก Upload กับ Download ไม่ให้ใช้ Port เดียวกันซ้ำ"
+      },
+      {
+        "key": "B",
+        "text": "เพื่อแยก Control (Port 21) กับ Data (Port 20) ให้เป็นอิสระ"
+      },
+      {
+        "key": "C",
+        "text": "เพื่อรองรับ Encryption บน Connection หนึ่งและ Plain Text อีกอัน"
+      },
+      {
+        "key": "D",
+        "text": "เพื่อให้ Client เชื่อมต่อ Server ได้พร้อมกัน 2 เครื่องทีเดียว"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "FTP แยก Control Connection (Port 21) สำหรับส่งคำสั่ง เช่น Login, ls, cd กับ Data Connection (Port 20) สำหรับส่งไฟล์จริง ทำให้จัดการคำสั่งและข้อมูลได้อิสระจากกัน"
+  },
+  {
+    "id": 55,
+    "lecture": "Lec12-Transport",
+    "question": "IMAP ต่างจาก POP3 ในการรับ Email อย่างไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "IMAP ลบ Email จาก Server หลังดาวน์โหลด ส่วน POP3 เก็บไว้"
+      },
+      {
+        "key": "B",
+        "text": "IMAP ใช้ UDP ส่วน POP3 ใช้ TCP ในการเชื่อมต่อกับ Server"
+      },
+      {
+        "key": "C",
+        "text": "IMAP ใช้ Port 25 ส่วน POP3 ใช้ Port 443 ในการรับ Email"
+      },
+      {
+        "key": "D",
+        "text": "IMAP เก็บ Email ไว้บน Server และ Sync ทุกอุปกรณ์ POP3 ดาวน์โหลดแล้วลบ"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "IMAP (Port 143) เก็บ Email ไว้บน Server ช่วยให้ Sync ข้อมูลระหว่างหลายอุปกรณ์ได้ ส่วน POP3 (Port 110) ดาวน์โหลด Email มาที่เครื่องแล้วลบออกจาก Server โดยค่าเริ่มต้น"
+  },
+  {
+    "id": 56,
+    "lecture": "Lec12-Transport",
+    "question": "Well-Known Port (0-1023) ต่างจาก Registered Port (1024-49151) อย่างไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Well-Known สำหรับ Service มาตรฐาน ส่วน Registered สำหรับ Application ทั่วไป"
+      },
+      {
+        "key": "B",
+        "text": "Well-Known ใช้กับ UDP เท่านั้น ส่วน Registered ใช้กับ TCP เท่านั้น"
+      },
+      {
+        "key": "C",
+        "text": "Well-Known กำหนดโดย ISP ส่วน Registered กำหนดโดยผู้ใช้เอง"
+      },
+      {
+        "key": "D",
+        "text": "Well-Known ใช้เฉพาะ Client ส่วน Registered ใช้เฉพาะ Server"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Well-Known Ports (0-1023) สงวนไว้สำหรับ Service มาตรฐาน เช่น HTTP(80), FTP(21), SSH(22) ส่วน Registered Ports (1024-49151) ใช้สำหรับ Application ทั่วไปที่ลงทะเบียนกับ IANA"
+  },
+  {
+    "id": 57,
+    "lecture": "Lec12-Transport",
+    "question": "DNS Record ประเภท AAAA ใช้สำหรับจุดประสงค์ใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "แปลง Domain Name เป็น IPv4 Address 32 Bit สำหรับเชื่อมต่อ"
+      },
+      {
+        "key": "B",
+        "text": "แปลง Domain Name เป็น IPv6 Address 128 Bit สำหรับเชื่อมต่อ"
+      },
+      {
+        "key": "C",
+        "text": "ระบุ Name Server ที่รับผิดชอบ Zone ของ Domain นั้น ๆ"
+      },
+      {
+        "key": "D",
+        "text": "ระบุ Mail Server ที่รับผิดชอบ Email ของ Domain นั้น ๆ"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "AAAA Record ใช้แปลง Domain Name เป็น IPv6 Address (128-bit) ส่วน A Record ใช้แปลงเป็น IPv4, MX Record ระบุ Mail Server, NS Record ระบุ Name Server"
+  },
+  {
+    "id": 58,
+    "lecture": "Lec12-Transport",
+    "question": "SMTP ทำหน้าที่อะไรในระบบ Email และใช้ Port อะไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "รับ Email จาก Server มาที่ Client ใช้ Port 110 ในการเชื่อมต่อ"
+      },
+      {
+        "key": "B",
+        "text": "รับ Email จาก Server และ Sync ไปทุกอุปกรณ์ใช้ Port 143"
+      },
+      {
+        "key": "C",
+        "text": "ส่ง Email จาก Client ไปยัง Server ใช้ Port 25 ในการเชื่อมต่อ"
+      },
+      {
+        "key": "D",
+        "text": "เข้ารหัส Email ก่อนส่งออกไปใช้ Port 443 ในการเชื่อมต่อ"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "SMTP (Simple Mail Transfer Protocol) ใช้ Port 25 ทำหน้าที่ส่ง Email จาก Client ไป Mail Server หรือระหว่าง Mail Server ส่วนการรับ Email ใช้ POP3 (Port 110) หรือ IMAP (Port 143)"
+  },
+  {
+    "id": 59,
+    "lecture": "Lec12-Transport",
+    "question": "ข้อใดเปรียบเทียบ TCP กับ UDP ได้ถูกต้องที่สุด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "TCP เร็วกว่า UDP แต่ UDP น่าเชื่อถือกว่าเพราะมี Error Recovery"
+      },
+      {
+        "key": "B",
+        "text": "TCP และ UDP ทำงานเหมือนกันแต่ใช้ Port Number คนละกลุ่ม"
+      },
+      {
+        "key": "C",
+        "text": "TCP ใช้ที่ Layer 3 ส่วน UDP ใช้ที่ Layer 4 ทั้งคู่ส่ง Packet"
+      },
+      {
+        "key": "D",
+        "text": "TCP น่าเชื่อถือแต่ช้ากว่า ส่วน UDP เร็วกว่าแต่ไม่รับประกันส่ง"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "TCP มี 3-Way Handshake, Sequencing, Acknowledgment, Flow Control ทำให้น่าเชื่อถือแต่มี Overhead สูง ส่วน UDP ไม่มีกลไกเหล่านี้จึงเร็วกว่าแต่ไม่รับประกันว่าข้อมูลจะถึง"
+  },
+  {
+    "id": 60,
+    "lecture": "Lec12-Transport",
+    "question": "HTTPS ต่างจาก HTTP อย่างไรในการทำงาน?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "HTTPS ใช้ UDP ส่วน HTTP ใช้ TCP ทำให้ HTTPS เร็วกว่ามาก"
+      },
+      {
+        "key": "B",
+        "text": "HTTPS เข้ารหัสข้อมูลด้วย TLS/SSL ใช้ Port 443 ปลอดภัยกว่า"
+      },
+      {
+        "key": "C",
+        "text": "HTTPS ทำงานที่ Layer 2 ส่วน HTTP ทำงานที่ Layer 7 เท่านั้น"
+      },
+      {
+        "key": "D",
+        "text": "HTTPS ใช้ Port 8080 ส่วน HTTP ใช้ Port 80 ทั้งคู่ไม่เข้ารหัส"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "HTTPS (Port 443) เพิ่มการเข้ารหัสด้วย TLS/SSL ทำให้ข้อมูลที่ส่งระหว่าง Client กับ Server ถูกเข้ารหัส ป้องกันการดักฟัง ส่วน HTTP (Port 80) ส่งข้อมูลแบบ Plain Text"
+  }
+]

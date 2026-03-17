@@ -1,0 +1,1502 @@
+[
+  {
+    "id": 1,
+    "lecture": "Lec8-Ethernet",
+    "question": "Data Link Layer อยู่ใน OSI Model ชั้นที่เท่าใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Layer 1"
+      },
+      {
+        "key": "B",
+        "text": "Layer 2"
+      },
+      {
+        "key": "C",
+        "text": "Layer 3"
+      },
+      {
+        "key": "D",
+        "text": "Layer 4"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Data Link Layer คือ Layer 2 ใน OSI Model ทำหน้าที่ควบคุมการเข้าถึงสื่อและจัดการ Frame"
+  },
+  {
+    "id": 2,
+    "lecture": "Lec8-Ethernet",
+    "question": "Topology แบบใดที่นิยมใช้มากที่สุดในเครือข่าย LAN ปัจจุบัน?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Bus Topology"
+      },
+      {
+        "key": "B",
+        "text": "Ring Topology"
+      },
+      {
+        "key": "C",
+        "text": "Star Topology"
+      },
+      {
+        "key": "D",
+        "text": "Mesh Topology"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Star Topology เป็นรูปแบบที่นิยมใช้มากที่สุดใน LAN เพราะติดตั้งง่ายและดูแลรักษาสะดวก"
+  },
+  {
+    "id": 3,
+    "lecture": "Lec8-Ethernet",
+    "question": "MAC Address มีขนาดกี่ bit?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "32 bit"
+      },
+      {
+        "key": "B",
+        "text": "64 bit"
+      },
+      {
+        "key": "C",
+        "text": "128 bit"
+      },
+      {
+        "key": "D",
+        "text": "48 bit"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "MAC Address มีขนาด 48 bit หรือ 6 bytes แสดงเป็นเลขฐานสิบหก 12 ตัว"
+  },
+  {
+    "id": 4,
+    "lecture": "Lec8-Ethernet",
+    "question": "CSMA/CD ใช้กับการสื่อสารแบบใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Half-Duplex"
+      },
+      {
+        "key": "B",
+        "text": "Full-Duplex"
+      },
+      {
+        "key": "C",
+        "text": "Simplex เท่านั้น"
+      },
+      {
+        "key": "D",
+        "text": "Multicast เท่านั้น"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "CSMA/CD ใช้กับ Half-Duplex เช่น Hub และ WLAN เพื่อตรวจจับการชนกันของข้อมูล"
+  },
+  {
+    "id": 5,
+    "lecture": "Lec8-Ethernet",
+    "question": "Broadcast MAC Address คือค่าใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "00:00:00:00:00:00"
+      },
+      {
+        "key": "B",
+        "text": "01:00:5E:00:00:00"
+      },
+      {
+        "key": "C",
+        "text": "FF:FF:FF:FF:FF:FF"
+      },
+      {
+        "key": "D",
+        "text": "FE:80:00:00:00:00"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Broadcast MAC Address คือ FF:FF:FF:FF:FF:FF ใช้ส่งข้อมูลไปยังทุกอุปกรณ์ในเครือข่าย"
+  },
+  {
+    "id": 6,
+    "lecture": "Lec8-Ethernet",
+    "question": "ARP ทำหน้าที่แปลงจากอะไรเป็นอะไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "แปลง MAC เป็น IP Address"
+      },
+      {
+        "key": "B",
+        "text": "แปลง IP เป็น MAC Address"
+      },
+      {
+        "key": "C",
+        "text": "แปลง IP เป็น Domain Name"
+      },
+      {
+        "key": "D",
+        "text": "แปลง Port เป็น IP Address"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "ARP (Address Resolution Protocol) ทำหน้าที่แปลง IP Address ไปเป็น MAC Address"
+  },
+  {
+    "id": 7,
+    "lecture": "Lec8-Ethernet",
+    "question": "ขนาดต่ำสุดของ Ethernet Frame คือกี่ bytes?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "64 bytes"
+      },
+      {
+        "key": "B",
+        "text": "46 bytes"
+      },
+      {
+        "key": "C",
+        "text": "128 bytes"
+      },
+      {
+        "key": "D",
+        "text": "1518 bytes"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "ขนาดต่ำสุดของ Ethernet Frame คือ 64 bytes ถ้าเล็กกว่านี้เรียกว่า Runt Frame"
+  },
+  {
+    "id": 8,
+    "lecture": "Lec8-Ethernet",
+    "question": "อุปกรณ์ใดแบ่ง Collision Domain ได้เป็นแต่ละ Port?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Hub"
+      },
+      {
+        "key": "B",
+        "text": "Repeater"
+      },
+      {
+        "key": "C",
+        "text": "Switch"
+      },
+      {
+        "key": "D",
+        "text": "Access Point"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Switch แบ่ง Collision Domain ออกเป็นแต่ละ Port ทำให้ลดการชนกันของข้อมูล"
+  },
+  {
+    "id": 9,
+    "lecture": "Lec8-Ethernet",
+    "question": "ค่า Type Field ใน Ethernet Frame สำหรับ IPv4 คือค่าใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "0x86DD"
+      },
+      {
+        "key": "B",
+        "text": "0x0806"
+      },
+      {
+        "key": "C",
+        "text": "0x0800"
+      },
+      {
+        "key": "D",
+        "text": "0x8100"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Type Field ของ IPv4 คือ 0x0800 ส่วน 0x86DD คือ IPv6 และ 0x0806 คือ ARP"
+  },
+  {
+    "id": 10,
+    "lecture": "Lec8-Ethernet",
+    "question": "อุปกรณ์ใดสามารถแบ่ง Broadcast Domain ได้?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Hub เท่านั้น"
+      },
+      {
+        "key": "B",
+        "text": "Switch เท่านั้น"
+      },
+      {
+        "key": "C",
+        "text": "Bridge เท่านั้น"
+      },
+      {
+        "key": "D",
+        "text": "Router เท่านั้น"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Router เป็นอุปกรณ์เดียวที่สามารถแบ่ง Broadcast Domain ได้ เพราะทำงานที่ Layer 3"
+  },
+  {
+    "id": 11,
+    "lecture": "Lec9A-NetworkLayer",
+    "question": "Network Layer อยู่ใน OSI Model ชั้นที่เท่าใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Layer 2"
+      },
+      {
+        "key": "B",
+        "text": "Layer 4"
+      },
+      {
+        "key": "C",
+        "text": "Layer 3"
+      },
+      {
+        "key": "D",
+        "text": "Layer 5"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Network Layer คือ Layer 3 ใน OSI Model ทำหน้าที่กำหนดที่อยู่และหาเส้นทาง"
+  },
+  {
+    "id": 12,
+    "lecture": "Lec9A-NetworkLayer",
+    "question": "IP Protocol มีคุณสมบัติแบบใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Connectionless และ Best Effort"
+      },
+      {
+        "key": "B",
+        "text": "Connection-oriented และ Reliable"
+      },
+      {
+        "key": "C",
+        "text": "Connection-oriented และ Best Effort"
+      },
+      {
+        "key": "D",
+        "text": "Connectionless และ Reliable"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "IP เป็น Connectionless (ไม่สร้างการเชื่อมต่อก่อน) และ Best Effort (ไม่รับประกันการส่ง)"
+  },
+  {
+    "id": 13,
+    "lecture": "Lec9A-NetworkLayer",
+    "question": "MTU ย่อมาจากอะไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Maximum Transfer Utility"
+      },
+      {
+        "key": "B",
+        "text": "Minimum Transfer Utility"
+      },
+      {
+        "key": "C",
+        "text": "Maximum Transmission Unit"
+      },
+      {
+        "key": "D",
+        "text": "Minimum Transmission Unit"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "MTU คือ Maximum Transmission Unit หมายถึงขนาดข้อมูลสูงสุดที่ส่งได้ในแต่ละ Frame"
+  },
+  {
+    "id": 14,
+    "lecture": "Lec9A-NetworkLayer",
+    "question": "ใน IPv4 Header ฟิลด์ TTL มีขนาดกี่ bit?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "4 bit"
+      },
+      {
+        "key": "B",
+        "text": "16 bit"
+      },
+      {
+        "key": "C",
+        "text": "32 bit"
+      },
+      {
+        "key": "D",
+        "text": "8 bit"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "TTL (Time to Live) มีขนาด 8 bit จะลดค่าลงทุกครั้งที่ผ่าน Router ถ้าเป็น 0 จะถูกทิ้ง"
+  },
+  {
+    "id": 15,
+    "lecture": "Lec9A-NetworkLayer",
+    "question": "Private IP Address ช่วง Class A คือช่วงใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "10.0.0.0/8"
+      },
+      {
+        "key": "B",
+        "text": "172.16.0.0/12"
+      },
+      {
+        "key": "C",
+        "text": "192.168.0.0/16"
+      },
+      {
+        "key": "D",
+        "text": "169.254.0.0/16"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Private IP ช่วง Class A คือ 10.0.0.0/8 ให้จำนวน Host ได้มากที่สุดในกลุ่ม Private"
+  },
+  {
+    "id": 16,
+    "lecture": "Lec9A-NetworkLayer",
+    "question": "Loopback Address ของ IPv4 คือค่าใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "169.254.0.1"
+      },
+      {
+        "key": "B",
+        "text": "192.168.0.1"
+      },
+      {
+        "key": "C",
+        "text": "10.0.0.1"
+      },
+      {
+        "key": "D",
+        "text": "127.0.0.1"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "127.0.0.1 คือ Loopback Address ใช้ทดสอบ TCP/IP Stack บนเครื่องตัวเอง"
+  },
+  {
+    "id": 17,
+    "lecture": "Lec9A-NetworkLayer",
+    "question": "ICMP ใช้กับคำสั่งใดในการทดสอบเครือข่าย?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "คำสั่ง ping"
+      },
+      {
+        "key": "B",
+        "text": "คำสั่ง nslookup"
+      },
+      {
+        "key": "C",
+        "text": "คำสั่ง netstat"
+      },
+      {
+        "key": "D",
+        "text": "คำสั่ง ipconfig"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "คำสั่ง ping ใช้ ICMP Echo Request และ Echo Reply ในการทดสอบการเชื่อมต่อ"
+  },
+  {
+    "id": 18,
+    "lecture": "Lec9A-NetworkLayer",
+    "question": "ค่า Protocol Number ใน IPv4 Header ของ TCP คือค่าใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "1"
+      },
+      {
+        "key": "B",
+        "text": "6"
+      },
+      {
+        "key": "C",
+        "text": "17"
+      },
+      {
+        "key": "D",
+        "text": "47"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Protocol Number ของ TCP คือ 6 ส่วน UDP คือ 17 และ ICMP คือ 1"
+  },
+  {
+    "id": 19,
+    "lecture": "Lec9A-NetworkLayer",
+    "question": "APIPA Address คือช่วง IP ใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "10.0.0.0/8"
+      },
+      {
+        "key": "B",
+        "text": "127.0.0.0/8"
+      },
+      {
+        "key": "C",
+        "text": "169.254.0.0/16"
+      },
+      {
+        "key": "D",
+        "text": "192.168.0.0/16"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "APIPA (Automatic Private IP Addressing) ใช้ช่วง 169.254.0.0/16 เมื่อหา DHCP Server ไม่ได้"
+  },
+  {
+    "id": 20,
+    "lecture": "Lec9A-NetworkLayer",
+    "question": "NAT ทำหน้าที่อะไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "แปลง Private IP เป็น Public IP"
+      },
+      {
+        "key": "B",
+        "text": "แปลง Domain เป็น IP Address"
+      },
+      {
+        "key": "C",
+        "text": "แปลง MAC เป็น IP Address"
+      },
+      {
+        "key": "D",
+        "text": "แปลง IPv4 เป็น IPv6 Address"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "NAT (Network Address Translation) แปลง Private IP เป็น Public IP ที่ Edge Router"
+  },
+  {
+    "id": 21,
+    "lecture": "Lec9B-Subnetting",
+    "question": "Subnet Mask /24 เขียนเป็น Dotted Decimal ได้ค่าใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "255.255.255.0"
+      },
+      {
+        "key": "B",
+        "text": "255.255.0.0"
+      },
+      {
+        "key": "C",
+        "text": "255.0.0.0"
+      },
+      {
+        "key": "D",
+        "text": "255.255.255.128"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "/24 หมายถึง 24 bit แรกเป็น 1 ทั้งหมด คือ 255.255.255.0"
+  },
+  {
+    "id": 22,
+    "lecture": "Lec9B-Subnetting",
+    "question": "การคำนวณจำนวน Host ที่ใช้งานได้ในแต่ละ Subnet ใช้สูตรใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "2^n โดย n = จำนวน Network bit"
+      },
+      {
+        "key": "B",
+        "text": "2^h + 2 โดย h = จำนวน Host bit"
+      },
+      {
+        "key": "C",
+        "text": "2^h - 2 โดย h = จำนวน Host bit"
+      },
+      {
+        "key": "D",
+        "text": "2^n - 2 โดย n = จำนวน Network bit"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "จำนวน Host ที่ใช้งานได้ = 2^h - 2 โดยลบ Network Address และ Broadcast Address ออก"
+  },
+  {
+    "id": 23,
+    "lecture": "Lec9B-Subnetting",
+    "question": "Subnet /27 รองรับ Host ที่ใช้งานได้สูงสุดกี่เครื่อง?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "14 เครื่อง"
+      },
+      {
+        "key": "B",
+        "text": "62 เครื่อง"
+      },
+      {
+        "key": "C",
+        "text": "126 เครื่อง"
+      },
+      {
+        "key": "D",
+        "text": "30 เครื่อง"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "/27 มี Host bit 5 bit ดังนั้น Host ที่ใช้งานได้ = 2^5 - 2 = 30 เครื่อง"
+  },
+  {
+    "id": 24,
+    "lecture": "Lec9B-Subnetting",
+    "question": "Block Size ของ Subnet Mask /26 คือเท่าใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "128"
+      },
+      {
+        "key": "B",
+        "text": "64"
+      },
+      {
+        "key": "C",
+        "text": "32"
+      },
+      {
+        "key": "D",
+        "text": "16"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "/26 มี Subnet Mask octet สุดท้ายเป็น 192 ดังนั้น Block Size = 256 - 192 = 64"
+  },
+  {
+    "id": 25,
+    "lecture": "Lec9B-Subnetting",
+    "question": "VLSM ย่อมาจากอะไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Virtual Local Subnet Mask"
+      },
+      {
+        "key": "B",
+        "text": "Virtual Length Subnet Mode"
+      },
+      {
+        "key": "C",
+        "text": "Variable Local Subnet Mode"
+      },
+      {
+        "key": "D",
+        "text": "Variable Length Subnet Mask"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "VLSM คือ Variable Length Subnet Mask ใช้ Prefix Length ที่แตกต่างกันในแต่ละ Subnet"
+  },
+  {
+    "id": 26,
+    "lecture": "Lec9B-Subnetting",
+    "question": "WAN Link แบบ Point-to-Point ควรใช้ Prefix Length ใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "/24"
+      },
+      {
+        "key": "B",
+        "text": "/28"
+      },
+      {
+        "key": "C",
+        "text": "/30"
+      },
+      {
+        "key": "D",
+        "text": "/32"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "/30 รองรับ 2 Host พอดี เหมาะสำหรับ WAN Point-to-Point ที่มีแค่ Router 2 ตัว"
+  },
+  {
+    "id": 27,
+    "lecture": "Lec9B-Subnetting",
+    "question": "Broadcast Address คือที่อยู่ที่ Host bit เป็นค่าใดทั้งหมด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "เป็น 0 ทั้งหมด"
+      },
+      {
+        "key": "B",
+        "text": "เป็น 1 ทั้งหมด"
+      },
+      {
+        "key": "C",
+        "text": "เป็น 0 สลับ 1"
+      },
+      {
+        "key": "D",
+        "text": "เป็นค่าอะไรก็ได้"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Broadcast Address คือที่อยู่ที่ Host bit เป็น 1 ทั้งหมด ใช้ส่งข้อมูลไปหาทุกเครื่อง"
+  },
+  {
+    "id": 28,
+    "lecture": "Lec9B-Subnetting",
+    "question": "ข้อใดคือประโยชน์ของการทำ Subnetting?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "เพิ่มขนาด Broadcast Domain"
+      },
+      {
+        "key": "B",
+        "text": "เพิ่มความเร็วของ Router"
+      },
+      {
+        "key": "C",
+        "text": "ลดจำนวน IP ที่ใช้งานได้"
+      },
+      {
+        "key": "D",
+        "text": "ลด Broadcast Domain และเพิ่มความปลอดภัย"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Subnetting ช่วยลดขนาด Broadcast Domain เพิ่มความปลอดภัย และจัดการ IP ได้ดีขึ้น"
+  },
+  {
+    "id": 29,
+    "lecture": "Lec9B-Subnetting",
+    "question": "หลักการ VLSM ควรจัดสรร Subnet ใดก่อน?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Subnet ที่มี Host มากที่สุดก่อน"
+      },
+      {
+        "key": "B",
+        "text": "Subnet ที่มี Host น้อยที่สุดก่อน"
+      },
+      {
+        "key": "C",
+        "text": "Subnet ใดก่อนก็ได้ไม่มีผล"
+      },
+      {
+        "key": "D",
+        "text": "Subnet WAN Link ก่อนเสมอ"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "VLSM ควรจัดสรร Subnet ที่มี Host มากที่สุดก่อน แล้วค่อยจัดสรร Subnet ที่เล็กลง"
+  },
+  {
+    "id": 30,
+    "lecture": "Lec9B-Subnetting",
+    "question": "Subnet Mask ทำหน้าที่อะไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "แยก Network กับ Host portion"
+      },
+      {
+        "key": "B",
+        "text": "กำหนดความเร็วเครือข่าย"
+      },
+      {
+        "key": "C",
+        "text": "เข้ารหัสข้อมูลในเครือข่าย"
+      },
+      {
+        "key": "D",
+        "text": "กำหนด MAC Address ของอุปกรณ์"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Subnet Mask ใช้แยกส่วน Network portion และ Host portion ของ IP Address"
+  },
+  {
+    "id": 31,
+    "lecture": "Lec10-VLAN",
+    "question": "VLAN ย่อมาจากอะไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Virtual Local Area Network"
+      },
+      {
+        "key": "B",
+        "text": "Visual Local Area Network"
+      },
+      {
+        "key": "C",
+        "text": "Variable Local Area Network"
+      },
+      {
+        "key": "D",
+        "text": "Virtual Link Area Network"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "VLAN คือ Virtual Local Area Network ใช้แบ่ง Switch ออกเป็นเครือข่ายเสมือนแยกจากกัน"
+  },
+  {
+    "id": 32,
+    "lecture": "Lec10-VLAN",
+    "question": "802.1Q Tag ที่ใช้ใน Trunk Port มีขนาดกี่ bytes?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "2 bytes"
+      },
+      {
+        "key": "B",
+        "text": "4 bytes"
+      },
+      {
+        "key": "C",
+        "text": "6 bytes"
+      },
+      {
+        "key": "D",
+        "text": "8 bytes"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "802.1Q Tag มีขนาด 4 bytes โดยมี VLAN ID ขนาด 12 bit รองรับ VLAN ได้สูงสุด 4096"
+  },
+  {
+    "id": 33,
+    "lecture": "Lec10-VLAN",
+    "question": "DHCP ใช้กระบวนการใดในการแจก IP?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "DORA (Discover-Offer-Request-Ack)"
+      },
+      {
+        "key": "B",
+        "text": "SYN-ACK-FIN-RST"
+      },
+      {
+        "key": "C",
+        "text": "ARP Request-Reply"
+      },
+      {
+        "key": "D",
+        "text": "Query-Response-Confirm-Done"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "DHCP ใช้กระบวนการ DORA คือ Discover, Offer, Request, Acknowledge ตามลำดับ"
+  },
+  {
+    "id": 34,
+    "lecture": "Lec10-VLAN",
+    "question": "IPv6 Address มีขนาดกี่ bit?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "32 bit"
+      },
+      {
+        "key": "B",
+        "text": "48 bit"
+      },
+      {
+        "key": "C",
+        "text": "64 bit"
+      },
+      {
+        "key": "D",
+        "text": "128 bit"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "IPv6 Address มีขนาด 128 bit ประกอบด้วย 8 กลุ่ม (hextet) คั่นด้วยเครื่องหมาย :"
+  },
+  {
+    "id": 35,
+    "lecture": "Lec10-VLAN",
+    "question": "IPv6 Link-Local Address เริ่มต้นด้วย Prefix ใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "2000::/3"
+      },
+      {
+        "key": "B",
+        "text": "fc00::/7"
+      },
+      {
+        "key": "C",
+        "text": "ff00::/8"
+      },
+      {
+        "key": "D",
+        "text": "fe80::/10"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Link-Local Address (LLA) เริ่มต้นด้วย fe80::/10 ใช้สื่อสารภายใน Link เดียวกัน"
+  },
+  {
+    "id": 36,
+    "lecture": "Lec10-VLAN",
+    "question": "Default VLAN บน Switch คือ VLAN หมายเลขใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "VLAN 0"
+      },
+      {
+        "key": "B",
+        "text": "VLAN 100"
+      },
+      {
+        "key": "C",
+        "text": "VLAN 1"
+      },
+      {
+        "key": "D",
+        "text": "VLAN 1024"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Default VLAN คือ VLAN 1 ซึ่งทุก Port จะอยู่ใน VLAN นี้ตั้งแต่แรกและไม่สามารถลบได้"
+  },
+  {
+    "id": 37,
+    "lecture": "Lec10-VLAN",
+    "question": "EUI-64 สร้าง IPv6 Address โดยแทรกค่าใดตรงกลาง MAC Address?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "FF:FF"
+      },
+      {
+        "key": "B",
+        "text": "FF:FE"
+      },
+      {
+        "key": "C",
+        "text": "00:00"
+      },
+      {
+        "key": "D",
+        "text": "FE:FF"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "EUI-64 แทรก FF:FE ตรงกลาง MAC Address แล้วกลับ bit ที่ 7 เพื่อสร้าง Interface ID"
+  },
+  {
+    "id": 38,
+    "lecture": "Lec10-VLAN",
+    "question": "Inter-VLAN Routing แบบใดเหมาะกับองค์กรขนาดใหญ่มากที่สุด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Legacy Routing แบบ 1 Interface ต่อ 1 VLAN"
+      },
+      {
+        "key": "B",
+        "text": "Router-on-a-Stick แบบ Sub-interface"
+      },
+      {
+        "key": "C",
+        "text": "ใช้ Hub เชื่อมระหว่าง VLAN"
+      },
+      {
+        "key": "D",
+        "text": "Layer 3 Switch SVI"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Layer 3 Switch SVI เหมาะกับองค์กรขนาดใหญ่ เพราะ Route ได้เร็วในตัว Switch เอง"
+  },
+  {
+    "id": 39,
+    "lecture": "Lec10-VLAN",
+    "question": "DHCP Server ใช้ UDP Port หมายเลขใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Port 67"
+      },
+      {
+        "key": "B",
+        "text": "Port 80"
+      },
+      {
+        "key": "C",
+        "text": "Port 53"
+      },
+      {
+        "key": "D",
+        "text": "Port 68"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "DHCP Server ใช้ UDP Port 67 ส่วน DHCP Client ใช้ UDP Port 68"
+  },
+  {
+    "id": 40,
+    "lecture": "Lec10-VLAN",
+    "question": "IPv6 ไม่มีการสื่อสารแบบใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Unicast"
+      },
+      {
+        "key": "B",
+        "text": "Multicast"
+      },
+      {
+        "key": "C",
+        "text": "Broadcast"
+      },
+      {
+        "key": "D",
+        "text": "Anycast"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "IPv6 ไม่มี Broadcast แต่ใช้ Multicast แทน เพื่อลดภาระการประมวลผลของอุปกรณ์"
+  },
+  {
+    "id": 41,
+    "lecture": "Lec11-Routing",
+    "question": "Router ทำหน้าที่หลักอะไร 2 อย่าง?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Path Determination และ Packet Forwarding"
+      },
+      {
+        "key": "B",
+        "text": "Switching และ Frame Filtering"
+      },
+      {
+        "key": "C",
+        "text": "Encryption และ Decryption"
+      },
+      {
+        "key": "D",
+        "text": "Addressing และ Segmentation"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Router ทำหน้าที่หลัก 2 อย่างคือ Path Determination (หาเส้นทาง) และ Packet Forwarding (ส่งต่อ Packet)"
+  },
+  {
+    "id": 42,
+    "lecture": "Lec11-Routing",
+    "question": "Administrative Distance ของ Static Route คือค่าใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "0"
+      },
+      {
+        "key": "B",
+        "text": "1"
+      },
+      {
+        "key": "C",
+        "text": "90"
+      },
+      {
+        "key": "D",
+        "text": "110"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Static Route มี AD = 1 ส่วน Connected = 0, OSPF = 110, RIP = 120"
+  },
+  {
+    "id": 43,
+    "lecture": "Lec11-Routing",
+    "question": "Longest Match Rule หมายถึงอะไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "เลือกเส้นทางที่มี Metric สูงที่สุด"
+      },
+      {
+        "key": "B",
+        "text": "เลือกเส้นทางที่มี AD ต่ำที่สุด"
+      },
+      {
+        "key": "C",
+        "text": "เลือกเส้นทางที่มี Prefix ตรงมากที่สุด"
+      },
+      {
+        "key": "D",
+        "text": "เลือกเส้นทางที่ระยะทางสั้นที่สุด"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Longest Match Rule คือการเลือกเส้นทางที่มี Prefix bit ตรงกับ Destination IP มากที่สุด"
+  },
+  {
+    "id": 44,
+    "lecture": "Lec11-Routing",
+    "question": "Administrative Distance ของ OSPF คือค่าใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "90"
+      },
+      {
+        "key": "B",
+        "text": "110"
+      },
+      {
+        "key": "C",
+        "text": "100"
+      },
+      {
+        "key": "D",
+        "text": "120"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "OSPF มี Administrative Distance เท่ากับ 110 ซึ่งน่าเชื่อถือกว่า RIP (120)"
+  },
+  {
+    "id": 45,
+    "lecture": "Lec11-Routing",
+    "question": "CEF ย่อมาจากอะไร และเป็นวิธีการ Forward แบบใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Central Exchange Forwarding แบบช้าที่สุด"
+      },
+      {
+        "key": "B",
+        "text": "Cisco Express Forwarding แบบเร็วที่สุด"
+      },
+      {
+        "key": "C",
+        "text": "Cache Express Forwarding แบบปานกลาง"
+      },
+      {
+        "key": "D",
+        "text": "Core Express Forwarding แบบช้าที่สุด"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "CEF คือ Cisco Express Forwarding ใช้ FIB และ Adjacency Table เป็นวิธีที่เร็วที่สุด"
+  },
+  {
+    "id": 46,
+    "lecture": "Lec11-Routing",
+    "question": "RIP ใช้ค่า Metric แบบใดในการเลือกเส้นทาง?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Bandwidth"
+      },
+      {
+        "key": "B",
+        "text": "Delay"
+      },
+      {
+        "key": "C",
+        "text": "Hop Count"
+      },
+      {
+        "key": "D",
+        "text": "Cost"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "RIP ใช้ Hop Count เป็น Metric โดยนับจำนวน Router ที่ต้องผ่าน สูงสุดไม่เกิน 15 Hop"
+  },
+  {
+    "id": 47,
+    "lecture": "Lec11-Routing",
+    "question": "Default Route ใน IPv4 คือเส้นทางใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "0.0.0.0/0"
+      },
+      {
+        "key": "B",
+        "text": "255.255.255.255/32"
+      },
+      {
+        "key": "C",
+        "text": "127.0.0.0/8"
+      },
+      {
+        "key": "D",
+        "text": "10.0.0.0/8"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Default Route คือ 0.0.0.0/0 ใช้เมื่อไม่มีเส้นทางอื่นใน Routing Table ที่ตรงกัน"
+  },
+  {
+    "id": 48,
+    "lecture": "Lec11-Routing",
+    "question": "OSPF จัดเป็น Routing Protocol ประเภทใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Distance Vector"
+      },
+      {
+        "key": "B",
+        "text": "Link-State"
+      },
+      {
+        "key": "C",
+        "text": "Path Vector"
+      },
+      {
+        "key": "D",
+        "text": "Hybrid Protocol"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "OSPF เป็น Link-State Protocol ที่สร้างแผนผังเครือข่ายทั้งหมดก่อนคำนวณเส้นทาง"
+  },
+  {
+    "id": 49,
+    "lecture": "Lec11-Routing",
+    "question": "Unequal Cost Load Balancing ทำได้เฉพาะ Protocol ใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "RIP เท่านั้น"
+      },
+      {
+        "key": "B",
+        "text": "OSPF เท่านั้น"
+      },
+      {
+        "key": "C",
+        "text": "BGP เท่านั้น"
+      },
+      {
+        "key": "D",
+        "text": "EIGRP เท่านั้น"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "EIGRP เป็น Protocol เดียวที่รองรับ Unequal Cost Load Balancing ได้"
+  },
+  {
+    "id": 50,
+    "lecture": "Lec11-Routing",
+    "question": "BGP จัดเป็น Routing Protocol ประเภทใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "IGP แบบ Distance Vector"
+      },
+      {
+        "key": "B",
+        "text": "IGP แบบ Link-State"
+      },
+      {
+        "key": "C",
+        "text": "IGP แบบ Hybrid"
+      },
+      {
+        "key": "D",
+        "text": "EGP ใช้ระหว่าง AS"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "BGP เป็น EGP (Exterior Gateway Protocol) ใช้สำหรับ Routing ระหว่าง Autonomous System"
+  },
+  {
+    "id": 51,
+    "lecture": "Lec12-Transport",
+    "question": "Transport Layer อยู่ใน OSI Model ชั้นที่เท่าใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Layer 3"
+      },
+      {
+        "key": "B",
+        "text": "Layer 5"
+      },
+      {
+        "key": "C",
+        "text": "Layer 4"
+      },
+      {
+        "key": "D",
+        "text": "Layer 6"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Transport Layer คือ Layer 4 ใน OSI Model ทำหน้าที่แบ่งส่วนข้อมูลและควบคุมการสื่อสาร"
+  },
+  {
+    "id": 52,
+    "lecture": "Lec12-Transport",
+    "question": "TCP สร้างการเชื่อมต่อด้วยกระบวนการใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "DORA Process"
+      },
+      {
+        "key": "B",
+        "text": "3-Way Handshake"
+      },
+      {
+        "key": "C",
+        "text": "ARP Request-Reply"
+      },
+      {
+        "key": "D",
+        "text": "2-Way Handshake"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "TCP ใช้ 3-Way Handshake (SYN → SYN-ACK → ACK) ในการสร้างการเชื่อมต่อ"
+  },
+  {
+    "id": 53,
+    "lecture": "Lec12-Transport",
+    "question": "UDP Header มีขนาดกี่ bytes?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "8 bytes"
+      },
+      {
+        "key": "B",
+        "text": "12 bytes"
+      },
+      {
+        "key": "C",
+        "text": "16 bytes"
+      },
+      {
+        "key": "D",
+        "text": "20 bytes"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "UDP Header มีขนาด 8 bytes เท่านั้น ส่วน TCP Header มีขนาด 20 bytes"
+  },
+  {
+    "id": 54,
+    "lecture": "Lec12-Transport",
+    "question": "Well-Known Port มีช่วงหมายเลขใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "1024 ถึง 49151"
+      },
+      {
+        "key": "B",
+        "text": "49152 ถึง 65535"
+      },
+      {
+        "key": "C",
+        "text": "0 ถึง 1023"
+      },
+      {
+        "key": "D",
+        "text": "0 ถึง 65535"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Well-Known Port อยู่ในช่วง 0-1023 ใช้สำหรับบริการที่เป็นมาตรฐาน เช่น HTTP, FTP, SSH"
+  },
+  {
+    "id": 55,
+    "lecture": "Lec12-Transport",
+    "question": "HTTPS ใช้ Port หมายเลขใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Port 80"
+      },
+      {
+        "key": "B",
+        "text": "Port 443"
+      },
+      {
+        "key": "C",
+        "text": "Port 8080"
+      },
+      {
+        "key": "D",
+        "text": "Port 8443"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "HTTPS ใช้ Port 443 ซึ่งเป็น HTTP ที่เข้ารหัสด้วย SSL/TLS"
+  },
+  {
+    "id": 56,
+    "lecture": "Lec12-Transport",
+    "question": "DNS Record ประเภท A ใช้แปลง Domain Name ไปเป็นอะไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "IPv6 Address"
+      },
+      {
+        "key": "B",
+        "text": "Mail Server"
+      },
+      {
+        "key": "C",
+        "text": "Name Server"
+      },
+      {
+        "key": "D",
+        "text": "IPv4 Address"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "DNS Record ประเภท A แปลง Domain Name ไปเป็น IPv4 Address ส่วน AAAA แปลงเป็น IPv6"
+  },
+  {
+    "id": 57,
+    "lecture": "Lec12-Transport",
+    "question": "FTP ใช้กี่ Connection ในการทำงาน?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "1 Connection คือ Data"
+      },
+      {
+        "key": "B",
+        "text": "2 Connection คือ Control และ Data"
+      },
+      {
+        "key": "C",
+        "text": "3 Connection คือ Control, Data, Status"
+      },
+      {
+        "key": "D",
+        "text": "4 Connection คือ SYN, ACK, Data, FIN"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "FTP ใช้ 2 Connection คือ Control (Port 21) สำหรับคำสั่ง และ Data (Port 20) สำหรับข้อมูล"
+  },
+  {
+    "id": 58,
+    "lecture": "Lec12-Transport",
+    "question": "Socket คือการรวมกันของอะไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "MAC Address กับ Port Number"
+      },
+      {
+        "key": "B",
+        "text": "IP Address กับ Subnet Mask"
+      },
+      {
+        "key": "C",
+        "text": "MAC Address กับ IP Address"
+      },
+      {
+        "key": "D",
+        "text": "IP Address กับ Port Number"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Socket คือการรวม IP Address กับ Port Number เข้าด้วยกัน เช่น 192.168.1.5:80"
+  },
+  {
+    "id": 59,
+    "lecture": "Lec12-Transport",
+    "question": "IMAP ต่างจาก POP3 อย่างไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "IMAP ลบเมลออกจาก Server หลังดาวน์โหลด"
+      },
+      {
+        "key": "B",
+        "text": "IMAP เก็บเมลไว้บน Server และ Sync ได้"
+      },
+      {
+        "key": "C",
+        "text": "IMAP ใช้สำหรับส่งเมลเท่านั้น"
+      },
+      {
+        "key": "D",
+        "text": "IMAP ใช้ Port 25 เหมือน SMTP"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "IMAP เก็บเมลไว้บน Server และ Sync ได้หลายอุปกรณ์ ต่างจาก POP3 ที่ดาวน์โหลดแล้วลบ"
+  },
+  {
+    "id": 60,
+    "lecture": "Lec12-Transport",
+    "question": "SSH ใช้ Port หมายเลขใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Port 21"
+      },
+      {
+        "key": "B",
+        "text": "Port 23"
+      },
+      {
+        "key": "C",
+        "text": "Port 25"
+      },
+      {
+        "key": "D",
+        "text": "Port 22"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "SSH ใช้ Port 22 สำหรับการเข้าถึงอุปกรณ์ระยะไกลแบบเข้ารหัส ต่างจาก Telnet (Port 23)"
+  }
+]
