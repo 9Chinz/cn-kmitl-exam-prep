@@ -258,7 +258,7 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
         questions = checkpoint.questionIds.map((id) => idMap.get(id)).filter(Boolean) as Question[];
       } else {
         // Legacy checkpoint without questionIds
-        questions = level === "random" ? buildQuestions(level) : [...questionsMap[level]];
+        questions = (level === "random" || level === "guideline-random") ? buildQuestions(level) : [...questionsMap[level]];
       }
 
       const resumeIndex = checkpoint.answers[checkpoint.currentIndex] !== undefined
