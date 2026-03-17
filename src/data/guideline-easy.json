@@ -1,0 +1,782 @@
+[
+  {
+    "id": 1,
+    "lecture": "Guideline-IOS",
+    "question": "คำสั่ง show version ใช้เพื่อ",
+    "choices": [
+      { "key": "A", "text": "ตรวจสอบตาราง Routing" },
+      { "key": "B", "text": "ตรวจสอบเวอร์ชัน IOS และข้อมูลระบบ" },
+      { "key": "C", "text": "ตรวจสอบสถานะ Interface" },
+      { "key": "D", "text": "ตรวจสอบ Startup-config" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "show version แสดงเวอร์ชัน IOS, uptime, hardware และข้อมูลระบบของ Router"
+  },
+  {
+    "id": 2,
+    "lecture": "Guideline-IOS",
+    "question": "เมื่อเข้าสู่ Router และเห็น prompt Router> แสดงว่าอยู่ในโหมดใด",
+    "choices": [
+      { "key": "A", "text": "Global configuration mode" },
+      { "key": "B", "text": "Privileged EXEC mode" },
+      { "key": "C", "text": "User EXEC mode" },
+      { "key": "D", "text": "ROMMON mode" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "prompt \"Router>\" คือ User EXEC mode ซึ่งมีสิทธิ์จำกัด"
+  },
+  {
+    "id": 3,
+    "lecture": "Guideline-IOS",
+    "question": "คำสั่ง copy running-config startup-config ใช้เพื่อ",
+    "choices": [
+      { "key": "A", "text": "ลบ Running-config" },
+      { "key": "B", "text": "บันทึกการตั้งค่าปัจจุบันลง NVRAM" },
+      { "key": "C", "text": "คัดลอก IOS ลง Flash" },
+      { "key": "D", "text": "รีโหลด Router" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "copy running-config startup-config บันทึก config ปัจจุบันลง NVRAM เพื่อให้ใช้ได้หลัง reboot"
+  },
+  {
+    "id": 4,
+    "lecture": "Guideline-IOS",
+    "question": "คำสั่งใดใช้เข้าสู่ Global configuration mode",
+    "choices": [
+      { "key": "A", "text": "enable" },
+      { "key": "B", "text": "configure terminal" },
+      { "key": "C", "text": "setup" },
+      { "key": "D", "text": "show running-config" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "configure terminal ใช้เข้าสู่ Global config mode จาก Privileged EXEC"
+  },
+  {
+    "id": 5,
+    "lecture": "Guideline-IOS",
+    "question": "คำสั่งที่ใช้ตั้งรหัสผ่านเข้าสู่ Privileged EXEC mode แบบ Plain Text คือ",
+    "choices": [
+      { "key": "A", "text": "enable password" },
+      { "key": "B", "text": "enable secret" },
+      { "key": "C", "text": "password enable" },
+      { "key": "D", "text": "service password-encryption" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "enable password ตั้งรหัสผ่านแบบ Plain Text ส่วน enable secret เข้ารหัสแบบ MD5"
+  },
+  {
+    "id": 6,
+    "lecture": "Guideline-IOS",
+    "question": "enable secret แตกต่างจาก enable password อย่างไร",
+    "choices": [
+      { "key": "A", "text": "ไม่มีความแตกต่าง" },
+      { "key": "B", "text": "enable secret ถูกเข้ารหัสแบบ MD5" },
+      { "key": "C", "text": "enable password ปลอดภัยกว่า" },
+      { "key": "D", "text": "ทั้งคู่ถูกเก็บเป็น Plain text" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "enable secret เข้ารหัสด้วย MD5 ปลอดภัยกว่า enable password ที่เก็บเป็น Plain text"
+  },
+  {
+    "id": 7,
+    "lecture": "Guideline-IOS",
+    "question": "คำสั่ง service password-encryption มีหน้าที่",
+    "choices": [
+      { "key": "A", "text": "สร้างรหัสผ่านอัตโนมัติ" },
+      { "key": "B", "text": "เข้ารหัสรหัสผ่านทั้งหมดใน configuration" },
+      { "key": "C", "text": "เปิดใช้งาน enable secret" },
+      { "key": "D", "text": "ลบ password ที่ซ้ำกัน" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "service password-encryption เข้ารหัสรหัสผ่านทั้งหมดใน config ด้วย Type 7 (อ่อนแต่ดีกว่า Plain text)"
+  },
+  {
+    "id": 8,
+    "lecture": "Guideline-IOS",
+    "question": "ถ้าต้องการตั้งรหัสผ่านสำหรับ Console line ต้องใช้คำสั่งใด",
+    "choices": [
+      { "key": "A", "text": "line con 0 → password → login" },
+      { "key": "B", "text": "enable secret" },
+      { "key": "C", "text": "username admin password" },
+      { "key": "D", "text": "ip domain-name" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "ตั้งรหัส Console ด้วย line con 0, กำหนด password แล้วเปิด login"
+  },
+  {
+    "id": 9,
+    "lecture": "Guideline-IOS",
+    "question": "หากลืมรหัสผ่าน enable บน Router ต้องเข้าโหมดใดเพื่อกู้คืน",
+    "choices": [
+      { "key": "A", "text": "User EXEC" },
+      { "key": "B", "text": "Privileged EXEC" },
+      { "key": "C", "text": "ROMMON" },
+      { "key": "D", "text": "Global Config" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "ROMMON mode ใช้กู้คืนรหัสผ่านโดยเปลี่ยน configuration register"
+  },
+  {
+    "id": 10,
+    "lecture": "Guideline-IOS",
+    "question": "การตั้งค่า configuration register 0x2142 ใช้เพื่อ",
+    "choices": [
+      { "key": "A", "text": "บังคับโหลด IOS จาก TFTP" },
+      { "key": "B", "text": "ให้ Router ข้ามการโหลด startup-config เดิม" },
+      { "key": "C", "text": "ปิดการใช้งาน ROMMON" },
+      { "key": "D", "text": "ลบ running-config" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "0x2142 ทำให้ Router ข้าม startup-config เพื่อเข้าสู่ระบบโดยไม่ต้องใช้รหัสผ่านเดิม"
+  },
+  {
+    "id": 11,
+    "lecture": "Guideline-IOS",
+    "question": "ขั้นตอนใดไม่เกี่ยวข้องกับการ Recovery Password",
+    "choices": [
+      { "key": "A", "text": "เข้าสู่ ROMMON mode" },
+      { "key": "B", "text": "ใช้คำสั่ง confreg" },
+      { "key": "C", "text": "รีโหลด Router" },
+      { "key": "D", "text": "ใช้ show ip route" }
+    ],
+    "correctAnswer": "D",
+    "explanation": "show ip route ใช้ดู Routing table ไม่เกี่ยวกับ Password Recovery"
+  },
+  {
+    "id": 12,
+    "lecture": "Guideline-IOS",
+    "question": "หลังจากกู้รหัสผ่านแล้ว ควรทำขั้นตอนใด",
+    "choices": [
+      { "key": "A", "text": "บันทึกการตั้งค่าใหม่ลง startup-config" },
+      { "key": "B", "text": "ลบ IOS ออกจาก Flash" },
+      { "key": "C", "text": "Reset Router ทุกครั้ง" },
+      { "key": "D", "text": "ปิดการทำงานของ NVRAM" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "หลังกู้รหัสผ่านควรตั้งรหัสใหม่แล้ว copy running-config startup-config"
+  },
+  {
+    "id": 13,
+    "lecture": "Guideline-IOS",
+    "question": "คำสั่งเข้าสู่โหมดตั้งค่า FastEthernet 0/0 คือ",
+    "choices": [
+      { "key": "A", "text": "int fa0/0" },
+      { "key": "B", "text": "config int fa0/0" },
+      { "key": "C", "text": "show int fa0/0" },
+      { "key": "D", "text": "set fa0/0" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "int fa0/0 (หรือ interface FastEthernet 0/0) เข้าสู่ interface configuration mode"
+  },
+  {
+    "id": 14,
+    "lecture": "Guideline-IOS",
+    "question": "คำสั่งกำหนด IP ให้ interface คือ",
+    "choices": [
+      { "key": "A", "text": "ip address 192.168.1.1 255.255.255.0" },
+      { "key": "B", "text": "set ip 192.168.1.1 255.255.255.0" },
+      { "key": "C", "text": "assign ip 192.168.1.1 255.255.255.0" },
+      { "key": "D", "text": "config ip 192.168.1.1 255.255.255.0" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "ip address เป็นคำสั่ง Cisco IOS สำหรับกำหนด IP และ Subnet Mask ให้ interface"
+  },
+  {
+    "id": 15,
+    "lecture": "Guideline-IOS",
+    "question": "หลังจากตั้งค่า IP บน interface แล้ว ต้องใช้คำสั่งใดเพื่อเปิดใช้งาน",
+    "choices": [
+      { "key": "A", "text": "enable interface" },
+      { "key": "B", "text": "no shutdown" },
+      { "key": "C", "text": "interface up" },
+      { "key": "D", "text": "activate" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "no shutdown เปิดใช้งาน interface ที่ถูก shutdown อยู่ (ค่าเริ่มต้นของ interface คือ shutdown)"
+  },
+  {
+    "id": 16,
+    "lecture": "Guideline-IOS",
+    "question": "Switch Layer 2 สามารถกำหนด IP address ได้ที่",
+    "choices": [
+      { "key": "A", "text": "ทุก Physical Interface" },
+      { "key": "B", "text": "VLAN Interface" },
+      { "key": "C", "text": "Console Port" },
+      { "key": "D", "text": "AUX Port" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Switch L2 กำหนด IP ได้ที่ VLAN Interface (เช่น interface vlan 1) สำหรับ management"
+  },
+  {
+    "id": 17,
+    "lecture": "Guideline-VLAN",
+    "question": "ถ้า Switch ไม่สามารถ ping ออกไปนอกเครือข่ายได้ อาจเกิดจาก",
+    "choices": [
+      { "key": "A", "text": "ไม่ได้ตั้ง IP บน VLAN Interface" },
+      { "key": "B", "text": "ไม่ได้ตั้ง Default Gateway" },
+      { "key": "C", "text": "ไม่มีการเชื่อมต่อ Router" },
+      { "key": "D", "text": "ทั้ง A และ B" }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Switch ต้องมีทั้ง IP บน VLAN Interface และ Default Gateway เพื่อ ping ออกนอกเครือข่าย"
+  },
+  {
+    "id": 18,
+    "lecture": "Guideline-VLAN",
+    "question": "คำสั่ง switchport mode access ใช้เพื่อ",
+    "choices": [
+      { "key": "A", "text": "เปิด trunk" },
+      { "key": "B", "text": "กำหนดให้พอร์ตอยู่ VLAN เดียว" },
+      { "key": "C", "text": "ลบ VLAN ออกจากพอร์ต" },
+      { "key": "D", "text": "ปิดการทำงานพอร์ต" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "switchport mode access กำหนดให้พอร์ตเป็น access port ซึ่งอยู่ใน VLAN เดียว"
+  },
+  {
+    "id": 19,
+    "lecture": "Guideline-VLAN",
+    "question": "Switch(config)# interface g0/1 / Switch(config-if)# switchport mode trunk — คำสั่งนี้มีผลอย่างไร",
+    "choices": [
+      { "key": "A", "text": "พอร์ต g0/1 รับส่งได้หลาย VLAN" },
+      { "key": "B", "text": "พอร์ต g0/1 เป็น access port" },
+      { "key": "C", "text": "ปิด VLAN ทั้งหมด" },
+      { "key": "D", "text": "ใช้เฉพาะ VLAN 1" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "switchport mode trunk ทำให้พอร์ตเป็น trunk port ส่งได้หลาย VLAN ด้วย 802.1Q tagging"
+  },
+  {
+    "id": 20,
+    "lecture": "Guideline-VLAN",
+    "question": "Router ที่เชื่อมต่อ Switch ผ่าน trunk port ต้องตั้งค่าอย่างไรเพื่อทำ Inter-VLAN Routing",
+    "choices": [
+      { "key": "A", "text": "กำหนด Subinterface พร้อม encapsulation dot1q" },
+      { "key": "B", "text": "ตั้งค่า VLAN โดยตรงบน Router" },
+      { "key": "C", "text": "ใช้ Static route เท่านั้น" },
+      { "key": "D", "text": "ใช้ NAT บน Router" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Router-on-a-Stick ใช้ subinterface + encapsulation dot1q เพื่อ route ระหว่าง VLAN"
+  },
+  {
+    "id": 21,
+    "lecture": "Guideline-Routing",
+    "question": "RIP ใช้อะไรเป็น Metric",
+    "choices": [
+      { "key": "A", "text": "Bandwidth" },
+      { "key": "B", "text": "Delay" },
+      { "key": "C", "text": "Hop Count" },
+      { "key": "D", "text": "Reliability" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "RIP ใช้ Hop Count เป็น Metric นับจำนวน Router ที่ต้องผ่าน"
+  },
+  {
+    "id": 22,
+    "lecture": "Guideline-Routing",
+    "question": "ค่า Hop Count สูงสุดของ RIP คือเท่าไร",
+    "choices": [
+      { "key": "A", "text": "10" },
+      { "key": "B", "text": "15" },
+      { "key": "C", "text": "30" },
+      { "key": "D", "text": "255" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "RIP มี Hop Count สูงสุด 15 ถ้าเกิน 15 (คือ 16) จะถือว่า unreachable"
+  },
+  {
+    "id": 23,
+    "lecture": "Guideline-Routing",
+    "question": "RIP ใช้พอร์ตและโปรโตคอลใด",
+    "choices": [
+      { "key": "A", "text": "TCP 179" },
+      { "key": "B", "text": "UDP 520" },
+      { "key": "C", "text": "UDP 69" },
+      { "key": "D", "text": "TCP 110" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "RIP ใช้ UDP Port 520 ในการส่ง routing update"
+  },
+  {
+    "id": 24,
+    "lecture": "Guideline-Routing",
+    "question": "คำสั่งเปิดใช้งาน RIP คือ",
+    "choices": [
+      { "key": "A", "text": "router rip" },
+      { "key": "B", "text": "enable rip" },
+      { "key": "C", "text": "ip routing rip" },
+      { "key": "D", "text": "router enable rip" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "router rip เข้าสู่ RIP configuration mode จาก Global config"
+  },
+  {
+    "id": 25,
+    "lecture": "Guideline-Routing",
+    "question": "RIP v2 แตกต่างจาก v1 อย่างไร",
+    "choices": [
+      { "key": "A", "text": "ใช้ TCP แทน UDP" },
+      { "key": "B", "text": "รองรับ VLSM และ Subnet mask" },
+      { "key": "C", "text": "เพิ่ม Hop Count" },
+      { "key": "D", "text": "ไม่สามารถ multicast" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "RIP v2 รองรับ VLSM/CIDR, ส่ง Subnet Mask ใน update, ใช้ multicast 224.0.0.9"
+  },
+  {
+    "id": 26,
+    "lecture": "Guideline-Routing",
+    "question": "Router(config)# router rip / Router(config-router)# version 2 / Router(config-router)# network 192.168.1.0 / Router(config-router)# network 10.0.0.0 — ผลลัพธ์คืออะไร",
+    "choices": [
+      { "key": "A", "text": "ใช้ RIP v1" },
+      { "key": "B", "text": "ใช้ OSPF" },
+      { "key": "C", "text": "ประกาศเครือข่าย 192.168.1.0 และ 10.0.0.0 ด้วย RIP v2" },
+      { "key": "D", "text": "ไม่ประกาศเครือข่ายใดเลย" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "คำสั่งนี้เปิด RIP v2 และประกาศ 2 เครือข่ายให้ Router อื่นรู้"
+  },
+  {
+    "id": 27,
+    "lecture": "Guideline-Routing",
+    "question": "RIP v1 ไม่สามารถใช้งานกับ",
+    "choices": [
+      { "key": "A", "text": "VLSM / CIDR" },
+      { "key": "B", "text": "Private IP" },
+      { "key": "C", "text": "Static route" },
+      { "key": "D", "text": "Classful addressing" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "RIP v1 เป็น Classful ไม่รองรับ VLSM/CIDR เพราะไม่ส่ง Subnet Mask ไปกับ update"
+  },
+  {
+    "id": 28,
+    "lecture": "Guideline-Routing",
+    "question": "คำสั่ง passive-interface ใน RIP ใช้เพื่อ",
+    "choices": [
+      { "key": "A", "text": "เพิ่ม Hop Count" },
+      { "key": "B", "text": "ปิด interface" },
+      { "key": "C", "text": "รีเซ็ต Routing table" },
+      { "key": "D", "text": "หยุดส่ง update บน interface นั้น" }
+    ],
+    "correctAnswer": "D",
+    "explanation": "passive-interface หยุดส่ง RIP update ออก interface นั้น แต่ยังรับ update ได้"
+  },
+  {
+    "id": 29,
+    "lecture": "Guideline-Routing",
+    "question": "ถ้า Router A ใช้ RIP แต่ Router B ไม่ได้รับ Route จาก A สาเหตุที่เป็นไปได้คือ",
+    "choices": [
+      { "key": "A", "text": "Router B ใช้ Static Route" },
+      { "key": "B", "text": "Router A ใช้ OSPF" },
+      { "key": "C", "text": "ไม่ได้เปิด RIP บน interface เชื่อมต่อ" },
+      { "key": "D", "text": "Router A ใช้ ACL deny all" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "ถ้า interface ที่เชื่อมต่อไม่ได้อยู่ในคำสั่ง network ของ RIP จะไม่ส่ง/รับ update"
+  },
+  {
+    "id": 30,
+    "lecture": "Guideline-Routing",
+    "question": "กลไกป้องกัน Loop ของ RIP คือ",
+    "choices": [
+      { "key": "A", "text": "SPF Calculation" },
+      { "key": "B", "text": "Poison Reverse และ Split Horizon" },
+      { "key": "C", "text": "ACL Filtering" },
+      { "key": "D", "text": "DR/BDR Election" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "RIP ใช้ Split Horizon (ไม่ส่ง route กลับทางที่เรียนมา) และ Poison Reverse เพื่อป้องกัน loop"
+  },
+  {
+    "id": 31,
+    "lecture": "Guideline-Routing",
+    "question": "Redistribution คืออะไร",
+    "choices": [
+      { "key": "A", "text": "แชร์เส้นทางระหว่าง Protocol ต่างกัน" },
+      { "key": "B", "text": "NAT บน Router" },
+      { "key": "C", "text": "รวม VLAN" },
+      { "key": "D", "text": "กระจาย Broadcast" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Redistribution คือการแชร์เส้นทางระหว่าง Routing Protocol ต่างชนิดกัน"
+  },
+  {
+    "id": 32,
+    "lecture": "Guideline-Routing",
+    "question": "Router(config)# router ospf 1 / Router(config-router)# redistribute rip subnets — หมายถึง",
+    "choices": [
+      { "key": "A", "text": "แชร์เส้นทางจาก OSPF → RIP" },
+      { "key": "B", "text": "แชร์เส้นทางจาก RIP → OSPF" },
+      { "key": "C", "text": "ปิด RIP" },
+      { "key": "D", "text": "ลบ Routing table" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "redistribute rip subnets ภายใต้ router ospf หมายถึงนำเส้นทาง RIP เข้าสู่ OSPF"
+  },
+  {
+    "id": 33,
+    "lecture": "Guideline-Routing",
+    "question": "การ Redistribution ระหว่าง OSPF และ EIGRP อาจทำให้เกิดอะไร",
+    "choices": [
+      { "key": "A", "text": "Broadcast storm" },
+      { "key": "B", "text": "MTU mismatch" },
+      { "key": "C", "text": "Routing Loop" },
+      { "key": "D", "text": "ARP failure" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Redistribution อาจทำให้เกิด Routing Loop เพราะ Metric ต่างกัน ต้อง filter อย่างเหมาะสม"
+  },
+  {
+    "id": 34,
+    "lecture": "Guideline-Redistribution",
+    "question": "ถ้าต้องการควบคุมว่าเส้นทางใดบ้างที่ถูก redistribute ควรใช้",
+    "choices": [
+      { "key": "A", "text": "VLAN" },
+      { "key": "B", "text": "Route-map" },
+      { "key": "C", "text": "NAT" },
+      { "key": "D", "text": "ACL" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Route-map ใช้ควบคุมและกรองเส้นทางที่จะ redistribute ได้อย่างละเอียด"
+  },
+  {
+    "id": 35,
+    "lecture": "Guideline-Redistribution",
+    "question": "การทำ Redistribution ต้องกำหนด Metric เพราะ",
+    "choices": [
+      { "key": "A", "text": "Protocol แต่ละตัวใช้ Metric ต่างกัน" },
+      { "key": "B", "text": "เพื่อความปลอดภัย" },
+      { "key": "C", "text": "เพื่อลด Bandwidth" },
+      { "key": "D", "text": "เพื่อความง่ายในการ config" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Protocol ต่างกันใช้ Metric คนละแบบ ต้องกำหนด Metric เพื่อให้ Protocol ปลายทางเข้าใจได้"
+  },
+  {
+    "id": 36,
+    "lecture": "Guideline-Redistribution",
+    "question": "ถ้า redistribute RIP → OSPF โดยไม่ใส่คำสั่ง subnets จะเกิดอะไร",
+    "choices": [
+      { "key": "A", "text": "เส้นทาง classless ไม่ถูกประกาศ" },
+      { "key": "B", "text": "OSPF ปิดตัว" },
+      { "key": "C", "text": "RIP ไม่ทำงาน" },
+      { "key": "D", "text": "เส้นทางทั้งหมดถูก deny" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "ถ้าไม่ใส่ subnets จะประกาศเฉพาะ classful network ไม่ประกาศ subnet ย่อย"
+  },
+  {
+    "id": 37,
+    "lecture": "Guideline-Redistribution",
+    "question": "คำสั่งใดใช้ redistribute RIP เข้า OSPF พร้อมกำหนด metric",
+    "choices": [
+      { "key": "A", "text": "ip redistribute rip metric 20" },
+      { "key": "B", "text": "redistribute rip metric 20" },
+      { "key": "C", "text": "redistribute ospf metric 20" },
+      { "key": "D", "text": "router redistribute rip metric 20" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "redistribute rip metric 20 ใช้ภายใต้ router ospf เพื่อนำเส้นทาง RIP เข้า OSPF พร้อมกำหนด metric"
+  },
+  {
+    "id": 38,
+    "lecture": "Guideline-Redistribution",
+    "question": "ถ้า redistribute แบบ 2 ทาง (OSPF และ RIP) อาจเกิด",
+    "choices": [
+      { "key": "A", "text": "VLAN mismatch" },
+      { "key": "B", "text": "NAT error" },
+      { "key": "C", "text": "Routing Loop" },
+      { "key": "D", "text": "Load balancing" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Redistribution 2 ทางเสี่ยง Routing Loop ต้องใช้ Route-map, tag หรือ AD เพื่อป้องกัน"
+  },
+  {
+    "id": 39,
+    "lecture": "Guideline-Redistribution",
+    "question": "วิธีป้องกัน Routing Loop ระหว่าง Redistribution คือ",
+    "choices": [
+      { "key": "A", "text": "VLAN tagging" },
+      { "key": "B", "text": "Route filtering" },
+      { "key": "C", "text": "Default route เท่านั้น" },
+      { "key": "D", "text": "NAT" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Route filtering ใช้ Route-map หรือ distribute-list กรองเส้นทางที่ redistribute เพื่อป้องกัน loop"
+  },
+  {
+    "id": 40,
+    "lecture": "Guideline-Redistribution",
+    "question": "ข้อเสียของ Redistribution คือ",
+    "choices": [
+      { "key": "A", "text": "ซับซ้อน, ใช้ CPU สูง, เสี่ยง Loop" },
+      { "key": "B", "text": "ทำให้ VLAN ไม่ทำงาน" },
+      { "key": "C", "text": "ACL ใช้งานไม่ได้" },
+      { "key": "D", "text": "Router ปิดตัว" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Redistribution เพิ่มความซับซ้อน, ใช้ CPU, เสี่ยง loop ต้อง design อย่างรอบคอบ"
+  },
+  {
+    "id": 41,
+    "lecture": "Guideline-ACL",
+    "question": "ACL ใช้เพื่อ",
+    "choices": [
+      { "key": "A", "text": "แจก DHCP" },
+      { "key": "B", "text": "กรองแพ็กเก็ต" },
+      { "key": "C", "text": "เพิ่ม Bandwidth" },
+      { "key": "D", "text": "ทำ Routing VLAN" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "ACL (Access Control List) ใช้กรองแพ็กเก็ตตามเงื่อนไขที่กำหนด"
+  },
+  {
+    "id": 42,
+    "lecture": "Guideline-ACL",
+    "question": "Standard ACL ใช้กรองจาก",
+    "choices": [
+      { "key": "A", "text": "Port" },
+      { "key": "B", "text": "Destination IP" },
+      { "key": "C", "text": "Source IP" },
+      { "key": "D", "text": "VLAN ID" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Standard ACL กรองจาก Source IP เท่านั้น (ACL number 1-99)"
+  },
+  {
+    "id": 43,
+    "lecture": "Guideline-ACL",
+    "question": "Extended ACL ใช้กรองจาก",
+    "choices": [
+      { "key": "A", "text": "Source IP เท่านั้น" },
+      { "key": "B", "text": "VLAN ID" },
+      { "key": "C", "text": "Source, Destination, Protocol, Port" },
+      { "key": "D", "text": "Destination เท่านั้น" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Extended ACL กรองได้ทั้ง Source IP, Destination IP, Protocol และ Port (ACL number 100-199)"
+  },
+  {
+    "id": 44,
+    "lecture": "Guideline-ACL",
+    "question": "access-list 10 deny 192.168.1.0 0.0.0.255 / access-list 10 permit any — ผลคือ",
+    "choices": [
+      { "key": "A", "text": "Permit ทุกอย่าง" },
+      { "key": "B", "text": "Deny เครือข่ายทั้งหมด" },
+      { "key": "C", "text": "Permit เครือข่าย 192.168.1.0/24" },
+      { "key": "D", "text": "Deny เครือข่าย 192.168.1.0/24" }
+    ],
+    "correctAnswer": "D",
+    "explanation": "deny 192.168.1.0/24 ก่อน แล้ว permit any ที่เหลือ ดังนั้น block เฉพาะ 192.168.1.0/24"
+  },
+  {
+    "id": 45,
+    "lecture": "Guideline-ACL",
+    "question": "Wildcard mask 0.0.0.255 หมายถึง",
+    "choices": [
+      { "key": "A", "text": "Match ทุก Address" },
+      { "key": "B", "text": "Match /24 Network" },
+      { "key": "C", "text": "Match Broadcast" },
+      { "key": "D", "text": "Match IP เดียว" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Wildcard 0.0.0.255 = ตรงข้าม Subnet Mask 255.255.255.0 จับคู่ /24 Network"
+  },
+  {
+    "id": 46,
+    "lecture": "Guideline-ACL",
+    "question": "ACL ต้อง apply ที่",
+    "choices": [
+      { "key": "A", "text": "VLAN" },
+      { "key": "B", "text": "Global config" },
+      { "key": "C", "text": "Interface พร้อมทิศทาง (in/out)" },
+      { "key": "D", "text": "Router เท่านั้น" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "ACL ต้อง apply บน interface พร้อมระบุทิศทาง in หรือ out ด้วยคำสั่ง ip access-group"
+  },
+  {
+    "id": 47,
+    "lecture": "Guideline-ACL",
+    "question": "ถ้า ACL ไม่มี explicit permit จะ",
+    "choices": [
+      { "key": "A", "text": "Permit all" },
+      { "key": "B", "text": "Random select" },
+      { "key": "C", "text": "Deny all (implicit deny any)" },
+      { "key": "D", "text": "Ignore ACL" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "ACL มี implicit deny any ท้ายสุดเสมอ ถ้าไม่มี permit ใดเลยจะ block ทุก traffic"
+  },
+  {
+    "id": 48,
+    "lecture": "Guideline-ACL",
+    "question": "access-list 101 permit tcp any host 192.168.1.10 eq 80 — หมายถึง",
+    "choices": [
+      { "key": "A", "text": "อนุญาตทุก protocol ไปยัง host 192.168.1.10" },
+      { "key": "B", "text": "Block HTTP traffic" },
+      { "key": "C", "text": "อนุญาตเฉพาะ host 192.168.1.10 ส่ง HTTP ออก" },
+      { "key": "D", "text": "อนุญาต HTTP ไปยัง host 192.168.1.10" }
+    ],
+    "correctAnswer": "D",
+    "explanation": "permit tcp any host 192.168.1.10 eq 80 = อนุญาต TCP port 80 (HTTP) จากทุกที่ไปยัง 192.168.1.10"
+  },
+  {
+    "id": 49,
+    "lecture": "Guideline-ACL",
+    "question": "Extended ACL ควรวางไว้ที่",
+    "choices": [
+      { "key": "A", "text": "ใกล้ Destination" },
+      { "key": "B", "text": "ใกล้ Source" },
+      { "key": "C", "text": "ที่ Default gateway" },
+      { "key": "D", "text": "Switch" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Extended ACL ควรวางใกล้ Source เพื่อกรอง traffic ตั้งแต่ต้นทาง ประหยัด bandwidth"
+  },
+  {
+    "id": 50,
+    "lecture": "Guideline-ACL",
+    "question": "Standard ACL ควรวางไว้ที่",
+    "choices": [
+      { "key": "A", "text": "ใกล้ Source" },
+      { "key": "B", "text": "ใกล้ NAT Router" },
+      { "key": "C", "text": "ใกล้ Destination" },
+      { "key": "D", "text": "Switch" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Standard ACL กรองแค่ Source IP จึงควรวางใกล้ Destination เพื่อไม่ block traffic ที่ไม่ต้องการ"
+  },
+  {
+    "id": 51,
+    "lecture": "Guideline-ACL",
+    "question": "ข้อดีของ Named ACL คือ",
+    "choices": [
+      { "key": "A", "text": "ใช้ CPU น้อย" },
+      { "key": "B", "text": "อ่านง่าย แก้ไขสะดวก" },
+      { "key": "C", "text": "ใช้ได้เฉพาะ IPv6" },
+      { "key": "D", "text": "ใช้กับ VLAN เท่านั้น" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Named ACL ใช้ชื่อแทนตัวเลข อ่านง่ายกว่า และสามารถแก้ไข/ลบ entry เฉพาะบรรทัดได้"
+  },
+  {
+    "id": 52,
+    "lecture": "Guideline-ACL",
+    "question": "IPv6 ACL ใช้คำสั่งเริ่มต้นคือ",
+    "choices": [
+      { "key": "A", "text": "ip6 acl NAME" },
+      { "key": "B", "text": "router ipv6-acl" },
+      { "key": "C", "text": "access-list ipv6 NAME" },
+      { "key": "D", "text": "ipv6 access-list NAME" }
+    ],
+    "correctAnswer": "D",
+    "explanation": "ipv6 access-list NAME เป็นคำสั่งสร้าง IPv6 ACL ใน Cisco IOS"
+  },
+  {
+    "id": 53,
+    "lecture": "Guideline-ACL",
+    "question": "คำสั่งตรวจสอบ ACL บน interface คือ",
+    "choices": [
+      { "key": "A", "text": "show access-lists" },
+      { "key": "B", "text": "show ip interface" },
+      { "key": "C", "text": "show running-config" },
+      { "key": "D", "text": "ทั้ง B และ C" }
+    ],
+    "correctAnswer": "D",
+    "explanation": "show ip interface แสดง ACL ที่ apply บน interface, show running-config แสดง config ทั้งหมดรวม ACL"
+  },
+  {
+    "id": 54,
+    "lecture": "Guideline-ACL",
+    "question": "access-list 110 deny icmp any any / access-list 110 permit ip any any — ผลคือ",
+    "choices": [
+      { "key": "A", "text": "Block ทุก traffic" },
+      { "key": "B", "text": "Permit ทั้งหมด" },
+      { "key": "C", "text": "Block ping แต่ allow อื่น" },
+      { "key": "D", "text": "Permit เฉพาะ ICMP" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "deny icmp ก่อน (block ping) แล้ว permit ip any any อนุญาต traffic อื่นทั้งหมด"
+  },
+  {
+    "id": 55,
+    "lecture": "Guideline-ACL",
+    "question": "Reflexive ACL มีคุณสมบัติอะไร",
+    "choices": [
+      { "key": "A", "text": "Stateless" },
+      { "key": "B", "text": "ใช้กับ VLAN เท่านั้น" },
+      { "key": "C", "text": "Stateful / connection-based" },
+      { "key": "D", "text": "ใช้ IPv6 เท่านั้น" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Reflexive ACL เป็น Stateful ตรวจสอบ connection กลับอัตโนมัติ อนุญาต return traffic เฉพาะ session ที่เริ่มจากภายใน"
+  },
+  {
+    "id": 56,
+    "lecture": "Guideline-ACL",
+    "question": "Dynamic ACL ต้องอาศัย",
+    "choices": [
+      { "key": "A", "text": "NAT" },
+      { "key": "B", "text": "OSPF" },
+      { "key": "C", "text": "VLAN" },
+      { "key": "D", "text": "Authentication เช่น Telnet login" }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Dynamic ACL (Lock-and-Key) ต้องให้ผู้ใช้ authenticate ก่อน (เช่น Telnet) จึงจะเปิด ACL ให้เข้าถึง"
+  },
+  {
+    "id": 57,
+    "lecture": "Guideline-ACL",
+    "question": "คำสั่ง ACL established ใช้เพื่อ",
+    "choices": [
+      { "key": "A", "text": "Block ทุก connection" },
+      { "key": "B", "text": "อนุญาต UDP เท่านั้น" },
+      { "key": "C", "text": "อนุญาต TCP ที่เริ่มจากภายใน" },
+      { "key": "D", "text": "Block ICMP" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "established อนุญาต TCP ที่มี ACK/RST flag = เฉพาะ connection ที่เริ่มจากภายในเท่านั้น"
+  },
+  {
+    "id": 58,
+    "lecture": "Guideline-ACL",
+    "question": "คำสั่งลบ ACL จาก interface คือ",
+    "choices": [
+      { "key": "A", "text": "clear access-list" },
+      { "key": "B", "text": "remove acl" },
+      { "key": "C", "text": "no ip access-group" },
+      { "key": "D", "text": "no access-list apply" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "no ip access-group ลบ ACL ออกจาก interface"
+  },
+  {
+    "id": 59,
+    "lecture": "Guideline-ACL",
+    "question": "ถ้า Router มี ACL deny SSH แต่ permit HTTP — ผลคือ",
+    "choices": [
+      { "key": "A", "text": "ทั้ง SSH และ HTTP ใช้ไม่ได้" },
+      { "key": "B", "text": "HTTP เข้าได้ แต่ SSH ไม่ได้" },
+      { "key": "C", "text": "ไม่มีผล" },
+      { "key": "D", "text": "HTTP ไม่เข้าได้" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "deny SSH block port 22, permit HTTP อนุญาต port 80 ส่วน traffic อื่นถูก implicit deny"
+  },
+  {
+    "id": 60,
+    "lecture": "Guideline-ACL",
+    "question": "access-list 120 permit udp any any eq 53 / access-list 120 deny ip any any — หมายถึง",
+    "choices": [
+      { "key": "A", "text": "อนุญาตทุก protocol" },
+      { "key": "B", "text": "Block DNS เท่านั้น" },
+      { "key": "C", "text": "อนุญาตเฉพาะ DNS (UDP/53)" },
+      { "key": "D", "text": "อนุญาต HTTP เท่านั้น" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "permit udp eq 53 อนุญาต DNS แล้ว deny ip any any block ที่เหลือทั้งหมด"
+  }
+]

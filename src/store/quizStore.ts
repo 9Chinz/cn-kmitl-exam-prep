@@ -6,17 +6,31 @@ import { useHistoryStore } from "./historyStore";
 import rawEasy from "../data/easy.json";
 import rawNormal from "../data/normal.json";
 import rawHard from "../data/hard.json";
+import rawGuidelineEasy from "../data/guideline-easy.json";
+import rawGuidelineNormal from "../data/guideline-normal.json";
+import rawGuidelineHard from "../data/guideline-hard.json";
 
 // Assign globally unique IDs
 const easyQuestions = (rawEasy as Question[]).map((q) => ({ ...q, id: q.id }));
 const normalQuestions = (rawNormal as Question[]).map((q) => ({ ...q, id: q.id + 100 }));
 const hardQuestions = (rawHard as Question[]).map((q) => ({ ...q, id: q.id + 200 }));
-const allQuestions = [...easyQuestions, ...normalQuestions, ...hardQuestions];
+const guidelineEasyQuestions = (rawGuidelineEasy as Question[]).map((q) => ({ ...q, id: q.id + 300 }));
+const guidelineNormalQuestions = (rawGuidelineNormal as Question[]).map((q) => ({ ...q, id: q.id + 400 }));
+const guidelineHardQuestions = (rawGuidelineHard as Question[]).map((q) => ({ ...q, id: q.id + 500 }));
 
-const questionsMap: Record<Exclude<Level, "random">, Question[]> = {
+const allQuestions = [
+  ...easyQuestions, ...normalQuestions, ...hardQuestions,
+  ...guidelineEasyQuestions, ...guidelineNormalQuestions, ...guidelineHardQuestions,
+];
+
+type DirectLevel = Exclude<Level, "random" | "guideline-random">;
+const questionsMap: Record<DirectLevel, Question[]> = {
   easy: easyQuestions,
   normal: normalQuestions,
   hard: hardQuestions,
+  "guideline-easy": guidelineEasyQuestions,
+  "guideline-normal": guidelineNormalQuestions,
+  "guideline-hard": guidelineHardQuestions,
 };
 
 function buildQuestions(level: Level): Question[] {
@@ -26,6 +40,14 @@ function buildQuestions(level: Level): Question[] {
       ...pick20(easyQuestions),
       ...pick20(normalQuestions),
       ...pick20(hardQuestions),
+    ]);
+  }
+  if (level === "guideline-random") {
+    const pick20 = (qs: Question[]) => shuffleArray(qs).slice(0, 20);
+    return shuffleArray([
+      ...pick20(guidelineEasyQuestions),
+      ...pick20(guidelineNormalQuestions),
+      ...pick20(guidelineHardQuestions),
     ]);
   }
   return shuffleArray([...questionsMap[level]]);
@@ -205,7 +227,7 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
   },
 
   checkForCheckpoint: () => {
-    const levels: Level[] = ["easy", "normal", "hard", "random"];
+    const levels: Level[] = ["easy", "normal", "hard", "random", "guideline-easy", "guideline-normal", "guideline-hard", "guideline-random"];
     for (const level of levels) {
       const saved = localStorage.getItem(CHECKPOINT_KEY(level));
       if (saved) {

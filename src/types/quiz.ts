@@ -12,7 +12,8 @@ export interface Question {
   explanation: string;
 }
 
-export type Level = "easy" | "normal" | "hard" | "random";
+export type Level = "easy" | "normal" | "hard" | "random"
+  | "guideline-easy" | "guideline-normal" | "guideline-hard" | "guideline-random";
 export type Page = "start" | "quiz" | "result" | "stats";
 
 export interface Checkpoint {

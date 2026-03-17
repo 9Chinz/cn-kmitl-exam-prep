@@ -1,0 +1,1502 @@
+[
+  {
+    "id": 1,
+    "lecture": "Guideline-IOS",
+    "question": "หลังจากตั้งค่า Router เสร็จแล้ว ผู้ดูแลลืมใช้คำสั่ง copy running-config startup-config แล้ว Router เกิด reboot จะเกิดอะไรขึ้น?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Router จะบูตด้วย config ที่ตั้งค่าไว้ล่าสุดเหมือนเดิมทุกประการ"
+      },
+      {
+        "key": "B",
+        "text": "Router จะแสดง error และไม่สามารถบูตได้จนกว่าจะ recover"
+      },
+      {
+        "key": "C",
+        "text": "Router จะบูตด้วย config เก่าที่เคย save ไว้ใน NVRAM ก่อนหน้า"
+      },
+      {
+        "key": "D",
+        "text": "Router จะบูตปกติแต่ interface ทั้งหมดจะถูก shutdown อัตโนมัติ"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "running-config อยู่ใน RAM ซึ่งจะหายไปเมื่อ reboot ส่วน startup-config อยู่ใน NVRAM จะถูกโหลดตอนบูต หากไม่ copy ค่าที่ตั้งใหม่จะหายไปและ Router จะกลับไปใช้ config เดิมที่เคย save ไว้"
+  },
+  {
+    "id": 2,
+    "lecture": "Guideline-IOS",
+    "question": "ถ้า Router มีทั้ง enable password และ enable secret ตั้งค่าไว้พร้อมกัน เมื่อเข้า privileged EXEC mode จะใช้รหัสผ่านตัวใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "ใช้ enable password เพราะถูกตั้งค่าก่อนตามลำดับใน config"
+      },
+      {
+        "key": "B",
+        "text": "ใช้ทั้งสองตัวโดยต้องพิมพ์รหัสผ่านสองครั้งติดต่อกัน"
+      },
+      {
+        "key": "C",
+        "text": "ใช้ enable secret เพราะมี priority สูงกว่าและเข้ารหัสด้วย MD5"
+      },
+      {
+        "key": "D",
+        "text": "ระบบจะแจ้ง error เนื่องจากไม่สามารถตั้งค่าทั้งสองพร้อมกันได้"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "เมื่อมีทั้ง enable password และ enable secret ระบบจะใช้ enable secret เสมอเพราะมี priority สูงกว่า โดย enable password จะถูก override และไม่มีผลใช้งาน enable secret เข้ารหัสด้วย MD5 จึงปลอดภัยกว่า"
+  },
+  {
+    "id": 3,
+    "lecture": "Guideline-IOS",
+    "question": "ค่า config-register 0x2142 ทำหน้าที่อะไรในกระบวนการ password recovery ของ Router?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "สั่งให้ Router ลบ startup-config ออกจาก NVRAM โดยอัตโนมัติ"
+      },
+      {
+        "key": "B",
+        "text": "สั่งให้ Router บูตเข้า ROMMON mode โดยไม่โหลด IOS image"
+      },
+      {
+        "key": "C",
+        "text": "สั่งให้ Router ข้ามการโหลด startup-config จาก NVRAM ตอนบูต"
+      },
+      {
+        "key": "D",
+        "text": "สั่งให้ Router รีเซ็ตรหัสผ่านทั้งหมดกลับเป็นค่า default ของโรงงาน"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "config-register 0x2142 บอกให้ Router ข้ามการอ่าน startup-config ตอนบูต ทำให้เข้าสู่ initial configuration dialog เหมือน Router ใหม่ จากนั้นผู้ดูแลสามารถ copy startup-config เข้ามาแก้ไขรหัสผ่านแล้วเปลี่ยน config-register กลับเป็น 0x2102"
+  },
+  {
+    "id": 4,
+    "lecture": "Guideline-IOS",
+    "question": "เมื่อสร้าง interface บน Router ใหม่ ทำไม interface จึงอยู่ในสถานะ administratively down โดย default?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "เพราะ IOS ต้อง compile driver สำหรับ interface ก่อนจึงยังเปิดใช้ไม่ได้"
+      },
+      {
+        "key": "B",
+        "text": "เพราะ Router ต้องการประหยัดหน่วยความจำจึงปิด interface ที่ไม่ได้ใช้"
+      },
+      {
+        "key": "C",
+        "text": "เพื่อป้องกันการส่ง traffic โดยไม่ตั้งใจก่อนที่จะกำหนด IP address ให้ถูกต้อง"
+      },
+      {
+        "key": "D",
+        "text": "เพื่อรอให้ spanning-tree ทำ convergence เสร็จก่อนเปิด interface"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Cisco Router ออกแบบให้ interface เป็น administratively down โดย default เพื่อความปลอดภัย ป้องกันไม่ให้ interface ส่ง traffic ก่อนที่ผู้ดูแลจะตั้งค่า IP address และ security ให้เรียบร้อย ต้องใช้คำสั่ง no shutdown เพื่อเปิดใช้งาน"
+  },
+  {
+    "id": 5,
+    "lecture": "Guideline-IOS",
+    "question": "ผู้ดูแลพิมพ์คำสั่ง show running-config แล้วเห็นว่า enable secret แสดงเป็นข้อความที่เข้ารหัสแล้ว แต่ password ของ line console 0 แสดงเป็น plaintext สาเหตุคืออะไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "ผู้ดูแลตั้งค่า enable secret ด้วย type 7 encryption จึงเข้ารหัสได้"
+      },
+      {
+        "key": "B",
+        "text": "line console 0 ไม่รองรับการเข้ารหัสใด ๆ จึงแสดงเป็น plaintext เสมอ"
+      },
+      {
+        "key": "C",
+        "text": "enable secret ใช้ MD5 เข้ารหัสอัตโนมัติ แต่ line password ต้องใช้ service password-encryption ถึงจะเข้ารหัส"
+      },
+      {
+        "key": "D",
+        "text": "show running-config แสดงเฉพาะ enable secret เป็น encrypted เท่านั้นตาม design"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "enable secret จะเข้ารหัสด้วย MD5 โดยอัตโนมัติเสมอ แต่ password ของ line console, vty และ enable password จะเป็น plaintext จนกว่าจะใช้คำสั่ง service password-encryption ซึ่งจะเข้ารหัสแบบ type 7 (Vigenere cipher)"
+  },
+  {
+    "id": 6,
+    "lecture": "Guideline-IOS",
+    "question": "ขั้นตอนที่ถูกต้องในการทำ password recovery บน Cisco Router คือข้อใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "reboot > กด Break > เข้า ROMMON > เปลี่ยน register เป็น 0x2102 > boot > แก้ password"
+      },
+      {
+        "key": "B",
+        "text": "เข้า user mode > พิมพ์ reset password > ระบบจะถามรหัสใหม่ให้ตั้งได้เลย"
+      },
+      {
+        "key": "C",
+        "text": "reboot > กด Break > เข้า ROMMON > เปลี่ยน register เป็น 0x2142 > boot > แก้ password"
+      },
+      {
+        "key": "D",
+        "text": "ปิดเครื่อง > ถอด NVRAM chip > เปิดเครื่อง > ตั้งรหัสใหม่ > ใส่ chip กลับ"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "ขั้นตอนที่ถูกต้องคือ reboot แล้วกด Break เพื่อเข้า ROMMON จากนั้นเปลี่ยน config-register เป็น 0x2142 เพื่อข้าม startup-config แล้ว boot ใหม่ เมื่อเข้าระบบแล้วให้ copy startup-config มาแก้ password แล้วเปลี่ยน register กลับเป็น 0x2102"
+  },
+  {
+    "id": 7,
+    "lecture": "Guideline-IOS",
+    "question": "ถ้าผู้ดูแลอยู่ใน interface configuration mode และต้องการกลับไป privileged EXEC mode โดยตรง ควรใช้คำสั่งใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "exit สองครั้งติดต่อกันเพื่อย้อนกลับทีละระดับจนถึง privileged mode"
+      },
+      {
+        "key": "B",
+        "text": "quit เพื่อออกจาก configuration mode ทั้งหมดกลับไป privileged mode"
+      },
+      {
+        "key": "C",
+        "text": "disable เพื่อลดระดับกลับไป privileged EXEC mode โดยตรงทันที"
+      },
+      {
+        "key": "D",
+        "text": "end หรือกด Ctrl+Z เพื่อออกจาก configuration mode กลับ privileged EXEC mode"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "คำสั่ง end หรือ Ctrl+Z จะออกจาก configuration mode ไม่ว่าจะอยู่ sub-mode ลึกแค่ไหน กลับไป privileged EXEC mode โดยตรง ส่วน exit จะถอยกลับทีละระดับ และ disable จะลดจาก privileged ไป user EXEC mode"
+  },
+  {
+    "id": 8,
+    "lecture": "Guideline-IOS",
+    "question": "ผู้ดูแลใช้คำสั่ง erase startup-config แล้ว reload Router จะเกิดอะไรขึ้น?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Router จะบูตไม่ได้เพราะไม่มี config file ใน NVRAM ให้โหลด"
+      },
+      {
+        "key": "B",
+        "text": "Router จะบูตด้วย running-config เดิมที่ยังค้างอยู่ใน RAM ก่อน reload"
+      },
+      {
+        "key": "C",
+        "text": "Router จะเข้า initial configuration dialog เหมือนเปิดเครื่องครั้งแรก"
+      },
+      {
+        "key": "D",
+        "text": "Router จะโหลด config จาก TFTP server โดยอัตโนมัติแทน NVRAM"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "เมื่อ erase startup-config จะลบ config ใน NVRAM ออก เมื่อ reload Router จะไม่พบ startup-config จึงเข้า initial configuration dialog ให้ตั้งค่าใหม่ตั้งแต่ต้น เหมือน Router ที่เพิ่งออกจากโรงงาน"
+  },
+  {
+    "id": 9,
+    "lecture": "Guideline-IOS",
+    "question": "คำสั่ง show ip interface brief แสดงข้อมูลอะไรที่ทำให้มีประโยชน์ในการ troubleshoot มากกว่า show interface?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "แสดงรายละเอียด error counter และ CRC error ของทุก interface"
+      },
+      {
+        "key": "B",
+        "text": "แสดง MAC address และ duplex setting ของทุก interface พร้อมกัน"
+      },
+      {
+        "key": "C",
+        "text": "แสดงสรุป IP address และ status ของทุก interface ในรูปแบบตารางกระชับ"
+      },
+      {
+        "key": "D",
+        "text": "แสดง bandwidth utilization เป็นเปอร์เซ็นต์ของทุก interface แบบ real-time"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "show ip interface brief แสดงข้อมูลสรุปแบบตารางที่มี interface name, IP address, status และ protocol ของทุก interface ในหน้าเดียว ทำให้ดูภาพรวมได้เร็วกว่า show interface ที่แสดงรายละเอียดมากจนต้องอ่านหลายหน้า"
+  },
+  {
+    "id": 10,
+    "lecture": "Guideline-IOS",
+    "question": "ผู้ดูแลพิมพ์คำสั่งผิดใน global configuration mode แล้ว Router ค้างนาน เพราะ Router พยายามทำอะไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Router กำลังค้นหาคำสั่งที่ใกล้เคียงในฐานข้อมูลคำสั่งภายใน IOS"
+      },
+      {
+        "key": "B",
+        "text": "Router กำลังเขียน error log ลง NVRAM ซึ่งใช้เวลานานจึงดูเหมือนค้าง"
+      },
+      {
+        "key": "C",
+        "text": "Router กำลัง compile คำสั่งใหม่เข้าไปใน IOS image ที่กำลังทำงาน"
+      },
+      {
+        "key": "D",
+        "text": "Router กำลังทำ DNS lookup เพราะคิดว่าคำสั่งที่พิมพ์เป็น hostname"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "เมื่อ Router ไม่รู้จักคำสั่งที่พิมพ์ จะถือว่าเป็น hostname แล้วพยายามทำ DNS lookup ทำให้ค้างรอ timeout วิธีแก้คือใช้คำสั่ง no ip domain-lookup เพื่อปิด DNS lookup อัตโนมัติ"
+  },
+  {
+    "id": 11,
+    "lecture": "Guideline-VLAN",
+    "question": "ถ้า Switch สองตัวเชื่อมด้วย trunk link แต่ตั้ง native VLAN ไม่ตรงกัน (ฝั่งหนึ่งเป็น VLAN 1 อีกฝั่งเป็น VLAN 99) จะเกิดปัญหาอะไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "trunk link จะ down ทันทีเพราะ native VLAN ไม่ตรงกันทำให้ negotiation ล้มเหลว"
+      },
+      {
+        "key": "B",
+        "text": "เฉพาะ VLAN ที่ไม่ใช่ native เท่านั้นที่จะได้รับผลกระทบและส่ง traffic ไม่ได้"
+      },
+      {
+        "key": "C",
+        "text": "Switch จะแก้ปัญหาอัตโนมัติโดยเลือก native VLAN ที่มีหมายเลขต่ำกว่าทั้งสองฝั่ง"
+      },
+      {
+        "key": "D",
+        "text": "traffic ของ VLAN 1 และ VLAN 99 จะข้ามไปผิด VLAN ทำให้เกิด security risk"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "เมื่อ native VLAN ไม่ตรงกัน frame ที่ส่งแบบ untagged จาก native VLAN ของฝั่งหนึ่งจะถูกฝั่งรับตีความว่าเป็น native VLAN ของตัวเอง ทำให้ traffic ข้ามไปผิด VLAN เกิดเป็น VLAN hopping ซึ่งเป็น security risk และ CDP จะแจ้ง native VLAN mismatch"
+  },
+  {
+    "id": 12,
+    "lecture": "Guideline-VLAN",
+    "question": "การทำ inter-VLAN routing แบบ Router-on-a-Stick มีข้อเสียอะไรเมื่อเทียบกับ L3 Switch?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Router-on-a-Stick ไม่รองรับ VLAN มากกว่า 10 VLAN บน subinterface เดียว"
+      },
+      {
+        "key": "B",
+        "text": "Router-on-a-Stick ไม่สามารถกรอง traffic ด้วย ACL ระหว่าง VLAN ได้เลย"
+      },
+      {
+        "key": "C",
+        "text": "Router-on-a-Stick ต้องใช้ static route เท่านั้นไม่สามารถใช้ dynamic routing ได้"
+      },
+      {
+        "key": "D",
+        "text": "Router-on-a-Stick มี bottleneck ที่ trunk link เพราะ traffic ทุก VLAN ใช้ physical link เดียว"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Router-on-a-Stick ใช้ physical link เพียงเส้นเดียวเป็น trunk โดย traffic ของทุก VLAN ต้องผ่าน link เดียวกัน ทำให้เกิด bottleneck เมื่อมี traffic มาก ส่วน L3 Switch ทำ routing ด้วย hardware (ASIC) บน backplane ที่มี bandwidth สูงกว่ามาก"
+  },
+  {
+    "id": 13,
+    "lecture": "Guideline-VLAN",
+    "question": "ถ้า port บน Switch ถูกตั้งเป็น access mode VLAN 10 แต่อุปกรณ์ที่เสียบส่ง tagged frame ของ VLAN 20 เข้ามา จะเกิดอะไรขึ้น?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Switch จะ forward frame ไปยัง VLAN 20 ตาม tag ที่ระบุมาในตัว frame"
+      },
+      {
+        "key": "B",
+        "text": "Switch จะเปลี่ยน port เป็น trunk mode อัตโนมัติเพื่อรองรับ tagged frame"
+      },
+      {
+        "key": "C",
+        "text": "Switch จะถอด tag ออกแล้ว forward frame ไปยัง VLAN 10 ตามที่ port กำหนด"
+      },
+      {
+        "key": "D",
+        "text": "Switch จะ drop frame นั้นทิ้งเพราะ access port ไม่ยอมรับ tagged frame"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "access port รับเฉพาะ untagged frame เท่านั้น หาก frame มี 802.1Q tag ที่ไม่ตรงกับ native VLAN ของ access port นั้น Switch จะ drop frame ทิ้ง เพราะ access port ไม่ได้ถูกออกแบบให้จัดการกับ tagged frame ของ VLAN อื่น"
+  },
+  {
+    "id": 14,
+    "lecture": "Guideline-VLAN",
+    "question": "SVI (Switch Virtual Interface) บน L3 Switch ทำหน้าที่อะไรในการทำ inter-VLAN routing?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "ทำหน้าที่เป็น trunk port ที่รับ traffic จากทุก VLAN เข้ามาประมวลผล"
+      },
+      {
+        "key": "B",
+        "text": "ทำหน้าที่เป็น firewall กรอง traffic ระหว่าง VLAN ก่อนอนุญาตให้ผ่านได้"
+      },
+      {
+        "key": "C",
+        "text": "ทำหน้าที่เป็น DHCP server แจก IP address ให้อุปกรณ์ใน VLAN นั้นอัตโนมัติ"
+      },
+      {
+        "key": "D",
+        "text": "ทำหน้าที่เป็น default gateway ของ VLAN นั้นเพื่อให้ route traffic ข้าม VLAN ได้"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "SVI เป็น virtual interface ที่ผูกกับ VLAN โดยทำหน้าที่เป็น default gateway ของอุปกรณ์ใน VLAN นั้น เมื่อ host ต้องการส่ง traffic ไป VLAN อื่นจะส่งมาที่ SVI แล้ว L3 Switch จะ route ไปยัง SVI ของ VLAN ปลายทาง"
+  },
+  {
+    "id": 15,
+    "lecture": "Guideline-VLAN",
+    "question": "เมื่อใช้ Router-on-a-Stick สำหรับ inter-VLAN routing ทำไม subinterface แต่ละตัวจึงต้องตั้ง encapsulation dot1q ก่อนกำหนด IP address?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "เพราะ Switch ฝั่งตรงข้ามจะ reject trunk ถ้า Router ไม่ประกาศ encapsulation type"
+      },
+      {
+        "key": "B",
+        "text": "เพราะ IP address จะไม่ถูกบันทึกลง config หากยังไม่ระบุ encapsulation type"
+      },
+      {
+        "key": "C",
+        "text": "เพราะ Router ต้อง compile driver สำหรับ 802.1Q ก่อนจึงจะรับ packet ได้"
+      },
+      {
+        "key": "D",
+        "text": "เพราะ Router ต้องรู้ว่า subinterface นี้ผูกกับ VLAN ใดจึงจะแยก traffic ได้ถูกต้อง"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "encapsulation dot1q ระบุ VLAN ID ให้กับ subinterface ทำให้ Router รู้ว่า traffic ที่มี tag ของ VLAN ใดจะถูกส่งเข้า subinterface ไหน หากไม่ตั้ง encapsulation Router จะไม่สามารถแยก traffic ของแต่ละ VLAN ออกจากกันได้"
+  },
+  {
+    "id": 16,
+    "lecture": "Guideline-VLAN",
+    "question": "ถ้า Switch มี VLAN 10 และ VLAN 20 แต่ไม่มี Router หรือ L3 Switch ทำ inter-VLAN routing อุปกรณ์ใน VLAN 10 จะสื่อสารกับ VLAN 20 ได้หรือไม่?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "ได้ ถ้าอุปกรณ์ทั้งสองฝั่งอยู่ใน subnet เดียวกันและตั้ง IP address ให้ถูกต้อง"
+      },
+      {
+        "key": "B",
+        "text": "ได้ เฉพาะกรณีที่ใช้ trunk link เชื่อมระหว่าง port ของสอง VLAN โดยตรง"
+      },
+      {
+        "key": "C",
+        "text": "ไม่ได้เลย เพราะ VLAN แยก broadcast domain และต้องมี Layer 3 device ทำ routing"
+      },
+      {
+        "key": "D",
+        "text": "ได้ ถ้าเปิด proxy ARP บน Switch ให้ตอบ ARP request ข้าม VLAN ให้อัตโนมัติ"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "VLAN แบ่ง network เป็น broadcast domain ที่แยกจากกัน การสื่อสารข้าม VLAN ต้องมี Layer 3 device เช่น Router หรือ L3 Switch ทำ routing เนื่องจาก Switch ทำงานที่ Layer 2 ไม่สามารถ route packet ข้าม VLAN ได้ด้วยตัวเอง"
+  },
+  {
+    "id": 17,
+    "lecture": "Guideline-Routing",
+    "question": "ถ้า RIP มี 2 เส้นทางไปปลายทางเดียวกัน เส้นทาง A ผ่าน 3 hop และเส้นทาง B ผ่าน 5 hop แต่ B มี bandwidth สูงกว่า RIP จะเลือกเส้นทางใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "เลือกเส้นทาง B เพราะ bandwidth สูงกว่าทำให้ส่งข้อมูลได้เร็วกว่า"
+      },
+      {
+        "key": "B",
+        "text": "เลือกทั้งสองเส้นทางแล้วทำ load balancing ตามสัดส่วน bandwidth"
+      },
+      {
+        "key": "C",
+        "text": "เลือกเส้นทาง A เพราะ RIP ใช้ hop count เป็น metric เท่านั้นไม่สนใจ bandwidth"
+      },
+      {
+        "key": "D",
+        "text": "เลือกเส้นทาง B เพราะ RIP v2 พิจารณาทั้ง hop count และ bandwidth ประกอบกัน"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "RIP ใช้ hop count เป็น metric เพียงอย่างเดียว ไม่พิจารณา bandwidth, delay หรือ factor อื่น ดังนั้นเส้นทาง A ที่มี 3 hop จะถูกเลือกเพราะมี metric ต่ำกว่า แม้เส้นทาง B จะมี bandwidth สูงกว่าก็ตาม"
+  },
+  {
+    "id": 18,
+    "lecture": "Guideline-Routing",
+    "question": "ทำไม RIP v1 จึงไม่สามารถทำงานกับ VLSM (Variable Length Subnet Mask) ได้?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "เพราะ RIP v1 ส่ง routing update แบบ broadcast ทำให้ subnet mask ถูกตัดออก"
+      },
+      {
+        "key": "B",
+        "text": "เพราะ RIP v1 ใช้ fixed metric ทำให้คำนวณเส้นทางผิดเมื่อมีหลาย subnet mask"
+      },
+      {
+        "key": "C",
+        "text": "เพราะ RIP v1 รองรับได้สูงสุด 15 subnet ต่อ network จึงไม่พอใช้กับ VLSM"
+      },
+      {
+        "key": "D",
+        "text": "เพราะ RIP v1 ไม่ส่ง subnet mask ไปกับ routing update ทำให้ไม่รู้ขนาด subnet จริง"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "RIP v1 เป็น classful routing protocol จึงไม่ส่ง subnet mask ไปกับ routing update Router ที่รับ update จะใช้ default subnet mask ตาม class ของ IP address ทำให้ไม่สามารถแยกแยะ subnet ที่มี mask ต่างกันได้ ส่วน RIP v2 เป็น classless จึงส่ง subnet mask ไปด้วย"
+  },
+  {
+    "id": 19,
+    "lecture": "Guideline-Routing",
+    "question": "เมื่อ RIP route มี hop count ถึง 16 จะเกิดอะไรขึ้นกับ route นั้น?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "route นั้นจะถูก reset hop count กลับเป็น 0 แล้วเริ่มนับใหม่ตั้งแต่ต้น"
+      },
+      {
+        "key": "B",
+        "text": "Router จะเปลี่ยนไปใช้ OSPF แทนอัตโนมัติเนื่องจาก RIP ถึงขีดจำกัดแล้ว"
+      },
+      {
+        "key": "C",
+        "text": "route นั้นจะถูกส่งต่อไปด้วย hop count 16 แต่มี priority ต่ำที่สุด"
+      },
+      {
+        "key": "D",
+        "text": "route นั้นจะถูกถือว่า unreachable และถูกลบออกจาก routing table"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "RIP กำหนดให้ hop count สูงสุดคือ 15 เมื่อ route มี hop count ถึง 16 จะถือว่า network นั้น unreachable (infinity) และ route จะถูกลบออกจาก routing table นี่คือข้อจำกัดของ RIP ที่ทำให้ไม่เหมาะกับ network ขนาดใหญ่"
+  },
+  {
+    "id": 20,
+    "lecture": "Guideline-Routing",
+    "question": "Split horizon ป้องกัน routing loop อย่างไร และมีข้อจำกัดอะไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "ห้ามส่ง route update กลับไปยัง interface ที่เรียนรู้ route มา แต่ไม่ช่วยใน hub-and-spoke topology"
+      },
+      {
+        "key": "B",
+        "text": "ห้ามส่ง route ที่มี hop count เกิน 8 เพื่อจำกัดขนาด network แต่ทำให้ network ใหญ่ใช้ไม่ได้"
+      },
+      {
+        "key": "C",
+        "text": "ลบ route ที่มี metric เพิ่มขึ้นทันทีเพื่อป้องกัน loop แต่ทำให้ convergence ช้าลง"
+      },
+      {
+        "key": "D",
+        "text": "ส่ง route update ด้วย metric infinity กลับไปยังต้นทางเพื่อแจ้งว่า route ไม่ถูกต้อง"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "split horizon ป้องกัน routing loop โดยไม่ส่ง route กลับไปยัง interface ที่เรียนรู้ route มา แต่มีข้อจำกัดใน hub-and-spoke topology เช่น Frame Relay เพราะ spoke ที่อยู่บน interface เดียวกับ hub จะไม่ได้รับ route ของ spoke อื่น จึงอาจต้องปิด split horizon ในบางกรณี"
+  },
+  {
+    "id": 21,
+    "lecture": "Guideline-Routing",
+    "question": "คำสั่ง passive-interface บน Router ที่ใช้ RIP มีผลอย่างไรต่อ interface ที่ถูกกำหนด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "interface จะหยุดทั้งส่งและรับ routing update ทำให้ตัดขาดจาก RIP domain ทั้งหมด"
+      },
+      {
+        "key": "B",
+        "text": "interface จะส่ง routing update เฉพาะ directly connected route ของตัวเองเท่านั้น"
+      },
+      {
+        "key": "C",
+        "text": "interface จะส่ง routing update ช้าลงเป็น 60 วินาทีแทน 30 วินาทีเพื่อลด traffic"
+      },
+      {
+        "key": "D",
+        "text": "interface จะหยุดส่ง routing update แต่ยังรับ routing update จาก neighbor ได้ปกติ"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "passive-interface สั่งให้ interface หยุดส่ง routing update ออกไป แต่ยังคงรับ routing update ที่เข้ามาทาง interface นั้นได้ปกติ ใช้กับ interface ที่เชื่อมต่อกับ end-user network ที่ไม่ต้องการให้รู้ routing information แต่ยังต้องการ advertise network นั้นใน RIP"
+  },
+  {
+    "id": 22,
+    "lecture": "Guideline-Routing",
+    "question": "OSPF คำนวณ metric (cost) จากอะไร และ link ที่มี bandwidth สูงกว่าจะมี cost อย่างไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "คำนวณจาก hop count เหมือน RIP โดย link ที่มี bandwidth สูงจะมี cost เท่ากับ 1 hop"
+      },
+      {
+        "key": "B",
+        "text": "คำนวณจาก bandwidth คูณ delay โดย bandwidth สูงจะมี cost สูงเพราะเป็น link หลัก"
+      },
+      {
+        "key": "C",
+        "text": "คำนวณจาก delay ของ link โดย bandwidth สูงจะมี delay ต่ำจึงมี cost ต่ำตามไปด้วย"
+      },
+      {
+        "key": "D",
+        "text": "คำนวณจาก reference bandwidth หารด้วย interface bandwidth โดย bandwidth สูงจะมี cost ต่ำ"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "OSPF cost = reference bandwidth / interface bandwidth โดย default reference bandwidth คือ 100 Mbps ดังนั้น link ที่มี bandwidth สูงกว่าจะมี cost ต่ำกว่า เช่น FastEthernet (100 Mbps) มี cost = 1 ส่วน Serial 1.544 Mbps มี cost = 64"
+  },
+  {
+    "id": 23,
+    "lecture": "Guideline-Routing",
+    "question": "Router มี static route ไปยัง 10.0.0.0/8 และ OSPF เรียนรู้ route ไปยัง 10.0.0.0/8 เช่นกัน Router จะเลือกใช้ route จากที่ใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "เลือก OSPF เพราะเป็น dynamic routing protocol จึงมีข้อมูลที่ update ล่าสุดเสมอ"
+      },
+      {
+        "key": "B",
+        "text": "เลือก route ที่มี next-hop IP address ที่ใกล้กว่าโดยไม่สนใจ routing source"
+      },
+      {
+        "key": "C",
+        "text": "เลือกทั้งสองแล้ว load balance เพื่อกระจาย traffic ไปทั้งสองเส้นทางเท่า ๆ กัน"
+      },
+      {
+        "key": "D",
+        "text": "เลือก static route เพราะมี administrative distance ต่ำกว่า OSPF (1 vs 110)"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "เมื่อมี route ไปยัง destination เดียวกันจากหลาย source Router จะเปรียบเทียบ administrative distance (AD) โดย static route มี AD = 1 ส่วน OSPF มี AD = 110 Router จะเลือก route ที่มี AD ต่ำกว่าคือ static route"
+  },
+  {
+    "id": 24,
+    "lecture": "Guideline-Routing",
+    "question": "ในเครือข่ายที่ใช้ OSPF ถ้า Router สอง interface เชื่อมต่อกันแต่อยู่คนละ area และไม่มี interface อยู่ใน area 0 จะเกิดปัญหาอะไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "OSPF จะทำงานปกติเพราะ area 0 เป็นแค่ recommendation ไม่ได้บังคับ"
+      },
+      {
+        "key": "B",
+        "text": "OSPF จะเปลี่ยน area ให้เป็น area 0 อัตโนมัติเพื่อให้ routing ทำงานได้ต่อ"
+      },
+      {
+        "key": "C",
+        "text": "Router ทั้งสองจะ reject OSPF hello packet เพราะ area ID ไม่ตรงกัน"
+      },
+      {
+        "key": "D",
+        "text": "OSPF neighbor จะ establish ได้แต่ route จะไม่ถูกส่งต่อข้าม area เนื่องจากขาด backbone"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "OSPF กำหนดว่าทุก area ต้องเชื่อมต่อกับ area 0 (backbone) การส่ง route ข้าม area ต้องผ่าน area 0 เสมอ ถ้าไม่มี area 0 เชื่อม OSPF neighbor อาจ establish ได้ภายใน area เดียวกัน แต่ inter-area route จะไม่ถูกส่งต่อ ทำให้ network ไม่ถูกต้อง"
+  },
+  {
+    "id": 25,
+    "lecture": "Guideline-Routing",
+    "question": "RIP v2 ต่างจาก RIP v1 อย่างไรในแง่ของการส่ง routing update?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "RIP v2 ส่ง update แบบ multicast 224.0.0.9 พร้อม subnet mask ส่วน v1 ส่ง broadcast โดยไม่มี mask"
+      },
+      {
+        "key": "B",
+        "text": "RIP v2 ส่ง update ทุก 60 วินาทีเพื่อลด traffic ส่วน v1 ส่งทุก 30 วินาที"
+      },
+      {
+        "key": "C",
+        "text": "RIP v2 ส่ง update เฉพาะเมื่อมีการเปลี่ยนแปลง ส่วน v1 ส่งตาม timer เท่านั้น"
+      },
+      {
+        "key": "D",
+        "text": "RIP v2 ใช้ TCP เพื่อส่ง update ที่เชื่อถือได้ ส่วน v1 ใช้ UDP ที่ไม่รับประกันการส่ง"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "RIP v2 ส่ง routing update แบบ multicast ไปยัง 224.0.0.9 แทน broadcast ลดภาระให้อุปกรณ์ที่ไม่ได้ใช้ RIP และที่สำคัญ RIP v2 เป็น classless จึงส่ง subnet mask ไปด้วยทำให้รองรับ VLSM และ CIDR ได้ ส่วน timer ยังเป็น 30 วินาทีเหมือนเดิม"
+  },
+  {
+    "id": 26,
+    "lecture": "Guideline-Routing",
+    "question": "ถ้า Router ใช้ RIP และมี network ที่เชื่อมต่อกับ end-user LAN ผู้ดูแลควรใช้ passive-interface กับ LAN interface นั้นเพราะอะไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "เพื่อเพิ่มความเร็วในการ convergence ของ RIP โดยลดจำนวน neighbor ที่ต้องดูแล"
+      },
+      {
+        "key": "B",
+        "text": "เพื่อบังคับให้ end-user ใช้ static route แทน dynamic route เพื่อความปลอดภัย"
+      },
+      {
+        "key": "C",
+        "text": "เพื่อให้ RIP ส่ง update เฉพาะ default route ไปยัง end-user แทน full routing table"
+      },
+      {
+        "key": "D",
+        "text": "เพื่อป้องกันไม่ให้ end-user เห็น routing table ของ network และลด bandwidth ที่สูญเปล่า"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "การใช้ passive-interface กับ LAN interface ที่เชื่อมกับ end-user ป้องกันไม่ให้ RIP ส่ง routing update ออกไปยัง LAN ลดความเสี่ยงที่ข้อมูล routing จะถูกดักฟังและลด bandwidth ที่สูญเปล่าจากการส่ง update ไปยังอุปกรณ์ที่ไม่ได้ใช้ RIP"
+  },
+  {
+    "id": 27,
+    "lecture": "Guideline-Redistribution",
+    "question": "เมื่อทำ redistribution จาก OSPF เข้า RIP ทำไมจึงต้องกำหนด metric ให้กับ route ที่ถูก redistribute?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "เพราะ OSPF ใช้ cost ซึ่งไม่สามารถแปลงเป็น hop count ของ RIP ได้โดยตรง"
+      },
+      {
+        "key": "B",
+        "text": "เพราะ RIP ไม่รองรับ route จากภายนอกจึงต้องกำหนด metric เพื่อบอกว่าเป็น external route"
+      },
+      {
+        "key": "C",
+        "text": "เพราะ metric ที่กำหนดจะถูกใช้เป็น tag เพื่อระบุว่า route มาจาก protocol ใด"
+      },
+      {
+        "key": "D",
+        "text": "เพราะถ้าไม่กำหนด metric ระบบจะใช้ค่า infinity ทำให้ route ถูก reject ทันที"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "OSPF ใช้ cost (reference bandwidth / interface bandwidth) เป็น metric ส่วน RIP ใช้ hop count ค่าทั้งสองไม่สามารถแปลงหากันได้โดยตรง จึงต้องกำหนด seed metric ให้กับ route ที่ redistribute เข้ามาเพื่อให้ RIP ใช้ค่า hop count ที่เหมาะสม"
+  },
+  {
+    "id": 28,
+    "lecture": "Guideline-Redistribution",
+    "question": "การทำ 2-way redistribution (mutual redistribution) ระหว่าง OSPF กับ RIP มีความเสี่ยงอะไรมากที่สุด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Router จะใช้ CPU สูงมากจนไม่สามารถ forward traffic ได้ตามปกติ"
+      },
+      {
+        "key": "B",
+        "text": "อาจเกิด routing loop เพราะ route ที่ redistribute ออกไปอาจถูก redistribute กลับเข้ามาอีก"
+      },
+      {
+        "key": "C",
+        "text": "OSPF จะ reject route จาก RIP ทั้งหมดเนื่องจาก administrative distance ต่างกัน"
+      },
+      {
+        "key": "D",
+        "text": "RIP timer จะถูก reset ทุกครั้งที่มีการ redistribute ทำให้ route หมดอายุเร็วเกินไป"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "2-way redistribution มีความเสี่ยงเกิด routing loop เพราะ route จาก OSPF ที่ถูก redistribute เข้า RIP อาจถูก redistribute กลับเข้า OSPF อีกครั้ง ทำให้เกิด feedback loop จึงต้องใช้ route-map, distribute-list หรือ tag เพื่อป้องกัน"
+  },
+  {
+    "id": 29,
+    "lecture": "Guideline-Redistribution",
+    "question": "route-map ช่วยควบคุม redistribution อย่างไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "กรอง route ที่จะ redistribute โดย match เงื่อนไขแล้ว set ค่า metric หรือ tag ได้ตามต้องการ"
+      },
+      {
+        "key": "B",
+        "text": "เปลี่ยน routing protocol ของ route อัตโนมัติเพื่อให้เข้ากับ protocol ปลายทาง"
+      },
+      {
+        "key": "C",
+        "text": "เข้ารหัส routing update เพื่อป้องกันไม่ให้ Router อื่นดักฟัง redistribution traffic"
+      },
+      {
+        "key": "D",
+        "text": "จำกัดจำนวน route ที่ redistribute ได้สูงสุดต่อรอบเพื่อลดภาระ CPU ของ Router"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "route-map ทำงานเหมือน if-then ที่มีเงื่อนไข match (เช่น match ip address, match tag) เพื่อกรอง route ที่ต้องการ redistribute และ set (เช่น set metric, set tag) เพื่อกำหนดค่าให้ route ที่ผ่านเงื่อนไข ช่วยควบคุม redistribution ได้ละเอียดกว่า distribute-list"
+  },
+  {
+    "id": 30,
+    "lecture": "Guideline-Redistribution",
+    "question": "เมื่อ redistribute route จาก RIP เข้า OSPF โดยไม่ใส่ keyword subnets จะเกิดอะไรขึ้น?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "OSPF จะรับเฉพาะ classful route เข้ามาเท่านั้น subnet route จะถูก drop ทิ้ง"
+      },
+      {
+        "key": "B",
+        "text": "OSPF จะรับ route ทั้งหมดแต่แสดงเป็น classful ใน routing table ของ neighbor"
+      },
+      {
+        "key": "C",
+        "text": "OSPF จะ reject การ redistribution ทั้งหมดและแสดง error message บน console"
+      },
+      {
+        "key": "D",
+        "text": "OSPF จะรับ route ทั้งหมดปกติเพราะ subnets เป็น default keyword อยู่แล้ว"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "เมื่อ redistribute เข้า OSPF โดยไม่ใส่ keyword subnets จะมีเฉพาะ classful route (major network) เท่านั้นที่ถูก redistribute เข้ามา subnet route ทั้งหมดจะถูก drop ทิ้ง ดังนั้นจึงควรใส่ subnets เสมอเพื่อให้ redistribute subnet route ได้ครบถ้วน"
+  },
+  {
+    "id": 31,
+    "lecture": "Guideline-Redistribution",
+    "question": "ในการทำ redistribution ค่า administrative distance มีบทบาทอย่างไรในการป้องกัน routing loop?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "AD ไม่เกี่ยวกับ routing loop เลย ใช้แค่บอกว่า route มาจาก protocol ใดเท่านั้น"
+      },
+      {
+        "key": "B",
+        "text": "route ที่มี AD สูงจะถูกลบทิ้งอัตโนมัติเมื่อพบว่าเป็น route ที่ redistribute กลับมา"
+      },
+      {
+        "key": "C",
+        "text": "ช่วยให้ Router เลือก route จาก protocol ดั้งเดิมแทน redistributed route เมื่อมี route ซ้ำ"
+      },
+      {
+        "key": "D",
+        "text": "AD จะถูกเพิ่มขึ้นทุกครั้งที่ route ถูก redistribute ทำให้ route วนมากกว่า 3 รอบจะหมดอายุ"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "เมื่อ Router ได้รับ route ไปยัง destination เดียวกันจากหลาย source จะเลือก route ที่มี AD ต่ำกว่า ทำให้ route จาก protocol ดั้งเดิม (เช่น OSPF AD=110) ถูกเลือกแทน redistributed route (เช่น external OSPF AD=170 หรือ RIP AD=120) ช่วยป้องกัน suboptimal routing และ loop"
+  },
+  {
+    "id": 32,
+    "lecture": "Guideline-Redistribution",
+    "question": "เมื่อทำ redistribution จาก static route เข้า OSPF จะปรากฏเป็น route ประเภทใดใน OSPF routing table?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "ปรากฏเป็น O (OSPF intra-area) เหมือน route ปกติที่ OSPF เรียนรู้เองภายใน area"
+      },
+      {
+        "key": "B",
+        "text": "ปรากฏเป็น O IA (OSPF inter-area) เหมือน route ที่ส่งมาจาก area อื่นผ่าน ABR"
+      },
+      {
+        "key": "C",
+        "text": "ปรากฏเป็น S (static) เหมือนเดิมเพราะ OSPF เก็บข้อมูลต้นทางของ route ไว้ด้วย"
+      },
+      {
+        "key": "D",
+        "text": "ปรากฏเป็น O E2 (OSPF external type 2) เนื่องจากเป็น route จากภายนอก OSPF domain"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "route ที่ถูก redistribute เข้า OSPF จะถูกจัดเป็น external route โดย default จะเป็น E2 (External Type 2) ซึ่ง metric จะไม่เพิ่มขึ้นเมื่อผ่าน Router แต่ละตัวใน OSPF domain ต่างจาก E1 ที่ metric จะสะสมเพิ่มขึ้น"
+  },
+  {
+    "id": 33,
+    "lecture": "Guideline-Redistribution",
+    "question": "ความแตกต่างหลักระหว่าง OSPF External Type 1 (E1) กับ Type 2 (E2) คืออะไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "E1 รวม internal cost กับ external cost ส่วน E2 ใช้เฉพาะ external cost ไม่รวม internal"
+      },
+      {
+        "key": "B",
+        "text": "E1 ใช้กับ route จาก IGP ส่วน E2 ใช้กับ route จาก EGP เช่น BGP เท่านั้น"
+      },
+      {
+        "key": "C",
+        "text": "E1 มี AD ต่ำกว่า E2 จึงถูกเลือกก่อนเสมอไม่ว่า metric จะเป็นเท่าไร"
+      },
+      {
+        "key": "D",
+        "text": "E1 ส่ง route ได้เฉพาะภายใน area ส่วน E2 ส่งข้าม area ได้ทุก area ใน OSPF domain"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "E1 จะรวม external metric กับ internal OSPF cost ในการไปถึง ASBR เข้าด้วยกัน ทำให้เลือกเส้นทางได้ดีกว่าเมื่อมีหลาย exit point ส่วน E2 (default) ใช้เฉพาะ external metric ที่ตั้งไว้ตอน redistribute ไม่ว่าจะอยู่ไกลจาก ASBR แค่ไหน"
+  },
+  {
+    "id": 34,
+    "lecture": "Guideline-Redistribution",
+    "question": "การใช้ tag ใน route-map ระหว่างทำ 2-way redistribution มีประโยชน์อย่างไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "tag ใช้เพื่อเพิ่มความเร็วในการ lookup route ใน routing table ให้เร็วขึ้น"
+      },
+      {
+        "key": "B",
+        "text": "tag ใช้เพื่อระบุ QoS priority ให้กับ route ที่ redistribute เข้ามาในแต่ละ protocol"
+      },
+      {
+        "key": "C",
+        "text": "tag ใช้เพื่อ mark route ที่ redistribute ไปแล้ว จะได้ filter ไม่ให้ถูก redistribute กลับมา"
+      },
+      {
+        "key": "D",
+        "text": "tag ใช้เพื่อบังคับให้ route ผ่าน Router ที่กำหนดตาม tag number เท่านั้น"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "ในการทำ 2-way redistribution การใช้ tag ช่วย mark route ที่ถูก redistribute ออกไปแล้ว เมื่อ route วนกลับมา route-map จะ match tag แล้ว deny ไม่ให้ redistribute กลับเข้ามาอีก ป้องกัน routing loop ได้อย่างมีประสิทธิภาพ"
+  },
+  {
+    "id": 35,
+    "lecture": "Guideline-Redistribution",
+    "question": "ถ้าทำ redistribution จาก EIGRP เข้า OSPF โดยไม่กำหนด metric-type เมื่อ Router ปลายทางของ OSPF ได้รับ route จะมี metric เป็นอย่างไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "metric จะเป็น 0 เพราะ OSPF ไม่รู้จัก EIGRP metric จึงใช้ค่า default เป็น 0"
+      },
+      {
+        "key": "B",
+        "text": "metric จะคงที่ตลอดเส้นทางเพราะ default เป็น E2 ซึ่งไม่รวม internal cost"
+      },
+      {
+        "key": "C",
+        "text": "metric จะเพิ่มขึ้นตามจำนวน hop เพราะ OSPF จะแปลงเป็น hop count โดยอัตโนมัติ"
+      },
+      {
+        "key": "D",
+        "text": "metric จะเท่ากับ EIGRP composite metric ที่แปลงเป็น OSPF cost โดยตรง"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "เมื่อ redistribute เข้า OSPF โดยไม่ระบุ metric-type จะใช้ default เป็น E2 (External Type 2) ซึ่ง metric จะคงที่ตลอดเส้นทางภายใน OSPF domain ไม่ว่า Router ปลายทางจะอยู่ไกลจาก ASBR แค่ไหนก็ตาม"
+  },
+  {
+    "id": 36,
+    "lecture": "Guideline-Redistribution",
+    "question": "ผู้ดูแลต้องการ redistribute เฉพาะบาง route จาก RIP เข้า OSPF โดยให้ผ่านเฉพาะ route ที่อยู่ใน subnet 172.16.0.0/16 ควรใช้วิธีใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "ใช้ route-map ร่วมกับ prefix-list หรือ ACL เพื่อ match เฉพาะ subnet ที่ต้องการ"
+      },
+      {
+        "key": "B",
+        "text": "ใช้ passive-interface บน interface ที่เชื่อมต่อกับ subnet อื่นที่ไม่ต้องการ redistribute"
+      },
+      {
+        "key": "C",
+        "text": "ใช้คำสั่ง network 172.16.0.0 ใน OSPF configuration เพื่อดึง route จาก RIP มาเฉพาะ subnet นี้"
+      },
+      {
+        "key": "D",
+        "text": "ตั้ง administrative distance ของ route อื่นให้สูงกว่า 255 เพื่อไม่ให้ถูก redistribute"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "route-map ร่วมกับ prefix-list หรือ ACL เป็นวิธีที่ถูกต้องในการกรอง route ที่จะ redistribute โดย match เงื่อนไข subnet ที่ต้องการแล้ว permit เฉพาะ route นั้น ส่วน route อื่นที่ไม่ตรงเงื่อนไขจะถูก deny โดย implicit deny ท้าย route-map"
+  },
+  {
+    "id": 37,
+    "lecture": "Guideline-ACL",
+    "question": "ทำไม Standard ACL ควรวางใกล้ destination มากกว่าใกล้ source?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "เพราะ Standard ACL กรองได้เฉพาะ source IP ถ้าวางใกล้ source จะบล็อก traffic ไปทุกที่ไม่ใช่แค่ destination ที่ต้องการ"
+      },
+      {
+        "key": "B",
+        "text": "เพราะ Standard ACL ทำงานได้เฉพาะ inbound direction จึงต้องวางใกล้ destination"
+      },
+      {
+        "key": "C",
+        "text": "เพราะ Standard ACL มีข้อจำกัดด้าน performance ถ้าวางใกล้ source จะทำให้ Router ช้า"
+      },
+      {
+        "key": "D",
+        "text": "เพราะ Standard ACL ต้องการข้อมูล destination IP ซึ่งมีเฉพาะที่ Router ใกล้ destination"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Standard ACL กรองได้เฉพาะ source IP address ถ้าวางใกล้ source จะบล็อก traffic จาก source นั้นไปทุก destination ไม่ใช่แค่ที่ต้องการ จึงควรวางใกล้ destination เพื่อบล็อกเฉพาะ traffic ที่เข้ามายัง destination ที่ต้องการ protect เท่านั้น"
+  },
+  {
+    "id": 38,
+    "lecture": "Guideline-ACL",
+    "question": "Extended ACL ควรวางใกล้ source เพราะเหตุผลใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "เพราะ Extended ACL ใช้ CPU สูงจึงควรกระจายภาระให้ Router ใกล้ source รับผิดชอบ"
+      },
+      {
+        "key": "B",
+        "text": "เพราะ Extended ACL กรองได้ทั้ง source IP, destination IP และ port จึงบล็อกได้แม่นยำตั้งแต่ต้นทาง"
+      },
+      {
+        "key": "C",
+        "text": "เพราะ Extended ACL ต้องใช้ ARP table ของ source network ในการทำ matching"
+      },
+      {
+        "key": "D",
+        "text": "เพราะ Extended ACL ไม่สามารถ apply ที่ Router ใกล้ destination ได้ตาม design ของ IOS"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Extended ACL กรองได้ทั้ง source IP, destination IP, protocol และ port number จึงสามารถระบุ traffic ที่ต้องการบล็อกได้อย่างแม่นยำ การวางใกล้ source ช่วยบล็อก unwanted traffic ตั้งแต่ต้นทาง ลด bandwidth ที่สูญเปล่าจากการส่ง traffic ข้าม network โดยไม่จำเป็น"
+  },
+  {
+    "id": 39,
+    "lecture": "Guideline-ACL",
+    "question": "ผู้ดูแลสร้าง ACL ด้วยคำสั่ง access-list 10 permit 192.168.1.0 0.0.0.255 แล้ว apply บน interface โดยไม่เพิ่ม rule อื่น traffic จาก 10.0.0.1 จะเป็นอย่างไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "ผ่านได้ปกติเพราะ ACL ที่ไม่มี deny จะ permit ทุก traffic โดย default"
+      },
+      {
+        "key": "B",
+        "text": "ถูก drop เพราะมี implicit deny any ท้าย ACL ที่บล็อก traffic ที่ไม่ match rule ใด ๆ"
+      },
+      {
+        "key": "C",
+        "text": "ผ่านได้แต่ถูก log ไว้ว่าเป็น traffic ที่ไม่ตรงกับ ACL rule ที่กำหนด"
+      },
+      {
+        "key": "D",
+        "text": "ถูก drop เฉพาะครั้งแรกแล้วจะผ่านได้ในครั้งต่อไปเพราะ ACL จะ cache ผลลัพธ์"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "ทุก ACL จะมี implicit deny any อยู่ท้ายสุดเสมอ traffic ที่ไม่ match กับ rule ใด ๆ ในรายการจะถูก deny ดังนั้น traffic จาก 10.0.0.1 ซึ่งไม่ match กับ permit 192.168.1.0/24 จะถูก drop โดย implicit deny any"
+  },
+  {
+    "id": 40,
+    "lecture": "Guideline-ACL",
+    "question": "wildcard mask 0.0.0.255 หมายความว่าอย่างไรในการ matching ของ ACL?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "ตรวจสอบเฉพาะ octet สุดท้ายว่าตรงกับค่าที่กำหนดหรือไม่ ไม่สนใจ 3 octet แรก"
+      },
+      {
+        "key": "B",
+        "text": "ตรวจสอบ 3 octet แรกว่าตรงกับค่าที่กำหนด ส่วน octet สุดท้ายไม่ต้องตรงก็ได้ (ค่าใดก็ได้)"
+      },
+      {
+        "key": "C",
+        "text": "ตรวจสอบทั้ง 4 octet แต่ยอมให้ octet สุดท้ายต่างได้ไม่เกิน 255 จากค่าที่กำหนด"
+      },
+      {
+        "key": "D",
+        "text": "ตรวจสอบเฉพาะ octet แรกว่าตรงกับค่าที่กำหนด ส่วน 3 octet หลังไม่ต้องตรงก็ได้"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "ใน wildcard mask bit 0 หมายถึง ต้องตรง (check) และ bit 1 หมายถึง ไม่ต้องตรง (ignore) ดังนั้น 0.0.0.255 (00000000.00000000.00000000.11111111) หมายถึงตรวจสอบ 3 octet แรกให้ตรง ส่วน octet สุดท้ายเป็นค่าใดก็ได้"
+  },
+  {
+    "id": 41,
+    "lecture": "Guideline-ACL",
+    "question": "ลำดับ (order) ของ rule ใน ACL มีผลต่อการทำงานอย่างไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "ACL ตรวจสอบ rule จากบนลงล่าง เมื่อ match rule แรกจะหยุดตรวจทันทีไม่ดู rule ที่เหลือ"
+      },
+      {
+        "key": "B",
+        "text": "ACL ตรวจสอบทุก rule แล้วเลือก rule ที่ specific ที่สุดไม่ว่าจะอยู่ลำดับไหนก็ตาม"
+      },
+      {
+        "key": "C",
+        "text": "ACL ตรวจสอบทุก rule แล้วใช้ผลลัพธ์ของ rule สุดท้ายที่ match เป็นคำตอบสุดท้าย"
+      },
+      {
+        "key": "D",
+        "text": "ACL สุ่มเลือก rule ที่จะใช้ตรวจสอบเพื่อเพิ่มประสิทธิภาพในการ process traffic"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "ACL ทำงานแบบ top-down sequential โดยตรวจสอบ rule จากบนลงล่าง เมื่อ packet match กับ rule ใดจะ apply action ของ rule นั้นทันที (permit หรือ deny) แล้วหยุดตรวจ rule ที่เหลือ ดังนั้นลำดับของ rule จึงสำคัญมาก"
+  },
+  {
+    "id": 42,
+    "lecture": "Guideline-ACL",
+    "question": "กำหนด ACL ต่อไปนี้: (1) deny 192.168.1.0 0.0.0.255 (2) permit any ถ้าสลับลำดับเป็น (1) permit any (2) deny 192.168.1.0 0.0.0.255 จะเกิดผลอย่างไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "ผลลัพธ์เหมือนเดิมเพราะ ACL จะจัดลำดับ rule ใหม่อัตโนมัติตาม specificity"
+      },
+      {
+        "key": "B",
+        "text": "traffic จาก 192.168.1.0/24 จะถูก deny เหมือนเดิมเพราะ deny มีลำดับความสำคัญสูงกว่า permit"
+      },
+      {
+        "key": "C",
+        "text": "traffic ทั้งหมดรวมถึง 192.168.1.0/24 จะ match permit any ก่อนจึงผ่านได้หมด deny ไม่มีผล"
+      },
+      {
+        "key": "D",
+        "text": "Router จะแจ้ง error เพราะไม่สามารถวาง permit any ก่อน deny rule ที่ specific กว่าได้"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "เมื่อสลับลำดับให้ permit any อยู่ก่อน traffic ทุก packet จะ match กับ permit any ทันทีแล้วหยุดตรวจ ทำให้ rule deny 192.168.1.0/24 ที่อยู่ด้านล่างไม่มีผลเลย เพราะไม่มี packet ไหนจะไปถึง rule นั้น"
+  },
+  {
+    "id": 43,
+    "lecture": "Guideline-ACL",
+    "question": "Named ACL มีข้อดีอะไรเหนือ Numbered ACL?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Named ACL ทำงานเร็วกว่า Numbered ACL เพราะใช้ hash table ในการค้นหา rule"
+      },
+      {
+        "key": "B",
+        "text": "Named ACL สามารถแก้ไข ลบ หรือแทรก rule ได้โดยไม่ต้องลบ ACL ทั้งหมดแล้วสร้างใหม่"
+      },
+      {
+        "key": "C",
+        "text": "Named ACL รองรับ IPv6 ส่วน Numbered ACL รองรับเฉพาะ IPv4 เท่านั้น"
+      },
+      {
+        "key": "D",
+        "text": "Named ACL ไม่มี implicit deny any ท้าย ACL ทำให้ปลอดภัยกว่า Numbered ACL"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Named ACL สามารถแก้ไข ลบ หรือแทรก rule ได้ทีละบรรทัดโดยใช้ sequence number ส่วน Numbered ACL (แบบดั้งเดิม) ถ้าต้องการแก้ rule ต้องลบ ACL ทั้งหมดแล้วสร้างใหม่ ทำให้ Named ACL ดูแลรักษาง่ายกว่า"
+  },
+  {
+    "id": 44,
+    "lecture": "Guideline-ACL",
+    "question": "keyword established ใน Extended ACL ตรวจสอบอะไรใน TCP packet?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "ตรวจสอบว่า packet มี SYN flag ตั้งอยู่ซึ่งบ่งบอกว่าเป็นการเริ่ม connection ใหม่"
+      },
+      {
+        "key": "B",
+        "text": "ตรวจสอบว่า packet มี ACK หรือ RST flag ตั้งอยู่ซึ่งบ่งบอกว่า connection ถูก establish แล้ว"
+      },
+      {
+        "key": "C",
+        "text": "ตรวจสอบว่า packet อยู่ใน connection tracking table ของ Router หรือไม่"
+      },
+      {
+        "key": "D",
+        "text": "ตรวจสอบว่า TCP 3-way handshake เสร็จสมบูรณ์แล้วโดยดูจาก session state table"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "keyword established ตรวจสอบ TCP flag ว่ามี ACK หรือ RST flag ตั้งอยู่หรือไม่ ซึ่งบ่งบอกว่า packet เป็นส่วนหนึ่งของ connection ที่ถูก establish แล้ว ไม่ใช่ packet SYN แรกที่เริ่ม connection ใหม่ จึงอนุญาตเฉพาะ return traffic"
+  },
+  {
+    "id": 45,
+    "lecture": "Guideline-ACL",
+    "question": "ถ้าต้องการอนุญาตให้เฉพาะ host 192.168.1.10 เข้าถึง web server 10.0.0.5 port 80 ควรใช้ ACL ประเภทใดและวางที่ใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Standard ACL วางที่ interface ใกล้ destination เพราะกรอง source IP ได้เพียงพอ"
+      },
+      {
+        "key": "B",
+        "text": "Extended ACL วางที่ interface ใกล้ source เพราะระบุ source, destination และ port ได้ครบถ้วน"
+      },
+      {
+        "key": "C",
+        "text": "Standard ACL วางที่ interface ใกล้ source เพื่อบล็อก traffic ที่ไม่ต้องการตั้งแต่ต้นทาง"
+      },
+      {
+        "key": "D",
+        "text": "Extended ACL วางที่ interface ใกล้ destination เพราะต้องรู้ destination port ก่อนจึงจะกรองได้"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "ต้องใช้ Extended ACL เพราะต้องกรองทั้ง source IP (192.168.1.10), destination IP (10.0.0.5) และ destination port (80) โดยวางใกล้ source ตามหลักการของ Extended ACL เพื่อบล็อก unwanted traffic ตั้งแต่ต้นทาง ลด bandwidth ที่สูญเปล่า"
+  },
+  {
+    "id": 46,
+    "lecture": "Guideline-ACL",
+    "question": "wildcard mask 0.0.3.255 ใช้ match กับ IP range ใด เมื่อใช้กับ address 172.16.0.0?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "172.16.0.0 ถึง 172.16.0.255 (เฉพาะ 256 host ใน subnet /24 เดียว)"
+      },
+      {
+        "key": "B",
+        "text": "172.16.0.0 ถึง 172.16.3.255 (รวม 1024 host ใน 4 subnet /24 ติดกัน)"
+      },
+      {
+        "key": "C",
+        "text": "172.16.0.0 ถึง 172.16.255.255 (ทั้ง class B network ครึ่งหนึ่งคือ 65536 host)"
+      },
+      {
+        "key": "D",
+        "text": "172.16.0.0 ถึง 172.16.3.0 (เฉพาะ network address ของ 4 subnet เท่านั้น)"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "wildcard mask 0.0.3.255 ในรูป binary คือ 00000000.00000000.00000011.11111111 หมายถึง 2 octet แรกต้องตรง octet ที่ 3 ยอมให้ต่างได้ใน 2 bit ล่าง (0-3) และ octet ที่ 4 เป็นค่าใดก็ได้ ดังนั้น match 172.16.0.0 ถึง 172.16.3.255 รวม 1024 host"
+  },
+  {
+    "id": 47,
+    "lecture": "Guideline-ACL",
+    "question": "กำหนด ACL: (1) permit tcp 192.168.1.0 0.0.0.255 any eq 80 (2) permit tcp 192.168.1.0 0.0.0.255 any eq 443 (3) deny ip any any ถ้า host 192.168.1.5 ส่ง ping ไปยัง 8.8.8.8 จะเกิดอะไรขึ้น?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "ping สำเร็จเพราะ source IP อยู่ใน range ที่ permit ไว้แล้วจึงผ่าน ACL ได้"
+      },
+      {
+        "key": "B",
+        "text": "ping ถูก drop เพราะ ICMP ไม่ใช่ TCP จึงไม่ match rule 1 และ 2 แล้วถูก deny โดย rule 3"
+      },
+      {
+        "key": "C",
+        "text": "ping สำเร็จเพราะ deny ip any any ไม่มีผลกับ ICMP เนื่องจาก ICMP ไม่ใช่ IP protocol"
+      },
+      {
+        "key": "D",
+        "text": "ping ถูก drop เพราะ ACL จะ deny ทุก traffic ที่ไม่ใช่ HTTP โดย implicit deny any"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "ping ใช้ ICMP protocol ไม่ใช่ TCP จึงไม่ match กับ rule 1 (TCP port 80) หรือ rule 2 (TCP port 443) เมื่อตรวจถึง rule 3 (deny ip any any) ซึ่ง match ทุก protocol รวมถึง ICMP จะถูก deny ทำให้ ping ไม่ผ่าน"
+  },
+  {
+    "id": 48,
+    "lecture": "Guideline-ACL",
+    "question": "Reflexive ACL ทำงานต่างจาก keyword established อย่างไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Reflexive ACL สร้าง temporary entry สำหรับ return traffic ของทุก protocol ส่วน established ทำได้เฉพาะ TCP"
+      },
+      {
+        "key": "B",
+        "text": "Reflexive ACL ทำงานเฉพาะกับ UDP ส่วน established ทำงานเฉพาะกับ TCP เท่านั้น"
+      },
+      {
+        "key": "C",
+        "text": "Reflexive ACL ตรวจ TCP flag เหมือน established แต่เพิ่มการตรวจ sequence number ด้วย"
+      },
+      {
+        "key": "D",
+        "text": "Reflexive ACL เป็นแค่ชื่อเรียกอีกแบบของ established keyword ทำงานเหมือนกันทุกประการ"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Reflexive ACL สร้าง temporary ACL entry โดยอัตโนมัติเมื่อมี outbound traffic ออกไป เพื่ออนุญาต return traffic กลับเข้ามา รองรับทุก protocol รวมถึง UDP และ ICMP ส่วน established ตรวจเฉพาะ TCP ACK/RST flag จึงใช้ได้กับ TCP เท่านั้น"
+  },
+  {
+    "id": 49,
+    "lecture": "Guideline-ACL",
+    "question": "Dynamic ACL (Lock-and-Key) ต้องทำอะไรก่อนจึงจะอนุญาตให้ traffic ผ่านได้?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "ผู้ใช้ต้อง Telnet เข้า Router เพื่อ authenticate ก่อน จากนั้น ACL จะเปิดให้ traffic ผ่านชั่วคราว"
+      },
+      {
+        "key": "B",
+        "text": "ผู้ดูแลต้อง enable ACL ด้วยมือทุกครั้งที่มี traffic เข้ามาแล้วปิดเมื่อเสร็จสิ้น"
+      },
+      {
+        "key": "C",
+        "text": "Router ต้องตรวจสอบ certificate ของ source device ก่อนอนุญาตให้ traffic ผ่าน"
+      },
+      {
+        "key": "D",
+        "text": "ผู้ใช้ต้องส่ง ICMP echo request ไปยัง Router ก่อนเพื่อเปิด ACL entry ชั่วคราว"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Dynamic ACL ต้องให้ผู้ใช้ Telnet เข้ามาที่ Router เพื่อ authenticate ก่อน เมื่อ authentication สำเร็จ Router จะสร้าง temporary ACL entry ที่อนุญาตให้ traffic จาก source IP นั้นผ่านได้ตามเวลาที่กำหนด เมื่อหมดเวลา entry จะถูกลบอัตโนมัติ"
+  },
+  {
+    "id": 50,
+    "lecture": "Guideline-ACL",
+    "question": "ถ้า ACL ถูก apply บน interface ด้วย ip access-group 101 in แต่ ACL 101 ยังไม่ได้ถูกสร้าง (ไม่มี rule ใด ๆ) จะเกิดอะไรขึ้นกับ traffic?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "traffic ทั้งหมดจะถูก deny เพราะ ACL ว่างมีแค่ implicit deny any อย่างเดียว"
+      },
+      {
+        "key": "B",
+        "text": "traffic ทั้งหมดจะผ่านได้ปกติเพราะ ACL ที่ไม่มี rule จะไม่กรองอะไรเลย"
+      },
+      {
+        "key": "C",
+        "text": "Router จะแจ้ง error และ reject คำสั่ง ip access-group เพราะ ACL ยังไม่มีอยู่จริง"
+      },
+      {
+        "key": "D",
+        "text": "interface จะ shutdown อัตโนมัติเพราะ ACL ที่อ้างอิงไม่มีอยู่ถือเป็น configuration error"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "ใน Cisco IOS ถ้า ACL ที่อ้างอิงยังไม่ถูกสร้าง (ไม่มี rule ใด ๆ) Router จะถือว่า ACL นั้นว่างเปล่าและอนุญาตให้ traffic ทั้งหมดผ่านได้ ซึ่งต่างจาก ACL ที่มี rule อยู่แล้วซึ่งจะมี implicit deny any ท้าย"
+  },
+  {
+    "id": 51,
+    "lecture": "Guideline-ACL",
+    "question": "ผู้ดูแลต้องการบล็อก host 10.1.1.1 ไม่ให้เข้าถึง FTP server 192.168.1.100 แต่ยังให้เข้าถึงบริการอื่นได้ ACL ข้อใดถูกต้อง?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "access-list 100 deny tcp host 10.1.1.1 host 192.168.1.100 eq 21 แล้วตามด้วย permit ip any any"
+      },
+      {
+        "key": "B",
+        "text": "access-list 10 deny host 10.1.1.1 แล้วตามด้วย permit any เพื่อบล็อกเฉพาะ host นี้"
+      },
+      {
+        "key": "C",
+        "text": "access-list 100 deny ip host 10.1.1.1 host 192.168.1.100 แล้วตามด้วย permit ip any any"
+      },
+      {
+        "key": "D",
+        "text": "access-list 100 deny tcp any host 192.168.1.100 eq 21 แล้วตามด้วย permit ip any any"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "ต้องใช้ Extended ACL เพื่อระบุทั้ง source (10.1.1.1), destination (192.168.1.100) และ port (FTP=21) ตามด้วย permit ip any any เพื่อให้ traffic อื่นผ่านได้ ตัวเลือก B ใช้ Standard ACL บล็อกทุก traffic จาก host นั้น ตัวเลือก C บล็อกทุก protocol ไม่ใช่แค่ FTP ตัวเลือก D บล็อก FTP จากทุก source"
+  },
+  {
+    "id": 52,
+    "lecture": "Guideline-ACL",
+    "question": "ถ้า Router มี ACL ที่ permit tcp any any established ใน inbound direction ของ interface ด้านนอก จะอนุญาต traffic แบบใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "อนุญาต TCP connection ใหม่จากภายนอกเข้ามาได้ทุก port เพราะ established ไม่ได้จำกัดอะไร"
+      },
+      {
+        "key": "B",
+        "text": "อนุญาตเฉพาะ return traffic ของ TCP connection ที่เริ่มจากภายในเพราะตรวจ ACK/RST flag"
+      },
+      {
+        "key": "C",
+        "text": "อนุญาต traffic ทั้ง TCP และ UDP ที่เป็นส่วนหนึ่งของ session ที่มีอยู่แล้ว"
+      },
+      {
+        "key": "D",
+        "text": "อนุญาตเฉพาะ TCP SYN-ACK packet ที่เป็นขั้นตอนที่สองของ 3-way handshake เท่านั้น"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "established ตรวจว่า TCP packet มี ACK หรือ RST flag ซึ่งจะมีใน packet ที่เป็นส่วนหนึ่งของ connection ที่ establish แล้ว (ไม่ใช่ SYN packet แรกที่เริ่ม connection) จึงอนุญาตเฉพาะ return traffic ของ connection ที่เริ่มจากภายใน แต่บล็อก connection ใหม่จากภายนอก"
+  },
+  {
+    "id": 53,
+    "lecture": "Guideline-ACL",
+    "question": "ข้อจำกัดของ keyword established คืออะไรที่ทำให้ไม่ปลอดภัย 100%?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "attacker สามารถ spoof packet ที่มี ACK flag ตั้งอยู่เพื่อผ่าน ACL ได้เพราะไม่มี state tracking จริง"
+      },
+      {
+        "key": "B",
+        "text": "established ไม่สามารถทำงานกับ port number ที่สูงกว่า 1024 ได้จึงป้องกันได้ไม่ครบ"
+      },
+      {
+        "key": "C",
+        "text": "established มี timeout เพียง 30 วินาทีทำให้ connection ที่ใช้เวลานานถูกตัดทิ้ง"
+      },
+      {
+        "key": "D",
+        "text": "established ไม่สามารถทำงานร่วมกับ NAT ได้จึงใช้ได้เฉพาะ network ที่ไม่มี NAT"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "established เพียงแค่ตรวจ TCP flag (ACK/RST) ใน packet header ไม่ได้ track state ของ connection จริง attacker สามารถสร้าง packet ที่มี ACK flag ตั้งอยู่แล้วส่งเข้ามาผ่าน ACL ได้ ต่างจาก stateful firewall ที่ track connection state จริง"
+  },
+  {
+    "id": 54,
+    "lecture": "Guideline-ACL",
+    "question": "ในการเขียน wildcard mask เพื่อ match เฉพาะ even number ใน octet สุดท้าย (เช่น .0, .2, .4, ..., .254) ของ subnet 10.0.0.0 ควรใช้ wildcard mask ใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "0.0.0.254 เพราะ bit สุดท้ายเป็น 0 บังคับให้ match เฉพาะเลขคู่เท่านั้น"
+      },
+      {
+        "key": "B",
+        "text": "0.0.0.1 เพราะ ignore bit สุดท้ายทำให้ match ได้ทั้งเลขคู่และเลขคี่ที่ต่างกัน 1"
+      },
+      {
+        "key": "C",
+        "text": "0.0.0.255 เพราะ ignore ทั้ง octet สุดท้ายแล้วกรอง even number ด้วย logic อื่น"
+      },
+      {
+        "key": "D",
+        "text": "0.0.0.128 เพราะแบ่ง octet สุดท้ายเป็นครึ่งบนครึ่งล่างซึ่งตรงกับเลขคู่เลขคี่"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "wildcard mask 0.0.0.254 ในรูป binary octet สุดท้ายคือ 11111110 หมายถึง bit 7-1 เป็น don't care (ignore) แต่ bit 0 (least significant) เป็น 0 ต้องตรง เมื่อใช้กับ address 10.0.0.0 (bit 0 = 0) จะ match เฉพาะ address ที่ bit 0 เป็น 0 คือเลขคู่"
+  },
+  {
+    "id": 55,
+    "lecture": "Guideline-ACL",
+    "question": "กำหนด ACL: (1) permit tcp 172.16.0.0 0.0.255.255 host 10.0.0.1 eq 22 (2) deny tcp 172.16.1.0 0.0.0.255 any eq 22 (3) permit ip any any ถ้า host 172.16.1.50 ต้องการ SSH ไปยัง 10.0.0.1 จะเกิดอะไรขึ้น?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "ถูก deny โดย rule 2 เพราะ 172.16.1.50 อยู่ใน 172.16.1.0/24 ที่ถูก deny SSH"
+      },
+      {
+        "key": "B",
+        "text": "ผ่านได้โดย rule 3 เพราะ permit ip any any อนุญาตทุก traffic ที่ไม่ match rule ก่อนหน้า"
+      },
+      {
+        "key": "C",
+        "text": "ผ่านได้โดย rule 1 เพราะ 172.16.1.50 อยู่ใน 172.16.0.0/16 ที่ permit SSH ไป 10.0.0.1"
+      },
+      {
+        "key": "D",
+        "text": "ถูก deny โดย implicit deny any เพราะ SSH traffic ไม่ match กับ rule ใดเลย"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "ACL ตรวจแบบ top-down เมื่อ 172.16.1.50 ส่ง SSH ไป 10.0.0.1 จะ match rule 1 ก่อน เพราะ 172.16.1.50 อยู่ใน range 172.16.0.0/16 (wildcard 0.0.255.255) และ destination เป็น 10.0.0.1 port 22 ตรงทุกเงื่อนไข จึงถูก permit ทันทีโดยไม่ตรวจ rule 2"
+  },
+  {
+    "id": 56,
+    "lecture": "Guideline-ACL",
+    "question": "ผู้ดูแลต้องการ apply ACL บน interface Serial0/0 เพื่อกรอง traffic ที่เข้ามา แต่พิมพ์คำสั่ง ip access-group 101 out แทน in จะเกิดผลอย่างไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "ACL จะกรอง traffic ที่ออกจาก interface แทนที่จะกรอง traffic ที่เข้ามา ซึ่งอาจบล็อก traffic ผิดทิศทาง"
+      },
+      {
+        "key": "B",
+        "text": "Router จะแจ้ง error เพราะ Serial interface รองรับเฉพาะ inbound ACL เท่านั้น"
+      },
+      {
+        "key": "C",
+        "text": "ACL จะกรองทั้ง inbound และ outbound เพราะ out เป็น superset ของ in อยู่แล้ว"
+      },
+      {
+        "key": "D",
+        "text": "ACL จะไม่มีผลใด ๆ เพราะ Router จะตรวจจับว่า direction ผิดแล้ว disable ACL อัตโนมัติ"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "direction ของ ACL สำคัญมาก in กรอง traffic ที่เข้ามาทาง interface ส่วน out กรอง traffic ที่ออกจาก interface ถ้าตั้ง out แทน in จะกรอง traffic ผิดทิศทาง อาจบล็อก traffic ที่ควรผ่านหรือปล่อย traffic ที่ควรบล็อก"
+  },
+  {
+    "id": 57,
+    "lecture": "Guideline-ACL",
+    "question": "Reflexive ACL สร้าง temporary entry เมื่อมี outbound traffic ออกไป temporary entry นี้จะถูกลบเมื่อใด?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "เมื่อ Router reboot เท่านั้น เพราะ reflexive ACL entry ถูกเก็บใน NVRAM ถาวร"
+      },
+      {
+        "key": "B",
+        "text": "เมื่อ session timeout หรือเมื่อตรวจพบ TCP FIN/RST flag ที่บ่งบอกว่า session จบแล้ว"
+      },
+      {
+        "key": "C",
+        "text": "เมื่อผู้ดูแลลบ entry ด้วยมือเท่านั้น เพราะ reflexive ACL ไม่มี auto-cleanup mechanism"
+      },
+      {
+        "key": "D",
+        "text": "เมื่อมี traffic ใหม่เข้ามาที่ต้องใช้ entry ใหม่แทน เพราะ reflexive ACL มี entry จำกัด 100 รายการ"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Reflexive ACL สร้าง temporary entry ที่จะถูกลบอัตโนมัติเมื่อ session timeout (ค่า default กำหนดได้) หรือเมื่อตรวจพบ TCP FIN หรือ RST flag ที่บ่งบอกว่า TCP session จบแล้ว สำหรับ UDP จะใช้ timeout อย่างเดียวเพราะเป็น connectionless"
+  },
+  {
+    "id": 58,
+    "lecture": "Guideline-ACL",
+    "question": "ถ้าต้องการอนุญาต traffic จาก subnet 192.168.4.0/22 ทั้งหมด wildcard mask ที่ใช้กับ ACL ควรเป็นเท่าไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "0.0.0.255 ซึ่ง match เฉพาะ 192.168.4.0 ถึง 192.168.4.255 จำนวน 256 host"
+      },
+      {
+        "key": "B",
+        "text": "0.0.1.255 ซึ่ง match เฉพาะ 192.168.4.0 ถึง 192.168.5.255 จำนวน 512 host"
+      },
+      {
+        "key": "C",
+        "text": "0.0.3.255 ซึ่ง match 192.168.4.0 ถึง 192.168.7.255 จำนวน 1024 host ตรงกับ /22"
+      },
+      {
+        "key": "D",
+        "text": "0.0.7.255 ซึ่ง match 192.168.4.0 ถึง 192.168.11.255 จำนวน 2048 host"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "/22 subnet mask คือ 255.255.252.0 wildcard mask คือ 0.0.3.255 (255.255.255.255 - 255.255.252.0) ซึ่งจะ match IP ตั้งแต่ 192.168.4.0 ถึง 192.168.7.255 รวม 1024 host ตรงกับขนาดของ /22 subnet"
+  },
+  {
+    "id": 59,
+    "lecture": "Guideline-ACL",
+    "question": "เมื่อ apply ACL บน VTY line ด้วยคำสั่ง access-class 10 in จะมีผลอย่างไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "กรอง traffic ทั้งหมดที่ผ่าน Router ตาม ACL 10 เหมือนกับ apply บน physical interface"
+      },
+      {
+        "key": "B",
+        "text": "กรองเฉพาะ Telnet/SSH traffic ที่จะเข้ามาจัดการ Router ผ่าน VTY โดย ACL 10 กำหนดว่า source IP ใดเข้าได้"
+      },
+      {
+        "key": "C",
+        "text": "กรอง traffic ที่ Router ส่งออกไปทาง VTY เช่น SNMP trap และ syslog message"
+      },
+      {
+        "key": "D",
+        "text": "เข้ารหัส Telnet session ด้วย ACL key ที่กำหนดใน ACL 10 เพื่อเพิ่มความปลอดภัย"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "access-class บน VTY line กรองเฉพาะ Telnet/SSH connection ที่จะเข้ามาจัดการ Router โดย in หมายถึงกรอง connection ขาเข้า ACL 10 จะกำหนดว่า source IP ใดได้รับอนุญาตให้ remote access เข้า Router ไม่เกี่ยวกับ traffic ที่ผ่าน Router"
+  },
+  {
+    "id": 60,
+    "lecture": "Guideline-ACL",
+    "question": "กำหนด ACL: (1) deny tcp any host 10.0.0.5 eq 80 (2) permit tcp any host 10.0.0.5 eq 443 (3) permit icmp any host 10.0.0.5 ถ้า host ภายนอกส่ง HTTPS request ไปยัง 10.0.0.5 และส่ง HTTP request ไปยัง 10.0.0.10 จะเกิดอะไรขึ้น?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "HTTPS ไป 10.0.0.5 ผ่านได้ และ HTTP ไป 10.0.0.10 ก็ผ่านได้เพราะ destination ต่างกัน"
+      },
+      {
+        "key": "B",
+        "text": "HTTPS ไป 10.0.0.5 ผ่านได้ แต่ HTTP ไป 10.0.0.10 ถูก drop โดย implicit deny any"
+      },
+      {
+        "key": "C",
+        "text": "ทั้ง HTTPS ไป 10.0.0.5 และ HTTP ไป 10.0.0.10 ถูก drop โดย rule 1 ทั้งคู่"
+      },
+      {
+        "key": "D",
+        "text": "HTTPS ไป 10.0.0.5 ถูก drop โดย rule 1 เพราะ HTTPS กับ HTTP เป็น web traffic เหมือนกัน"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "HTTPS ไป 10.0.0.5 (TCP port 443) ไม่ match rule 1 (port 80) แต่ match rule 2 (port 443) จึงผ่านได้ ส่วน HTTP ไป 10.0.0.10 ไม่ match rule 1 (destination ไม่ใช่ 10.0.0.5) ไม่ match rule 2 และ 3 (destination ไม่ใช่ 10.0.0.5) จึงถูก drop โดย implicit deny any"
+  }
+]
