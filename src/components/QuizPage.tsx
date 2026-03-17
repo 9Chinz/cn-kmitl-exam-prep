@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useQuizStore } from "../store/quizStore";
-import { ResetDialog } from "./ResetDialog";
+import { MenuDialog } from "./MenuDialog";
 import { formatTime } from "../lib/utils";
 
 const levelLabels = { easy: "Easy", normal: "Normal", hard: "Hard" };
@@ -25,8 +25,9 @@ export function QuizPage() {
     nextQuestion,
   } = useQuizStore();
 
-  const [showReset, setShowReset] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
   const [elapsed, setElapsed] = useState(0);
+  const setPage = useQuizStore((s) => s.setPage);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -38,6 +39,17 @@ export function QuizPage() {
     }, 1000);
     return () => clearInterval(interval);
   }, [totalElapsedTime, questionStartTime, answers, currentIndex]);
+
+  // Handle browser back button
+  useEffect(() => {
+    history.pushState(null, "", location.href);
+    const onPopState = () => {
+      history.pushState(null, "", location.href);
+      setPage("start");
+    };
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, [setPage]);
 
   const question = questions[currentIndex];
   if (!question || !level) return null;
@@ -97,10 +109,15 @@ export function QuizPage() {
               {formatTime(elapsed)}
             </span>
             <button
-              onClick={() => setShowReset(true)}
-              className="text-xs px-3 py-1.5 rounded-lg border border-border text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-colors"
+              onClick={() => setShowMenu(true)}
+              className="w-8 h-8 rounded-lg border border-border text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-colors flex items-center justify-center"
+              aria-label="Menu"
             >
-              Reset
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="4" y1="6" x2="20" y2="6" />
+                <line x1="4" y1="12" x2="20" y2="12" />
+                <line x1="4" y1="18" x2="20" y2="18" />
+              </svg>
             </button>
           </div>
         </div>
@@ -186,7 +203,7 @@ export function QuizPage() {
         )}
       </div>
 
-      <ResetDialog open={showReset} onClose={() => setShowReset(false)} />
+      <MenuDialog open={showMenu} onClose={() => setShowMenu(false)} />
     </div>
   );
 }
