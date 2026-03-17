@@ -1,24 +1,12 @@
 import { useState } from "react";
-import { useQuizStore } from "../store/quizStore";
-import { formatTime } from "../lib/utils";
-
-const lectureNames: Record<string, string> = {
-  "Lec8-Ethernet": "Lec 8 \u00b7 Ethernet & Data Link",
-  "Lec9A-NetworkLayer": "Lec 9A \u00b7 Network Layer & IPv4",
-  "Lec9B-Subnetting": "Lec 9B \u00b7 Subnetting & VLSM",
-  "Lec10-VLAN": "Lec 10 \u00b7 VLAN, DHCP & IPv6",
-  "Lec11-Routing": "Lec 11 \u00b7 Routing",
-  "Lec12-Transport": "Lec 12 \u00b7 Transport & App Layer",
-};
-
-const lectureOrder = [
-  "Lec8-Ethernet",
-  "Lec9A-NetworkLayer",
-  "Lec9B-Subnetting",
-  "Lec10-VLAN",
-  "Lec11-Routing",
-  "Lec12-Transport",
-];
+import { useQuizStore } from "@/store/quizStore";
+import { PageHeader } from "@/components/molecules/PageHeader";
+import { ScoreText } from "@/components/atoms/ScoreText";
+import { StatBox } from "@/components/molecules/StatBox";
+import { LectureStatRow } from "@/components/molecules/LectureStatRow";
+import { Button } from "@/components/atoms/Button";
+import { lectureOrder, lectureNames } from "@/constants/lectures";
+import { formatTime, getScoreColor, getBarColor } from "@/lib/utils";
 
 export function ResultPage() {
   const { questions, answers, level, totalElapsedTime, questionTimes, setPage, resetQuiz } = useQuizStore();
@@ -66,32 +54,20 @@ export function ResultPage() {
 
   const weakAreas = lectureStats.filter((s) => s.percentage < 60);
 
-  const getScoreColor = (pct: number) => {
-    if (pct >= 80) return "text-green-600 dark:text-green-400";
-    if (pct >= 60) return "text-yellow-600 dark:text-yellow-400";
-    return "text-red-600 dark:text-red-400";
-  };
-
-  const getBarColor = (pct: number) => {
-    if (pct >= 80) return "bg-green-500";
-    if (pct >= 60) return "bg-yellow-500";
-    return "bg-red-500";
-  };
-
   if (showReview) {
     return (
       <div className="min-h-svh bg-background">
-        <div className="sticky top-0 z-10 bg-background/95 backdrop-blur-sm border-b border-border px-4 py-3">
-          <div className="max-w-lg mx-auto flex items-center justify-between">
-            <h3 className="font-bold">Review Answers</h3>
+        <PageHeader
+          title="Review Answers"
+          right={
             <button
               onClick={() => setShowReview(false)}
               className="text-sm px-3 py-1.5 rounded-lg border border-border hover:bg-accent transition-colors"
             >
               กลับ
             </button>
-          </div>
-        </div>
+          }
+        />
         <div className="max-w-lg mx-auto px-4 py-4 space-y-4">
           {questions.map((q, i) => {
             const userAnswer = answers[i];
@@ -132,9 +108,7 @@ export function ResultPage() {
       <div className="max-w-lg mx-auto">
         {/* Score */}
         <div className="text-center mb-8">
-          <div className={`text-6xl font-bold mb-2 ${getScoreColor(percentage)}`}>
-            {percentage}%
-          </div>
+          <ScoreText percentage={percentage} className="text-6xl font-bold mb-2 block" />
           <div className="text-xl font-semibold text-foreground mb-1">
             {correctCount} / {totalQuestions}
           </div>
@@ -147,25 +121,21 @@ export function ResultPage() {
         <div className="bg-card border border-border rounded-xl p-4 mb-4">
           <h3 className="font-bold text-sm mb-3">สถิติเวลา</h3>
           <div className="grid grid-cols-2 gap-3">
-            <div className="text-center p-2 bg-muted/50 rounded-lg">
-              <div className="text-lg font-bold font-mono">{formatTime(totalElapsedTime)}</div>
-              <div className="text-xs text-muted-foreground">เวลารวม</div>
-            </div>
-            <div className="text-center p-2 bg-muted/50 rounded-lg">
-              <div className="text-lg font-bold font-mono">{avgTimePerQuestion.toFixed(1)}s</div>
-              <div className="text-xs text-muted-foreground">เฉลี่ยต่อข้อ</div>
-            </div>
+            <StatBox value={formatTime(totalElapsedTime)} label="เวลารวม" />
+            <StatBox value={`${avgTimePerQuestion.toFixed(1)}s`} label="เฉลี่ยต่อข้อ" />
             {fastest && (
-              <div className="text-center p-2 bg-muted/50 rounded-lg">
-                <div className="text-lg font-bold font-mono text-green-600 dark:text-green-400">{fastest.time.toFixed(1)}s</div>
-                <div className="text-xs text-muted-foreground">เร็วสุด (ข้อ {fastest.index + 1})</div>
-              </div>
+              <StatBox
+                value={`${fastest.time.toFixed(1)}s`}
+                label={`เร็วสุด (ข้อ ${fastest.index + 1})`}
+                valueClassName="text-green-600 dark:text-green-400"
+              />
             )}
             {slowest && (
-              <div className="text-center p-2 bg-muted/50 rounded-lg">
-                <div className="text-lg font-bold font-mono text-red-600 dark:text-red-400">{slowest.time.toFixed(1)}s</div>
-                <div className="text-xs text-muted-foreground">ช้าสุด (ข้อ {slowest.index + 1})</div>
-              </div>
+              <StatBox
+                value={`${slowest.time.toFixed(1)}s`}
+                label={`ช้าสุด (ข้อ ${slowest.index + 1})`}
+                valueClassName="text-red-600 dark:text-red-400"
+              />
             )}
           </div>
         </div>
@@ -175,23 +145,13 @@ export function ResultPage() {
           <h3 className="font-bold text-sm mb-3">คะแนนแต่ละบทเรียน</h3>
           <div className="space-y-3">
             {lectureStats.map((s) => (
-              <div key={s.lecture}>
-                <div className="flex items-center justify-between mb-1">
-                  <span className="text-xs text-foreground">{s.name}</span>
-                  <span className={`text-xs font-bold ${getScoreColor(s.percentage)}`}>
-                    {s.correct}/{s.total} ({s.percentage}%)
-                  </span>
-                </div>
-                <div className="h-2 bg-muted rounded-full overflow-hidden">
-                  <div
-                    className={`h-full rounded-full transition-all ${getBarColor(s.percentage)}`}
-                    style={{ width: `${s.percentage}%` }}
-                  />
-                </div>
-                <div className="text-[10px] text-muted-foreground mt-0.5">
-                  เวลาเฉลี่ย: {s.avgTime.toFixed(1)}s/ข้อ
-                </div>
-              </div>
+              <LectureStatRow
+                key={s.lecture}
+                name={s.name}
+                correct={s.correct}
+                total={s.total}
+                avgTime={s.avgTime}
+              />
             ))}
           </div>
         </div>
@@ -233,29 +193,23 @@ export function ResultPage() {
 
         {/* Actions */}
         <div className="space-y-2">
-          <button
-            onClick={() => setShowReview(true)}
-            className="w-full py-3 bg-primary text-primary-foreground font-semibold rounded-xl text-sm hover:opacity-90 active:scale-[0.98] transition-all"
-          >
+          <Button variant="primary" onClick={() => setShowReview(true)}>
             ดูเฉลยทั้งหมด
-          </button>
-          <button
+          </Button>
+          <Button
+            variant="secondary"
             onClick={() => {
               if (level) {
                 resetQuiz();
                 useQuizStore.getState().setPage("quiz");
               }
             }}
-            className="w-full py-3 bg-secondary text-secondary-foreground font-medium rounded-xl text-sm border border-border hover:bg-accent transition-all"
           >
             ทำซ้ำระดับเดิม
-          </button>
-          <button
-            onClick={() => setPage("start")}
-            className="w-full py-3 text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
+          </Button>
+          <Button variant="ghost" onClick={() => setPage("start")}>
             เปลี่ยนระดับ
-          </button>
+          </Button>
         </div>
       </div>
     </div>

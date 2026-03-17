@@ -1,4 +1,4 @@
-import { useQuizStore } from "../store/quizStore";
+import { useQuizStore } from "@/store/quizStore";
 import { LevelModal } from "./LevelModal";
 import { NameInput } from "./NameInput";
 
