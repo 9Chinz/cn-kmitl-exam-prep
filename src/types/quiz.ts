@@ -12,15 +12,29 @@ export interface Question {
   explanation: string;
 }
 
-export type Level = "easy" | "normal" | "hard";
-export type Page = "start" | "quiz" | "result";
+export type Level = "easy" | "normal" | "hard" | "random";
+export type Page = "start" | "quiz" | "result" | "stats";
 
 export interface Checkpoint {
   level: Level;
+  username: string;
   currentIndex: number;
   answers: Record<number, string>;
   shuffledChoices: Record<number, string[]>;
   questionTimes: Record<number, number>;
+  questionIds: number[];
   totalElapsedTime: number;
   timestamp: number;
+}
+
+export interface QuizResult {
+  id: string;
+  username: string;
+  level: Level;
+  score: number;
+  total: number;
+  percentage: number;
+  totalTime: number;
+  lectureBreakdown: Record<string, { correct: number; total: number }>;
+  date: string;
 }

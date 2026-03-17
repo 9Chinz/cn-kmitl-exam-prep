@@ -3,11 +3,12 @@ import { useQuizStore } from "../store/quizStore";
 import { MenuDialog } from "./MenuDialog";
 import { formatTime } from "../lib/utils";
 
-const levelLabels = { easy: "Easy", normal: "Normal", hard: "Hard" };
-const levelColors = {
+const levelLabels: Record<string, string> = { easy: "Easy", normal: "Normal", hard: "Hard", random: "Random" };
+const levelColors: Record<string, string> = {
   easy: "bg-green-500",
   normal: "bg-yellow-500",
   hard: "bg-red-500",
+  random: "bg-purple-500",
 };
 
 const displayLabels = ["A", "B", "C", "D"];

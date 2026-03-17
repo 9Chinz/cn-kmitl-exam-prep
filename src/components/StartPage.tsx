@@ -1,5 +1,6 @@
 import { useQuizStore } from "../store/quizStore";
 import { LevelModal } from "./LevelModal";
+import { NameInput } from "./NameInput";
 
 const lectures = [
   { id: "Lec 8", title: "Data Link Layer & Ethernet", color: "bg-blue-500" },
@@ -11,7 +12,7 @@ const lectures = [
 ];
 
 export function StartPage() {
-  const { openLevelModal, showLevelModal, checkForCheckpoint, resumeFromCheckpoint } = useQuizStore();
+  const { openLevelModal, showLevelModal, pendingLevel, checkForCheckpoint, resumeFromCheckpoint, setPage } = useQuizStore();
 
   const savedLevel = checkForCheckpoint();
 
@@ -30,7 +31,7 @@ export function StartPage() {
               Final Exam Quiz
             </h2>
             <p className="text-sm text-muted-foreground">
-              180 questions across 3 difficulty levels
+              180 questions across 4 difficulty levels
             </p>
           </div>
 
@@ -64,11 +65,22 @@ export function StartPage() {
                 Resume ({savedLevel.charAt(0).toUpperCase() + savedLevel.slice(1)} Level)
               </button>
             )}
+
+            <button
+              onClick={() => setPage("stats")}
+              className="w-full py-3 px-6 text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center justify-center gap-2"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M18 20V10" /><path d="M12 20V4" /><path d="M6 20v-6" />
+              </svg>
+              สถิติผู้ทำข้อสอบ
+            </button>
           </div>
         </div>
       </div>
 
       {showLevelModal && <LevelModal />}
+      {pendingLevel && <NameInput />}
     </div>
   );
 }

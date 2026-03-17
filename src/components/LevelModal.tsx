@@ -20,10 +20,16 @@ const levels: { level: Level; label: string; desc: string; color: string }[] = [
     desc: "สถานการณ์จำลอง คำนวณ และวิเคราะห์",
     color: "bg-red-500 hover:bg-red-600",
   },
+  {
+    level: "random",
+    label: "Random",
+    desc: "สุ่มคำถามจากทุกระดับ 20 ข้อต่อระดับ",
+    color: "bg-purple-500 hover:bg-purple-600",
+  },
 ];
 
 export function LevelModal() {
-  const { setLevel, closeLevelModal } = useQuizStore();
+  const { selectLevel, closeLevelModal } = useQuizStore();
 
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center">
@@ -31,7 +37,7 @@ export function LevelModal() {
         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
         onClick={closeLevelModal}
       />
-      <div className="relative w-full max-w-md mx-4 mb-0 sm:mb-0 bg-card rounded-t-2xl sm:rounded-2xl border border-border shadow-xl p-6 animate-in slide-in-from-bottom">
+      <div className="relative w-full max-w-md mx-4 mb-0 sm:mb-0 bg-card rounded-t-2xl sm:rounded-2xl border border-border shadow-xl p-6">
         <div className="w-10 h-1 bg-muted-foreground/30 rounded-full mx-auto mb-4 sm:hidden" />
         <h3 className="text-lg font-bold text-center mb-1">เลือกระดับข้อสอบ</h3>
         <p className="text-sm text-muted-foreground text-center mb-5">
@@ -42,7 +48,7 @@ export function LevelModal() {
           {levels.map(({ level, label, desc, color }) => (
             <button
               key={level}
-              onClick={() => setLevel(level)}
+              onClick={() => selectLevel(level)}
               className={`w-full flex items-center gap-4 p-4 rounded-xl text-white transition-all active:scale-[0.98] ${color}`}
             >
               <div className="text-left">
