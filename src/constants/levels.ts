@@ -7,6 +7,9 @@ export const levelLabels: Record<string, string> = {
   "guideline-normal": "Guideline Normal",
   "guideline-hard": "Guideline Hard",
   "guideline-random": "Guideline Random",
+  "practice-easy": "Practice Easy",
+  "practice-normal": "Practice Normal",
+  "practice-hard": "Practice Hard",
 };
 
 export const levelColors: Record<string, string> = {
@@ -18,4 +21,7 @@ export const levelColors: Record<string, string> = {
   "guideline-normal": "bg-yellow-500",
   "guideline-hard": "bg-red-500",
   "guideline-random": "bg-purple-500",
+  "practice-easy": "bg-green-500",
+  "practice-normal": "bg-yellow-500",
+  "practice-hard": "bg-red-500",
 };

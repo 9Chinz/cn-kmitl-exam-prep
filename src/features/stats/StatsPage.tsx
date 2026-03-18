@@ -9,12 +9,8 @@ import { LectureStatRow } from "@/components/molecules/LectureStatRow";
 import { formatTime } from "@/lib/utils";
 import type { QuizResult } from "@/types/quiz";
 
-const filterOptions: { value: string; label: string }[] = [
+const baseFilterOptions: { value: string; label: string }[] = [
   { value: "all", label: "ทั้งหมด" },
-  { value: "easy", label: "Easy" },
-  { value: "normal", label: "Normal" },
-  { value: "hard", label: "Hard" },
-  { value: "random", label: "Random" },
 ];
 
 function formatDate(iso: string) {
@@ -82,9 +78,17 @@ function ResultDetail({ result, onBack }: { result: QuizResult; onBack: () => vo
 
 export function StatsPage() {
   const setPage = useQuizStore((s) => s.setPage);
+  const config = useSubjectStore((s) => s.getConfig());
   const { results } = useHistoryStore();
   const [filter, setFilter] = useState("all");
   const [selectedResult, setSelectedResult] = useState<QuizResult | null>(null);
+
+  const filterOptions = [
+    ...baseFilterOptions,
+    ...(config?.levelGroups ?? []).flatMap((g) =>
+      g.levels.map((l) => ({ value: l.level, label: l.label }))
+    ),
+  ];
 
   if (selectedResult) {
     return <ResultDetail result={selectedResult} onBack={() => setSelectedResult(null)} />;

@@ -1,0 +1,410 @@
+[
+  {
+    "id": 1,
+    "type": "choice",
+    "lecture": "Ch2-Variables",
+    "question": "จากโค้ดต่อไปนี้ ผลลัพธ์จะเป็นอย่างไร?\n\nint x = 10;\nint y = x++;\nSystem.out.println(\"X = \" + x + \" Y= \" + y);",
+    "choices": [
+      { "key": "A", "text": "X = 11 Y= 10 เพราะ x++ เป็น post-increment จึงคืนค่าเดิมก่อนแล้วค่อยเพิ่ม" },
+      { "key": "B", "text": "X = 11 Y= 11 เพราะทั้ง x และ y ได้รับค่าหลังการเพิ่ม" },
+      { "key": "C", "text": "X = 10 Y= 10 เพราะ ++ ไม่มีผลเมื่อใช้กับ assignment" },
+      { "key": "D", "text": "X = 10 Y= 11 เพราะ y ได้รับค่าที่เพิ่มแล้ว" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "x++ เป็น post-increment คือคืนค่าเดิม (10) ให้ y ก่อน แล้วจึงเพิ่ม x เป็น 11 ดังนั้น x = 11, y = 10 (จากเฉลยแบบฝึกหัดเรื่อง คำนวณ ตอนที่ 2)"
+  },
+  {
+    "id": 2,
+    "type": "choice",
+    "lecture": "Ch2-Variables",
+    "question": "เหตุใดนิพจน์ (5/9)*(212-32) ใน Java จึงได้ผลลัพธ์เป็น 0?",
+    "choices": [
+      { "key": "A", "text": "เพราะ 212-32 มีค่าเป็น 0" },
+      { "key": "B", "text": "เพราะ 5/9 เป็นการหาร int ด้วย int ได้ 0 แล้ว 0 คูณจำนวนใดก็ได้ 0" },
+      { "key": "C", "text": "เพราะเครื่องหมาย * ทำงานไม่ถูกต้องกับวงเล็บ" },
+      { "key": "D", "text": "เพราะ Java ไม่รองรับการคูณจำนวนเต็มกับผลลบ" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "5/9 เป็นการหาร int ด้วย int จะตัดทศนิยมทิ้งได้ 0 เมื่อนำ 0 ไปคูณกับ 180 จึงได้ 0 วิธีแก้คือใช้ (double)5/9 หรือ 5.0/9 (จากเฉลยแบบฝึกหัดเรื่อง คำนวณ ตอนที่ 1)"
+  },
+  {
+    "id": 3,
+    "type": "choice",
+    "lecture": "Ch3-Loops",
+    "question": "ในโปรแกรมวาดกำแพงอิฐ ใช้ for loop ซ้อนกัน 2 ชั้น โดย loop นอกวนแนวตั้ง 10 บรรทัด loop ในวนแนวนอน 10 อิฐบล็อก และใช้ if ((j % 2) != 1) t = 20; else t = 0; เพื่อทำอะไร?",
+    "choices": [
+      { "key": "A", "text": "เพื่อเปลี่ยนสีของอิฐบล็อกในแต่ละแถว" },
+      { "key": "B", "text": "เพื่อเปลี่ยนขนาดของอิฐบล็อกในแถวคี่และแถวคู่" },
+      { "key": "C", "text": "เพื่อเลื่อนตำแหน่งเริ่มต้นของอิฐในแถวคี่ให้เยื้องออกไป ทำให้เกิดลวดลายกำแพง" },
+      { "key": "D", "text": "เพื่อกำหนดระยะห่างระหว่างแถวของอิฐบล็อก" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "การใช้ j % 2 ตรวจสอบว่าเป็นแถวคี่หรือคู่ แล้วกำหนดค่า t = 20 หรือ 0 เพื่อเลื่อนตำแหน่งเริ่มต้นของอิฐในแนวนอน ทำให้อิฐเยื้องสลับกันเหมือนกำแพงจริง (จากเฉลยแบบฝึกหัดเรื่อง ทำซ้ำ)"
+  },
+  {
+    "id": 4,
+    "type": "choice",
+    "lecture": "Ch3-Loops",
+    "question": "ในโปรแกรมวาดสี่เหลี่ยมจัตุรัสซ้อนกัน 20 รูป ใช้ for loop โดยมีคำสั่ง len *= 0.8; และ angle += 5; ในแต่ละรอบ ข้อใดอธิบายผลลัพธ์ได้ถูกต้อง?",
+    "choices": [
+      { "key": "A", "text": "สี่เหลี่ยมจะมีขนาดเท่ากันแต่หมุนเพิ่มขึ้นทีละ 5 องศา" },
+      { "key": "B", "text": "สี่เหลี่ยมจะเล็กลงเรื่อยๆ 20% ในแต่ละรอบ และหมุนเพิ่มทีละ 5 องศา ทำให้เกิดรูปเกลียว" },
+      { "key": "C", "text": "สี่เหลี่ยมจะใหญ่ขึ้นเรื่อยๆ เพราะ 0.8 ถูกคูณสะสม" },
+      { "key": "D", "text": "โปรแกรมจะวนลูปไม่จบเพราะ len ไม่มีวันเป็น 0" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "len *= 0.8 ทำให้ความยาวด้านลดลง 20% ในแต่ละรอบ และ angle += 5 ทำให้มุมเอียงเพิ่มขึ้นทีละ 5 องศา ผลลัพธ์คือสี่เหลี่ยมซ้อนกันเล็กลงเรื่อยๆ พร้อมหมุนตัว (จากเฉลยแบบฝึกหัดเรื่อง ทำซ้ำ)"
+  },
+  {
+    "id": 5,
+    "type": "choice",
+    "lecture": "Ch4-Selection",
+    "question": "ในโปรแกรมซื้อ 3 แถม 1 ที่รับราคาสินค้า 3 ชิ้น (a, b, c) ใช้ตัวแปร temp เก็บค่าเริ่มต้นเป็น a แล้วเปรียบเทียบ if (b < temp) temp = b; if (c < temp) temp = c; เหตุใดจึงต้องเปรียบเทียบทีละตัว?",
+    "choices": [
+      { "key": "A", "text": "เพราะต้องหาค่ามากที่สุดเพื่อลดราคา" },
+      { "key": "B", "text": "เพราะต้องหาค่าน้อยที่สุดใน 3 ตัวเพื่อนำไปหักออกจากราคารวม" },
+      { "key": "C", "text": "เพราะต้องเรียงลำดับสินค้าจากราคาถูกไปแพง" },
+      { "key": "D", "text": "เพราะต้องตรวจว่าสินค้าทั้ง 3 ราคาเท่ากันหรือไม่" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "โปรโมชัน ซื้อ 3 แถม 1 คือไม่คิดราคาสินค้าที่ถูกที่สุด ดังนั้นต้องหาค่า min ของ 3 ตัว แล้วราคาที่ต้องจ่าย = a + b + c - temp (จากเฉลยแบบฝึกหัดเรื่องเลือกปฏิบัติ)"
+  },
+  {
+    "id": 6,
+    "type": "choice",
+    "lecture": "Ch4-Selection",
+    "question": "ในโปรแกรมหาวันในสัปดาห์ มีเงื่อนไข if (m < 3) { m = m + 12; y = y - 1; } ก่อนคำนวณสูตร ทำไมจึงต้องทำเช่นนี้?",
+    "choices": [
+      { "key": "A", "text": "เพราะต้องบวก 12 เพื่อป้องกันค่าลบในการคำนวณ" },
+      { "key": "B", "text": "เพราะต้องแปลงจาก ค.ศ. เป็น พ.ศ. ก่อนคำนวณ" },
+      { "key": "C", "text": "เพราะเดือน 1-2 ไม่มีในปฏิทินดั้งเดิม" },
+      { "key": "D", "text": "เพราะเดือนมกราคมและกุมภาพันธ์ในสูตรนี้ถูกนับเป็นเดือน 13 และ 14 ของปีก่อนหน้า" }
+    ],
+    "correctAnswer": "D",
+    "explanation": "สูตรหาวัน (Zeller's congruence) กำหนดให้มีนาคมเป็นเดือนแรก (3) ดังนั้นเดือน ม.ค. และ ก.พ. จึงต้องเปลี่ยนเป็นเดือน 13, 14 ของปีก่อน (จากเฉลยแบบฝึกหัดเรื่องแยกย่อยใหม่)"
+  },
+  {
+    "id": 7,
+    "type": "choice",
+    "lecture": "Ch5-Strings",
+    "question": "ในโปรแกรมแยกคำจากประโยค ใช้ s.indexOf(\" \", Start_index) เพื่อหาตำแหน่งช่องว่างถัดไป ถ้า indexOf คืนค่า -1 หมายความว่าอะไร?",
+    "choices": [
+      { "key": "A", "text": "พบช่องว่างที่ตำแหน่งแรกสุดของ String" },
+      { "key": "B", "text": "เกิด error เนื่องจากหาไม่พบ" },
+      { "key": "C", "text": "ไม่พบช่องว่างอีกแล้ว แสดงว่าถึงคำสุดท้ายของประโยค" },
+      { "key": "D", "text": "String มีความยาวเป็น 0" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "indexOf() คืนค่า -1 เมื่อไม่พบ substring ที่ค้นหา ซึ่งในกรณีนี้หมายถึงไม่มีช่องว่างเหลืออีก คือถึงคำสุดท้ายของประโยคแล้ว (จากเฉลยแบบฝึกหัดเรื่องข้อความ ตอนที่ 1)"
+  },
+  {
+    "id": 8,
+    "type": "choice",
+    "lecture": "Ch5-Strings",
+    "question": "โปรแกรมเปลี่ยนเอกพจน์เป็นพหูพจน์ ใช้เงื่อนไข \"y\".equalsIgnoreCase(s1) เพื่อตรวจว่าตัวอักษรสุดท้ายเป็น y แล้วต้องตรวจอะไรเพิ่มเติม?",
+    "choices": [
+      { "key": "A", "text": "ต้องตรวจว่าคำมีความยาวมากกว่า 3 ตัวอักษร" },
+      { "key": "B", "text": "ต้องตรวจว่า y อยู่ตำแหน่งสุดท้ายจริงๆ ไม่ใช่อยู่ตรงกลาง" },
+      { "key": "C", "text": "ต้องตรวจว่าตัวอักษรก่อน y เป็นพยัญชนะตัวใหญ่หรือไม่" },
+      { "key": "D", "text": "ต้องตรวจว่าตัวอักษรก่อน y ไม่ใช่สระ (a,e,i,o,u) จึงจะเปลี่ยน y เป็น ies" }
+    ],
+    "correctAnswer": "D",
+    "explanation": "กฎพหูพจน์: ถ้าลงท้ายด้วย y และตัวก่อน y ไม่ใช่สระ ให้เปลี่ยน y เป็น ies เช่น fly -> flies แต่ถ้าตัวก่อน y เป็นสระ ให้เติม s ปกติ เช่น day -> days (จากเฉลยแบบฝึกหัดเรื่องข้อความ ตอนที่ 2)"
+  },
+  {
+    "id": 9,
+    "type": "choice",
+    "lecture": "Ch6-Methods",
+    "question": "ในโปรแกรมสร้างรูปหกเหลี่ยมด้านเท่า เมธอด Gen_poly(DWindow w, int xc, int yc, int d, int a, int n) มีพารามิเตอร์ n ไว้ทำอะไร?",
+    "choices": [
+      { "key": "A", "text": "กำหนดจำนวนเหลี่ยมของรูปหลายเหลี่ยมด้านเท่า ทำให้ใช้เมธอดเดียวสร้างได้ทั้งสามเหลี่ยม สี่เหลี่ยม หกเหลี่ยม" },
+      { "key": "B", "text": "กำหนดจำนวนรอบที่ต้องวาดซ้ำ" },
+      { "key": "C", "text": "กำหนดความหนาของเส้น" },
+      { "key": "D", "text": "กำหนดจำนวนสีที่ใช้วาด" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "พารามิเตอร์ n กำหนดจำนวนด้าน/เหลี่ยม ทำให้เมธอดเดียวสามารถวาดรูปหลายเหลี่ยมด้านเท่าได้ทุกชนิด โดยคำนวณมุม 360/n องศาต่อด้าน (จากเฉลยแบบฝึกหัดเรื่องแยกย่อยใหม่)"
+  },
+  {
+    "id": 10,
+    "type": "choice",
+    "lecture": "Ch6-Methods",
+    "question": "ในโปรแกรมแปลงตัวเลขเป็นข้อความ เมธอด int2text ใช้ t.replace(\"สองสิบ\", \"ยี่สิบ\") และ t.replace(\"หนึ่งสิบ\", \"สิบ\") ทำเพื่ออะไร?",
+    "choices": [
+      { "key": "A", "text": "เพื่อแก้ข้อผิดพลาดในการคำนวณ" },
+      { "key": "B", "text": "เพื่อย่อข้อความให้สั้นลง" },
+      { "key": "C", "text": "เพื่อปรับข้อความให้ตรงกับหลักการอ่านตัวเลขในภาษาไทย เช่น 20 อ่านว่า ยี่สิบ ไม่ใช่ สองสิบ" },
+      { "key": "D", "text": "เพื่อลบข้อความที่ซ้ำกันออก" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "ในภาษาไทย 10 อ่านว่า สิบ (ไม่ใช่ หนึ่งสิบ), 20 อ่านว่า ยี่สิบ (ไม่ใช่ สองสิบ) และ 11 อ่านว่า สิบเอ็ด (ไม่ใช่ สิบหนึ่ง) จึงต้องใช้ replace แก้ไข (จากเฉลยแบบฝึกหัดเรื่องแยกย่อยใหม่)"
+  },
+  {
+    "id": 11,
+    "type": "choice",
+    "lecture": "Ch7-Arrays",
+    "question": "ในเมธอด insert(int[] a, int i, int data) ทำไมต้องสร้างอาเรย์ใหม่ b ที่มีขนาดเท่ากับ a.length แทนที่จะแทรกข้อมูลลงในอาเรย์เดิม?",
+    "choices": [
+      { "key": "A", "text": "เพราะใน Java ขนาดอาเรย์หลังสร้างแล้วเปลี่ยนไม่ได้ ต้องสร้างใหม่เพื่อรองรับข้อมูลเพิ่ม" },
+      { "key": "B", "text": "เพราะอาเรย์เดิมถูกล็อกไว้ไม่ให้แก้ไข" },
+      { "key": "C", "text": "เพราะต้องการรักษาข้อมูลเดิมไว้เป็น backup" },
+      { "key": "D", "text": "เพราะ Java ไม่อนุญาตให้เลื่อนข้อมูลภายในอาเรย์" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "อาเรย์ใน Java มีขนาดคงที่หลังสร้าง ไม่สามารถเพิ่มช่องได้ ดังนั้นเมธอด insert จึงสร้างอาเรย์ใหม่ที่ใหญ่กว่า แล้วคัดลอกข้อมูลพร้อมแทรกค่าใหม่เข้าไป (จากเฉลยแบบฝึกหัดเรื่องแถวลำดับ ข้อ 1-3)"
+  },
+  {
+    "id": 12,
+    "type": "choice",
+    "lecture": "Ch7-Arrays",
+    "question": "ในอัลกอริทึม Bubble Sort มีตัวแปร last เริ่มต้นที่ 1 และเพิ่มค่าทีละ 1 ในแต่ละรอบ โดย loop ในจะวนจาก 0 ถึง a.length - last ทำไมจึงเป็นเช่นนี้?",
+    "choices": [
+      { "key": "A", "text": "เพราะแต่ละรอบจะเลื่อนค่าที่มากที่สุดไปไว้ด้านขวาสุด ค่าที่เรียงแล้วไม่ต้องเปรียบเทียบซ้ำ" },
+      { "key": "B", "text": "เพราะต้องลดจำนวนรอบให้เท่ากับจำนวนข้อมูล" },
+      { "key": "C", "text": "เพราะ last ใช้นับจำนวนการสลับที่เกิดขึ้น" },
+      { "key": "D", "text": "เพราะต้องป้องกันไม่ให้ index เกินขอบเขตอาเรย์" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Bubble Sort แต่ละรอบจะ bubble ค่าที่มากที่สุดไปอยู่ตำแหน่งขวาสุด ดังนั้นในรอบถัดไปไม่จำเป็นต้องเปรียบเทียบตำแหน่งที่เรียงแล้ว จึงลดขอบเขตด้วย last (จากเฉลยแบบฝึกหัดเรื่องแถวลำดับ ข้อ 1-3)"
+  },
+  {
+    "id": 13,
+    "type": "choice",
+    "lecture": "Ch7-Arrays",
+    "question": "ในโปรแกรมหาแถวที่เหมือนกันในอาเรย์ 2 มิติ ใช้อาเรย์ tmp[][] เก็บคู่แถวที่เหมือนกัน แล้วใส่ค่า -1 ลงใน tmp เพื่อลบคู่ที่ซ้ำ เช่น ถ้า Row 1 = Row 3 ก็ไม่ต้องแสดง Row 3 = Row 1 อีก วิธีนี้เรียกว่าอะไร?",
+    "choices": [
+      { "key": "A", "text": "Binary Search" },
+      { "key": "B", "text": "Merge Sort" },
+      { "key": "C", "text": "การกรองข้อมูลซ้ำ (Deduplication) โดยทำเครื่องหมายข้อมูลที่แสดงแล้ว" },
+      { "key": "D", "text": "การเรียงลำดับข้อมูลก่อนแสดงผล" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "วิธีนี้ใช้ค่า -1 เป็น flag ทำเครื่องหมายคู่ที่แสดงแล้ว เพื่อกรองไม่ให้แสดงซ้ำ เช่น แสดง Row 1 = 3 แล้วจะไม่แสดง Row 3 = 1 อีก (จากเฉลยแบบฝึกหัดเรื่องแถวลำดับ แถวเหมือน)"
+  },
+  {
+    "id": 14,
+    "type": "choice",
+    "lecture": "Ch8-ClassObject",
+    "question": "ในคลาส Point มี constructor สามแบบ: Point(), Point(double x0, double y0), Point(Point p) แบบที่สามคือ Point(Point p) เรียกว่าอะไรและทำหน้าที่อะไร?",
+    "choices": [
+      { "key": "A", "text": "Default constructor ใช้สร้างจุดที่จุดกำเนิด" },
+      { "key": "B", "text": "Parameterized constructor ใช้กำหนดค่า x, y" },
+      { "key": "C", "text": "Static method ใช้สร้างจุดจากค่าคงที่" },
+      { "key": "D", "text": "Copy constructor ใช้สร้าง object ใหม่ที่มีค่าเหมือน object ที่ส่งเข้ามา" }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Point(Point p) เป็น copy constructor ที่สร้าง object ใหม่โดยคัดลอกค่า x, y จาก object p ด้วย this.x = ps.x; this.y = ps.y; ทำให้ได้ object ใหม่ที่มีค่าเดียวกัน (จากเฉลยแบบฝึกหัดเรื่องวัตถุสิ่งของ ตอนที่ 1)"
+  },
+  {
+    "id": 15,
+    "type": "choice",
+    "lecture": "Ch8-ClassObject",
+    "question": "ในคลาส Ball มีตัวแปร private static int numObject; และใน constructor มี numObject++; แล้วเรียก f.getNumObject() จาก main ได้ค่า 4 เมื่อสร้าง Ball 4 ตัว ทำไมตัวแปร static จึงเหมาะกับการนับจำนวน object?",
+    "choices": [
+      { "key": "A", "text": "เพราะ static ทำให้ตัวแปรถูกเข้าถึงได้เร็วกว่า" },
+      { "key": "B", "text": "เพราะ static ทำให้ตัวแปรเป็นของคลาส ใช้ร่วมกันทุก object จึงนับสะสมได้" },
+      { "key": "C", "text": "เพราะ static ทำให้ตัวแปรไม่ถูกลบเมื่อจบโปรแกรม" },
+      { "key": "D", "text": "เพราะ static ทำให้ constructor ถูกเรียกอัตโนมัติ" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "ตัวแปร static เป็นตัวแปรระดับคลาส (class variable) มีค่าเดียวที่ใช้ร่วมกันทุก object เมื่อ constructor เพิ่มค่าทุกครั้งที่สร้าง object จึงนับจำนวน object ทั้งหมดได้ (จากเฉลยแบบฝึกหัดเรื่องวัตถุสิ่งของ ตอนที่ 2)"
+  },
+  {
+    "id": 16,
+    "type": "fill-blank",
+    "lecture": "Ch2-Variables",
+    "question": "เติมโค้ดคำนวณสูตร Mosteller สำหรับหาพื้นที่ผิวร่างกาย โดยรับค่า Weight และ Height\n\nExpected Output (Weight=73, Height=173):\nMosteller = 1.8729803937990264",
+    "code": "double Weight = 73, Height = 173;\ndouble Mosteller = Math.__A__((__B__ * Height) / 3600.0);\nSystem.out.println(\"Mosteller = \" + Mosteller);",
+    "blanks": [
+      { "label": "A", "correctAnswer": "sqrt", "explanation": "Math.sqrt() ใช้หาค่ารากที่สองตามสูตร Mosteller" },
+      { "label": "B", "correctAnswer": "Weight", "explanation": "สูตร Mosteller คือ sqrt((Weight * Height) / 3600)" }
+    ],
+    "correctAnswer": "",
+    "explanation": "สูตร Mosteller: s = sqrt((w*h)/3600) ใช้ Math.sqrt() คำนวณรากที่สอง (จากเฉลยแบบฝึกหัดเรื่อง คำนวณ ตอนที่ 2)"
+  },
+  {
+    "id": 17,
+    "type": "fill-blank",
+    "lecture": "Ch2-Variables",
+    "question": "เติมโค้ดแยกหลักของเลข 4 หลัก เช่น 5432 ให้ได้หลักพัน=5, หลักร้อย=4, หลักสิบ=3, หลักหน่วย=2\n\nExpected Output:\nหลักพัน = 5  หลักร้อย = 4  หลักสิบ = 3  หลักหน่วย = 2",
+    "code": "int num = 5432;\nint a = num / __A__;\nint aa = (num - (a * 1000));\nint b = aa / __B__;\nint bb = (aa - (b * 100));\nint c = bb / 10;\nint d = bb - c * 10;\nSystem.out.println(\"หลักพัน = \" + a + \"  หลักร้อย = \" + b + \"  หลักสิบ = \" + c + \"  หลักหน่วย = \" + d);",
+    "blanks": [
+      { "label": "A", "correctAnswer": "1000", "explanation": "หาร 1000 เพื่อเอาหลักพัน" },
+      { "label": "B", "correctAnswer": "100", "explanation": "หาร 100 เพื่อเอาหลักร้อยจากเศษที่เหลือ" }
+    ],
+    "correctAnswer": "",
+    "explanation": "การแยกหลักใช้การหารจำนวนเต็ม: หลักพัน = num/1000, หลักร้อย = เศษ/100 เป็นต้น (จากเฉลยแบบฝึกหัดเรื่อง คำนวณ ตอนที่ 1)"
+  },
+  {
+    "id": 18,
+    "type": "fill-blank",
+    "lecture": "Ch3-Loops",
+    "question": "เติมโค้ดโปรแกรมลูกบอลวิ่งเป็นรูปคลื่น Sine จากซ้ายไปขวา ในกรอบ 400x300\n\nExpected Output:\nลูกบอลเคลื่อนที่เป็นรูปคลื่น Sine",
+    "code": "DWindow w = new DWindow(400, 300);\ndouble x = 0, y = 0, dx = 3, dy = 0;\nw.setRepaintDuringSleep(true);\nwhile (true) {\n    x = (x + dx) % w.__A__();\n    y = 150 + 23.5 * Math.sin(Math.__B__(x * 5.0));\n    w.fillEllipse(w.BLACK, x, y, 30, 30);\n    w.fade(0.3);\n    w.sleep(100);\n}",
+    "blanks": [
+      { "label": "A", "correctAnswer": "getWidth", "explanation": "getWidth() คืนค่าความกว้างของหน้าต่าง เพื่อให้ลูกบอลวนกลับ" },
+      { "label": "B", "correctAnswer": "toRadians", "explanation": "Math.toRadians() แปลงค่าจากองศาเป็นเรเดียนก่อนใช้กับ Math.sin()" }
+    ],
+    "correctAnswer": "",
+    "explanation": "ลูกบอลเคลื่อนที่แนวนอนด้วย dx คงที่ ส่วนแนวตั้งใช้ Math.sin(Math.toRadians(x*5.0)) ทำให้เกิดรูปคลื่น Sine (จากเฉลยแบบฝึกหัดเรื่อง ทำซ้ำ)"
+  },
+  {
+    "id": 19,
+    "type": "fill-blank",
+    "lecture": "Ch3-Loops",
+    "question": "เติมโค้ดวาดรูปสี่เหลี่ยมจัตุรัสบนหน้าต่างโดยใช้ for loop วนลากเส้น 4 ด้าน แต่ละด้านหมุนเพิ่ม 90 องศา\n\nExpected Output:\nรูปสี่เหลี่ยมจัตุรัสบนหน้าต่าง DWindow",
+    "code": "for (int i = 0; i < __A__; i++) {\n    angle = angle + __B__;\n    x1 = xc + sidx * Math.cos(Math.toRadians(angle));\n    y1 = yc - sidx * Math.sin(Math.toRadians(angle));\n    w.drawLine(x0, y0, x1, y1);\n    x0 = x1;\n    y0 = y1;\n}",
+    "blanks": [
+      { "label": "A", "correctAnswer": "4", "explanation": "สี่เหลี่ยมมี 4 ด้าน จึงวนลูป 4 รอบ" },
+      { "label": "B", "correctAnswer": "90", "explanation": "แต่ละมุมของสี่เหลี่ยมจัตุรัสห่างกัน 90 องศา (360/4)" }
+    ],
+    "correctAnswer": "",
+    "explanation": "สี่เหลี่ยมจัตุรัสมี 4 ด้าน แต่ละด้านทำมุม 90 องศากัน (360/4 = 90) จึงใช้ loop 4 รอบ หมุนทีละ 90 องศา (จากเฉลยแบบฝึกหัดเรื่อง ทำซ้ำ)"
+  },
+  {
+    "id": 20,
+    "type": "fill-blank",
+    "lecture": "Ch4-Selection",
+    "question": "เติมโค้ดสร้างนาฬิกาอะนาล็อก โดยคำนวณมุมของเข็มนาที (n_m) และเข็มชั่วโมง (n_h) จากค่าเวลา\n\nExpected Output:\nนาฬิกาอะนาล็อกแสดงเวลาบนหน้าต่าง",
+    "code": "s = (s + 1) % 60;\nif (s == 0) {\n    m = (m + 1) % __A__;\n    if (m == 0)\n        h = (h + 1) % __B__;\n}\nn_s = (360.0 / 60) * (s + 45);\nn_m = (360.0 / 60) * (m + 45);\nn_h = h * 30 + (m / 2.0) + __C__;",
+    "blanks": [
+      { "label": "A", "correctAnswer": "60", "explanation": "นาทีวนในช่วง 0-59 จึงใช้ mod 60" },
+      { "label": "B", "correctAnswer": "12", "explanation": "ชั่วโมงวนในช่วง 0-11 จึงใช้ mod 12" },
+      { "label": "C", "correctAnswer": "270", "explanation": "บวก 270 เพื่อเลื่อนจุดเริ่มต้นจากแนวนอน (0 องศา) ไปแนวตั้ง (12 นาฬิกา)" }
+    ],
+    "correctAnswer": "",
+    "explanation": "เข็มนาทีวน 0-59 (mod 60) เข็มชั่วโมงวน 0-11 (mod 12) และบวก 270 เพื่อให้ 0 องศาอยู่ที่ตำแหน่ง 12 นาฬิกา (จากเฉลยแบบฝึกหัดเรื่องเลือกปฏิบัติ)"
+  },
+  {
+    "id": 21,
+    "type": "fill-blank",
+    "lecture": "Ch4-Selection",
+    "question": "เติมโค้ดตรวจสอบการชนของลูกบอลกับเมาส์ ถ้าลูกบอลชนก็ให้เด้งกลับ\n\nExpected Output:\nลูกบอลเด้งกลับเมื่อชนเมาส์",
+    "code": "double xm = w.getMouse().__A__();\ndouble ym = w.getMouse().__B__();\nif ((xm <= (xc + r) && xm >= (xc - r)) &&\n    (ym <= (yc + r) && ym >= (yc - r))) {\n    dx = __C__;\n    dy = -dy;\n}",
+    "blanks": [
+      { "label": "A", "correctAnswer": "getX", "explanation": "getX() อ่านค่าตำแหน่งแนวแกน x ของเมาส์" },
+      { "label": "B", "correctAnswer": "getY", "explanation": "getY() อ่านค่าตำแหน่งแนวแกน y ของเมาส์" },
+      { "label": "C", "correctAnswer": "-dx", "explanation": "กลับทิศทาง dx เพื่อให้ลูกบอลเด้งกลับในแนวนอน" }
+    ],
+    "correctAnswer": "",
+    "explanation": "ใช้ getMouse().getX() และ getMouse().getY() อ่านตำแหน่งเมาส์ แล้วตรวจว่าอยู่ในพื้นที่ลูกบอลหรือไม่ ถ้าชนก็กลับทิศ dx, dy (จากเฉลยแบบฝึกหัดเรื่องเลือกปฏิบัติ)"
+  },
+  {
+    "id": 22,
+    "type": "fill-blank",
+    "lecture": "Ch5-Strings",
+    "question": "เติมโค้ดโปรแกรมคำนวณ ISBN-10 checksum จากเลข 9 หลัก โดยใช้ลูปและ substring\n\nExpected Output (input: 974229026):\nได้ตัวเลขขวาสุดคือ = 1",
+    "code": "String s = in.nextLine();\ns = s + \" \";\nint d = 0;\nfor (int k = 0; k < 9; k++) {\n    int v = Integer.__A__(s.__B__(k, k + 1));\n    d += (k + 1) * v;\n}\nSystem.out.println(\"ได้ตัวเลขขวาสุดคือ = \" + (d % 11));",
+    "blanks": [
+      { "label": "A", "correctAnswer": "parseInt", "explanation": "Integer.parseInt() แปลง String เป็น int" },
+      { "label": "B", "correctAnswer": "substring", "explanation": "substring(k, k+1) ตัดอักขระทีละตัวจากตำแหน่ง k" }
+    ],
+    "correctAnswer": "",
+    "explanation": "ใช้ substring ตัดตัวเลขทีละหลัก แล้ว parseInt แปลงเป็น int เพื่อคำนวณ checksum ตามสูตร d10 = (sum of k*dk) mod 11 (จากเฉลยแบบฝึกหัดเรื่องข้อความ ตอนที่ 1)"
+  },
+  {
+    "id": 23,
+    "type": "fill-blank",
+    "lecture": "Ch5-Strings",
+    "question": "เติมโค้ดโปรแกรมเรียงคำกลับลำดับ เช่น \"What a wonderful world\" เป็น \"world wonderful a What\" โดยใช้ lastIndexOf\n\nExpected Output:\n\"world\" \"wonderful\" \"a\" \"What\"",
+    "code": "String s = in.nextLine();\nint index = s.__A__(\" \", s.length());\nint index_last = s.length();\nwhile (index != -1) {\n    String ss = s.substring(index + 1, index_last);\n    System.out.print(\"\\\"\" + ss + \"\\\"\" + \" \");\n    index_last = index;\n    index = s.__A__(\" \", index - 1);\n}\nSystem.out.println(\"\\\"\" + s.substring(0, s.__B__(\" \")) + \"\\\"\");",
+    "blanks": [
+      { "label": "A", "correctAnswer": "lastIndexOf", "explanation": "lastIndexOf() ค้นหาตำแหน่งสุดท้ายของ substring เพื่อแยกคำจากท้ายไปหน้า" },
+      { "label": "B", "correctAnswer": "indexOf", "explanation": "indexOf() หาตำแหน่งช่องว่างแรกเพื่อตัดคำแรกออกมา" }
+    ],
+    "correctAnswer": "",
+    "explanation": "ใช้ lastIndexOf หาช่องว่างจากท้ายข้อความเพื่อแยกคำจากหลังไปหน้า แล้วใช้ indexOf หาคำแรก (จากเฉลยแบบฝึกหัดเรื่องข้อความ ตอนที่ 1)"
+  },
+  {
+    "id": 24,
+    "type": "fill-blank",
+    "lecture": "Ch5-Strings",
+    "question": "เติมโค้ดตรวจสอบการเปลี่ยนเอกพจน์เป็นพหูพจน์ กรณีลงท้ายด้วย s, x หรือ ch\n\nExpected Output (input: box):\nOutput = boxes",
+    "code": "String s0 = t.substring(t.length() - 2, t.__A__());\nString s1 = t.substring(t.length() - 1, t.length());\nif ((\"s\".__B__(s1)) | (\"x\".equalsIgnoreCase(s1)) |\n    (\"ch\".equalsIgnoreCase(s0)))\n{ System.out.println(\"Output = \" + t + \"es\"); }",
+    "blanks": [
+      { "label": "A", "correctAnswer": "length", "explanation": "t.length() ใช้เป็น endIndex ของ substring เพื่อตัดสองอักษรท้าย" },
+      { "label": "B", "correctAnswer": "equalsIgnoreCase", "explanation": "equalsIgnoreCase() เปรียบเทียบ String โดยไม่สนตัวเล็กตัวใหญ่" }
+    ],
+    "correctAnswer": "",
+    "explanation": "ใช้ substring ตัดอักษรท้าย แล้ว equalsIgnoreCase เปรียบเทียบกับ s, x, ch ถ้าตรงก็เติม es เช่น box -> boxes, witch -> witches (จากเฉลยแบบฝึกหัดเรื่องข้อความ ตอนที่ 2)"
+  },
+  {
+    "id": 25,
+    "type": "fill-blank",
+    "lecture": "Ch6-Methods",
+    "question": "เติมโค้ดเมธอด Gen_poly ที่ใช้วาดรูปหลายเหลี่ยมด้านเท่า โดยคำนวณมุมภายในและรัศมี\n\nExpected Output:\nรูปหกเหลี่ยมด้านเท่าบนหน้าต่าง",
+    "code": "public static void Gen_poly(DWindow w, int xc, int yc, int d, int a, int n) {\n    double b = (180 - __A__ / n) / 2;\n    double r = d / (2 * cos(b));\n    double angle = a - b;\n    double x0 = xc + r * cos(angle);\n    double y0 = yc - r * sin(angle);\n    for (int i = 0; i < n; i++) {\n        angle = angle + __B__ / n;\n        double x1 = xc + r * cos(angle);\n        double y1 = yc - r * sin(angle);\n        w.drawLine(x0, y0, x1, y1);\n        x0 = x1; y0 = y1;\n    }\n}",
+    "blanks": [
+      { "label": "A", "correctAnswer": "360.0", "explanation": "มุมภายในของรูปหลายเหลี่ยม คำนวณจาก 360/n องศาต่อมุม" },
+      { "label": "B", "correctAnswer": "360.0", "explanation": "แต่ละด้านหมุนเพิ่ม 360/n องศา เพื่อวนครบรอบ" }
+    ],
+    "correctAnswer": "",
+    "explanation": "รูปหลายเหลี่ยมด้านเท่า n เหลี่ยม แต่ละมุมกลางมีค่า 360/n องศา ใช้คำนวณทั้งมุมเริ่มต้นและมุมเพิ่มในแต่ละด้าน (จากเฉลยแบบฝึกหัดเรื่องแยกย่อยใหม่)"
+  },
+  {
+    "id": 26,
+    "type": "fill-blank",
+    "lecture": "Ch6-Methods",
+    "question": "เติมโค้ดเมธอด DayOfweek ที่คำนวณหาวันในสัปดาห์จากวันที่ เดือน ปี โดยใช้สูตร Zeller\n\nExpected Output (5/8/2012):\nวันที่ 5 สิงหาคม ปี คศ.2012 คือวัน วันอาทิตย์",
+    "code": "public static String DayOfweek(int dd, int mm, int yy) {\n    String rel = \"\";\n    if (mm < 3) {\n        mm = mm + __A__; yy = yy - 1;\n    }\n    int c = yy / 100, k = yy % __B__;\n    int w = (dd + 26 * (mm + 1) / 10 + k + k / 4 + c / 4 - 2 * c) % 7;\n    if (w < 0) w = w + 7;\n    switch (w) {\n        case 0: rel = \"วันเสาร์\"; break;\n        case 1: rel = \"วันอาทิตย์\"; break;\n        default: break;\n    }\n    return rel;\n}",
+    "blanks": [
+      { "label": "A", "correctAnswer": "12", "explanation": "บวก 12 เพื่อเปลี่ยน ม.ค.(1) เป็นเดือน 13 และ ก.พ.(2) เป็นเดือน 14" },
+      { "label": "B", "correctAnswer": "100", "explanation": "yy % 100 เอาเฉพาะ 2 หลักท้ายของปี เป็นค่า k ในสูตร Zeller" }
+    ],
+    "correctAnswer": "",
+    "explanation": "สูตร Zeller นับ ม.ค. ก.พ. เป็นเดือน 13, 14 ของปีก่อน (mm+12, yy-1) และใช้ yy%100 เป็นค่า k (จากเฉลยแบบฝึกหัดเรื่องแยกย่อยใหม่)"
+  },
+  {
+    "id": 27,
+    "type": "fill-blank",
+    "lecture": "Ch7-Arrays",
+    "question": "เติมโค้ดเมธอด remove ที่ลบข้อมูลที่ตำแหน่ง i ในอาเรย์ โดยเลื่อนข้อมูลจากขวามาแทนที่\n\nExpected Output:\nd1 after remove = {0,3,8,12,0}",
+    "code": "public static void remove(int[] a, int i) {\n    for (int j = i; j < a.__A__ - 1; j++)\n        a[j] = a[j + __B__];\n    a[a.length - 1] = 0;\n}",
+    "blanks": [
+      { "label": "A", "correctAnswer": "length", "explanation": "a.length คือขนาดของอาเรย์ ใช้เป็นขอบเขตของ loop" },
+      { "label": "B", "correctAnswer": "1", "explanation": "a[j] = a[j+1] คือการเลื่อนข้อมูลจากตำแหน่งถัดไปมาแทนที่" }
+    ],
+    "correctAnswer": "",
+    "explanation": "การลบข้อมูลจากอาเรย์ทำโดยเลื่อนข้อมูลจากขวามาทับตำแหน่งที่ลบ (a[j]=a[j+1]) แล้วใส่ 0 ที่ตำแหน่งสุดท้าย (จากเฉลยแบบฝึกหัดเรื่องแถวลำดับ ข้อ 1-3)"
+  },
+  {
+    "id": 28,
+    "type": "fill-blank",
+    "lecture": "Ch7-Arrays",
+    "question": "เติมโค้ดเมธอด Bubble Sort ที่เรียงข้อมูลจากน้อยไปมาก\n\nExpected Output:\nBuble Sort = {11,18,23,32,55}",
+    "code": "public static void bubleSort(int[] a) {\n    int last = 1;\n    while (last != a.length) {\n        for (int i = 0; i < a.length - __A__; i++) {\n            if (a[i] > a[i + 1]) {\n                __B__(a, i);\n            }\n        }\n        ++last;\n    }\n}",
+    "blanks": [
+      { "label": "A", "correctAnswer": "last", "explanation": "a.length - last คือขอบเขตที่ลดลงในแต่ละรอบ เพราะค่าที่มากสุดถูกเลื่อนไปขวาสุดแล้ว" },
+      { "label": "B", "correctAnswer": "swab", "explanation": "swab(a, i) คือเมธอดสลับค่า a[i] กับ a[i+1]" }
+    ],
+    "correctAnswer": "",
+    "explanation": "Bubble Sort เปรียบเทียบคู่ที่อยู่ติดกัน ถ้าตัวซ้ายมากกว่าก็สลับ (swab) วนจนเรียงหมด โดยลดขอบเขตด้วย last ในแต่ละรอบ (จากเฉลยแบบฝึกหัดเรื่องแถวลำดับ ข้อ 1-3)"
+  },
+  {
+    "id": 29,
+    "type": "fill-blank",
+    "lecture": "Ch8-ClassObject",
+    "question": "เติมโค้ดเมธอด distanceTo และ equals ในคลาส Point\n\nExpected Output:\ndistance = 2.00 หน่วย\np1 and p2 is not same point",
+    "code": "public double distanceTO(Point p) {\n    double dist = Math.sqrt(Math.pow(this.x - __A__, 2)\n        + Math.pow(this.y - p.y, 2));\n    return dist;\n}\npublic boolean equals(Point p) {\n    if (p.getX() == this.x && p.__B__() == this.y) return true;\n    else return false;\n}",
+    "blanks": [
+      { "label": "A", "correctAnswer": "p.x", "explanation": "p.x คือพิกัด x ของจุดอีกจุด ใช้คำนวณระยะห่าง" },
+      { "label": "B", "correctAnswer": "getY", "explanation": "getY() คืนค่าพิกัด y ของจุด p เพื่อเปรียบเทียบกับ this.y" }
+    ],
+    "correctAnswer": "",
+    "explanation": "distanceTo ใช้สูตรระยะทาง sqrt((x1-x2)^2 + (y1-y2)^2) และ equals เปรียบเทียบว่า x, y ของทั้งสองจุดเท่ากันหรือไม่ (จากเฉลยแบบฝึกหัดเรื่องวัตถุสิ่งของ ตอนที่ 1)"
+  },
+  {
+    "id": 30,
+    "type": "fill-blank",
+    "lecture": "Ch8-ClassObject",
+    "question": "เติมโค้ดเมธอด increment และ toString ในคลาส Time ที่แสดงเวลาพร้อม AM/PM\n\nExpected Output:\n12:59:01 PM",
+    "code": "public void increment() {\n    second = (second + 1) % __A__;\n    if (second == 0) {\n        minute = (minute + 1) % 60;\n        if (minute == 0) {\n            hour = (hour + 1) % __B__;\n        }\n    }\n}\npublic String toString() {\n    if (hour < 12 && hour >= 0) part = \"AM\";\n    else part = \"__C__\";\n    return twoDigits(hour) + \":\" + twoDigits(minute)\n        + \":\" + twoDigits(second) + \" \" + part;\n}",
+    "blanks": [
+      { "label": "A", "correctAnswer": "60", "explanation": "วินาทีวนในช่วง 0-59 จึง mod 60" },
+      { "label": "B", "correctAnswer": "24", "explanation": "ชั่วโมงวนในช่วง 0-23 จึง mod 24" },
+      { "label": "C", "correctAnswer": "PM", "explanation": "ถ้าชั่วโมง >= 12 แสดงว่าเป็นช่วงบ่าย (PM)" }
+    ],
+    "correctAnswer": "",
+    "explanation": "วินาที mod 60, ชั่วโมง mod 24 เพื่อวนรอบเวลา และใช้เงื่อนไข hour < 12 แบ่ง AM/PM (จากเฉลยแบบฝึกหัดเรื่องวัตถุสิ่งของ ตอนที่ 1)"
+  }
+]
