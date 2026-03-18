@@ -1,15 +1,13 @@
 import { useState } from "react";
 import { useQuizStore } from "@/store/quizStore";
 import { useHistoryStore } from "@/store/historyStore";
+import { useSubjectStore } from "@/store/subjectStore";
 import { PageHeader } from "@/components/molecules/PageHeader";
 import { LevelBadge } from "@/components/molecules/LevelBadge";
 import { ScoreText } from "@/components/atoms/ScoreText";
 import { LectureStatRow } from "@/components/molecules/LectureStatRow";
-import { StatBox } from "@/components/molecules/StatBox";
-import { lectureNames } from "@/constants/lectures";
-import { levelLabels, levelColors } from "@/constants/levels";
-import { formatTime, getScoreColor, getBarColor } from "@/lib/utils";
-import type { QuizResult, Level } from "@/types/quiz";
+import { formatTime } from "@/lib/utils";
+import type { QuizResult } from "@/types/quiz";
 
 const filterOptions: { value: string; label: string }[] = [
   { value: "all", label: "ทั้งหมด" },
@@ -26,6 +24,9 @@ function formatDate(iso: string) {
 }
 
 function ResultDetail({ result, onBack }: { result: QuizResult; onBack: () => void }) {
+  const config = useSubjectStore((s) => s.getConfig());
+  const lectureNames = config?.lectureNames ?? {};
+
   const breakdown = Object.entries(result.lectureBreakdown).map(([key, val]) => ({
     key,
     name: lectureNames[key] || key,

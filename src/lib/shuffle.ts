@@ -7,10 +7,11 @@ export function shuffleArray<T>(arr: T[]): T[] {
   return shuffled;
 }
 
-export function generateShuffledChoices(questionCount: number): Record<number, string[]> {
+export function generateShuffledChoices(questionCount: number, shuffle = true): Record<number, string[]> {
   const result: Record<number, string[]> = {};
+  const identity = ["A", "B", "C", "D"];
   for (let i = 0; i < questionCount; i++) {
-    result[i] = shuffleArray(["A", "B", "C", "D"]);
+    result[i] = shuffle ? shuffleArray(identity) : [...identity];
   }
   return result;
 }
