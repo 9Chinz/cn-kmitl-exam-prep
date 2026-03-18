@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 import path from 'path'
 
 export default defineConfig({
-  base: '/cn-kmitl-exam-prep/',
+  base: '/kmitl-exam-prep/',
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {

@@ -1,20 +1,18 @@
 import { useQuizStore } from "@/store/quizStore";
+import { useSubjectStore } from "@/store/subjectStore";
+import { useHistoryStore } from "@/store/historyStore";
 import { LevelModal } from "./LevelModal";
 import { NameInput } from "./NameInput";
 
-const lectures = [
-  { id: "Lec 8", title: "Data Link Layer & Ethernet", color: "bg-blue-500" },
-  { id: "Lec 9A", title: "Network Layer & IPv4", color: "bg-green-500" },
-  { id: "Lec 9B", title: "IPv4 Subnetting & VLSM", color: "bg-orange-500" },
-  { id: "Lec 10", title: "VLAN, DHCP & IPv6", color: "bg-purple-500" },
-  { id: "Lec 11", title: "Introduction to Routing", color: "bg-red-500" },
-  { id: "Lec 12", title: "Transport & Application Layer", color: "bg-teal-500" },
-];
-
 export function StartPage() {
   const { openLevelModal, showLevelModal, pendingLevel, checkForCheckpoint, resumeFromCheckpoint, setPage } = useQuizStore();
+  const { clearSubject, getConfig } = useSubjectStore();
+  const { reloadHistory } = useHistoryStore();
+  const config = getConfig();
 
   const savedLevel = checkForCheckpoint();
+
+  if (!config) return null;
 
   return (
     <div className="min-h-svh flex flex-col">
@@ -22,32 +20,34 @@ export function StartPage() {
         <div className="w-full max-w-md mx-auto">
           <div className="text-center mb-8">
             <div className="inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
-              01076116 - KMITL
+              {config.code} - KMITL
             </div>
             <h1 className="text-2xl font-bold text-foreground mb-2">
-              Computer Networks
+              {config.name}
             </h1>
             <h2 className="text-lg text-muted-foreground mb-1">
               Final Exam Quiz
             </h2>
             <p className="text-sm text-muted-foreground">
-              180 questions across 4 difficulty levels
+              {config.description}
             </p>
           </div>
 
-          <div className="space-y-2 mb-8">
-            {lectures.map((lec) => (
-              <div
-                key={lec.id}
-                className="flex items-center gap-3 p-3 rounded-lg bg-card border border-border"
-              >
-                <span className={`${lec.color} text-white text-xs font-bold px-2 py-1 rounded`}>
-                  {lec.id}
-                </span>
-                <span className="text-sm text-foreground">{lec.title}</span>
-              </div>
-            ))}
-          </div>
+          {config.lectures.length > 0 && (
+            <div className="space-y-2 mb-8">
+              {config.lectures.map((lec) => (
+                <div
+                  key={lec.id}
+                  className="flex items-center gap-3 p-3 rounded-lg bg-card border border-border"
+                >
+                  <span className={`${lec.color} text-white text-xs font-bold px-2 py-1 rounded`}>
+                    {lec.id}
+                  </span>
+                  <span className="text-sm text-foreground">{lec.title}</span>
+                </div>
+              ))}
+            </div>
+          )}
 
           <div className="space-y-3">
             <button
@@ -74,6 +74,21 @@ export function StartPage() {
                 <path d="M18 20V10" /><path d="M12 20V4" /><path d="M6 20v-6" />
               </svg>
               สถิติผู้ทำข้อสอบ
+            </button>
+
+            <button
+              onClick={() => {
+                clearSubject();
+                reloadHistory();
+              }}
+              className="w-full py-3 px-6 text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center justify-center gap-2"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+                <polyline points="10 17 15 12 10 7" />
+                <line x1="15" y1="12" x2="3" y2="12" />
+              </svg>
+              เปลี่ยนวิชา
             </button>
           </div>
         </div>

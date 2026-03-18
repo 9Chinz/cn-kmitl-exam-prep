@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useQuizStore } from "@/store/quizStore";
+import { useSubjectStore } from "@/store/subjectStore";
+import { useHistoryStore } from "@/store/historyStore";
 import { Modal } from "@/components/molecules/Modal";
 import { Button } from "@/components/atoms/Button";
 
@@ -10,6 +12,8 @@ interface MenuDialogProps {
 
 export function MenuDialog({ open, onClose }: MenuDialogProps) {
   const { resetQuiz, setPage } = useQuizStore();
+  const { clearSubject } = useSubjectStore();
+  const { reloadHistory } = useHistoryStore();
   const [confirmReset, setConfirmReset] = useState(false);
 
   if (!open) return null;
@@ -101,6 +105,27 @@ export function MenuDialog({ open, onClose }: MenuDialogProps) {
           <div>
             <div className="text-sm font-medium">กลับหน้าหลัก</div>
             <div className="text-xs text-muted-foreground">ความก้าวหน้าจะถูกบันทึกไว้</div>
+          </div>
+        </button>
+
+        <button
+          onClick={() => {
+            clearSubject();
+            reloadHistory();
+            onClose();
+          }}
+          className="w-full flex items-center gap-3 p-3.5 rounded-xl border border-border hover:bg-accent transition-colors text-left"
+        >
+          <span className="w-8 h-8 rounded-full bg-violet-500/10 flex items-center justify-center">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-violet-500">
+              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+              <polyline points="10 17 15 12 10 7" />
+              <line x1="15" y1="12" x2="3" y2="12" />
+            </svg>
+          </span>
+          <div>
+            <div className="text-sm font-medium">เปลี่ยนวิชา</div>
+            <div className="text-xs text-muted-foreground">เลือกวิชาอื่น</div>
           </div>
         </button>
       </div>

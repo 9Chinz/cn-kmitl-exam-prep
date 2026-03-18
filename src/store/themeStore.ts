@@ -8,14 +8,14 @@ interface ThemeStore {
 }
 
 function getInitialTheme(): Theme {
-  const saved = localStorage.getItem("cn-quiz-theme");
+  const saved = localStorage.getItem("quiz-app-theme") || localStorage.getItem("cn-quiz-theme");
   if (saved === "dark" || saved === "light") return saved;
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
 function applyTheme(theme: Theme) {
   document.documentElement.classList.toggle("dark", theme === "dark");
-  localStorage.setItem("cn-quiz-theme", theme);
+  localStorage.setItem("quiz-app-theme", theme);
 }
 
 const initial = getInitialTheme();

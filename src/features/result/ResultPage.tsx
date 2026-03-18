@@ -1,16 +1,20 @@
 import { useState } from "react";
 import { useQuizStore } from "@/store/quizStore";
+import { useSubjectStore } from "@/store/subjectStore";
 import { PageHeader } from "@/components/molecules/PageHeader";
 import { ScoreText } from "@/components/atoms/ScoreText";
 import { StatBox } from "@/components/molecules/StatBox";
 import { LectureStatRow } from "@/components/molecules/LectureStatRow";
 import { Button } from "@/components/atoms/Button";
-import { lectureOrder, lectureNames } from "@/constants/lectures";
-import { formatTime, getScoreColor, getBarColor } from "@/lib/utils";
+import { formatTime } from "@/lib/utils";
 
 export function ResultPage() {
   const { questions, answers, level, totalElapsedTime, questionTimes, setPage, resetQuiz } = useQuizStore();
+  const config = useSubjectStore((s) => s.getConfig());
   const [showReview, setShowReview] = useState(false);
+
+  const lectureOrder = config?.lectureOrder ?? [];
+  const lectureNames = config?.lectureNames ?? {};
 
   const totalQuestions = questions.length;
   const correctCount = questions.filter(

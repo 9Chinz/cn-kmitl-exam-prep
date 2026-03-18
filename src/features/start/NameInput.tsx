@@ -6,7 +6,7 @@ import { levelLabels } from "@/constants/levels";
 
 export function NameInput() {
   const { pendingLevel, startQuiz, cancelNameInput } = useQuizStore();
-  const [name, setName] = useState(() => localStorage.getItem("cn-quiz-last-name") || "");
+  const [name, setName] = useState(() => localStorage.getItem("quiz-app-last-name") || localStorage.getItem("cn-quiz-last-name") || "");
 
   if (!pendingLevel) return null;
 

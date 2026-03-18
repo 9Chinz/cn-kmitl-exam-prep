@@ -1,59 +1,19 @@
 import { create } from "zustand";
 import type { Question, Level, Page, Checkpoint, QuizResult } from "../types/quiz";
-import { generateShuffledChoices, shuffleArray } from "../lib/shuffle";
+import { generateShuffledChoices } from "../lib/shuffle";
 import { useHistoryStore } from "./historyStore";
+import { useSubjectStore } from "./subjectStore";
 
-import rawEasy from "../data/easy.json";
-import rawNormal from "../data/normal.json";
-import rawHard from "../data/hard.json";
-import rawGuidelineEasy from "../data/guideline-easy.json";
-import rawGuidelineNormal from "../data/guideline-normal.json";
-import rawGuidelineHard from "../data/guideline-hard.json";
-
-// Assign globally unique IDs
-const easyQuestions = (rawEasy as Question[]).map((q) => ({ ...q, id: q.id }));
-const normalQuestions = (rawNormal as Question[]).map((q) => ({ ...q, id: q.id + 100 }));
-const hardQuestions = (rawHard as Question[]).map((q) => ({ ...q, id: q.id + 200 }));
-const guidelineEasyQuestions = (rawGuidelineEasy as Question[]).map((q) => ({ ...q, id: q.id + 300 }));
-const guidelineNormalQuestions = (rawGuidelineNormal as Question[]).map((q) => ({ ...q, id: q.id + 400 }));
-const guidelineHardQuestions = (rawGuidelineHard as Question[]).map((q) => ({ ...q, id: q.id + 500 }));
-
-const allQuestions = [
-  ...easyQuestions, ...normalQuestions, ...hardQuestions,
-  ...guidelineEasyQuestions, ...guidelineNormalQuestions, ...guidelineHardQuestions,
-];
-
-type DirectLevel = Exclude<Level, "random" | "guideline-random">;
-const questionsMap: Record<DirectLevel, Question[]> = {
-  easy: easyQuestions,
-  normal: normalQuestions,
-  hard: hardQuestions,
-  "guideline-easy": guidelineEasyQuestions,
-  "guideline-normal": guidelineNormalQuestions,
-  "guideline-hard": guidelineHardQuestions,
-};
-
-function buildQuestions(level: Level): Question[] {
-  if (level === "random") {
-    const pick20 = (qs: Question[]) => shuffleArray(qs).slice(0, 20);
-    return shuffleArray([
-      ...pick20(easyQuestions),
-      ...pick20(normalQuestions),
-      ...pick20(hardQuestions),
-    ]);
-  }
-  if (level === "guideline-random") {
-    const pick20 = (qs: Question[]) => shuffleArray(qs).slice(0, 20);
-    return shuffleArray([
-      ...pick20(guidelineEasyQuestions),
-      ...pick20(guidelineNormalQuestions),
-      ...pick20(guidelineHardQuestions),
-    ]);
-  }
-  return shuffleArray([...questionsMap[level]]);
+function getSubjectConfig() {
+  const config = useSubjectStore.getState().getConfig();
+  if (!config) throw new Error("No subject selected");
+  return config;
 }
 
-const CHECKPOINT_KEY = (level: Level) => `cn-quiz-checkpoint-${level}`;
+const CHECKPOINT_KEY = (level: Level) => {
+  const subjectId = useSubjectStore.getState().subjectId;
+  return `${subjectId}-quiz-checkpoint-${level}`;
+};
 
 interface QuizStore {
   page: Page;
@@ -122,9 +82,10 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
   startQuiz: (username) => {
     const { pendingLevel } = get();
     if (!pendingLevel) return;
-    const questions = buildQuestions(pendingLevel);
+    const config = getSubjectConfig();
+    const questions = config.buildQuestions(pendingLevel);
     const shuffled = generateShuffledChoices(questions.length);
-    localStorage.setItem("cn-quiz-last-name", username);
+    localStorage.setItem("quiz-app-last-name", username);
     set({
       level: pendingLevel,
       username,
@@ -165,7 +126,7 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
   },
 
   nextQuestion: () => {
-    const { currentIndex, questions, answers, level, username, totalElapsedTime, questionTimes } = get();
+    const { currentIndex, questions, answers, level, username, totalElapsedTime } = get();
     if (currentIndex < questions.length - 1) {
       const newIndex = currentIndex + 1;
       set({ currentIndex: newIndex, questionStartTime: Date.now() });
@@ -176,7 +137,6 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
         if (cp) localStorage.setItem(CHECKPOINT_KEY(level), JSON.stringify(cp));
       }
     } else if (Object.keys(answers).length === questions.length) {
-      // Quiz complete — save result
       if (level) {
         localStorage.removeItem(CHECKPOINT_KEY(level));
 
@@ -212,7 +172,8 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
   resetQuiz: () => {
     const { level } = get();
     if (!level) return;
-    const questions = buildQuestions(level);
+    const config = getSubjectConfig();
+    const questions = config.buildQuestions(level);
     const shuffled = generateShuffledChoices(questions.length);
     localStorage.removeItem(CHECKPOINT_KEY(level));
     set({
@@ -227,7 +188,10 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
   },
 
   checkForCheckpoint: () => {
-    const levels: Level[] = ["easy", "normal", "hard", "random", "guideline-easy", "guideline-normal", "guideline-hard", "guideline-random"];
+    const config = useSubjectStore.getState().getConfig();
+    if (!config) return null;
+
+    const levels: Level[] = config.levelGroups.flatMap((g) => g.levels.map((l) => l.level));
     for (const level of levels) {
       const saved = localStorage.getItem(CHECKPOINT_KEY(level));
       if (saved) {
@@ -250,15 +214,14 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
 
     try {
       const checkpoint: Checkpoint = JSON.parse(saved);
+      const config = getSubjectConfig();
 
-      // Rebuild question order from saved IDs
-      const idMap = new Map(allQuestions.map((q) => [q.id, q]));
+      const idMap = new Map(config.allQuestions.map((q) => [q.id, q]));
       let questions: Question[];
       if (checkpoint.questionIds) {
         questions = checkpoint.questionIds.map((id) => idMap.get(id)).filter(Boolean) as Question[];
       } else {
-        // Legacy checkpoint without questionIds
-        questions = (level === "random" || level === "guideline-random") ? buildQuestions(level) : [...questionsMap[level]];
+        questions = config.buildQuestions(level);
       }
 
       const resumeIndex = checkpoint.answers[checkpoint.currentIndex] !== undefined
