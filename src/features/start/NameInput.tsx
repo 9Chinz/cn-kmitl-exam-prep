@@ -2,13 +2,21 @@ import { useState } from "react";
 import { useQuizStore } from "@/store/quizStore";
 import { Modal } from "@/components/molecules/Modal";
 import { Button } from "@/components/atoms/Button";
+import { Switch } from "@/components/atoms/Switch";
 import { levelLabels } from "@/constants/levels";
 
 export function NameInput() {
   const { pendingLevel, startQuiz, cancelNameInput } = useQuizStore();
   const [name, setName] = useState(() => localStorage.getItem("quiz-app-last-name") || localStorage.getItem("cn-quiz-last-name") || "");
+  const [shuffleQuestions, setShuffleQuestions] = useState(false);
+  const [shuffleChoices, setShuffleChoices] = useState(false);
 
   if (!pendingLevel) return null;
+
+  const handleStart = () => {
+    if (!name.trim()) return;
+    startQuiz(name.trim(), { shuffleQuestions, shuffleChoices });
+  };
 
   return (
     <Modal open={true} onClose={cancelNameInput}>
@@ -25,13 +33,36 @@ export function NameInput() {
         autoFocus
         className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 mb-4"
         onKeyDown={(e) => {
-          if (e.key === "Enter" && name.trim()) startQuiz(name.trim());
+          if (e.key === "Enter") handleStart();
         }}
       />
 
+      <div className="space-y-2 mb-4">
+        <label className="flex items-center justify-between p-2.5 rounded-lg border border-border cursor-pointer hover:bg-accent/50 transition-colors">
+          <div>
+            <div className="text-sm font-medium text-foreground">Shuffle Questions</div>
+            <div className="text-xs text-muted-foreground">สุ่มลำดับคำถาม</div>
+          </div>
+          <Switch
+            checked={shuffleQuestions}
+            onCheckedChange={setShuffleQuestions}
+          />
+        </label>
+        <label className="flex items-center justify-between p-2.5 rounded-lg border border-border cursor-pointer hover:bg-accent/50 transition-colors">
+          <div>
+            <div className="text-sm font-medium text-foreground">Shuffle Answers</div>
+            <div className="text-xs text-muted-foreground">สุ่มลำดับตัวเลือก</div>
+          </div>
+          <Switch
+            checked={shuffleChoices}
+            onCheckedChange={setShuffleChoices}
+          />
+        </label>
+      </div>
+
       <Button
         variant="primary"
-        onClick={() => startQuiz(name.trim())}
+        onClick={handleStart}
         disabled={!name.trim()}
         className="disabled:opacity-40 disabled:cursor-not-allowed"
       >

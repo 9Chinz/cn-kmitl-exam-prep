@@ -30,10 +30,12 @@ const questions: Record<string, Question[]> = {
   "guideline-hard": guidelineHardQuestions,
 };
 
-function buildQuestions(level: Level): Question[] {
+function buildQuestions(level: Level, shuffle: boolean): Question[] {
+  const maybeShuffleArray = <T,>(arr: T[]) => shuffle ? shuffleArray(arr) : arr;
+
   if (level === "random") {
     const pick20 = (qs: Question[]) => shuffleArray(qs).slice(0, 20);
-    return shuffleArray([
+    return maybeShuffleArray([
       ...pick20(easyQuestions),
       ...pick20(normalQuestions),
       ...pick20(hardQuestions),
@@ -41,20 +43,20 @@ function buildQuestions(level: Level): Question[] {
   }
   if (level === "guideline-random") {
     const pick20 = (qs: Question[]) => shuffleArray(qs).slice(0, 20);
-    return shuffleArray([
+    return maybeShuffleArray([
       ...pick20(guidelineEasyQuestions),
       ...pick20(guidelineNormalQuestions),
       ...pick20(guidelineHardQuestions),
     ]);
   }
-  return shuffleArray([...questions[level]]);
+  return maybeShuffleArray([...questions[level]]);
 }
 
 export const cnSubject: SubjectConfig = {
   id: "cn",
   name: "Computer Networks",
   code: "01076116",
-  description: "180 questions across 4 difficulty levels",
+  description: "Guideline 180 questions across 4 difficulty levels",
   icon: "🌐",
   color: "bg-blue-600",
   lectures: [
@@ -93,21 +95,11 @@ export const cnSubject: SubjectConfig = {
   ],
   levelGroups: [
     {
-      groupLabel: "Original (เนื้อหาบทเรียน)",
-      levels: [
-        { level: "easy", label: "Easy", desc: "คำถามพื้นฐาน จำข้อมูลและนิยาม", color: "bg-green-500 hover:bg-green-600" },
-        { level: "normal", label: "Normal", desc: "ทดสอบความเข้าใจและเปรียบเทียบ", color: "bg-yellow-500 hover:bg-yellow-600" },
-        { level: "hard", label: "Hard", desc: "สถานการณ์จำลอง คำนวณ และวิเคราะห์", color: "bg-red-500 hover:bg-red-600" },
-        { level: "random", label: "Random", desc: "สุ่มคำถามจากทุกระดับ 20 ข้อต่อระดับ", color: "bg-purple-500 hover:bg-purple-600" },
-      ],
-    },
-    {
       groupLabel: "Guideline (ตัวอย่างข้อสอบ)",
       levels: [
-        { level: "guideline-easy", label: "Easy", desc: "คำถามจากตัวอย่างข้อสอบตรง ๆ", color: "bg-cyan-500 hover:bg-cyan-600" },
-        { level: "guideline-normal", label: "Normal", desc: "เนื้อหาเดียวกัน แต่ถามลึกขึ้น", color: "bg-cyan-600 hover:bg-cyan-700" },
-        { level: "guideline-hard", label: "Hard", desc: "สถานการณ์จำลอง วิเคราะห์เชิงลึก", color: "bg-cyan-700 hover:bg-cyan-800" },
-        { level: "guideline-random", label: "Random", desc: "สุ่มจากทุกระดับ Guideline", color: "bg-cyan-400 hover:bg-cyan-500" },
+        { level: "guideline-easy", label: "Easy", desc: "คำถามจากตัวอย่างข้อสอบตรง ๆ", color: "bg-green-500 hover:bg-green-600" },
+        { level: "guideline-normal", label: "Normal", desc: "เนื้อหาเดียวกัน แต่ถามลึกขึ้น", color: "bg-yellow-500 hover:bg-yellow-600" },
+        { level: "guideline-hard", label: "Hard", desc: "สถานการณ์จำลอง วิเคราะห์เชิงลึก", color: "bg-red-500 hover:bg-red-600" },
       ],
     },
   ],

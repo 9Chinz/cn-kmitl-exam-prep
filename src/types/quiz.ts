@@ -25,6 +25,8 @@ export interface Checkpoint {
   questionTimes: Record<number, number>;
   questionIds: number[];
   totalElapsedTime: number;
+  shuffleQuestions: boolean;
+  shuffleChoices: boolean;
   timestamp: number;
 }
 

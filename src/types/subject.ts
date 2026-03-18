@@ -27,5 +27,5 @@ export interface SubjectConfig {
   levelGroups: LevelGroup[];
   questions: Record<string, Question[]>;
   allQuestions: Question[];
-  buildQuestions: (level: Level) => Question[];
+  buildQuestions: (level: Level, shuffle: boolean) => Question[];
 }

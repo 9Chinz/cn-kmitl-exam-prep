@@ -15,6 +15,11 @@ const CHECKPOINT_KEY = (level: Level) => {
   return `${subjectId}-quiz-checkpoint-${level}`;
 };
 
+interface ShuffleOptions {
+  shuffleQuestions: boolean;
+  shuffleChoices: boolean;
+}
+
 interface QuizStore {
   page: Page;
   level: Level | null;
@@ -28,12 +33,14 @@ interface QuizStore {
   totalElapsedTime: number;
   showLevelModal: boolean;
   pendingLevel: Level | null;
+  shuffleQuestions: boolean;
+  shuffleChoices: boolean;
 
   setPage: (page: Page) => void;
   openLevelModal: () => void;
   closeLevelModal: () => void;
   selectLevel: (level: Level) => void;
-  startQuiz: (username: string) => void;
+  startQuiz: (username: string, options: ShuffleOptions) => void;
   cancelNameInput: () => void;
   answerQuestion: (selectedKey: string) => void;
   nextQuestion: () => void;
@@ -42,7 +49,7 @@ interface QuizStore {
   resumeFromCheckpoint: (level: Level) => void;
 }
 
-function buildCheckpoint(state: Pick<QuizStore, "level" | "username" | "currentIndex" | "answers" | "shuffledChoices" | "questionTimes" | "totalElapsedTime" | "questions">): Checkpoint | null {
+function buildCheckpoint(state: Pick<QuizStore, "level" | "username" | "currentIndex" | "answers" | "shuffledChoices" | "questionTimes" | "totalElapsedTime" | "questions" | "shuffleQuestions" | "shuffleChoices">): Checkpoint | null {
   if (!state.level) return null;
   return {
     level: state.level,
@@ -53,6 +60,8 @@ function buildCheckpoint(state: Pick<QuizStore, "level" | "username" | "currentI
     questionTimes: state.questionTimes,
     questionIds: state.questions.map((q) => q.id),
     totalElapsedTime: state.totalElapsedTime,
+    shuffleQuestions: state.shuffleQuestions,
+    shuffleChoices: state.shuffleChoices,
     timestamp: Date.now(),
   };
 }
@@ -70,6 +79,8 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
   totalElapsedTime: 0,
   showLevelModal: false,
   pendingLevel: null,
+  shuffleQuestions: true,
+  shuffleChoices: true,
 
   setPage: (page) => set({ page }),
   openLevelModal: () => set({ showLevelModal: true }),
@@ -79,18 +90,20 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
     set({ pendingLevel: level, showLevelModal: false });
   },
 
-  startQuiz: (username) => {
+  startQuiz: (username, options) => {
     const { pendingLevel } = get();
     if (!pendingLevel) return;
     const config = getSubjectConfig();
-    const questions = config.buildQuestions(pendingLevel);
-    const shuffled = generateShuffledChoices(questions.length);
+    const questions = config.buildQuestions(pendingLevel, options.shuffleQuestions);
+    const shuffled = generateShuffledChoices(questions.length, options.shuffleChoices);
     localStorage.setItem("quiz-app-last-name", username);
     set({
       level: pendingLevel,
       username,
       questions,
       shuffledChoices: shuffled,
+      shuffleQuestions: options.shuffleQuestions,
+      shuffleChoices: options.shuffleChoices,
       currentIndex: 0,
       answers: {},
       questionTimes: {},
@@ -104,7 +117,7 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
   cancelNameInput: () => set({ pendingLevel: null }),
 
   answerQuestion: (selectedKey) => {
-    const { currentIndex, answers, questionStartTime, questionTimes, totalElapsedTime, level, shuffledChoices, questions, username } = get();
+    const { currentIndex, answers, questionStartTime, questionTimes, totalElapsedTime, level, shuffledChoices, questions, username, shuffleQuestions, shuffleChoices } = get();
     if (answers[currentIndex] !== undefined) return;
 
     const now = Date.now();
@@ -120,7 +133,7 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
     });
 
     if (level) {
-      const cp = buildCheckpoint({ level, username, currentIndex, answers: newAnswers, shuffledChoices, questionTimes: newQuestionTimes, totalElapsedTime: newTotal, questions });
+      const cp = buildCheckpoint({ level, username, currentIndex, answers: newAnswers, shuffledChoices, questionTimes: newQuestionTimes, totalElapsedTime: newTotal, questions, shuffleQuestions, shuffleChoices });
       if (cp) localStorage.setItem(CHECKPOINT_KEY(level), JSON.stringify(cp));
     }
   },
@@ -170,11 +183,11 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
   },
 
   resetQuiz: () => {
-    const { level } = get();
+    const { level, shuffleQuestions, shuffleChoices } = get();
     if (!level) return;
     const config = getSubjectConfig();
-    const questions = config.buildQuestions(level);
-    const shuffled = generateShuffledChoices(questions.length);
+    const questions = config.buildQuestions(level, shuffleQuestions);
+    const shuffled = generateShuffledChoices(questions.length, shuffleChoices);
     localStorage.removeItem(CHECKPOINT_KEY(level));
     set({
       questions,
@@ -221,7 +234,7 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
       if (checkpoint.questionIds) {
         questions = checkpoint.questionIds.map((id) => idMap.get(id)).filter(Boolean) as Question[];
       } else {
-        questions = config.buildQuestions(level);
+        questions = config.buildQuestions(level, checkpoint.shuffleQuestions ?? true);
       }
 
       const resumeIndex = checkpoint.answers[checkpoint.currentIndex] !== undefined
@@ -237,6 +250,8 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
         shuffledChoices: checkpoint.shuffledChoices,
         questionTimes: checkpoint.questionTimes,
         totalElapsedTime: checkpoint.totalElapsedTime,
+        shuffleQuestions: checkpoint.shuffleQuestions ?? true,
+        shuffleChoices: checkpoint.shuffleChoices ?? true,
         questionStartTime: Date.now(),
         page: "quiz",
       });

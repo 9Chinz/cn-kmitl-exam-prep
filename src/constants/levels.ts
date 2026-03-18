@@ -14,8 +14,8 @@ export const levelColors: Record<string, string> = {
   normal: "bg-yellow-500",
   hard: "bg-red-500",
   random: "bg-purple-500",
-  "guideline-easy": "bg-cyan-500",
-  "guideline-normal": "bg-cyan-600",
-  "guideline-hard": "bg-cyan-700",
-  "guideline-random": "bg-cyan-400",
+  "guideline-easy": "bg-green-500",
+  "guideline-normal": "bg-yellow-500",
+  "guideline-hard": "bg-red-500",
+  "guideline-random": "bg-purple-500",
 };
