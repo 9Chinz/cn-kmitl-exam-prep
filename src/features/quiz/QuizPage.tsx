@@ -6,6 +6,7 @@ import { ProgressBar } from "@/components/atoms/ProgressBar";
 import { TimeDisplay } from "@/components/atoms/TimeDisplay";
 import { ChoiceButton } from "@/components/molecules/ChoiceButton";
 import { ExplanationBox } from "@/components/molecules/ExplanationBox";
+import { FillBlankQuestion } from "@/components/organisms/FillBlankQuestion";
 import { Button } from "@/components/atoms/Button";
 import { getLectureName } from "@/constants/lectures";
 
@@ -53,20 +54,15 @@ export function QuizPage() {
   const question = questions[currentIndex];
   if (!question || !level) return null;
 
-  // shuffledChoices[currentIndex] = e.g. ["C", "A", "D", "B"]
-  // This means: display position A shows original choice C's text,
-  //             display position B shows original choice A's text, etc.
-  const choiceOrder = shuffledChoices[currentIndex] || ["A", "B", "C", "D"];
-
-  // The user's answer is stored as the ORIGINAL key (e.g. "C")
+  const isFillBlank = question.type === "fill-blank";
   const selectedOriginalKey = answers[currentIndex];
   const isAnswered = selectedOriginalKey !== undefined;
-  const isCorrect = selectedOriginalKey === question.correctAnswer;
   const isLastQuestion = currentIndex === questions.length - 1;
   const answeredCount = Object.keys(answers).length;
 
-  // Map: which display label maps to which original key
-  // displayLabels[i] shows content from choiceOrder[i]
+  // Choice question helpers
+  const choiceOrder = shuffledChoices[currentIndex] || ["A", "B", "C", "D"];
+  const isChoiceCorrect = !isFillBlank && selectedOriginalKey === question.correctAnswer;
   const getOriginalKeyForDisplay = (displayIndex: number) => choiceOrder[displayIndex];
 
   const getChoiceState = (originalKey: string): "default" | "correct" | "wrong" | "dimmed" => {
@@ -126,38 +122,59 @@ export function QuizPage() {
           {currentIndex + 1}. {question.question}
         </h2>
 
-        {/* Choices - always A, B, C, D in order, content shuffled */}
-        <div className="space-y-2.5 mb-6">
-          {displayLabels.map((label, displayIndex) => {
-            const originalKey = getOriginalKeyForDisplay(displayIndex);
-            const choice = question.choices.find((c) => c.key === originalKey);
-            if (!choice) return null;
-            return (
-              <ChoiceButton
-                key={displayIndex}
-                label={label}
-                text={choice.text}
-                state={getChoiceState(originalKey)}
-                icon={getChoiceIcon(originalKey)}
-                disabled={isAnswered}
-                onClick={() => answerQuestion(originalKey)}
-              />
-            );
-          })}
-        </div>
+        {isFillBlank ? (
+          <>
+            <FillBlankQuestion
+              key={currentIndex}
+              question={question}
+              onAnswer={answerQuestion}
+              isAnswered={isAnswered}
+              storedAnswer={selectedOriginalKey}
+            />
+            {isAnswered && (
+              <Button variant="primary" onClick={nextQuestion} className="py-3.5 text-base mt-4">
+                {isLastQuestion && answeredCount === questions.length
+                  ? "\u0e14\u0e39\u0e1c\u0e25\u0e2a\u0e2d\u0e1a"
+                  : "\u0e02\u0e49\u0e2d\u0e16\u0e31\u0e14\u0e44\u0e1b"}
+              </Button>
+            )}
+          </>
+        ) : (
+          <>
+            {/* Choices - always A, B, C, D in order, content shuffled */}
+            <div className="space-y-2.5 mb-6">
+              {displayLabels.map((label, displayIndex) => {
+                const originalKey = getOriginalKeyForDisplay(displayIndex);
+                const choice = question.choices?.find((c) => c.key === originalKey);
+                if (!choice) return null;
+                return (
+                  <ChoiceButton
+                    key={displayIndex}
+                    label={label}
+                    text={choice.text}
+                    state={getChoiceState(originalKey)}
+                    icon={getChoiceIcon(originalKey)}
+                    disabled={isAnswered}
+                    onClick={() => answerQuestion(originalKey)}
+                  />
+                );
+              })}
+            </div>
 
-        {/* Explanation */}
-        {isAnswered && (
-          <ExplanationBox correct={isCorrect} text={question.explanation} />
-        )}
+            {/* Explanation */}
+            {isAnswered && (
+              <ExplanationBox correct={isChoiceCorrect} text={question.explanation} />
+            )}
 
-        {/* Next button */}
-        {isAnswered && (
-          <Button variant="primary" onClick={nextQuestion} className="py-3.5 text-base">
-            {isLastQuestion && answeredCount === questions.length
-              ? "\u0e14\u0e39\u0e1c\u0e25\u0e2a\u0e2d\u0e1a"
-              : "\u0e02\u0e49\u0e2d\u0e16\u0e31\u0e14\u0e44\u0e1b"}
-          </Button>
+            {/* Next button */}
+            {isAnswered && (
+              <Button variant="primary" onClick={nextQuestion} className="py-3.5 text-base">
+                {isLastQuestion && answeredCount === questions.length
+                  ? "\u0e14\u0e39\u0e1c\u0e25\u0e2a\u0e2d\u0e1a"
+                  : "\u0e02\u0e49\u0e2d\u0e16\u0e31\u0e14\u0e44\u0e1b"}
+              </Button>
+            )}
+          </>
         )}
       </div>
 

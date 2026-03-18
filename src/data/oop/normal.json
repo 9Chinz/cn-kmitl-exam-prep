@@ -1,0 +1,821 @@
+[
+  {
+    "id": 1,
+    "type": "choice",
+    "lecture": "Ch2-Variables",
+    "question": "ผลลัพธ์ของ (double)(5/9) * (212-32) คืออะไร?",
+    "choices": [
+      { "key": "A", "text": "100.0" },
+      { "key": "B", "text": "180.0" },
+      { "key": "C", "text": "0.0" },
+      { "key": "D", "text": "99.999" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "5/9 เป็น int หาร int ได้ 0 แล้วค่อย cast เป็น double ได้ 0.0 จากนั้น 0.0 * 180 = 0.0"
+  },
+  {
+    "id": 2,
+    "type": "choice",
+    "lecture": "Ch2-Variables",
+    "question": "ตัวแปร x มีค่าเท่าใดหลังรันโค้ด: int x = 10; x += x++ + ++x;",
+    "choices": [
+      { "key": "A", "text": "32" },
+      { "key": "B", "text": "22" },
+      { "key": "C", "text": "34" },
+      { "key": "D", "text": "30" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "x++ ใช้ค่า 10 แล้วเพิ่มเป็น 11 จากนั้น ++x เพิ่มเป็น 12 แล้วใช้ ดังนั้น x = 10 + (10 + 12) = 32"
+  },
+  {
+    "id": 3,
+    "type": "choice",
+    "lecture": "Ch2-Variables",
+    "question": "ข้อใดอธิบายผลลัพธ์ของ Math.ceil(-2.3) ได้ถูกต้อง?",
+    "choices": [
+      { "key": "A", "text": "คืนค่า -3.0 เพราะปัดลงเสมอ" },
+      { "key": "B", "text": "คืนค่า -2.0 เพราะปัดขึ้นหาค่าจำนวนเต็มที่ใกล้ที่สุดที่มากกว่าหรือเท่ากับ" },
+      { "key": "C", "text": "คืนค่า -2 เป็น int เพราะ ceil คืน int เสมอ" },
+      { "key": "D", "text": "คืนค่า -3 เป็น int เพราะตัดทศนิยมทิ้ง" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Math.ceil() ปัดขึ้นหาจำนวนเต็มที่น้อยที่สุดที่ >= ค่าที่ให้ ดังนั้น ceil(-2.3) = -2.0 และคืนค่าเป็น double"
+  },
+  {
+    "id": 4,
+    "type": "choice",
+    "lecture": "Ch2-Variables",
+    "question": "ผลลัพธ์ของ System.out.printf(\"%05.1f\", 3.14159) คืออะไร?",
+    "choices": [
+      { "key": "A", "text": "03.14" },
+      { "key": "B", "text": "3.141" },
+      { "key": "C", "text": "03.10" },
+      { "key": "D", "text": "003.1" }
+    ],
+    "correctAnswer": "D",
+    "explanation": "%05.1f หมายถึงความกว้างรวม 5 ตัวอักษร ทศนิยม 1 ตำแหน่ง เติม 0 ข้างหน้า ได้ 003.1 (3 + . + 1 = 5 ตัวอักษร)"
+  },
+  {
+    "id": 5,
+    "type": "choice",
+    "lecture": "Ch2-Variables",
+    "question": "ข้อใดเป็นผลลัพธ์ของ (int)(Math.random() * 6) + 1?",
+    "choices": [
+      { "key": "A", "text": "สุ่มเลขจำนวนเต็ม 1 ถึง 6" },
+      { "key": "B", "text": "สุ่มเลขจำนวนเต็ม 0 ถึง 6" },
+      { "key": "C", "text": "สุ่มเลขทศนิยม 1.0 ถึง 6.0" },
+      { "key": "D", "text": "สุ่มเลขจำนวนเต็ม 1 ถึง 7" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Math.random() คืน 0.0 ถึง 0.999... คูณ 6 ได้ 0.0 ถึง 5.999... cast เป็น int ได้ 0-5 บวก 1 ได้ 1-6"
+  },
+  {
+    "id": 6,
+    "type": "choice",
+    "lecture": "Ch2-Variables",
+    "question": "ข้อใดจะเกิด compile error?",
+    "choices": [
+      { "key": "A", "text": "byte b = 100;" },
+      { "key": "B", "text": "byte b = 128;" },
+      { "key": "C", "text": "short s = 32000;" },
+      { "key": "D", "text": "int i = 2147483647;" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "byte มีช่วงค่า -128 ถึง 127 ดังนั้น byte b = 128 เกินขอบเขตและทำให้ compile error"
+  },
+  {
+    "id": 7,
+    "type": "choice",
+    "lecture": "Ch2-Variables",
+    "question": "กำหนด double d = 9.7; ผลลัพธ์ของ (int)d + Math.round(d) คืออะไร?",
+    "choices": [
+      { "key": "A", "text": "20" },
+      { "key": "B", "text": "18" },
+      { "key": "C", "text": "19" },
+      { "key": "D", "text": "19.0" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "(int)9.7 ตัดทศนิยมได้ 9 และ Math.round(9.7) ปัดได้ 10 (long) รวมเป็น 9 + 10 = 19 (ผลเป็น long)"
+  },
+  {
+    "id": 8,
+    "type": "choice",
+    "lecture": "Ch4-Selection",
+    "question": "โค้ด: int x = 5; if (x > 3) if (x > 10) System.out.print(\"A\"); else System.out.print(\"B\"); พิมพ์อะไร?",
+    "choices": [
+      { "key": "A", "text": "A" },
+      { "key": "B", "text": "ไม่พิมพ์อะไร" },
+      { "key": "C", "text": "AB" },
+      { "key": "D", "text": "B" }
+    ],
+    "correctAnswer": "D",
+    "explanation": "else จับคู่กับ if ที่ใกล้ที่สุด (if x > 10) เนื่องจาก x=5 > 3 เป็นจริง แต่ 5 > 10 เป็นเท็จ จึงเข้า else พิมพ์ B"
+  },
+  {
+    "id": 9,
+    "type": "choice",
+    "lecture": "Ch4-Selection",
+    "question": "ผลลัพธ์ของ: int a = 3, b = 5; System.out.print(a > b ? a : b); คืออะไร?",
+    "choices": [
+      { "key": "A", "text": "3" },
+      { "key": "B", "text": "true" },
+      { "key": "C", "text": "5" },
+      { "key": "D", "text": "false" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "ternary operator: เงื่อนไข 3 > 5 เป็น false จึงคืนค่า b = 5"
+  },
+  {
+    "id": 10,
+    "type": "choice",
+    "lecture": "Ch4-Selection",
+    "question": "โค้ด switch ต่อไปนี้ หาก day = 3 จะพิมพ์อะไร?\nswitch(day) { case 1: System.out.print(\"Mon\"); case 2: System.out.print(\"Tue\"); case 3: System.out.print(\"Wed\"); case 4: System.out.print(\"Thu\"); break; default: System.out.print(\"Other\"); }",
+    "choices": [
+      { "key": "A", "text": "Wed" },
+      { "key": "B", "text": "WedThu" },
+      { "key": "C", "text": "WedThuOther" },
+      { "key": "D", "text": "MonTueWedThu" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "เมื่อ day=3 จะเข้า case 3 พิมพ์ Wed แล้ว fall-through ไป case 4 พิมพ์ Thu แล้วเจอ break จึงหยุด"
+  },
+  {
+    "id": 11,
+    "type": "choice",
+    "lecture": "Ch4-Selection",
+    "question": "ข้อใดเป็นเงื่อนไขที่ตรวจสอบปีอธิกสุรทิน (leap year) ได้ถูกต้องตามกฎสากล?",
+    "choices": [
+      { "key": "A", "text": "(year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)" },
+      { "key": "B", "text": "(year % 4 == 0) || (year % 100 == 0 && year % 400 == 0)" },
+      { "key": "C", "text": "(year % 4 == 0 && year % 100 == 0) || (year % 400 != 0)" },
+      { "key": "D", "text": "(year % 4 == 0) && (year % 100 != 0 || year % 400 != 0)" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "ปีอธิกสุรทิน: หาร 4 ลงตัวแต่หาร 100 ไม่ลงตัว หรือ หาร 400 ลงตัว เช่น 2000 เป็น leap year แต่ 1900 ไม่เป็น"
+  },
+  {
+    "id": 12,
+    "type": "choice",
+    "lecture": "Ch4-Selection",
+    "question": "กำหนด int score = 75; ข้อใดกำหนดเกรดได้ถูกต้องว่า score >= 80 ได้ A, >= 70 ได้ B, >= 60 ได้ C, ต่ำกว่าได้ F?",
+    "choices": [
+      { "key": "A", "text": "if (score >= 60) grade='C'; else if (score >= 70) grade='B'; else if (score >= 80) grade='A'; else grade='F';" },
+      { "key": "B", "text": "if (score >= 80) grade='A'; if (score >= 70) grade='B'; if (score >= 60) grade='C'; else grade='F';" },
+      { "key": "C", "text": "if (score >= 70) grade='B'; else if (score >= 80) grade='A'; else if (score >= 60) grade='C'; else grade='F';" },
+      { "key": "D", "text": "if (score >= 80) grade='A'; else if (score >= 70) grade='B'; else if (score >= 60) grade='C'; else grade='F';" }
+    ],
+    "correctAnswer": "D",
+    "explanation": "ต้องตรวจจากเกณฑ์สูงสุดลงมา ด้วย else if ข้อ A ตรวจ 60 ก่อนจึงไม่มีทางได้ A หรือ B ข้อ B ใช้ if แยกทำให้ทับซ้อน ข้อ C ตรวจ 70 ก่อน 80 จึงผิดลำดับ"
+  },
+  {
+    "id": 13,
+    "type": "choice",
+    "lecture": "Ch4-Selection",
+    "question": "กำหนดโค้ด: boolean a = true, b = false; ผลลัพธ์ของ (a || b) && !(a && b) คืออะไร?",
+    "choices": [
+      { "key": "A", "text": "true" },
+      { "key": "B", "text": "false" },
+      { "key": "C", "text": "compile error เพราะใช้ ! กับ boolean expression ไม่ได้" },
+      { "key": "D", "text": "runtime error เพราะเป็น infinite evaluation" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "(true || false) = true, (true && false) = false, !(false) = true ดังนั้น true && true = true ซึ่งเป็น XOR logic"
+  },
+  {
+    "id": 14,
+    "type": "choice",
+    "lecture": "Ch5-Strings",
+    "question": "กำหนด String s = \"HelloWorld\"; ผลลัพธ์ของ s.substring(3, 7) คืออะไร?",
+    "choices": [
+      { "key": "A", "text": "\"loW\"" },
+      { "key": "B", "text": "\"loWo\"" },
+      { "key": "C", "text": "\"lowo\"" },
+      { "key": "D", "text": "\"oWor\"" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "substring(3,7) ดึงตัวอักษรจาก index 3 ถึง 6 คือ 'l','o','W','o' ได้ \"loWo\""
+  },
+  {
+    "id": 15,
+    "type": "choice",
+    "lecture": "Ch5-Strings",
+    "question": "กำหนด String s = \"Java Programming\"; ผลลัพธ์ของ s.indexOf('a') + \",\" + s.lastIndexOf('a') คืออะไร?",
+    "choices": [
+      { "key": "A", "text": "\"1,1\"" },
+      { "key": "B", "text": "\"1,3\"" },
+      { "key": "C", "text": "\"1,14\"" },
+      { "key": "D", "text": "\"3,14\"" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "indexOf('a') คืน index แรกที่เจอคือ 1 (J-a-v-a) และ lastIndexOf('a') คืน index สุดท้ายคือ 14 (Programm-i-n-g ตำแหน่ง a ใน gramming)"
+  },
+  {
+    "id": 16,
+    "type": "choice",
+    "lecture": "Ch5-Strings",
+    "question": "กำหนด String s = \"one,two,,four\"; ผลลัพธ์ของ s.split(\",\").length คืออะไร?",
+    "choices": [
+      { "key": "A", "text": "3" },
+      { "key": "B", "text": "5" },
+      { "key": "C", "text": "2" },
+      { "key": "D", "text": "4" }
+    ],
+    "correctAnswer": "D",
+    "explanation": "split(\",\") แบ่งได้ [\"one\", \"two\", \"\", \"four\"] = 4 ชิ้น โดยช่องว่างระหว่าง ,, จะเป็น empty string"
+  },
+  {
+    "id": 17,
+    "type": "choice",
+    "lecture": "Ch5-Strings",
+    "question": "กำหนด char c = 'A'; ผลลัพธ์ของ (char)(c + 3) คืออะไร?",
+    "choices": [
+      { "key": "A", "text": "'C'" },
+      { "key": "B", "text": "'D'" },
+      { "key": "C", "text": "68" },
+      { "key": "D", "text": "'d'" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "'A' มีค่า ASCII 65 บวก 3 ได้ 68 แล้ว cast เป็น char ได้ 'D'"
+  },
+  {
+    "id": 18,
+    "type": "choice",
+    "lecture": "Ch5-Strings",
+    "question": "ข้อใดอ่านข้อมูลจากไฟล์ text โดยใช้ Scanner ได้ถูกต้อง?",
+    "choices": [
+      { "key": "A", "text": "Scanner input = new Scanner(new File(\"data.txt\"));" },
+      { "key": "B", "text": "Scanner input = new Scanner(\"data.txt\");" },
+      { "key": "C", "text": "Scanner input = new Scanner(File.open(\"data.txt\"));" },
+      { "key": "D", "text": "Scanner input = Scanner.fromFile(\"data.txt\");" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "ต้องสร้าง File object ก่อนส่งเข้า Scanner ข้อ B จะอ่าน string \"data.txt\" เป็นข้อมูลแทนที่จะเปิดไฟล์"
+  },
+  {
+    "id": 19,
+    "type": "choice",
+    "lecture": "Ch5-Strings",
+    "question": "กำหนด String s = \"Hello\"; ข้อใดถูกต้องเกี่ยวกับ s.equals(\"hello\") และ s.equalsIgnoreCase(\"hello\")?",
+    "choices": [
+      { "key": "A", "text": "ทั้งคู่คืน true" },
+      { "key": "B", "text": "ทั้งคู่คืน false" },
+      { "key": "C", "text": "equals คืน false แต่ equalsIgnoreCase คืน true" },
+      { "key": "D", "text": "equals คืน true แต่ equalsIgnoreCase คืน false" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "equals() เปรียบเทียบแบบ case-sensitive ดังนั้น \"Hello\" != \"hello\" แต่ equalsIgnoreCase() ไม่สนตัวพิมพ์ใหญ่เล็กจึงคืน true"
+  },
+  {
+    "id": 20,
+    "type": "choice",
+    "lecture": "Ch6-Methods",
+    "question": "method ใดเป็น overloading ที่ถูกต้องของ int add(int a, int b)?",
+    "choices": [
+      { "key": "A", "text": "double add(int a, int b)" },
+      { "key": "B", "text": "int add(int x, int y)" },
+      { "key": "C", "text": "double add(double a, double b)" },
+      { "key": "D", "text": "int add(int a, int b, int c) throws Exception" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "method overloading ต้องมี parameter list ต่างกัน ข้อ A และ B มี parameter เป็น (int, int) เหมือนเดิมจึงไม่ใช่ overloading ข้อ C เปลี่ยนเป็น (double, double) จึงถูกต้อง ข้อ D ก็ overload ได้เช่นกันแต่ข้อ C ชัดเจนกว่า"
+  },
+  {
+    "id": 21,
+    "type": "choice",
+    "lecture": "Ch6-Methods",
+    "question": "โค้ด: void change(int x) { x = 99; } เมื่อเรียก change(num) โดย num = 5 แล้ว num มีค่าเท่าใด?",
+    "choices": [
+      { "key": "A", "text": "99" },
+      { "key": "B", "text": "5" },
+      { "key": "C", "text": "0" },
+      { "key": "D", "text": "compile error" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Java ส่ง primitive type แบบ pass by value ดังนั้น x ใน method เป็นสำเนา การเปลี่ยน x ไม่กระทบ num ภายนอก"
+  },
+  {
+    "id": 22,
+    "type": "choice",
+    "lecture": "Ch6-Methods",
+    "question": "โค้ด: void modify(int[] arr) { arr[0] = 99; } เมื่อเรียก modify(nums) โดย nums = {1,2,3} แล้ว nums[0] มีค่าเท่าใด?",
+    "choices": [
+      { "key": "A", "text": "1" },
+      { "key": "B", "text": "0" },
+      { "key": "C", "text": "compile error เพราะ array เป็น immutable" },
+      { "key": "D", "text": "99" }
+    ],
+    "correctAnswer": "D",
+    "explanation": "array เป็น reference type แม้ Java จะ pass by value แต่สิ่งที่ส่งคือ reference ดังนั้น arr กับ nums ชี้ไปที่ array เดียวกัน การแก้ arr[0] จึงส่งผลถึง nums[0]"
+  },
+  {
+    "id": 23,
+    "type": "choice",
+    "lecture": "Ch6-Methods",
+    "question": "method ที่มี return type เป็น void สามารถใช้คำสั่ง return ได้หรือไม่?",
+    "choices": [
+      { "key": "A", "text": "ไม่ได้เลย จะเกิด compile error" },
+      { "key": "B", "text": "ได้ แต่ต้อง return ค่า null เท่านั้น" },
+      { "key": "C", "text": "ได้ โดยใช้ return; เพื่อจบ method ก่อนกำหนด" },
+      { "key": "D", "text": "ได้ แต่ต้องอยู่ในบรรทัดสุดท้ายของ method เท่านั้น" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "void method สามารถใช้ return; (ไม่มีค่า) เพื่อออกจาก method ก่อนจบได้ เช่น ใช้ใน if-else เพื่อ early return"
+  },
+  {
+    "id": 24,
+    "type": "choice",
+    "lecture": "Ch6-Methods",
+    "question": "ข้อใดเป็นลักษณะของ utility class pattern ใน Java?",
+    "choices": [
+      { "key": "A", "text": "class ที่มีแต่ static methods และ private constructor" },
+      { "key": "B", "text": "class ที่ implement interface หลายตัว" },
+      { "key": "C", "text": "class ที่มี instance variables เป็น public ทั้งหมด" },
+      { "key": "D", "text": "class ที่ extends จาก abstract class" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "utility class (เช่น Math, Arrays) มีแต่ static methods ไม่จำเป็นต้องสร้าง object จึงใช้ private constructor ป้องกันการ new"
+  },
+  {
+    "id": 25,
+    "type": "choice",
+    "lecture": "Ch6-Methods",
+    "question": "ผลลัพธ์ของโค้ดนี้คืออะไร?\npublic static int mystery(int n) {\n    if (n == 0) return 0;\n    return n + mystery(n - 1);\n}\nSystem.out.print(mystery(4));",
+    "choices": [
+      { "key": "A", "text": "4" },
+      { "key": "B", "text": "10" },
+      { "key": "C", "text": "24" },
+      { "key": "D", "text": "15" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "mystery(4) = 4 + mystery(3) = 4 + 3 + mystery(2) = 4 + 3 + 2 + mystery(1) = 4 + 3 + 2 + 1 + mystery(0) = 10"
+  },
+  {
+    "id": 26,
+    "type": "choice",
+    "lecture": "Ch6-Methods",
+    "question": "ข้อใดเป็น method signature ที่ Java ใช้แยก overloaded methods?",
+    "choices": [
+      { "key": "A", "text": "ชื่อ method + return type" },
+      { "key": "B", "text": "ชื่อ method + access modifier + return type" },
+      { "key": "C", "text": "ชื่อ method + parameter names + return type" },
+      { "key": "D", "text": "ชื่อ method + parameter list (จำนวน ลำดับ และ type)" }
+    ],
+    "correctAnswer": "D",
+    "explanation": "method signature ประกอบด้วยชื่อ method กับ parameter list (จำนวน ลำดับ ชนิดข้อมูล) return type ไม่เป็นส่วนหนึ่งของ signature"
+  },
+  {
+    "id": 27,
+    "type": "choice",
+    "lecture": "Ch7-Arrays",
+    "question": "กำหนด int[] arr = {5, 3, 8, 1, 9}; ผลของ Arrays.sort(arr) แล้วอ่าน arr[2] ได้ค่าอะไร?",
+    "choices": [
+      { "key": "A", "text": "3" },
+      { "key": "B", "text": "5" },
+      { "key": "C", "text": "8" },
+      { "key": "D", "text": "1" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Arrays.sort() เรียงจากน้อยไปมากได้ {1, 3, 5, 8, 9} ดังนั้น arr[2] = 5"
+  },
+  {
+    "id": 28,
+    "type": "choice",
+    "lecture": "Ch7-Arrays",
+    "question": "โค้ด linear search หา target ใน array ถ้า target ไม่อยู่ใน array ตามธรรมเนียมของ Java ควรคืนค่าอะไร?",
+    "choices": [
+      { "key": "A", "text": "0" },
+      { "key": "B", "text": "null" },
+      { "key": "C", "text": "-1" },
+      { "key": "D", "text": "array.length" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "ตามธรรมเนียมของ Java (เช่น indexOf) เมื่อหาไม่พบจะคืน -1 เพราะ -1 ไม่ใช่ index ที่ถูกต้อง"
+  },
+  {
+    "id": 29,
+    "type": "choice",
+    "lecture": "Ch7-Arrays",
+    "question": "ในรอบแรกของ Selection Sort กับ array {64, 25, 12, 22, 11} อะไรจะเกิดขึ้น?",
+    "choices": [
+      { "key": "A", "text": "สลับ 64 กับ 11 ได้ {11, 25, 12, 22, 64}" },
+      { "key": "B", "text": "สลับ 64 กับ 25 ได้ {25, 64, 12, 22, 11}" },
+      { "key": "C", "text": "เลื่อน 11 ไปตำแหน่งแรกโดยขยับตัวอื่นไปทางขวา" },
+      { "key": "D", "text": "สลับ 64 กับ 12 เพราะ 12 เจอก่อน 11 ในการเปรียบเทียบ" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Selection Sort รอบแรกหาค่าน้อยสุดทั้ง array (คือ 11 ที่ index 4) แล้วสลับกับตำแหน่งแรก (64)"
+  },
+  {
+    "id": 30,
+    "type": "choice",
+    "lecture": "Ch7-Arrays",
+    "question": "กำหนด int[][] m = new int[3][4]; ค่า m.length และ m[0].length คืออะไร?",
+    "choices": [
+      { "key": "A", "text": "4 และ 3" },
+      { "key": "B", "text": "3 และ 4" },
+      { "key": "C", "text": "12 และ 4" },
+      { "key": "D", "text": "3 และ 12" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "m.length คือจำนวนแถว = 3 และ m[0].length คือจำนวนคอลัมน์ของแถวแรก = 4"
+  },
+  {
+    "id": 31,
+    "type": "choice",
+    "lecture": "Ch7-Arrays",
+    "question": "ข้อใดอธิบาย Arrays.copyOf(arr, arr.length + 3) ได้ถูกต้อง เมื่อ arr = {1, 2, 3}?",
+    "choices": [
+      { "key": "A", "text": "คืน array ใหม่ {1, 2, 3, 1, 2, 3}" },
+      { "key": "B", "text": "เกิด ArrayIndexOutOfBoundsException" },
+      { "key": "C", "text": "คืน array เดิมที่เพิ่มขนาดเป็น 6" },
+      { "key": "D", "text": "คืน array ใหม่ {1, 2, 3, 0, 0, 0}" }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Arrays.copyOf สร้าง array ใหม่ขนาด 6 คัดลอกค่าเดิมแล้วเติม default value (0 สำหรับ int) ในส่วนที่เหลือ"
+  },
+  {
+    "id": 32,
+    "type": "choice",
+    "lecture": "Ch7-Arrays",
+    "question": "ข้อใดสร้าง 2D array แบบ ragged array ที่แถวแรกมี 2 ช่อง แถวที่สองมี 4 ช่อง?",
+    "choices": [
+      { "key": "A", "text": "int[][] a = new int[2][]; a[0] = new int[2]; a[1] = new int[4];" },
+      { "key": "B", "text": "int[][] a = new int[2][4];" },
+      { "key": "C", "text": "int[][] a = {{0,0}, {0,0,0,0}, null};" },
+      { "key": "D", "text": "int[] a = new int[6];" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "ragged array ต้องสร้างโดยกำหนดจำนวนแถวก่อน แล้วกำหนดขนาดแต่ละแถวแยกกัน"
+  },
+  {
+    "id": 33,
+    "type": "choice",
+    "lecture": "Ch7-Arrays",
+    "question": "กำหนด int[] a = {1,2,3}; int[] b = a; b[0] = 99; ค่า a[0] คืออะไร?",
+    "choices": [
+      { "key": "A", "text": "1" },
+      { "key": "B", "text": "0" },
+      { "key": "C", "text": "99" },
+      { "key": "D", "text": "compile error" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "int[] b = a ไม่ได้คัดลอก array แต่ให้ b ชี้ไปที่ array เดียวกับ a ดังนั้นแก้ b[0] ก็เปลี่ยน a[0] ด้วย"
+  },
+  {
+    "id": 34,
+    "type": "choice",
+    "lecture": "Ch8-ClassObject",
+    "question": "ข้อใดอธิบายความแตกต่างระหว่าง static variable กับ instance variable ได้ถูกต้อง?",
+    "choices": [
+      { "key": "A", "text": "static variable มีค่าเดียวร่วมกันทุก object ของ class" },
+      { "key": "B", "text": "static variable สร้างใหม่ทุกครั้งที่สร้าง object" },
+      { "key": "C", "text": "instance variable ใช้ร่วมกันทุก object ของ class เดียวกัน" },
+      { "key": "D", "text": "instance variable เข้าถึงได้โดยไม่ต้องสร้าง object" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "static variable เป็นของ class ไม่ใช่ของ object แต่ละตัว จึงมีค่าเดียวที่ทุก object ใช้ร่วมกัน"
+  },
+  {
+    "id": 35,
+    "type": "choice",
+    "lecture": "Ch8-ClassObject",
+    "question": "ข้อใดเป็นหลักการของ encapsulation ที่ถูกต้อง?",
+    "choices": [
+      { "key": "A", "text": "ทำ instance variable เป็น public เพื่อให้เข้าถึงง่าย" },
+      { "key": "B", "text": "ทำ method ทั้งหมดเป็น private เพื่อซ่อนการทำงาน" },
+      { "key": "C", "text": "ทำ class เป็น final เพื่อป้องกันการ inherit" },
+      { "key": "D", "text": "ทำ instance variable เป็น private แล้วเข้าถึงผ่าน getter/setter" }
+    ],
+    "correctAnswer": "D",
+    "explanation": "encapsulation คือการซ่อนข้อมูลภายใน (private fields) แล้วให้เข้าถึงผ่าน public methods (getter/setter) เพื่อควบคุมการแก้ไขข้อมูล"
+  },
+  {
+    "id": 36,
+    "type": "choice",
+    "lecture": "Ch8-ClassObject",
+    "question": "Copy constructor คือ constructor ที่รับ parameter แบบใด?",
+    "choices": [
+      { "key": "A", "text": "รับ object ของ class เดียวกันเพื่อคัดลอกค่า" },
+      { "key": "B", "text": "ไม่รับ parameter ใดเลย" },
+      { "key": "C", "text": "รับ String เพื่อกำหนดชื่อ object" },
+      { "key": "D", "text": "รับ int เพื่อกำหนดขนาดเริ่มต้น" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "copy constructor รับ object ของ class เดียวกันเป็น parameter แล้วคัดลอกค่า field ทั้งหมดเพื่อสร้าง object ใหม่ที่มีค่าเหมือนกัน"
+  },
+  {
+    "id": 37,
+    "type": "choice",
+    "lecture": "Ch8-ClassObject",
+    "question": "กำหนดว่ามี class Student ที่มี constructor Student(String name) ข้อใดสร้าง array ของ Student ขนาด 5 ได้ถูกต้อง?",
+    "choices": [
+      { "key": "A", "text": "Student[] arr = new Student(5);" },
+      { "key": "B", "text": "Student[5] arr = new Student();" },
+      { "key": "C", "text": "Student[] arr = new Student[5];" },
+      { "key": "D", "text": "Student arr = new Student[5];" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "new Student[5] สร้าง array ที่เก็บ reference ของ Student ได้ 5 ตัว แต่ยังเป็น null ทั้งหมด ต้อง new แต่ละตัวแยก"
+  },
+  {
+    "id": 38,
+    "type": "choice",
+    "lecture": "Ch8-ClassObject",
+    "question": "ในโค้ดต่อไปนี้ this ใช้ทำอะไร?\npublic class Point {\n    int x, y;\n    Point(int x, int y) { this.x = x; this.y = y; }\n}",
+    "choices": [
+      { "key": "A", "text": "เรียก constructor อื่นของ class เดียวกัน" },
+      { "key": "B", "text": "แยกความแตกต่างระหว่าง instance variable กับ parameter ที่ชื่อเหมือนกัน" },
+      { "key": "C", "text": "สร้าง object ใหม่ของ class Point" },
+      { "key": "D", "text": "อ้างอิงถึง class ตัวเองในแบบ static" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "เมื่อ parameter มีชื่อเดียวกับ instance variable ใช้ this.x เพื่อบอกว่าหมายถึง instance variable ไม่ใช่ parameter"
+  },
+  {
+    "id": 39,
+    "type": "choice",
+    "lecture": "Ch8-ClassObject",
+    "question": "ถ้าไม่เขียน constructor ใดเลยใน class Java จะเกิดอะไรขึ้น?",
+    "choices": [
+      { "key": "A", "text": "compile error เพราะทุก class ต้องมี constructor" },
+      { "key": "B", "text": "ไม่สามารถสร้าง object จาก class นั้นได้" },
+      { "key": "C", "text": "Java สร้าง constructor ที่รับ String parameter ให้อัตโนมัติ" },
+      { "key": "D", "text": "Java สร้าง default no-arg constructor ให้อัตโนมัติ" }
+    ],
+    "correctAnswer": "D",
+    "explanation": "ถ้าไม่เขียน constructor เลย Java compiler จะสร้าง default constructor (ไม่มี parameter) ให้อัตโนมัติ แต่ถ้าเขียน constructor ใดไว้แล้วจะไม่สร้างให้"
+  },
+  {
+    "id": 40,
+    "type": "choice",
+    "lecture": "Ch8-ClassObject",
+    "question": "กำหนดว่า class Counter มี static int count = 0 และ constructor ที่เพิ่ม count++ ถ้าสร้าง Counter 3 ตัว ค่า Counter.count คืออะไร?",
+    "choices": [
+      { "key": "A", "text": "0" },
+      { "key": "B", "text": "1" },
+      { "key": "C", "text": "compile error เพราะเข้าถึง static จาก constructor ไม่ได้" },
+      { "key": "D", "text": "3" }
+    ],
+    "correctAnswer": "D",
+    "explanation": "static variable count เป็นของ class ทุกครั้งที่สร้าง object จะเรียก constructor ที่เพิ่ม count++ ดังนั้นสร้าง 3 ครั้ง count = 3"
+  },
+  {
+    "id": 41,
+    "type": "fill-blank",
+    "lecture": "Ch2-Variables",
+    "question": "เติมโค้ดให้สมบูรณ์เพื่อแปลง String เป็น int แล้วคำนวณยกกำลังสอง\n\nExpected Output:\n625.0",
+    "code": "String input = \"25\";\nint num = Integer.__A__(input);\ndouble result = Math.__B__(num, 2);\nSystem.out.println(result);",
+    "blanks": [
+      { "label": "A", "correctAnswer": "parseInt", "explanation": "Integer.parseInt() แปลง String \"25\" เป็น int 25" },
+      { "label": "B", "correctAnswer": "pow", "explanation": "Math.pow(25, 2) คำนวณ 25² = 625.0 (คืนค่าเป็น double เสมอ)" }
+    ],
+    "correctAnswer": "",
+    "explanation": "Integer.parseInt() แปลง String เป็น int และ Math.pow(base, exp) คำนวณเลขยกกำลัง ผลลัพธ์เป็น double เสมอ"
+  },
+  {
+    "id": 42,
+    "type": "fill-blank",
+    "lecture": "Ch2-Variables",
+    "question": "เติม format string ของ printf ให้ชื่อชิดซ้ายกว้าง 15 ช่อง และ GPA แสดงทศนิยม 2 ตำแหน่ง\n\nExpected Output:\nAlice          3.76",
+    "code": "String name = \"Alice\";\ndouble gpa = 3.756;\nSystem.out.printf(\"__A__\", name, gpa);",
+    "blanks": [
+      { "label": "A", "correctAnswer": "%-15s%.2f", "explanation": "%-15s = String ชิดซ้ายกว้าง 15 ช่อง, %.2f = ทศนิยม 2 ตำแหน่ง (3.756 ปัดเป็น 3.76)" }
+    ],
+    "correctAnswer": "",
+    "explanation": "format specifier: %-15s ใช้ - ชิดซ้าย กว้าง 15 ช่อง ส่วน %.2f แสดงทศนิยม 2 ตำแหน่ง"
+  },
+  {
+    "id": 43,
+    "type": "fill-blank",
+    "lecture": "Ch2-Variables",
+    "question": "เติมโค้ดให้สมบูรณ์เพื่ออ่านค่าทศนิยมจาก Scanner แล้วใช้ Math method ปัดเศษ\n\nถ้า input เป็น 3.7 จะได้ผลลัพธ์: 4",
+    "code": "Scanner sc = new Scanner(System.in);\ndouble value = sc.__A__();\nlong rounded = Math.__B__(value);\nSystem.out.println(rounded);",
+    "blanks": [
+      { "label": "A", "correctAnswer": "nextDouble", "explanation": "nextDouble() อ่านค่าทศนิยม (double) จาก input" },
+      { "label": "B", "correctAnswer": "round", "explanation": "Math.round(3.7) ปัดเศษเป็น 4 (คืนค่า long)" }
+    ],
+    "correctAnswer": "",
+    "explanation": "Scanner.nextDouble() อ่านค่าทศนิยม และ Math.round() ปัดเศษไปจำนวนเต็มที่ใกล้ที่สุด"
+  },
+  {
+    "id": 44,
+    "type": "fill-blank",
+    "lecture": "Ch4-Selection",
+    "question": "เติมเงื่อนไขตรวจสอบว่าตัวอักษร ch เป็น uppercase letter หรือไม่ โดยเทียบกับช่วง ASCII\n\nExpected Output:\nUppercase",
+    "code": "char ch = 'G';\nif (ch >= __A__ && ch <= __B__) {\n    System.out.println(\"Uppercase\");\n}",
+    "blanks": [
+      { "label": "A", "correctAnswer": "'A'", "explanation": "'A' คือตัวอักษรพิมพ์ใหญ่ตัวแรก (ASCII 65)" },
+      { "label": "B", "correctAnswer": "'Z'", "explanation": "'Z' คือตัวอักษรพิมพ์ใหญ่ตัวสุดท้าย (ASCII 90) 'G' อยู่ในช่วงนี้จึงแสดง Uppercase" }
+    ],
+    "correctAnswer": "",
+    "explanation": "ตรวจ uppercase โดยเช็คว่า ch อยู่ในช่วง 'A' ถึง 'Z' ตาม ASCII table"
+  },
+  {
+    "id": 45,
+    "type": "fill-blank",
+    "lecture": "Ch4-Selection",
+    "question": "เติมโค้ดใช้ ternary operator หาค่าสูงสุดจาก 3 ตัวแปร โดยเปรียบเทียบ a กับ b ก่อน แล้วเอาตัวชนะไปเทียบกับ c\n\nExpected Output:\n9",
+    "code": "int a = 5, b = 9, c = 3;\nint max = (a > b) ? __A__ : __B__;\nmax = (max > c) ? max : c;\nSystem.out.println(max);",
+    "blanks": [
+      { "label": "A", "correctAnswer": "a", "explanation": "ถ้า a > b เป็นจริง ค่าที่ใหญ่กว่าคือ a" },
+      { "label": "B", "correctAnswer": "b", "explanation": "ถ้า a > b เป็นเท็จ (5 > 9 = false) ค่าที่ใหญ่กว่าคือ b = 9" }
+    ],
+    "correctAnswer": "",
+    "explanation": "ternary operator: เงื่อนไข ? ค่าจริง : ค่าเท็จ โดย 5 > 9 เป็น false ได้ max=9 แล้ว 9 > 3 ได้ max=9"
+  },
+  {
+    "id": 46,
+    "type": "fill-blank",
+    "lecture": "Ch4-Selection",
+    "question": "เติมโค้ด switch-case ให้สมบูรณ์ โค้ดนี้แปลงเลขเดือนเป็นชื่อเดือน\n\nExpected Output:\nFebruary",
+    "code": "int month = 2;\nswitch (__A__) {\n    case 1: System.out.println(\"January\"); break;\n    case 2: System.out.println(\"February\"); break;\n    case 3: System.out.println(\"March\"); break;\n    __B__: System.out.println(\"Invalid\");\n}",
+    "blanks": [
+      { "label": "A", "correctAnswer": "month", "explanation": "switch ต้องรับตัวแปรที่จะเปรียบเทียบ ในที่นี้คือ month (มีค่า 2)" },
+      { "label": "B", "correctAnswer": "default", "explanation": "default จัดการกรณีที่ month ไม่ตรงกับ case 1, 2, หรือ 3" }
+    ],
+    "correctAnswer": "",
+    "explanation": "switch(month) เปรียบเทียบ month=2 กับแต่ละ case ตรง case 2 จึงแสดง February"
+  },
+  {
+    "id": 47,
+    "type": "fill-blank",
+    "lecture": "Ch5-Strings",
+    "question": "เติมโค้ดให้สมบูรณ์เพื่อนับจำนวนสระ (vowels) ใน String โดยรองรับทั้งตัวพิมพ์เล็กและใหญ่\n\nExpected Output:\n5",
+    "code": "String s = \"Education\";\nint count = 0;\nfor (int i = 0; i < s.__A__(); i++) {\n    char c = Character.toLowerCase(s.__B__(i));\n    if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u')\n        count++;\n}\nSystem.out.println(count);",
+    "blanks": [
+      { "label": "A", "correctAnswer": "length", "explanation": "String ใช้ length() method (มีวงเล็บ) เพื่อหาจำนวนตัวอักษร" },
+      { "label": "B", "correctAnswer": "charAt", "explanation": "charAt(i) คืนตัวอักษรที่ตำแหน่ง i ของ String" }
+    ],
+    "correctAnswer": "",
+    "explanation": "วนลูป length() ครั้ง ดึงแต่ละตัวอักษรด้วย charAt() แปลงเป็นตัวเล็กแล้วเช็คสระ (E,d,u,c,a,t,i,o,n → สระ 5 ตัว: E,u,a,i,o)"
+  },
+  {
+    "id": 48,
+    "type": "fill-blank",
+    "lecture": "Ch5-Strings",
+    "question": "เติมโค้ดให้สมบูรณ์เพื่อกลับลำดับตัวอักษรใน String โดยใช้ StringBuilder\n\nExpected Output:\nolleH",
+    "code": "String original = \"Hello\";\nStringBuilder sb = new __A__(original);\nString reversed = sb.__B__().toString();\nSystem.out.println(reversed);",
+    "blanks": [
+      { "label": "A", "correctAnswer": "StringBuilder", "explanation": "สร้าง StringBuilder จาก String \"Hello\" เพื่อใช้ method reverse()" },
+      { "label": "B", "correctAnswer": "reverse", "explanation": "reverse() กลับลำดับตัวอักษรทั้งหมดใน StringBuilder ได้ \"olleH\"" }
+    ],
+    "correctAnswer": "",
+    "explanation": "สร้าง StringBuilder จาก \"Hello\" แล้ว reverse() ได้ \"olleH\" จากนั้น toString() แปลงกลับเป็น String"
+  },
+  {
+    "id": 49,
+    "type": "fill-blank",
+    "lecture": "Ch5-Strings",
+    "question": "เติมโค้ดให้สมบูรณ์เพื่ออ่านข้อมูลจากไฟล์ทีละบรรทัดจนหมดไฟล์ โดย loop จะทำงานต่อเมื่อยังมีบรรทัดให้อ่าน",
+    "code": "Scanner input = new Scanner(new File(\"data.txt\"));\nwhile (input.__A__()) {\n    String line = input.__B__();\n    System.out.println(line);\n}\ninput.close();",
+    "blanks": [
+      { "label": "A", "correctAnswer": "hasNextLine", "explanation": "hasNextLine() คืน true ถ้ายังมีบรรทัดถัดไปให้อ่าน ใช้เป็นเงื่อนไข while" },
+      { "label": "B", "correctAnswer": "nextLine", "explanation": "nextLine() อ่านข้อมูลทั้งบรรทัดเป็น String รวมช่องว่าง" }
+    ],
+    "correctAnswer": "",
+    "explanation": "ใช้ hasNextLine() ตรวจว่ายังมีข้อมูล แล้ว nextLine() อ่านทีละบรรทัด จนกว่า hasNextLine() จะ return false"
+  },
+  {
+    "id": 50,
+    "type": "fill-blank",
+    "lecture": "Ch6-Methods",
+    "question": "เติมโค้ด method คำนวณ BMI ให้สมบูรณ์ สูตร BMI = น้ำหนัก / (ส่วนสูง × ส่วนสูง)\n\nเมื่อเรียก calcBMI(70.0, 1.75) จะได้ค่าประมาณ 22.86",
+    "code": "public static double calcBMI(double weight, double height) {\n    return __A__ / (__B__ * __B__);\n}",
+    "blanks": [
+      { "label": "A", "correctAnswer": "weight", "explanation": "BMI = น้ำหนัก(kg) / ส่วนสูง(m)² ตัวตั้งคือ weight" },
+      { "label": "B", "correctAnswer": "height", "explanation": "ส่วนสูงต้องยกกำลังสอง ใช้ height * height" }
+    ],
+    "correctAnswer": "",
+    "explanation": "สูตร BMI = weight / (height * height) เช่น 70 / (1.75 * 1.75) = 22.86"
+  },
+  {
+    "id": 51,
+    "type": "fill-blank",
+    "lecture": "Ch6-Methods",
+    "question": "เติมโค้ด overloaded method หาค่ามากสุด version แรกรับ 2 ตัว version ที่สองรับ 3 ตัว โดยเรียก version แรกซ้อน\n\nเมื่อเรียก max(5, 9, 3) จะได้ผลลัพธ์: 9",
+    "code": "public static int max(int a, int b) {\n    return (a > b) ? a : b;\n}\npublic static int max(int a, int b, __A__) {\n    return max(__B__, max(a, b));\n}",
+    "blanks": [
+      { "label": "A", "correctAnswer": "int c", "explanation": "เพิ่ม parameter ตัวที่ 3 เป็น int c เพื่อรองรับ 3 ค่า (method overloading)" },
+      { "label": "B", "correctAnswer": "c", "explanation": "เอา c ไปเทียบกับผลของ max(a, b) = max(5,9)=9 แล้ว max(3, 9) = 9" }
+    ],
+    "correctAnswer": "",
+    "explanation": "method overloading สร้าง method ชื่อเดียวกันแต่ parameter ต่างกัน version 3 ตัวเรียก version 2 ตัวซ้อนกัน"
+  },
+  {
+    "id": 52,
+    "type": "fill-blank",
+    "lecture": "Ch6-Methods",
+    "question": "เติมโค้ด method ตรวจสอบจำนวนเฉพาะ (prime number) โดยวนลูปจาก 2 ถึง √n\n\nเมื่อเรียก isPrime(7) ได้ true, isPrime(4) ได้ false",
+    "code": "public static boolean isPrime(int n) {\n    if (n <= 1) return __A__;\n    for (int i = 2; i <= Math.sqrt(n); i++) {\n        if (n __B__ i == 0) return false;\n    }\n    return true;\n}",
+    "blanks": [
+      { "label": "A", "correctAnswer": "false", "explanation": "จำนวน <= 1 (เช่น 0, 1, -3) ไม่เป็นจำนวนเฉพาะ" },
+      { "label": "B", "correctAnswer": "%", "explanation": "ใช้ % (modulus) ตรวจว่า n หาร i ลงตัวหรือไม่ ถ้า n % i == 0 คือไม่เป็น prime" }
+    ],
+    "correctAnswer": "",
+    "explanation": "Prime check: ตัดกรณี <= 1 ก่อน แล้ววนจาก 2 ถึง √n ถ้า n % i == 0 แสดงว่ามีตัวหาร จึงไม่เป็น prime"
+  },
+  {
+    "id": 53,
+    "type": "fill-blank",
+    "lecture": "Ch7-Arrays",
+    "question": "เติมโค้ด Linear Search ให้สมบูรณ์ method นี้หาค่า target ใน array คืน index ถ้าเจอ คืน -1 ถ้าไม่เจอ\n\nตัวอย่าง: linearSearch({10, 20, 30, 40}, 30) → 2",
+    "code": "public static int linearSearch(int[] arr, int target) {\n    for (int i = 0; i < __A__; i++) {\n        if (__B__ == target) return i;\n    }\n    return -1;\n}",
+    "blanks": [
+      { "label": "A", "correctAnswer": "arr.length", "explanation": "ใช้ arr.length เป็นขอบเขต loop เพื่อวนตรวจสมาชิกทุกตัว" },
+      { "label": "B", "correctAnswer": "arr[i]", "explanation": "เปรียบเทียบ arr[i] กับ target ถ้าตรงกัน return index i" }
+    ],
+    "correctAnswer": "",
+    "explanation": "Linear Search วนตรวจทุกสมาชิก ถ้า arr[i] ตรงกับ target คืน index ถ้าวนจบไม่เจอคืน -1"
+  },
+  {
+    "id": 54,
+    "type": "fill-blank",
+    "lecture": "Ch7-Arrays",
+    "question": "เติมโค้ด Selection Sort ให้สมบูรณ์ โดย method นี้เรียงลำดับจากน้อยไปมาก\n\nตัวอย่าง: {5, 3, 8, 1} → {1, 3, 5, 8}",
+    "code": "for (int i = 0; i < arr.length - 1; i++) {\n    int minIdx = i;\n    for (int j = i + 1; j < arr.length; j++) {\n        if (arr[j] < arr[__A__]) minIdx = j;\n    }\n    int temp = arr[i];\n    arr[i] = arr[__B__];\n    arr[minIdx] = temp;\n}",
+    "blanks": [
+      { "label": "A", "correctAnswer": "minIdx", "explanation": "เปรียบเทียบ arr[j] กับค่าน้อยสุดปัจจุบัน arr[minIdx]" },
+      { "label": "B", "correctAnswer": "minIdx", "explanation": "สลับค่า arr[i] กับ arr[minIdx] ที่เก็บตำแหน่งค่าน้อยสุด" }
+    ],
+    "correctAnswer": "",
+    "explanation": "Selection Sort หาตำแหน่งค่าน้อยสุด (minIdx) ในส่วนที่ยังไม่ sorted แล้วสลับกับตำแหน่ง i"
+  },
+  {
+    "id": 55,
+    "type": "fill-blank",
+    "lecture": "Ch7-Arrays",
+    "question": "เติมโค้ดให้สมบูรณ์เพื่อคำนวณผลรวมของ 2D array (matrix) ทุกช่อง\n\nExpected Output:\n45",
+    "code": "int[][] matrix = {{1,2,3},{4,5,6},{7,8,9}};\nint sum = 0;\nfor (int i = 0; i < matrix.__A__; i++) {\n    for (int j = 0; j < matrix[i].__B__; j++) {\n        sum += matrix[i][j];\n    }\n}\nSystem.out.println(sum);",
+    "blanks": [
+      { "label": "A", "correctAnswer": "length", "explanation": "matrix.length คือจำนวนแถว = 3" },
+      { "label": "B", "correctAnswer": "length", "explanation": "matrix[i].length คือจำนวนคอลัมน์ของแถว i = 3" }
+    ],
+    "correctAnswer": "",
+    "explanation": "วน 2 ชั้น: ชั้นนอก matrix.length (แถว) ชั้นใน matrix[i].length (คอลัมน์) รวม 1+2+...+9 = 45"
+  },
+  {
+    "id": 56,
+    "type": "fill-blank",
+    "lecture": "Ch7-Arrays",
+    "question": "เติมโค้ดให้สมบูรณ์เพื่อคัดลอก array แล้ว sort เฉพาะ copy โดยไม่กระทบต้นฉบับ\n\nหลังรันโค้ด: original ยังเป็น {5,2,8,1} แต่ copy เป็น {1,2,5,8}",
+    "code": "int[] original = {5, 2, 8, 1};\nint[] copy = Arrays.__A__(original, original.__B__);\nArrays.sort(copy);",
+    "blanks": [
+      { "label": "A", "correctAnswer": "copyOf", "explanation": "Arrays.copyOf() สร้าง array ใหม่ที่คัดลอกค่าจากต้นฉบับ" },
+      { "label": "B", "correctAnswer": "length", "explanation": "ใช้ original.length เป็นขนาดของ array ใหม่ เพื่อคัดลอกทั้งหมด" }
+    ],
+    "correctAnswer": "",
+    "explanation": "Arrays.copyOf() สร้าง array ใหม่แยก reference จาก original การ sort(copy) จึงไม่กระทบ original"
+  },
+  {
+    "id": 57,
+    "type": "fill-blank",
+    "lecture": "Ch8-ClassObject",
+    "question": "เติมโค้ด class Circle ที่มี encapsulation (ซ่อน field ด้วย private) พร้อม getter\n\nเมื่อสร้าง new Circle(5.0) แล้วเรียก getRadius() จะได้ค่า 5.0",
+    "code": "public class Circle {\n    __A__ double radius;\n    \n    public Circle(double radius) {\n        __B__.radius = radius;\n    }\n    \n    public double getRadius() {\n        return radius;\n    }\n}",
+    "blanks": [
+      { "label": "A", "correctAnswer": "private", "explanation": "ใช้ private ซ่อน instance variable ตามหลัก encapsulation" },
+      { "label": "B", "correctAnswer": "this", "explanation": "this.radius อ้างถึง instance variable เพื่อแยกจาก parameter radius" }
+    ],
+    "correctAnswer": "",
+    "explanation": "encapsulation ใช้ private ซ่อน field แล้วให้เข้าถึงผ่าน public getter และ this แยก field จาก parameter"
+  },
+  {
+    "id": 58,
+    "type": "fill-blank",
+    "lecture": "Ch8-ClassObject",
+    "question": "เติมโค้ด copy constructor ของ class Rectangle ที่รับ object เดียวกันแล้วคัดลอกค่า field ทั้งหมด\n\nเมื่อเรียก new Rectangle(otherRect) จะได้ Rectangle ใหม่ที่มี width, height เหมือน otherRect",
+    "code": "public class Rectangle {\n    private double width, height;\n    \n    public Rectangle(double w, double h) {\n        width = w;\n        height = h;\n    }\n    \n    public Rectangle(__A__ other) {\n        this.width = other.__B__;\n        this.height = other.height;\n    }\n}",
+    "blanks": [
+      { "label": "A", "correctAnswer": "Rectangle", "explanation": "copy constructor รับ parameter เป็น object ของ class เดียวกัน (Rectangle)" },
+      { "label": "B", "correctAnswer": "width", "explanation": "คัดลอกค่า width จาก object ต้นฉบับ (other.width)" }
+    ],
+    "correctAnswer": "",
+    "explanation": "copy constructor รับ Rectangle object แล้วคัดลอกค่า field ทั้งหมด (width, height) สร้าง object ใหม่ที่เป็นอิสระ"
+  },
+  {
+    "id": 59,
+    "type": "fill-blank",
+    "lecture": "Ch8-ClassObject",
+    "question": "เติมโค้ดให้สมบูรณ์เพื่อสร้าง array of objects แล้ววนลูปเรียก method getName() ของแต่ละตัว\n\nExpected Output:\nAlice\nBob\nCharlie",
+    "code": "Student[] students = new Student[3];\nstudents[0] = __A__ Student(\"Alice\", 3.5);\nstudents[1] = new Student(\"Bob\", 3.2);\nstudents[2] = new Student(\"Charlie\", 3.8);\nfor (int i = 0; i < students.__B__; i++) {\n    System.out.println(students[i].getName());\n}",
+    "blanks": [
+      { "label": "A", "correctAnswer": "new", "explanation": "ต้องใช้ new สร้าง Student object แต่ละตัว เพราะ new Student[3] สร้างแค่ array ที่เก็บ reference" },
+      { "label": "B", "correctAnswer": "length", "explanation": "array ใช้ .length (property ไม่มีวงเล็บ) เพื่อหาจำนวนสมาชิก" }
+    ],
+    "correctAnswer": "",
+    "explanation": "สร้าง array of objects: new Student[3] สร้าง array เก็บ reference แล้วต้อง new แต่ละ object แยก ใช้ .length วนลูป"
+  },
+  {
+    "id": 60,
+    "type": "fill-blank",
+    "lecture": "Ch8-ClassObject",
+    "question": "เติมโค้ดให้สมบูรณ์เพื่อใช้ static variable นับจำนวน object ที่ถูกสร้าง\n\nเมื่อสร้าง Item 3 ตัว แล้วเรียก Item.getCount() จะได้ค่า 3",
+    "code": "public class Item {\n    __A__ int count = 0;\n    private String name;\n    \n    public Item(String name) {\n        this.name = name;\n        __B__++;\n    }\n    \n    public static int getCount() {\n        return count;\n    }\n}",
+    "blanks": [
+      { "label": "A", "correctAnswer": "static", "explanation": "static ทำให้ count เป็นของ class ไม่ใช่ของ object แต่ละตัว ทุก object ใช้ร่วมกัน" },
+      { "label": "B", "correctAnswer": "count", "explanation": "เพิ่ม count++ ทุกครั้งที่ constructor ถูกเรียก (สร้าง object ใหม่)" }
+    ],
+    "correctAnswer": "",
+    "explanation": "static variable count เป็นของ class ร่วมกัน ทุกครั้งที่สร้าง object จะ count++ ดังนั้นสร้าง 3 ตัวได้ count = 3"
+  }
+]

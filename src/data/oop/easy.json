@@ -1,0 +1,823 @@
+[
+  {
+    "id": 1,
+    "type": "choice",
+    "lecture": "Ch2-Variables",
+    "question": "ข้อใดเป็น primitive data type ใน Java?",
+    "choices": [
+      { "key": "A", "text": "String" },
+      { "key": "B", "text": "ArrayList" },
+      { "key": "C", "text": "Scanner" },
+      { "key": "D", "text": "int" }
+    ],
+    "correctAnswer": "D",
+    "explanation": "int เป็น primitive data type ใน Java ส่วน String, Scanner และ ArrayList เป็น reference type"
+  },
+  {
+    "id": 2,
+    "type": "choice",
+    "lecture": "Ch2-Variables",
+    "question": "ข้อใดคือค่าเริ่มต้น (default value) ของตัวแปร instance แบบ boolean ใน Java?",
+    "choices": [
+      { "key": "A", "text": "true" },
+      { "key": "B", "text": "null" },
+      { "key": "C", "text": "0" },
+      { "key": "D", "text": "false" }
+    ],
+    "correctAnswer": "D",
+    "explanation": "ตัวแปร instance แบบ boolean มีค่าเริ่มต้นเป็น false ส่วน int เป็น 0 และ reference type เป็น null"
+  },
+  {
+    "id": 3,
+    "type": "choice",
+    "lecture": "Ch2-Variables",
+    "question": "ชื่อตัวแปรข้อใดถูกต้องตามกฎการตั้งชื่อใน Java?",
+    "choices": [
+      { "key": "A", "text": "2ndValue" },
+      { "key": "B", "text": "my-name" },
+      { "key": "C", "text": "_score" },
+      { "key": "D", "text": "class" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "ชื่อตัวแปรใน Java ขึ้นต้นด้วยตัวอักษร, _ หรือ $ ได้ แต่ห้ามขึ้นต้นด้วยตัวเลข ห้ามมี - และห้ามใช้ reserved word เช่น class"
+  },
+  {
+    "id": 4,
+    "type": "choice",
+    "lecture": "Ch2-Variables",
+    "question": "ผลลัพธ์ของ 10 / 3 ใน Java เมื่อทั้งสองเป็น int คือข้อใด?",
+    "choices": [
+      { "key": "A", "text": "3" },
+      { "key": "B", "text": "3.33" },
+      { "key": "C", "text": "3.0" },
+      { "key": "D", "text": "4" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "การหาร int ด้วย int จะได้ผลลัพธ์เป็น int โดยตัดเศษทศนิยมทิ้ง ดังนั้น 10 / 3 = 3"
+  },
+  {
+    "id": 5,
+    "type": "choice",
+    "lecture": "Ch2-Variables",
+    "question": "ข้อใดคือ implicit type casting (widening) ที่ถูกต้อง?",
+    "choices": [
+      { "key": "A", "text": "int x = 3.14;" },
+      { "key": "B", "text": "char x = \"A\";" },
+      { "key": "C", "text": "byte x = 200;" },
+      { "key": "D", "text": "double x = 10;" }
+    ],
+    "correctAnswer": "D",
+    "explanation": "การแปลง int เป็น double เป็น widening conversion ที่ Java ทำให้อัตโนมัติ เพราะ double รองรับช่วงค่าที่กว้างกว่า"
+  },
+  {
+    "id": 6,
+    "type": "choice",
+    "lecture": "Ch2-Variables",
+    "question": "ตัวดำเนินการ % (modulus) ในภาษา Java ทำหน้าที่อะไร?",
+    "choices": [
+      { "key": "A", "text": "หารเอาเฉพาะส่วน" },
+      { "key": "B", "text": "คำนวณเปอร์เซ็นต์" },
+      { "key": "C", "text": "หารเอาเศษ" },
+      { "key": "D", "text": "คูณด้วยร้อย" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "ตัวดำเนินการ % ใช้หาเศษจากการหาร เช่น 10 % 3 ได้ 1 เพราะ 10 หาร 3 เหลือเศษ 1"
+  },
+  {
+    "id": 7,
+    "type": "choice",
+    "lecture": "Ch2-Variables",
+    "question": "ข้อใดเป็นการประกาศค่าคงที่ (constant) ที่ถูกต้องใน Java?",
+    "choices": [
+      { "key": "A", "text": "const int MAX = 10;" },
+      { "key": "B", "text": "final int MAX = 10;" },
+      { "key": "C", "text": "static MAX = 10;" },
+      { "key": "D", "text": "constant int MAX = 10;" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Java ใช้ keyword final ในการประกาศค่าคงที่ ไม่มี keyword const สำหรับประกาศค่าคงที่ใน Java"
+  },
+  {
+    "id": 8,
+    "type": "choice",
+    "lecture": "Ch4-Selection",
+    "question": "ข้อใดคือ logical AND operator ใน Java?",
+    "choices": [
+      { "key": "A", "text": "&" },
+      { "key": "B", "text": "||" },
+      { "key": "C", "text": "&&" },
+      { "key": "D", "text": "!" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "&& เป็น logical AND (short-circuit) ที่ใช้เชื่อมเงื่อนไขโดยเป็นจริงเมื่อทั้งสองฝั่งเป็นจริง"
+  },
+  {
+    "id": 9,
+    "type": "choice",
+    "lecture": "Ch4-Selection",
+    "question": "ในคำสั่ง switch-case ถ้าไม่ใส่ break จะเกิดอะไรขึ้น?",
+    "choices": [
+      { "key": "A", "text": "เกิด compile error" },
+      { "key": "B", "text": "โปรแกรมทำงานเฉพาะ case ที่ตรง" },
+      { "key": "C", "text": "โปรแกรมข้ามไป default ทันที" },
+      { "key": "D", "text": "โปรแกรม fall-through ไป case ถัดไป" }
+    ],
+    "correctAnswer": "D",
+    "explanation": "ถ้าไม่ใส่ break ใน switch-case จะเกิด fall-through คือโปรแกรมจะทำงาน case ถัดไปต่อเนื่องจนกว่าจะเจอ break หรือจบ switch"
+  },
+  {
+    "id": 10,
+    "type": "choice",
+    "lecture": "Ch4-Selection",
+    "question": "ผลลัพธ์ของนิพจน์ !(true && false) คือข้อใด?",
+    "choices": [
+      { "key": "A", "text": "true" },
+      { "key": "B", "text": "false" },
+      { "key": "C", "text": "1" },
+      { "key": "D", "text": "compile error" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "true && false = false จากนั้น !false = true ดังนั้นผลลัพธ์คือ true"
+  },
+  {
+    "id": 11,
+    "type": "choice",
+    "lecture": "Ch4-Selection",
+    "question": "data type ใดที่ไม่สามารถใช้ใน switch-case ของ Java ได้?",
+    "choices": [
+      { "key": "A", "text": "int" },
+      { "key": "B", "text": "String" },
+      { "key": "C", "text": "double" },
+      { "key": "D", "text": "char" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "switch-case ใน Java รองรับ byte, short, int, char, String และ enum แต่ไม่รองรับ float และ double"
+  },
+  {
+    "id": 12,
+    "type": "choice",
+    "lecture": "Ch4-Selection",
+    "question": "ternary operator ในภาษา Java เขียนอย่างไร?",
+    "choices": [
+      { "key": "A", "text": "condition ? val1 : val2" },
+      { "key": "B", "text": "condition : val1 ? val2" },
+      { "key": "C", "text": "if condition then val1" },
+      { "key": "D", "text": "condition ?? val1 :: val2" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "ternary operator ใน Java ใช้รูปแบบ condition ? valueIfTrue : valueIfFalse"
+  },
+  {
+    "id": 13,
+    "type": "choice",
+    "lecture": "Ch4-Selection",
+    "question": "ข้อใดคือ relational operator ที่ใช้ตรวจสอบว่าค่าสองค่าไม่เท่ากัน?",
+    "choices": [
+      { "key": "A", "text": "==" },
+      { "key": "B", "text": "<>" },
+      { "key": "C", "text": "!=" },
+      { "key": "D", "text": "=!" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "!= เป็นตัวดำเนินการเปรียบเทียบที่ใช้ตรวจสอบว่าค่าสองค่าไม่เท่ากัน โดย <> ไม่มีใน Java"
+  },
+  {
+    "id": 14,
+    "type": "choice",
+    "lecture": "Ch5-Strings",
+    "question": "method ใดใช้หาความยาวของ String ใน Java?",
+    "choices": [
+      { "key": "A", "text": "size()" },
+      { "key": "B", "text": "len()" },
+      { "key": "C", "text": "count()" },
+      { "key": "D", "text": "length()" }
+    ],
+    "correctAnswer": "D",
+    "explanation": "String ใน Java ใช้ method length() ในการหาจำนวนตัวอักษร ส่วน size() ใช้กับ Collection"
+  },
+  {
+    "id": 15,
+    "type": "choice",
+    "lecture": "Ch5-Strings",
+    "question": "String ใน Java มีคุณสมบัติ immutable หมายความว่าอย่างไร?",
+    "choices": [
+      { "key": "A", "text": "ไม่สามารถประกาศซ้ำได้" },
+      { "key": "B", "text": "ใช้ได้เฉพาะ local variable" },
+      { "key": "C", "text": "ไม่สามารถส่งผ่าน method ได้" },
+      { "key": "D", "text": "เปลี่ยนแปลงค่าเดิมไม่ได้" }
+    ],
+    "correctAnswer": "D",
+    "explanation": "immutable หมายถึงเมื่อสร้าง String object แล้วจะเปลี่ยนแปลงค่าภายในไม่ได้ การดำเนินการใด ๆ จะสร้าง object ใหม่เสมอ"
+  },
+  {
+    "id": 16,
+    "type": "choice",
+    "lecture": "Ch5-Strings",
+    "question": "method equals() ของ String ต่างจาก == อย่างไร?",
+    "choices": [
+      { "key": "A", "text": "equals() เปรียบเทียบ reference ส่วน == เปรียบเทียบเนื้อหา" },
+      { "key": "B", "text": "equals() เปรียบเทียบเนื้อหา ส่วน == เปรียบเทียบ reference" },
+      { "key": "C", "text": "ทั้งสองทำงานเหมือนกัน" },
+      { "key": "D", "text": "== ใช้ได้กับ String เท่านั้น" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "equals() เปรียบเทียบเนื้อหาของ String ว่าเหมือนกันหรือไม่ ส่วน == เปรียบเทียบว่าเป็น object เดียวกันหรือไม่"
+  },
+  {
+    "id": 17,
+    "type": "choice",
+    "lecture": "Ch5-Strings",
+    "question": "ผลลัพธ์ของ \"Hello\".charAt(0) คือข้อใด?",
+    "choices": [
+      { "key": "A", "text": "\"H\"" },
+      { "key": "B", "text": "\"Hello\"" },
+      { "key": "C", "text": "0" },
+      { "key": "D", "text": "'H'" }
+    ],
+    "correctAnswer": "D",
+    "explanation": "charAt(0) คืนค่าตัวอักษร (char) ตำแหน่งที่ 0 คือ 'H' โดย index เริ่มนับจาก 0"
+  },
+  {
+    "id": 18,
+    "type": "choice",
+    "lecture": "Ch5-Strings",
+    "question": "ผลลัพธ์ของ \"Java\".substring(1, 3) คือข้อใด?",
+    "choices": [
+      { "key": "A", "text": "\"Jav\"" },
+      { "key": "B", "text": "\"av\"" },
+      { "key": "C", "text": "\"ava\"" },
+      { "key": "D", "text": "\"va\"" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "substring(1, 3) คืนค่าตั้งแต่ index 1 ถึง 2 (ไม่รวม 3) ดังนั้น \"Java\".substring(1, 3) คือ \"av\""
+  },
+  {
+    "id": 19,
+    "type": "choice",
+    "lecture": "Ch5-Strings",
+    "question": "การต่อ String ด้วยตัวดำเนินการ + ข้อใดถูกต้อง?",
+    "choices": [
+      { "key": "A", "text": "ได้ผลลัพธ์เป็น String ใหม่" },
+      { "key": "B", "text": "เปลี่ยนค่า String เดิม" },
+      { "key": "C", "text": "ใช้ได้กับ int เท่านั้น" },
+      { "key": "D", "text": "ต้องใช้ concat() เท่านั้น" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "การต่อ String ด้วย + จะสร้าง String object ใหม่เสมอ เนื่องจาก String เป็น immutable"
+  },
+  {
+    "id": 20,
+    "type": "choice",
+    "lecture": "Ch6-Methods",
+    "question": "keyword void ใน method หมายความว่าอย่างไร?",
+    "choices": [
+      { "key": "A", "text": "method ไม่มีพารามิเตอร์" },
+      { "key": "B", "text": "method ทำงานอัตโนมัติ" },
+      { "key": "C", "text": "method เป็น private" },
+      { "key": "D", "text": "method ไม่มีค่าส่งกลับ" }
+    ],
+    "correctAnswer": "D",
+    "explanation": "void หมายถึง method นั้นไม่มีค่าส่งกลับ (return value) ถ้าต้องการส่งค่ากลับต้องระบุ data type แทน void"
+  },
+  {
+    "id": 21,
+    "type": "choice",
+    "lecture": "Ch6-Methods",
+    "question": "method ที่มี keyword static สามารถเรียกใช้ได้อย่างไร?",
+    "choices": [
+      { "key": "A", "text": "เรียกผ่าน object เท่านั้น" },
+      { "key": "B", "text": "ต้องใช้ keyword new ก่อน" },
+      { "key": "C", "text": "เรียกใช้ไม่ได้จากภายนอก" },
+      { "key": "D", "text": "เรียกผ่านชื่อ class ได้โดยตรง" }
+    ],
+    "correctAnswer": "D",
+    "explanation": "static method สามารถเรียกผ่านชื่อ class ได้โดยตรง เช่น Math.sqrt(4) โดยไม่ต้องสร้าง object"
+  },
+  {
+    "id": 22,
+    "type": "choice",
+    "lecture": "Ch6-Methods",
+    "question": "method overloading คืออะไร?",
+    "choices": [
+      { "key": "A", "text": "การเขียน method ชื่อเดียวกันแต่ parameter ต่างกัน" },
+      { "key": "B", "text": "การเขียน method ทับ method ของ parent class" },
+      { "key": "C", "text": "การเรียก method ซ้อนกันหลายชั้น" },
+      { "key": "D", "text": "การสร้าง method มากเกินไปใน class" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "method overloading คือการสร้าง method ชื่อเดียวกันหลาย method ใน class เดียวกัน แต่ parameter ต่างกัน (จำนวนหรือ type)"
+  },
+  {
+    "id": 23,
+    "type": "choice",
+    "lecture": "Ch6-Methods",
+    "question": "ส่วนประกอบใดที่ไม่ใช่ส่วนหนึ่งของ method signature ใน Java?",
+    "choices": [
+      { "key": "A", "text": "ชื่อ method" },
+      { "key": "B", "text": "จำนวน parameter" },
+      { "key": "C", "text": "return type" },
+      { "key": "D", "text": "ลำดับ parameter type" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "method signature ประกอบด้วยชื่อ method และ parameter list เท่านั้น ไม่รวม return type"
+  },
+  {
+    "id": 24,
+    "type": "choice",
+    "lecture": "Ch6-Methods",
+    "question": "ข้อใดคือ method ที่เป็นจุดเริ่มต้นของโปรแกรม Java?",
+    "choices": [
+      { "key": "A", "text": "public void start()" },
+      { "key": "B", "text": "static void run()" },
+      { "key": "C", "text": "public static void main(String[] args)" },
+      { "key": "D", "text": "public void init()" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "main method ที่มี signature เป็น public static void main(String[] args) เป็นจุดเริ่มต้นของทุกโปรแกรม Java"
+  },
+  {
+    "id": 25,
+    "type": "choice",
+    "lecture": "Ch6-Methods",
+    "question": "ถ้า method มี return type เป็น int จะต้องใช้คำสั่งใดส่งค่ากลับ?",
+    "choices": [
+      { "key": "A", "text": "return;" },
+      { "key": "B", "text": "return ค่า int;" },
+      { "key": "C", "text": "exit(0);" },
+      { "key": "D", "text": "System.out.println();" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "method ที่มี return type เป็น int ต้องใช้ return ตามด้วยค่าที่เป็น int เพื่อส่งค่ากลับให้ผู้เรียก"
+  },
+  {
+    "id": 26,
+    "type": "choice",
+    "lecture": "Ch6-Methods",
+    "question": "ตัวแปร local variable ที่ประกาศภายใน method มีขอบเขตการใช้งานอย่างไร?",
+    "choices": [
+      { "key": "A", "text": "ใช้ได้ทั้ง class" },
+      { "key": "B", "text": "ใช้ได้เฉพาะภายใน method ที่ประกาศ" },
+      { "key": "C", "text": "ใช้ได้จาก class อื่นด้วย" },
+      { "key": "D", "text": "ใช้ได้จนกว่าโปรแกรมจบ" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "local variable มี scope อยู่ภายใน method ที่ประกาศเท่านั้น เมื่อ method ทำงานจบ ตัวแปรจะถูกทำลาย"
+  },
+  {
+    "id": 27,
+    "type": "choice",
+    "lecture": "Ch7-Arrays",
+    "question": "ข้อใดคือการประกาศ array ของ int ที่ถูกต้อง?",
+    "choices": [
+      { "key": "A", "text": "int arr = new int[5];" },
+      { "key": "B", "text": "int[] arr = new int[5];" },
+      { "key": "C", "text": "int arr[] = new int;" },
+      { "key": "D", "text": "array int arr = 5;" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "การประกาศ array ใน Java ใช้ type[] name = new type[size]; เช่น int[] arr = new int[5];"
+  },
+  {
+    "id": 28,
+    "type": "choice",
+    "lecture": "Ch7-Arrays",
+    "question": "index ตัวแรกของ array ใน Java คือเท่าใด?",
+    "choices": [
+      { "key": "A", "text": "0" },
+      { "key": "B", "text": "1" },
+      { "key": "C", "text": "-1" },
+      { "key": "D", "text": "ขึ้นอยู่กับขนาด" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "array ใน Java เริ่มนับ index จาก 0 เสมอ ดังนั้นสมาชิกตัวแรกอยู่ที่ index 0"
+  },
+  {
+    "id": 29,
+    "type": "choice",
+    "lecture": "Ch7-Arrays",
+    "question": "ถ้า int[] arr = {10, 20, 30}; ค่าของ arr.length คือเท่าใด?",
+    "choices": [
+      { "key": "A", "text": "2" },
+      { "key": "B", "text": "3" },
+      { "key": "C", "text": "30" },
+      { "key": "D", "text": "0" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "arr.length คืนจำนวนสมาชิกทั้งหมดใน array ซึ่ง {10, 20, 30} มี 3 สมาชิก"
+  },
+  {
+    "id": 30,
+    "type": "choice",
+    "lecture": "Ch7-Arrays",
+    "question": "ถ้าเข้าถึง array เกินขอบเขตที่กำหนด จะเกิดข้อผิดพลาดใด?",
+    "choices": [
+      { "key": "A", "text": "NullPointerException" },
+      { "key": "B", "text": "ArithmeticException" },
+      { "key": "C", "text": "ArrayIndexOutOfBoundsException" },
+      { "key": "D", "text": "ClassCastException" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "การเข้าถึง index ที่ไม่มีใน array จะเกิด ArrayIndexOutOfBoundsException ขณะ runtime"
+  },
+  {
+    "id": 31,
+    "type": "choice",
+    "lecture": "Ch7-Arrays",
+    "question": "ค่าเริ่มต้นของสมาชิกใน int[] ที่เพิ่งสร้างด้วย new int[5] คือเท่าใด?",
+    "choices": [
+      { "key": "A", "text": "null" },
+      { "key": "B", "text": "-1" },
+      { "key": "C", "text": "0" },
+      { "key": "D", "text": "ไม่มีค่าเริ่มต้น" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "เมื่อสร้าง array ของ int ด้วย new ทุกสมาชิกจะมีค่าเริ่มต้นเป็น 0"
+  },
+  {
+    "id": 32,
+    "type": "choice",
+    "lecture": "Ch7-Arrays",
+    "question": "for-each loop ในภาษา Java ใช้ keyword ใดในการวนลูป array?",
+    "choices": [
+      { "key": "A", "text": "foreach" },
+      { "key": "B", "text": "in" },
+      { "key": "C", "text": ":" },
+      { "key": "D", "text": "of" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "for-each loop ใน Java ใช้ : เช่น for (int x : arr) โดยไม่มี keyword foreach หรือ in แบบภาษาอื่น"
+  },
+  {
+    "id": 33,
+    "type": "choice",
+    "lecture": "Ch7-Arrays",
+    "question": "ข้อใดเป็นการประกาศ array พร้อมกำหนดค่าเริ่มต้นที่ถูกต้อง?",
+    "choices": [
+      { "key": "A", "text": "int[] arr = {1, 2, 3};" },
+      { "key": "B", "text": "int[] arr = [1, 2, 3];" },
+      { "key": "C", "text": "int arr = {1, 2, 3};" },
+      { "key": "D", "text": "int[] arr = (1, 2, 3);" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "การประกาศ array พร้อมค่าเริ่มต้นใช้เครื่องหมายปีกกา {} เช่น int[] arr = {1, 2, 3};"
+  },
+  {
+    "id": 34,
+    "type": "choice",
+    "lecture": "Ch8-ClassObject",
+    "question": "class และ object ต่างกันอย่างไร?",
+    "choices": [
+      { "key": "A", "text": "class คือ blueprint ส่วน object คือ instance ที่สร้างจาก class" },
+      { "key": "B", "text": "class คือ instance ส่วน object คือ blueprint" },
+      { "key": "C", "text": "ทั้งสองเป็นสิ่งเดียวกัน" },
+      { "key": "D", "text": "class ใช้ใน method ส่วน object ใช้นอก method" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "class เป็น blueprint หรือแม่แบบที่กำหนดโครงสร้าง ส่วน object เป็น instance ที่สร้างจาก class"
+  },
+  {
+    "id": 35,
+    "type": "choice",
+    "lecture": "Ch8-ClassObject",
+    "question": "keyword new ในภาษา Java ใช้ทำอะไร?",
+    "choices": [
+      { "key": "A", "text": "ประกาศ class ใหม่" },
+      { "key": "B", "text": "สร้าง object ใหม่จาก class" },
+      { "key": "C", "text": "ประกาศ method ใหม่" },
+      { "key": "D", "text": "สร้างตัวแปร primitive ใหม่" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "keyword new ใช้สร้าง object (instance) จาก class โดยจะจองหน่วยความจำใน heap และเรียก constructor"
+  },
+  {
+    "id": 36,
+    "type": "choice",
+    "lecture": "Ch8-ClassObject",
+    "question": "constructor ใน Java มีลักษณะเฉพาะอย่างไร?",
+    "choices": [
+      { "key": "A", "text": "มีชื่อเดียวกับ class และไม่มี return type" },
+      { "key": "B", "text": "ต้องมี return type เป็น void เสมอ" },
+      { "key": "C", "text": "ต้องประกาศเป็น static เสมอ" },
+      { "key": "D", "text": "มีชื่อว่า init ตามหลังชื่อ class" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "constructor มีชื่อเดียวกับ class และไม่มี return type (ไม่ใช่ void แต่คือไม่มีเลย) ถูกเรียกเมื่อสร้าง object ด้วย new"
+  },
+  {
+    "id": 37,
+    "type": "choice",
+    "lecture": "Ch8-ClassObject",
+    "question": "keyword this ใน Java ใช้อ้างอิงถึงอะไร?",
+    "choices": [
+      { "key": "A", "text": "class ปัจจุบัน" },
+      { "key": "B", "text": "object ปัจจุบันที่กำลังทำงาน" },
+      { "key": "C", "text": "parent class" },
+      { "key": "D", "text": "method ที่เรียกอยู่" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "this อ้างอิงถึง object ปัจจุบัน (current instance) มักใช้แยกแยะ instance variable กับ parameter ที่ชื่อซ้ำ"
+  },
+  {
+    "id": 38,
+    "type": "choice",
+    "lecture": "Ch8-ClassObject",
+    "question": "ถ้าไม่เขียน constructor ใน class Java จะเกิดอะไรขึ้น?",
+    "choices": [
+      { "key": "A", "text": "compile error" },
+      { "key": "B", "text": "Java สร้าง default constructor ให้อัตโนมัติ" },
+      { "key": "C", "text": "ไม่สามารถสร้าง object ได้" },
+      { "key": "D", "text": "ต้องใช้ factory method แทน" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "ถ้าไม่เขียน constructor ใด ๆ Java compiler จะสร้าง default constructor (ไม่มี parameter) ให้อัตโนมัติ"
+  },
+  {
+    "id": 39,
+    "type": "choice",
+    "lecture": "Ch8-ClassObject",
+    "question": "instance variable ต่างจาก local variable อย่างไร?",
+    "choices": [
+      { "key": "A", "text": "instance variable ประกาศใน class ส่วน local ประกาศใน method" },
+      { "key": "B", "text": "local variable มี scope กว้างกว่า" },
+      { "key": "C", "text": "ทั้งสองชนิดเหมือนกัน" },
+      { "key": "D", "text": "instance variable ใช้ได้เฉพาะ static method" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "instance variable ประกาศระดับ class มี scope ตลอดอายุของ object ส่วน local variable ประกาศใน method มี scope แค่ภายใน method"
+  },
+  {
+    "id": 40,
+    "type": "choice",
+    "lecture": "Ch8-ClassObject",
+    "question": "access modifier ใดที่ทำให้ตัวแปรเข้าถึงได้จากทุก class?",
+    "choices": [
+      { "key": "A", "text": "private" },
+      { "key": "B", "text": "protected" },
+      { "key": "C", "text": "default" },
+      { "key": "D", "text": "public" }
+    ],
+    "correctAnswer": "D",
+    "explanation": "public ทำให้สมาชิกของ class เข้าถึงได้จากทุก class ในทุก package ส่วน private เข้าถึงได้เฉพาะภายใน class เดียวกัน"
+  },
+  {
+    "id": 41,
+    "type": "fill-blank",
+    "lecture": "Ch2-Variables",
+    "question": "เติมโค้ดให้สมบูรณ์เพื่อประกาศตัวแปร 3 ชนิด และแปลงค่า double เป็น int\n\nExpected Output:\nAlice scored 95",
+    "code": "__A__ name = \"Alice\";\n__B__ score = 95.5;\nint rounded = (__C__) score;\nSystem.out.println(name + \" scored \" + rounded);",
+    "blanks": [
+      { "label": "A", "correctAnswer": "String", "explanation": "String ใช้เก็บข้อความ เป็น reference type ใน Java" },
+      { "label": "B", "correctAnswer": "double", "explanation": "ค่า 95.5 เป็นทศนิยม ต้องใช้ double เพื่อเก็บค่า" },
+      { "label": "C", "correctAnswer": "int", "explanation": "ต้อง explicit cast จาก double เป็น int ด้วย (int) เพราะเป็น narrowing conversion จะตัดทศนิยมทิ้ง" }
+    ],
+    "correctAnswer": "",
+    "explanation": "String เก็บข้อความ, double เก็บทศนิยม, การ cast (int) จะตัดทศนิยมทิ้ง (95.5 → 95)"
+  },
+  {
+    "id": 42,
+    "type": "fill-blank",
+    "lecture": "Ch2-Variables",
+    "question": "เติมโค้ดให้สมบูรณ์เพื่อแปลงค่า double เป็น int (narrowing cast) โค้ดนี้จะตัดเศษทศนิยมออก\n\nExpected Output:\n19",
+    "code": "double price = 19.99;\nint rounded = __A__ price;\nSystem.out.println(rounded);",
+    "blanks": [
+      { "label": "A", "correctAnswer": "(int)", "explanation": "ต้อง cast จาก double เป็น int ด้วย (int) เพราะเป็น narrowing conversion ที่อาจสูญเสียข้อมูลทศนิยม" }
+    ],
+    "correctAnswer": "",
+    "explanation": "การแปลง double เป็น int ด้วย (int) จะตัดทศนิยมทิ้ง (19.99 → 19) ไม่ใช่การปัดเศษ"
+  },
+  {
+    "id": 43,
+    "type": "fill-blank",
+    "lecture": "Ch2-Variables",
+    "question": "เติมโค้ดให้สมบูรณ์เพื่อประกาศค่าคงที่ (constant) และหาเศษจากการหาร\n\nExpected Output:\nremainder = 2",
+    "code": "__A__ int MAX = 100;\nint remainder = MAX __B__ 7;\nSystem.out.println(\"remainder = \" + remainder);",
+    "blanks": [
+      { "label": "A", "correctAnswer": "final", "explanation": "ใช้ final เพื่อประกาศค่าคงที่ที่ไม่สามารถเปลี่ยนแปลงค่าได้ภายหลัง" },
+      { "label": "B", "correctAnswer": "%", "explanation": "ตัวดำเนินการ % (modulus) ใช้หาเศษจากการหาร 100 % 7 = 2" }
+    ],
+    "correctAnswer": "",
+    "explanation": "final ใช้ประกาศค่าคงที่ และ % เป็นตัวดำเนินการหาเศษจากการหาร (100 ÷ 7 = 14 เศษ 2)"
+  },
+  {
+    "id": 44,
+    "type": "fill-blank",
+    "lecture": "Ch4-Selection",
+    "question": "เติมโค้ด if-else ให้สมบูรณ์ โดยโค้ดนี้ตรวจสอบว่า score >= 50 ผ่าน หรือไม่ผ่าน\n\nExpected Output:\nPass",
+    "code": "int score = 75;\n__A__ (score >= 50) {\n    System.out.println(\"Pass\");\n} __B__ {\n    System.out.println(\"Fail\");\n}",
+    "blanks": [
+      { "label": "A", "correctAnswer": "if", "explanation": "ใช้ if เพื่อเริ่มต้นตรวจสอบเงื่อนไข" },
+      { "label": "B", "correctAnswer": "else", "explanation": "ใช้ else สำหรับกรณีที่เงื่อนไข if เป็นเท็จ" }
+    ],
+    "correctAnswer": "",
+    "explanation": "if-else ตรวจสอบเงื่อนไข เนื่องจาก score = 75 >= 50 เป็นจริง จึงแสดง Pass"
+  },
+  {
+    "id": 45,
+    "type": "fill-blank",
+    "lecture": "Ch4-Selection",
+    "question": "เติมโค้ด switch-case ให้สมบูรณ์ โค้ดนี้แปลงตัวเลขวันเป็นชื่อวัน โดยต้องมี break ป้องกัน fall-through\n\nExpected Output:\nMonday",
+    "code": "int day = 1;\n__A__ (day) {\n    case 1:\n        System.out.println(\"Monday\");\n        __B__;\n    case 2:\n        System.out.println(\"Tuesday\");\n        break;\n    __C__:\n        System.out.println(\"Other\");\n}",
+    "blanks": [
+      { "label": "A", "correctAnswer": "switch", "explanation": "ใช้ switch เพื่อเริ่มต้นโครงสร้าง switch-case สำหรับเปรียบเทียบค่า" },
+      { "label": "B", "correctAnswer": "break", "explanation": "ใช้ break เพื่อออกจาก switch ป้องกัน fall-through ไป case 2" },
+      { "label": "C", "correctAnswer": "default", "explanation": "ใช้ default สำหรับกรณีที่ day ไม่ตรงกับ case ใด ๆ" }
+    ],
+    "correctAnswer": "",
+    "explanation": "switch-case เปรียบเทียบค่า day กับแต่ละ case ต้องมี break ป้องกัน fall-through และ default จับกรณีอื่น ๆ"
+  },
+  {
+    "id": 46,
+    "type": "fill-blank",
+    "lecture": "Ch4-Selection",
+    "question": "เติมเงื่อนไขให้ถูกต้อง โค้ดนี้ตรวจสอบว่าอายุอยู่ในช่วง 13-19 ปี (เป็นวัยรุ่น)\n\nExpected Output:\nTeenager",
+    "code": "int age = 18;\nif (age __A__ 13 __B__ age <= 19) {\n    System.out.println(\"Teenager\");\n}",
+    "blanks": [
+      { "label": "A", "correctAnswer": ">=", "explanation": "ใช้ >= เพื่อตรวจว่า age มากกว่าหรือเท่ากับ 13" },
+      { "label": "B", "correctAnswer": "&&", "explanation": "ใช้ && (logical AND) เพื่อเชื่อมสองเงื่อนไขที่ต้องเป็นจริงทั้งคู่" }
+    ],
+    "correctAnswer": "",
+    "explanation": "การตรวจสอบช่วงค่าใช้ >= กับ <= ร่วมกับ && โดย age=18 อยู่ในช่วง 13-19 จึงแสดง Teenager"
+  },
+  {
+    "id": 47,
+    "type": "fill-blank",
+    "lecture": "Ch5-Strings",
+    "question": "เติมโค้ดให้สมบูรณ์เพื่อหาความยาวของ String และดึงตัวอักษรตัวแรกออกมา\n\nExpected Output:\n11\nH",
+    "code": "String msg = \"Hello World\";\nint len = msg.__A__();\nchar first = msg.__B__(0);\nSystem.out.println(len);\nSystem.out.println(first);",
+    "blanks": [
+      { "label": "A", "correctAnswer": "length", "explanation": "length() คืนจำนวนตัวอักษรทั้งหมดใน String รวมช่องว่าง (Hello World = 11 ตัว)" },
+      { "label": "B", "correctAnswer": "charAt", "explanation": "charAt(0) ดึงตัวอักษรตำแหน่งแรก (index 0) คือ 'H'" }
+    ],
+    "correctAnswer": "",
+    "explanation": "length() คืน 11 (นับช่องว่างด้วย) และ charAt(0) คืน 'H' ซึ่งเป็นตัวอักษรแรกของ String"
+  },
+  {
+    "id": 48,
+    "type": "fill-blank",
+    "lecture": "Ch5-Strings",
+    "question": "เติมโค้ดให้สมบูรณ์เพื่อเปรียบเทียบเนื้อหาของ String สองตัว ใน Java ต้องใช้ method เฉพาะแทน ==\n\nExpected Output:\ntrue",
+    "code": "String a = \"Java\";\nString b = \"Java\";\nboolean same = a.__A__(b);\nSystem.out.println(same);",
+    "blanks": [
+      { "label": "A", "correctAnswer": "equals", "explanation": "ใช้ equals() เพื่อเปรียบเทียบเนื้อหาของ String เพราะ == เปรียบเทียบ reference ไม่ใช่เนื้อหา" }
+    ],
+    "correctAnswer": "",
+    "explanation": "ต้องใช้ equals() เปรียบเทียบเนื้อหา String เพราะ == เทียบ reference เท่านั้น ทำให้ผลลัพธ์อาจผิดพลาดได้"
+  },
+  {
+    "id": 49,
+    "type": "fill-blank",
+    "lecture": "Ch5-Strings",
+    "question": "เติมโค้ดให้สมบูรณ์เพื่อตัด String แล้วแปลงเป็นตัวพิมพ์ใหญ่\n\nExpected Output:\nPROG",
+    "code": "String text = \"programming\";\nString sub = text.__A__(0, 4);\nString upper = sub.__B__();\nSystem.out.println(upper);",
+    "blanks": [
+      { "label": "A", "correctAnswer": "substring", "explanation": "substring(0, 4) ตัด String จาก index 0 ถึง 3 ได้ \"prog\"" },
+      { "label": "B", "correctAnswer": "toUpperCase", "explanation": "toUpperCase() แปลงตัวอักษรทั้งหมดเป็นตัวพิมพ์ใหญ่ ได้ \"PROG\"" }
+    ],
+    "correctAnswer": "",
+    "explanation": "substring(0, 4) ได้ \"prog\" (index 0-3) จากนั้น toUpperCase() แปลงเป็น \"PROG\""
+  },
+  {
+    "id": 50,
+    "type": "fill-blank",
+    "lecture": "Ch6-Methods",
+    "question": "เติมโค้ดให้สมบูรณ์เพื่อสร้าง method ที่รับเลข 2 ตัวแล้วคืนค่าผลบวก\n\nเมื่อเรียก add(3, 7) จะได้ผลลัพธ์: 10",
+    "code": "public static __A__ add(int a, int b) {\n    __B__ a + b;\n}",
+    "blanks": [
+      { "label": "A", "correctAnswer": "int", "explanation": "return type ต้องเป็น int เพราะผลบวกของ int สองตัวได้ int" },
+      { "label": "B", "correctAnswer": "return", "explanation": "ใช้ return เพื่อส่งค่าผลบวกกลับให้ผู้เรียก method" }
+    ],
+    "correctAnswer": "",
+    "explanation": "method ที่มีค่าส่งกลับต้องระบุ return type (int) และใช้ return ส่งค่ากลับ"
+  },
+  {
+    "id": 51,
+    "type": "fill-blank",
+    "lecture": "Ch6-Methods",
+    "question": "เติมโค้ดให้สมบูรณ์เพื่อสร้าง method ที่แสดงข้อความทักทาย โดย method นี้ไม่มีค่าส่งกลับ\n\nเมื่อเรียก greet(\"Alice\") จะได้ผลลัพธ์:\nHello Alice",
+    "code": "public static __A__ greet(String name) {\n    System.out.__B__(\"Hello \" + name);\n}",
+    "blanks": [
+      { "label": "A", "correctAnswer": "void", "explanation": "ใช้ void เมื่อ method ไม่มีค่าส่งกลับ เพียงแสดงผลอย่างเดียว" },
+      { "label": "B", "correctAnswer": "println", "explanation": "println() พิมพ์ข้อความพร้อมขึ้นบรรทัดใหม่" }
+    ],
+    "correctAnswer": "",
+    "explanation": "void บอกว่า method ไม่ส่งค่ากลับ และ println() แสดงผลพร้อมขึ้นบรรทัดใหม่"
+  },
+  {
+    "id": 52,
+    "type": "fill-blank",
+    "lecture": "Ch6-Methods",
+    "question": "เติมโค้ดให้สมบูรณ์เพื่อสร้าง static method และเรียกใช้ผ่านชื่อ class โดยตรง\n\nExpected Output:\n25",
+    "code": "public class MathHelper {\n    public __A__ int square(int n) {\n        return n * n;\n    }\n}\n// เรียกใช้:\nint result = __B__.square(5);\nSystem.out.println(result);",
+    "blanks": [
+      { "label": "A", "correctAnswer": "static", "explanation": "static ทำให้ method เรียกใช้ได้โดยไม่ต้องสร้าง object" },
+      { "label": "B", "correctAnswer": "MathHelper", "explanation": "เรียก static method ผ่านชื่อ class โดยตรง ไม่ต้อง new" }
+    ],
+    "correctAnswer": "",
+    "explanation": "static method เรียกผ่านชื่อ class ได้โดยตรง เช่น MathHelper.square(5) ได้ 25"
+  },
+  {
+    "id": 53,
+    "type": "fill-blank",
+    "lecture": "Ch7-Arrays",
+    "question": "เติมโค้ดให้สมบูรณ์เพื่อสร้าง array ขนาด 3 ช่อง แล้วกำหนดค่าให้ทุกตำแหน่ง\n\nExpected Output:\n85 90 78",
+    "code": "int[] scores = __A__ int[3];\nscores[0] = 85;\nscores[1] = 90;\nscores[2] = 78;\nfor (int s __B__ scores) {\n    System.out.print(s + \" \");\n}",
+    "blanks": [
+      { "label": "A", "correctAnswer": "new", "explanation": "ใช้ new เพื่อจองหน่วยความจำสำหรับ array ขนาด 3 ช่อง" },
+      { "label": "B", "correctAnswer": ":", "explanation": "for-each loop ใช้ : (colon) เพื่อวนลูปผ่านสมาชิกทุกตัวของ array" }
+    ],
+    "correctAnswer": "",
+    "explanation": "ใช้ new สร้าง array และ for-each loop (ใช้ :) เพื่อวนแสดงค่าทุกสมาชิก"
+  },
+  {
+    "id": 54,
+    "type": "fill-blank",
+    "lecture": "Ch7-Arrays",
+    "question": "เติมโค้ดให้สมบูรณ์เพื่อวน for loop แสดงค่าสมาชิกทุกตัวใน array\n\nExpected Output:\n4\n8\n15\n16\n23",
+    "code": "int[] nums = {4, 8, 15, 16, 23};\nfor (int i = 0; i < nums.__A__; i++) {\n    System.out.println(nums[__B__]);\n}",
+    "blanks": [
+      { "label": "A", "correctAnswer": "length", "explanation": "ใช้ length เพื่อหาจำนวนสมาชิกของ array (เป็น property ไม่ใช่ method จึงไม่มีวงเล็บ)" },
+      { "label": "B", "correctAnswer": "i", "explanation": "ใช้ตัวแปร i เป็น index ในการเข้าถึงสมาชิก array แต่ละตัว" }
+    ],
+    "correctAnswer": "",
+    "explanation": "array ใช้ .length (ไม่มีวงเล็บ) หาจำนวนสมาชิก และใช้ตัวแปร loop เป็น index เข้าถึงข้อมูล"
+  },
+  {
+    "id": 55,
+    "type": "fill-blank",
+    "lecture": "Ch7-Arrays",
+    "question": "เติมโค้ด for-each loop ให้สมบูรณ์ โดยวนลูปแสดงชื่อผลไม้ทุกตัวใน array\n\nExpected Output:\nApple\nBanana\nCherry",
+    "code": "String[] fruits = {\"Apple\", \"Banana\", \"Cherry\"};\nfor (__A__ fruit __B__ fruits) {\n    System.out.println(fruit);\n}",
+    "blanks": [
+      { "label": "A", "correctAnswer": "String", "explanation": "ต้องระบุ type ของตัวแปร loop ให้ตรงกับ element type ของ array คือ String" },
+      { "label": "B", "correctAnswer": ":", "explanation": "for-each ใช้เครื่องหมาย : (colon) คั่นระหว่างตัวแปรกับ array" }
+    ],
+    "correctAnswer": "",
+    "explanation": "for-each loop ใช้รูปแบบ for (Type var : array) โดย Type ต้องตรงกับ element type ของ array"
+  },
+  {
+    "id": 56,
+    "type": "fill-blank",
+    "lecture": "Ch7-Arrays",
+    "question": "เติมโค้ดให้สมบูรณ์เพื่อหาผลรวมของสมาชิกทั้งหมดใน array โดยใช้ for-each loop\n\nExpected Output:\n60",
+    "code": "int[] data = {10, 20, 30};\nint sum = 0;\nfor (int val __A__ data) {\n    sum __B__ val;\n}\nSystem.out.println(sum);",
+    "blanks": [
+      { "label": "A", "correctAnswer": ":", "explanation": "for-each loop ใช้ : เพื่อวนลูปผ่านสมาชิกทุกตัวของ array" },
+      { "label": "B", "correctAnswer": "+=", "explanation": "ใช้ += เพื่อบวกค่า val เข้ากับ sum แบบสะสม (sum = sum + val)" }
+    ],
+    "correctAnswer": "",
+    "explanation": "ใช้ for-each loop (เครื่องหมาย :) วนทุกสมาชิก และ += บวกสะสม 10+20+30 = 60"
+  },
+  {
+    "id": 57,
+    "type": "fill-blank",
+    "lecture": "Ch8-ClassObject",
+    "question": "เติมโค้ดให้สมบูรณ์เพื่อสร้าง class Student พร้อม constructor ที่รับชื่อและอายุ\n\nเมื่อสร้าง new Student(\"Alice\", 20) จะได้ object ที่มี name = \"Alice\" และ age = 20",
+    "code": "public class Student {\n    String name;\n    int age;\n\n    public __A__(String name, int age) {\n        __B__.name = name;\n        this.age = age;\n    }\n}",
+    "blanks": [
+      { "label": "A", "correctAnswer": "Student", "explanation": "constructor ต้องมีชื่อเดียวกับ class คือ Student และไม่มี return type" },
+      { "label": "B", "correctAnswer": "this", "explanation": "ใช้ this.name อ้างถึง instance variable เพื่อแยกจาก parameter ที่ชื่อเดียวกัน" }
+    ],
+    "correctAnswer": "",
+    "explanation": "constructor มีชื่อเดียวกับ class ไม่มี return type และใช้ this แยก instance variable จาก parameter"
+  },
+  {
+    "id": 58,
+    "type": "fill-blank",
+    "lecture": "Ch8-ClassObject",
+    "question": "เติมโค้ดให้สมบูรณ์เพื่อสร้าง object จาก class Dog แล้วเรียก method bark()\n\nExpected Output:\nBuddy says Woof!",
+    "code": "public class Dog {\n    String name;\n    public Dog(String name) {\n        this.name = name;\n    }\n    public void bark() {\n        System.out.println(name + \" says Woof!\");\n    }\n}\n// สร้าง object และเรียก method\nDog myDog = __A__ Dog(\"Buddy\");\nmyDog.__B__();",
+    "blanks": [
+      { "label": "A", "correctAnswer": "new", "explanation": "ใช้ new เพื่อสร้าง object ใหม่จาก class โดยเรียก constructor" },
+      { "label": "B", "correctAnswer": "bark", "explanation": "เรียกใช้ method bark() ผ่าน object myDog ด้วย dot notation" }
+    ],
+    "correctAnswer": "",
+    "explanation": "ใช้ new สร้าง object จาก class แล้วเรียก method ผ่าน object.methodName()"
+  },
+  {
+    "id": 59,
+    "type": "fill-blank",
+    "lecture": "Ch8-ClassObject",
+    "question": "เติมโค้ด getter method ให้สมบูรณ์ตามหลัก encapsulation โดยซ่อน field ด้วย private แล้วให้เข้าถึงผ่าน getter\n\nเมื่อสร้าง new Circle(5.0) แล้วเรียก getRadius() จะได้ค่า 5.0",
+    "code": "public class Circle {\n    __A__ double radius;\n\n    public Circle(double radius) {\n        this.radius = radius;\n    }\n\n    public __B__ getRadius() {\n        return __C__;\n    }\n}",
+    "blanks": [
+      { "label": "A", "correctAnswer": "private", "explanation": "ใช้ private เพื่อซ่อน instance variable ตามหลัก encapsulation" },
+      { "label": "B", "correctAnswer": "double", "explanation": "return type ต้องตรงกับ type ของ radius คือ double" },
+      { "label": "C", "correctAnswer": "radius", "explanation": "คืนค่า instance variable radius ให้ผู้เรียก method" }
+    ],
+    "correctAnswer": "",
+    "explanation": "encapsulation: ใช้ private ซ่อนตัวแปร แล้วสร้าง public getter เพื่อให้เข้าถึงค่าได้อย่างควบคุม"
+  },
+  {
+    "id": 60,
+    "type": "fill-blank",
+    "lecture": "Ch8-ClassObject",
+    "question": "เติมโค้ด setter method ให้สมบูรณ์ โดย setter ใช้เปลี่ยนค่า private field จากภายนอก class\n\nเมื่อเรียก setName(\"Bob\") จะเปลี่ยน name เป็น \"Bob\"",
+    "code": "public class Person {\n    private String name;\n\n    public __A__ setName(__B__ newName) {\n        this.name = newName;\n    }\n}",
+    "blanks": [
+      { "label": "A", "correctAnswer": "void", "explanation": "setter method ไม่คืนค่า จึงใช้ void เป็น return type" },
+      { "label": "B", "correctAnswer": "String", "explanation": "parameter type ต้องตรงกับ type ของ instance variable name คือ String" }
+    ],
+    "correctAnswer": "",
+    "explanation": "setter method ใช้ void เพราะทำหน้าที่กำหนดค่าเท่านั้น และรับ parameter type ที่ตรงกับ field"
+  }
+]

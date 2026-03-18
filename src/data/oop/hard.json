@@ -1,0 +1,1552 @@
+[
+  {
+    "id": 1,
+    "type": "choice",
+    "lecture": "Ch2-Variables",
+    "question": "ผลลัพธ์ของโค้ดต่อไปนี้คืออะไร?\nint x = 10;\nint y = x++ + ++x;\nSystem.out.println(y);",
+    "choices": [
+      {
+        "key": "A",
+        "text": "21 เพราะ x++ ให้ 10 แล้ว ++x ให้ 11"
+      },
+      {
+        "key": "B",
+        "text": "22 เพราะ x++ ให้ 10 แล้ว ++x ให้ 12"
+      },
+      {
+        "key": "C",
+        "text": "23 เพราะ x++ ให้ 11 แล้ว ++x ให้ 12"
+      },
+      {
+        "key": "D",
+        "text": "20 เพราะ x++ และ ++x ให้ค่า 10 ทั้งคู่"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "x++ ส่งค่า 10 แล้ว x กลายเป็น 11, จากนั้น ++x เพิ่ม x เป็น 12 ก่อนส่งค่า ดังนั้น y = 10 + 12 = 22"
+  },
+  {
+    "id": 2,
+    "type": "choice",
+    "lecture": "Ch2-Variables",
+    "question": "ผลลัพธ์ของ System.out.println(8/0); คืออะไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "แสดงค่า Infinity บนหน้าจอ"
+      },
+      {
+        "key": "B",
+        "text": "แสดงค่า 0 บนหน้าจอ"
+      },
+      {
+        "key": "C",
+        "text": "เกิด ArithmeticException ตอน runtime"
+      },
+      {
+        "key": "D",
+        "text": "เกิด compile error เนื่องจากหารด้วยศูนย์"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "การหาร int ด้วย 0 จะเกิด ArithmeticException ตอน runtime (ไม่ใช่ compile error) ต่างจาก 8/0.0 ที่ได้ Infinity เพราะเป็น double"
+  },
+  {
+    "id": 3,
+    "type": "choice",
+    "lecture": "Ch2-Variables",
+    "question": "ผลลัพธ์ของ System.out.println(8/0.0); คืออะไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "เกิด ArithmeticException ตอน runtime"
+      },
+      {
+        "key": "B",
+        "text": "เกิด compile error ทันทีเลย"
+      },
+      {
+        "key": "C",
+        "text": "แสดงค่า NaN บนหน้าจอปกติ"
+      },
+      {
+        "key": "D",
+        "text": "แสดงค่า Infinity บนหน้าจอ"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "8/0.0 เป็นการหาร double ด้วย 0.0 ซึ่ง IEEE 754 กำหนดให้ได้ Infinity (ไม่ใช่ exception) ต่างจาก int/0 ที่จะ throw ArithmeticException"
+  },
+  {
+    "id": 4,
+    "type": "choice",
+    "lecture": "Ch2-Variables",
+    "question": "ผลลัพธ์ของโค้ดนี้คืออะไร?\ndouble d = 0.0 / 0.0;\nSystem.out.println(d == d);",
+    "choices": [
+      {
+        "key": "A",
+        "text": "true เพราะค่า d เท่ากับตัวเอง"
+      },
+      {
+        "key": "B",
+        "text": "เกิด ArithmeticException ทันที"
+      },
+      {
+        "key": "C",
+        "text": "เกิด compile error เพราะหารศูนย์"
+      },
+      {
+        "key": "D",
+        "text": "false เพราะ NaN ไม่เท่ากับทุกค่า"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "0.0/0.0 ได้ NaN และตาม IEEE 754 NaN ไม่เท่ากับค่าใดๆ รวมถึงตัวมันเอง ดังนั้น NaN == NaN ได้ false"
+  },
+  {
+    "id": 5,
+    "type": "choice",
+    "lecture": "Ch2-Variables",
+    "question": "ผลลัพธ์ของโค้ดนี้คืออะไร?\nint a = 127;\nint b = 127;\nSystem.out.println((byte)a == (byte)b);\na = 128;\nb = 128;\nSystem.out.println((byte)a == (byte)b);",
+    "choices": [
+      {
+        "key": "A",
+        "text": "true แล้วตามด้วย true เพราะค่าเท่ากัน"
+      },
+      {
+        "key": "B",
+        "text": "true แล้วตามด้วย false เพราะ overflow"
+      },
+      {
+        "key": "C",
+        "text": "true แล้ว true เพราะ cast เป็น -128 ทั้งคู่"
+      },
+      {
+        "key": "D",
+        "text": "false แล้วตามด้วย true เพราะ byte range"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "byte มีค่า -128 ถึง 127 การ cast 128 เป็น byte จะ overflow เป็น -128 ดังนั้น (byte)128 == (byte)128 คือ -128 == -128 ได้ true ทั้งสองบรรทัด"
+  },
+  {
+    "id": 6,
+    "type": "choice",
+    "lecture": "Ch2-Variables",
+    "question": "ผลลัพธ์ของโค้ดนี้คืออะไร?\nSystem.out.println((int)(char)(byte)-1);",
+    "choices": [
+      {
+        "key": "A",
+        "text": "-1 เพราะ cast กลับเป็น int ค่าเดิม"
+      },
+      {
+        "key": "B",
+        "text": "0 เพราะค่าลบถูกตัดเป็นศูนย์หมดเลย"
+      },
+      {
+        "key": "C",
+        "text": "255 เพราะ byte -1 เป็น 0xFF แปลงตรงๆ"
+      },
+      {
+        "key": "D",
+        "text": "65535 เพราะ byte→char ขยายแบบ unsigned"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "(byte)-1 = 0xFF, cast เป็น char จะ zero-extend (เพราะ char เป็น unsigned) ได้ '\\uFFFF' = 65535 จากนั้น cast เป็น int ได้ 65535"
+  },
+  {
+    "id": 7,
+    "type": "choice",
+    "lecture": "Ch2-Variables",
+    "question": "ผลลัพธ์ของ Math.round(-2.5) และ Math.round(2.5) ตามลำดับคืออะไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "-3 และ 3 เพราะปัดตามระบบ half-up"
+      },
+      {
+        "key": "B",
+        "text": "-2 และ 3 เพราะปัดขึ้นเข้าหา +Infinity"
+      },
+      {
+        "key": "C",
+        "text": "-2 และ 2 เพราะปัดเข้าหาเลขคู่ทั้งคู่"
+      },
+      {
+        "key": "D",
+        "text": "-3 และ 2 เพราะปัดลงเข้าหา -Infinity"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Math.round ใช้ floor(x + 0.5) ดังนั้น Math.round(2.5) = floor(3.0) = 3 และ Math.round(-2.5) = floor(-2.0) = -2 คือปัดขึ้นทิศทาง +Infinity"
+  },
+  {
+    "id": 8,
+    "type": "choice",
+    "lecture": "Ch4-Selection",
+    "question": "ผลลัพธ์ของโค้ดนี้คืออะไร?\nint x = 3;\nswitch(x) {\n  case 1: case 2: case 3:\n    System.out.print(\"A\");\n  case 4: case 5:\n    System.out.print(\"B\");\n    break;\n  default:\n    System.out.print(\"C\");\n}",
+    "choices": [
+      {
+        "key": "A",
+        "text": "แสดง A เพียงอย่างเดียว"
+      },
+      {
+        "key": "B",
+        "text": "แสดง AB เพราะ fall-through ถึง break"
+      },
+      {
+        "key": "C",
+        "text": "แสดง ABC เพราะ fall-through ทั้งหมด"
+      },
+      {
+        "key": "D",
+        "text": "แสดง B เพราะข้าม case 3 ไป case 4"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "case 3 ตรงกับ x=3 พิมพ์ A แล้ว fall-through ไป case 4, 5 พิมพ์ B แล้วเจอ break จึงหยุด ไม่ถึง default"
+  },
+  {
+    "id": 9,
+    "type": "choice",
+    "lecture": "Ch4-Selection",
+    "question": "ผลลัพธ์ของโค้ดนี้คืออะไร?\nboolean a = true, b = false, c = true;\nif (a || b && c) {\n  if (!a || b)\n    System.out.print(\"X\");\n  else\n    System.out.print(\"Y\");\n} else {\n  System.out.print(\"Z\");\n}",
+    "choices": [
+      {
+        "key": "A",
+        "text": "X เพราะ !a || b เป็น true ทั้งคู่"
+      },
+      {
+        "key": "B",
+        "text": "Z เพราะเงื่อนไขนอกเป็น false จริงๆ"
+      },
+      {
+        "key": "C",
+        "text": "Y เพราะ a||b&&c เป็น true แต่ !a||b เป็น false"
+      },
+      {
+        "key": "D",
+        "text": "XY เพราะทั้งสอง if เป็น true หมดเลย"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "&& มี precedence สูงกว่า || ดังนั้น a || (b && c) = true || false = true เข้า if แรก จากนั้น !true || false = false เข้า else พิมพ์ Y"
+  },
+  {
+    "id": 10,
+    "type": "choice",
+    "lecture": "Ch4-Selection",
+    "question": "เข็มชั่วโมงและเข็มนาทีของนาฬิกาจะทำมุมกันกี่องศาตอนเวลา 3:15?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "90.0 องศา เพราะ 3 ชั่วโมง = 90 องศา"
+      },
+      {
+        "key": "B",
+        "text": "0.0 องศา เพราะเข็มซ้อนทับกันพอดี"
+      },
+      {
+        "key": "C",
+        "text": "7.5 องศา เพราะเข็มชั่วโมงเลื่อนไปเล็กน้อย"
+      },
+      {
+        "key": "D",
+        "text": "82.5 องศา เพราะเข็มนาทีชี้ที่ 3 พอดี"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "เข็มนาทีที่ 15 นาที = 90 องศา, เข็มชั่วโมงที่ 3:15 = 3×30 + 15×0.5 = 97.5 องศา ผลต่าง = |97.5 - 90| = 7.5 องศา"
+  },
+  {
+    "id": 11,
+    "type": "choice",
+    "lecture": "Ch4-Selection",
+    "question": "วงกลม A มีจุดศูนย์กลาง (2,3) รัศมี 5 และวงกลม B มีจุดศูนย์กลาง (14,3) รัศมี 5 สถานะการชนของสองวงกลมนี้คือ?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "ชนกัน เพราะระยะห่างน้อยกว่าผลรวมรัศมี"
+      },
+      {
+        "key": "B",
+        "text": "สัมผัสกันพอดี เพราะระยะห่างเท่ากับผลรวมรัศมี"
+      },
+      {
+        "key": "C",
+        "text": "ไม่ชนกัน เพราะระยะห่างมากกว่าผลรวมรัศมี"
+      },
+      {
+        "key": "D",
+        "text": "ซ้อนทับกัน เพราะวงกลมหนึ่งอยู่ในอีกวง"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "ระยะห่าง = sqrt((14-2)^2 + (3-3)^2) = 12, ผลรวมรัศมี = 5+5 = 10, เนื่องจาก 12 > 10 วงกลมทั้งสองไม่ชนกัน"
+  },
+  {
+    "id": 12,
+    "type": "choice",
+    "lecture": "Ch4-Selection",
+    "question": "ผลลัพธ์ของโค้ดนี้คืออะไร?\nint x = 5;\nif (x > 3)\n  if (x > 10)\n    System.out.print(\"A\");\nelse\n  System.out.print(\"B\");",
+    "choices": [
+      {
+        "key": "A",
+        "text": "ไม่แสดงอะไรเลย เพราะ indentation หลอกตา"
+      },
+      {
+        "key": "B",
+        "text": "B เพราะ else จับคู่กับ if (x > 3) ตัวนอก"
+      },
+      {
+        "key": "C",
+        "text": "A เพราะ x > 3 เป็น true เข้า if แรกสุด"
+      },
+      {
+        "key": "D",
+        "text": "B เพราะ else จับคู่กับ if (x > 10) ตัวใน"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Dangling else problem: else จับคู่กับ if ที่ใกล้ที่สุดคือ if(x>10) ไม่ใช่ if(x>3) ตาม indentation เนื่องจาก x=5 > 3 เป็น true แต่ x=5 > 10 เป็น false จึงเข้า else พิมพ์ B"
+  },
+  {
+    "id": 13,
+    "type": "choice",
+    "lecture": "Ch4-Selection",
+    "question": "ผลลัพธ์ของโค้ดนี้คืออะไร?\nint a = 5, b = 10;\nboolean result = (a = b) > 0;\nSystem.out.println(a + \" \" + result);",
+    "choices": [
+      {
+        "key": "A",
+        "text": "5 true เพราะเปรียบเทียบ a กับ 0 ก่อน"
+      },
+      {
+        "key": "B",
+        "text": "เกิด compile error เพราะใช้ = แทน =="
+      },
+      {
+        "key": "C",
+        "text": "10 true เพราะ a=b กำหนดค่า 10 ให้ a ก่อน"
+      },
+      {
+        "key": "D",
+        "text": "10 false เพราะ assignment ได้ค่า 0 กลับ"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "(a = b) เป็น assignment expression ที่กำหนด b=10 ให้ a แล้วส่งค่า 10 กลับ จากนั้น 10 > 0 เป็น true ไม่ใช่ compile error เพราะเป็น int assignment ไม่ใช่ boolean"
+  },
+  {
+    "id": 14,
+    "type": "choice",
+    "lecture": "Ch5-Strings",
+    "question": "ผลลัพธ์ของโค้ดนี้คืออะไร?\nString s = \"Hello\";\ns.concat(\" World\");\nSystem.out.println(s.length());",
+    "choices": [
+      {
+        "key": "A",
+        "text": "11 เพราะ concat ต่อสำเร็จแล้วนับรวม"
+      },
+      {
+        "key": "B",
+        "text": "เกิด compile error เพราะ concat ใช้ไม่ได้"
+      },
+      {
+        "key": "C",
+        "text": "10 เพราะนับไม่รวมช่องว่างตัวแรก"
+      },
+      {
+        "key": "D",
+        "text": "5 เพราะ String เป็น immutable ค่าไม่เปลี่ยน"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "String ใน Java เป็น immutable ดังนั้น concat() ไม่เปลี่ยน s แต่สร้าง String ใหม่ที่ไม่ได้เก็บไว้ s จึงยังคงเป็น \"Hello\" มี length = 5"
+  },
+  {
+    "id": 15,
+    "type": "choice",
+    "lecture": "Ch5-Strings",
+    "question": "ผลลัพธ์ของโค้ดนี้คืออะไร?\nString a = \"Java\";\nString b = \"Java\";\nString c = new String(\"Java\");\nSystem.out.print(a == b);\nSystem.out.print(\" \");\nSystem.out.print(a == c);",
+    "choices": [
+      {
+        "key": "A",
+        "text": "true true เพราะค่าเหมือนกันหมดเลย"
+      },
+      {
+        "key": "B",
+        "text": "false false เพราะเป็นคนละ object ทั้งคู่"
+      },
+      {
+        "key": "C",
+        "text": "true false เพราะ literal ใช้ pool แต่ new ไม่ใช้"
+      },
+      {
+        "key": "D",
+        "text": "false true เพราะ new สร้าง reference เดียวกัน"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "String literal \"Java\" ใช้ String pool ร่วมกัน ดังนั้น a == b เป็น true แต่ new String() สร้าง object ใหม่บน heap ดังนั้น a == c เป็น false (ต้องใช้ equals() แทน)"
+  },
+  {
+    "id": 16,
+    "type": "choice",
+    "lecture": "Ch5-Strings",
+    "question": "ผลลัพธ์ของ \"abcabc\".indexOf(\"bc\", 2) คืออะไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "1 เพราะ bc แรกอยู่ที่ index 1 ตามปกติ"
+      },
+      {
+        "key": "B",
+        "text": "-1 เพราะหาไม่เจอหลัง index 2 เป็นต้นไป"
+      },
+      {
+        "key": "C",
+        "text": "2 เพราะเริ่มนับจาก index 2 ได้ตำแหน่ง 0"
+      },
+      {
+        "key": "D",
+        "text": "4 เพราะเริ่มหาจาก index 2 เจอที่ index 4"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "indexOf(\"bc\", 2) เริ่มค้นหาจาก index 2 เป็นต้นไป ตำแหน่ง 2,3 คือ \"ca\" ไม่ตรง จนกระทั่ง index 4,5 คือ \"bc\" ตรง จึงได้ 4"
+  },
+  {
+    "id": 17,
+    "type": "choice",
+    "lecture": "Ch5-Strings",
+    "question": "ผลลัพธ์ของโค้ดนี้คืออะไร?\nchar c = 'A';\nint x = c + 1;\nchar d = (char)(c + 1);\nSystem.out.println(x + \" \" + d);",
+    "choices": [
+      {
+        "key": "A",
+        "text": "66 B เพราะ 'A' = 65 บวก 1 แล้ว cast"
+      },
+      {
+        "key": "B",
+        "text": "65 A เพราะ char บวกไม่ได้ค่าเดิม"
+      },
+      {
+        "key": "C",
+        "text": "B B เพราะผลลัพธ์เป็น char ทั้งสองตัว"
+      },
+      {
+        "key": "D",
+        "text": "66 66 เพราะ println แสดงเป็นตัวเลขหมด"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "'A' มี ASCII = 65 ดังนั้น c + 1 = 66 (เป็น int) ส่วน (char)(c + 1) = (char)66 = 'B' ดังนั้นได้ 66 B"
+  },
+  {
+    "id": 18,
+    "type": "choice",
+    "lecture": "Ch5-Strings",
+    "question": "ผลลัพธ์ของโค้ดนี้คืออะไร?\nString s = \"HelloWorld\";\nSystem.out.println(s.substring(5).substring(0, 3));",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Wor เพราะตัด World แล้วเอา 3 ตัวแรก"
+      },
+      {
+        "key": "B",
+        "text": "oWo เพราะตัดจาก index 5 ของ original"
+      },
+      {
+        "key": "C",
+        "text": "Hel เพราะ substring แรกไม่ทำงานจริง"
+      },
+      {
+        "key": "D",
+        "text": "rld เพราะตัดจากท้ายสุด 3 ตัวสุดท้าย"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "s.substring(5) ได้ \"World\" จากนั้น .substring(0, 3) ได้ \"Wor\" เป็นการ chain method ต่อกัน"
+  },
+  {
+    "id": 19,
+    "type": "choice",
+    "lecture": "Ch5-Strings",
+    "question": "Barcode \"890123456789\" มีหลักสุดท้าย (check digit) คำนวณจาก EAN-13 โดยบวกหลักคี่×1 + หลักคู่×3 แล้วหา (10 - sum%10)%10 ถ้า 12 หลักแรกคือ 890123456789 check digit คือ?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "5 เพราะคำนวณได้ sum = 95 แล้ว (10-5)%10 = 5"
+      },
+      {
+        "key": "B",
+        "text": "8 เพราะคำนวณได้ sum = 92 แล้ว (10-2)%10 = 8"
+      },
+      {
+        "key": "C",
+        "text": "3 เพราะคำนวณได้ sum = 97 แล้ว (10-7)%10 = 3"
+      },
+      {
+        "key": "D",
+        "text": "0 เพราะคำนวณได้ sum = 130 แล้ว (10-0)%10 = 0"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "หลักคี่ (ตำแหน่ง 1,3,5,7,9,11): 8+0+2+4+6+8=28 (×1=28), หลักคู่ (ตำแหน่ง 2,4,6,8,10,12): 9+1+3+5+7+9=34 (×3=102), sum=28+102=130, check digit = (10 - 130%10)%10 = 0"
+  },
+  {
+    "id": 20,
+    "type": "choice",
+    "lecture": "Ch6-Methods",
+    "question": "ผลลัพธ์ของโค้ดนี้คืออะไร?\nstatic int f(int n) {\n    if (n <= 1) return n;\n    return f(n-1) + f(n-2);\n}\nSystem.out.println(f(7));",
+    "choices": [
+      {
+        "key": "A",
+        "text": "13 เพราะ Fibonacci ลำดับที่ 7 คือ 13"
+      },
+      {
+        "key": "B",
+        "text": "21 เพราะนับจาก f(0)=0, f(1)=1 ไปถึง f(7)"
+      },
+      {
+        "key": "C",
+        "text": "8 เพราะนับจาก f(1)=1, f(2)=1 ไปถึง f(7)"
+      },
+      {
+        "key": "D",
+        "text": "12 เพราะ recursive call ข้ามค่าบางตัวไป"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "f(0)=0, f(1)=1, f(2)=1, f(3)=2, f(4)=3, f(5)=5, f(6)=8, f(7)=13 นี่คือ Fibonacci sequence โดย f(7) = f(6)+f(5) = 8+5 = 13"
+  },
+  {
+    "id": 21,
+    "type": "choice",
+    "lecture": "Ch6-Methods",
+    "question": "ผลลัพธ์ของโค้ดนี้คืออะไร?\nstatic void change(int[] arr) { arr[0] = 99; }\nint[] a = {1, 2, 3};\nchange(a);\nSystem.out.println(a[0]);",
+    "choices": [
+      {
+        "key": "A",
+        "text": "1 เพราะ Java ส่ง array แบบ pass by value"
+      },
+      {
+        "key": "B",
+        "text": "99 เพราะ array ส่ง reference เข้าไปใน method"
+      },
+      {
+        "key": "C",
+        "text": "เกิด error เพราะ method เป็น void ส่งค่าไม่ได้"
+      },
+      {
+        "key": "D",
+        "text": "0 เพราะ array ถูก reset เมื่อออกจาก method"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Java ส่ง reference ของ array เป็น value (pass reference by value) ดังนั้นการแก้ไข arr[0] ภายใน method จะส่งผลต่อ array ตัวจริง"
+  },
+  {
+    "id": 22,
+    "type": "choice",
+    "lecture": "Ch6-Methods",
+    "question": "โค้ดนี้จะ compile ผ่านหรือไม่?\nstatic double calc(int a, double b) { return a + b; }\nstatic double calc(double a, int b) { return a - b; }\nSystem.out.println(calc(5, 10));",
+    "choices": [
+      {
+        "key": "A",
+        "text": "ผ่าน แสดง 15.0 เพราะเลือก method แรกที่ตรง"
+      },
+      {
+        "key": "B",
+        "text": "ผ่าน แสดง -5.0 เพราะเลือก method ที่สองแทน"
+      },
+      {
+        "key": "C",
+        "text": "compile error เพราะ ambiguous method call ทั้งคู่"
+      },
+      {
+        "key": "D",
+        "text": "ผ่าน แสดง 15 เพราะ int + int ไม่มีทศนิยม"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "calc(5, 10) ส่ง int, int ซึ่งตรงได้ทั้ง (int, double) และ (double, int) ผ่าน widening compiler ไม่สามารถเลือกได้ว่าจะ promote ตัวไหน จึง ambiguous"
+  },
+  {
+    "id": 23,
+    "type": "choice",
+    "lecture": "Ch6-Methods",
+    "question": "ผลลัพธ์ของโค้ดนี้คืออะไร?\nstatic int mystery(int n) {\n    if (n == 0) return 0;\n    return n % 10 + mystery(n / 10);\n}\nSystem.out.println(mystery(4567));",
+    "choices": [
+      {
+        "key": "A",
+        "text": "22 เพราะ 4+5+6+7 = 22 บวกหลักทุกตัว"
+      },
+      {
+        "key": "B",
+        "text": "7 เพราะ return เฉพาะหลักสุดท้ายเท่านั้น"
+      },
+      {
+        "key": "C",
+        "text": "4567 เพราะ recursive คืนค่าเดิมกลับมา"
+      },
+      {
+        "key": "D",
+        "text": "18 เพราะคำนวณผิดหลักเนื่องจาก int division"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "method นี้บวกทุกหลักของตัวเลข: mystery(4567) = 7 + mystery(456) = 7 + 6 + mystery(45) = 7+6+5+mystery(4) = 7+6+5+4+0 = 22"
+  },
+  {
+    "id": 24,
+    "type": "choice",
+    "lecture": "Ch6-Methods",
+    "question": "ผลลัพธ์ของโค้ดนี้คืออะไร?\nstatic void swap(int a, int b) {\n    int temp = a; a = b; b = temp;\n}\nint x = 5, y = 10;\nswap(x, y);\nSystem.out.println(x + \" \" + y);",
+    "choices": [
+      {
+        "key": "A",
+        "text": "10 5 เพราะ swap สลับค่าได้สำเร็จ"
+      },
+      {
+        "key": "B",
+        "text": "5 10 เพราะ Java เป็น pass by value เสมอ"
+      },
+      {
+        "key": "C",
+        "text": "10 10 เพราะทั้งคู่ชี้ไปที่ค่าเดียวกัน"
+      },
+      {
+        "key": "D",
+        "text": "5 5 เพราะ temp เขียนทับค่า b ก่อน swap"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Java ส่ง primitive แบบ pass by value เสมอ การเปลี่ยนค่า a, b ภายใน method ไม่มีผลต่อ x, y ภายนอก"
+  },
+  {
+    "id": 25,
+    "type": "choice",
+    "lecture": "Ch6-Methods",
+    "question": "ในการวาด regular polygon ด้วย method ที่คำนวณ vertex จาก centerX, centerY, radius, n ค่ามุมของ vertex ที่ i (เริ่มจาก 0) สำหรับรูปหกเหลี่ยมปกติ (n=6) vertex ที่ 2 มีมุมกี่องศา?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "120 องศา เพราะ 2 × (360/6) = 120 องศา"
+      },
+      {
+        "key": "B",
+        "text": "60 องศา เพราะ 360/6 = 60 องศาต่อ vertex"
+      },
+      {
+        "key": "C",
+        "text": "150 องศา เพราะเริ่มจาก 90 องศาบวก 60"
+      },
+      {
+        "key": "D",
+        "text": "210 องศา เพราะเริ่มจาก 90 แล้ว vertex ที่ 2"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "สำหรับ regular polygon n ด้าน มุมของ vertex ที่ i = i × (360/n) สำหรับ hexagon vertex ที่ 2 = 2 × 60 = 120 องศา (หรือ 2π/3 radians)"
+  },
+  {
+    "id": 26,
+    "type": "choice",
+    "lecture": "Ch6-Methods",
+    "question": "ผลลัพธ์ของโค้ดนี้คืออะไร?\nstatic int count = 0;\nstatic int factorial(int n) {\n    count++;\n    if (n <= 1) return 1;\n    return n * factorial(n - 1);\n}\nfactorial(5);\nSystem.out.println(count);",
+    "choices": [
+      {
+        "key": "A",
+        "text": "5 เพราะเรียก recursive 5 ครั้ง ก่อน base case"
+      },
+      {
+        "key": "B",
+        "text": "4 เพราะ base case ไม่นับรวมในจำนวนนี้"
+      },
+      {
+        "key": "C",
+        "text": "6 เพราะเรียก factorial(5) ถึง factorial(0)"
+      },
+      {
+        "key": "D",
+        "text": "120 เพราะ count บวก n ทุกครั้งที่เรียก"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "factorial(5)→factorial(4)→factorial(3)→factorial(2)→factorial(1) รวม 5 ครั้ง เพราะ n<=1 เป็น base case ที่ n=1 ซึ่ง count++ ทำงานก่อน check"
+  },
+  {
+    "id": 27,
+    "type": "choice",
+    "lecture": "Ch7-Arrays",
+    "question": "ผลลัพธ์ของโค้ดนี้คืออะไร?\nint[] a = {3, 1, 4, 1, 5};\nint[] b = a;\nb[0] = 99;\nSystem.out.println(a[0]);",
+    "choices": [
+      {
+        "key": "A",
+        "text": "3 เพราะ b เป็น copy แยกจาก a โดยสิ้นเชิง"
+      },
+      {
+        "key": "B",
+        "text": "99 เพราะ b และ a ชี้ไปที่ array เดียวกัน"
+      },
+      {
+        "key": "C",
+        "text": "0 เพราะ array ถูก reset เมื่อมี reference ใหม่"
+      },
+      {
+        "key": "D",
+        "text": "เกิด error เพราะไม่สามารถกำหนด array แบบนี้"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "int[] b = a ไม่ได้ copy array แต่ copy reference ดังนั้น a และ b ชี้ไปที่ array object เดียวกัน การเปลี่ยน b[0] จึงเห็นผลจาก a[0] ด้วย"
+  },
+  {
+    "id": 28,
+    "type": "choice",
+    "lecture": "Ch7-Arrays",
+    "question": "เมื่อทำ Bubble Sort กับ array {5, 3, 8, 1, 2} หลังจบ pass แรก (เปรียบเทียบจากซ้ายไปขวา) array จะเป็นอย่างไร?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "{1, 2, 3, 5, 8} เพราะ sort เสร็จใน pass เดียว"
+      },
+      {
+        "key": "B",
+        "text": "{3, 5, 1, 2, 8} เพราะ 8 ลอยไปอยู่ท้ายสุด"
+      },
+      {
+        "key": "C",
+        "text": "{3, 5, 8, 1, 2} เพราะสลับเฉพาะ 5 กับ 3 ตัวเดียว"
+      },
+      {
+        "key": "D",
+        "text": "{3, 1, 2, 5, 8} เพราะทั้ง 5 และ 8 เลื่อนไปท้าย"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Pass 1: (5,3)→swap→{3,5,8,1,2}, (5,8)→ไม่swap, (8,1)→swap→{3,5,1,8,2}, (8,2)→swap→{3,5,1,2,8} ค่ามากสุด 8 ลอยไปท้าย"
+  },
+  {
+    "id": 29,
+    "type": "choice",
+    "lecture": "Ch7-Arrays",
+    "question": "ทำ Binary Search หาค่า 7 ใน array {1, 3, 5, 7, 9, 11, 13} (index 0-6) ต้องเปรียบเทียบกี่ครั้งจึงจะเจอ?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "1 ครั้ง เพราะ mid แรก = index 3 ซึ่งคือ 7"
+      },
+      {
+        "key": "B",
+        "text": "2 ครั้ง เพราะต้องแบ่งครึ่งสองรอบจึงเจอ"
+      },
+      {
+        "key": "C",
+        "text": "3 ครั้ง เพราะต้องแบ่งครึ่งสามรอบจึงเจอ"
+      },
+      {
+        "key": "D",
+        "text": "4 ครั้ง เพราะ array มี 7 ตัวต้องใช้ log2"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "low=0, high=6, mid=(0+6)/2=3, arr[3]=7 == target ดังนั้นเจอในการเปรียบเทียบครั้งแรกเลย"
+  },
+  {
+    "id": 30,
+    "type": "choice",
+    "lecture": "Ch7-Arrays",
+    "question": "ผลลัพธ์ของโค้ดนี้คืออะไร?\nint[][] jagged = new int[3][];\njagged[0] = new int[]{1, 2};\njagged[1] = new int[]{3, 4, 5};\njagged[2] = new int[]{6};\nSystem.out.println(jagged[1][2] + jagged[2][0]);",
+    "choices": [
+      {
+        "key": "A",
+        "text": "11 เพราะ jagged[1][2]=5 บวก jagged[2][0]=6"
+      },
+      {
+        "key": "B",
+        "text": "9 เพราะ jagged[1][2]=3 บวก jagged[2][0]=6"
+      },
+      {
+        "key": "C",
+        "text": "เกิด ArrayIndexOutOfBoundsException ทันที"
+      },
+      {
+        "key": "D",
+        "text": "7 เพราะ jagged[1][2]=4 บวก jagged[2][0]=3"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "jagged[1] = {3,4,5} ดังนั้น jagged[1][2] = 5 และ jagged[2] = {6} ดังนั้น jagged[2][0] = 6 รวม = 11"
+  },
+  {
+    "id": 31,
+    "type": "choice",
+    "lecture": "Ch7-Arrays",
+    "question": "ผลลัพธ์ของโค้ดนี้คืออะไร?\nint[] arr = new int[5];\nSystem.out.println(arr[3]);",
+    "choices": [
+      {
+        "key": "A",
+        "text": "null เพราะยังไม่ได้กำหนดค่าให้ element"
+      },
+      {
+        "key": "B",
+        "text": "เกิด NullPointerException เพราะไม่มีค่า"
+      },
+      {
+        "key": "C",
+        "text": "0 เพราะ int array มีค่า default เป็น 0"
+      },
+      {
+        "key": "D",
+        "text": "เกิด ArrayIndexOutOfBoundsException ทันที"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "ใน Java เมื่อสร้าง int array ด้วย new จะมีค่า default เป็น 0 ทุกตำแหน่ง (boolean=false, object=null, double=0.0)"
+  },
+  {
+    "id": 32,
+    "type": "choice",
+    "lecture": "Ch7-Arrays",
+    "question": "ในการ merge sorted arrays {1,3,5,7} และ {2,4,6,8} เข้าด้วยกัน เมื่อ pointer i ชี้ที่ index 2 ของ array แรก และ pointer j ชี้ที่ index 1 ของ array ที่สอง ผลลัพธ์ที่ merge แล้วจนถึงตอนนี้คือ?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "{1, 2, 3} เพราะ merge ได้ 3 ตัวจนถึง i=2,j=1"
+      },
+      {
+        "key": "B",
+        "text": "{1, 2, 3, 4} เพราะเอาค่าน้อยก่อนจนถึง 4 ตัว"
+      },
+      {
+        "key": "C",
+        "text": "{1, 3, 2, 4} เพราะสลับเอาจาก array สลับกัน"
+      },
+      {
+        "key": "D",
+        "text": "{1, 2, 5} เพราะ pointer ข้ามค่า 3 และ 4 ไปแล้ว"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "เริ่ม i=0,j=0: 1<2→เอา 1 (i=1), 3>2→เอา 2 (j=1), 3<4→เอา 3 (i=2) ตอนนี้ i=2,j=1 merge แล้ว 3 ตัว = {1,2,3}"
+  },
+  {
+    "id": 33,
+    "type": "choice",
+    "lecture": "Ch7-Arrays",
+    "question": "ผลลัพธ์ของโค้ดนี้คืออะไร?\nint[] a = {10, 20, 30};\nfor (int x : a) {\n    x = x * 2;\n}\nSystem.out.println(a[1]);",
+    "choices": [
+      {
+        "key": "A",
+        "text": "40 เพราะ enhanced for loop เปลี่ยน array ได้"
+      },
+      {
+        "key": "B",
+        "text": "20 เพราะ x เป็นแค่ copy ค่าไม่ได้แก้ array จริง"
+      },
+      {
+        "key": "C",
+        "text": "0 เพราะ array ถูก reset หลังจาก loop จบ"
+      },
+      {
+        "key": "D",
+        "text": "เกิด error เพราะไม่สามารถแก้ค่าใน for-each"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "enhanced for loop (for-each) สำหรับ primitive array จะ copy ค่าไปใส่ x ดังนั้นการแก้ x ไม่ส่งผลต่อ array ต้นฉบับ a[1] ยังเป็น 20"
+  },
+  {
+    "id": 34,
+    "type": "choice",
+    "lecture": "Ch8-ClassObject",
+    "question": "ผลลัพธ์ของโค้ดนี้คืออะไร?\nclass Counter {\n    static int count = 0;\n    Counter() { count++; }\n}\nCounter c1 = new Counter();\nCounter c2 = new Counter();\nCounter c3 = new Counter();\nSystem.out.println(Counter.count);",
+    "choices": [
+      {
+        "key": "A",
+        "text": "1 เพราะ static variable ถูก reset ทุกครั้ง"
+      },
+      {
+        "key": "B",
+        "text": "0 เพราะ count ไม่ได้ถูกเปลี่ยนแปลงจริง"
+      },
+      {
+        "key": "C",
+        "text": "3 เพราะ static count เพิ่มทุกครั้งที่สร้าง object"
+      },
+      {
+        "key": "D",
+        "text": "เกิด error เพราะเข้าถึง static จาก constructor ไม่ได้"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "static variable เป็นของ class ไม่ใช่ของ object แต่ละตัว ทุกครั้งที่ new Counter() จะเรียก constructor ที่ count++ ดังนั้น 3 ครั้ง count = 3"
+  },
+  {
+    "id": 35,
+    "type": "choice",
+    "lecture": "Ch8-ClassObject",
+    "question": "โค้ดนี้จะ compile ผ่านหรือไม่?\nclass MyClass {\n    final int[] data = {1, 2, 3};\n}\nMyClass obj = new MyClass();\nobj.data[0] = 99;",
+    "choices": [
+      {
+        "key": "A",
+        "text": "compile error เพราะ final array แก้ไขค่าไม่ได้"
+      },
+      {
+        "key": "B",
+        "text": "ผ่าน แต่ data[0] ยังเป็น 1 เพราะ final ป้องกันไว้"
+      },
+      {
+        "key": "C",
+        "text": "runtime error เพราะ final ป้องกันการแก้ไข element"
+      },
+      {
+        "key": "D",
+        "text": "ผ่าน เพราะ final ห้ามเปลี่ยน reference แต่แก้ element ได้"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "final สำหรับ array หมายถึงไม่สามารถเปลี่ยน reference ให้ชี้ไป array อื่นได้ แต่สามารถแก้ไข element ภายใน array ได้ ดังนั้น data[0] = 99 ทำงานได้ปกติ"
+  },
+  {
+    "id": 36,
+    "type": "choice",
+    "lecture": "Ch8-ClassObject",
+    "question": "ผลลัพธ์ของโค้ดนี้คืออะไร?\nclass Box {\n    int size;\n    Box() { this(10); }\n    Box(int s) { this.size = s; }\n}\nBox b = new Box();\nSystem.out.println(b.size);",
+    "choices": [
+      {
+        "key": "A",
+        "text": "0 เพราะ default constructor ไม่กำหนดค่า size"
+      },
+      {
+        "key": "B",
+        "text": "เกิด StackOverflowError เพราะเรียกวนซ้ำกัน"
+      },
+      {
+        "key": "C",
+        "text": "เกิด compile error เพราะ this() ใช้ใน constructor ไม่ได้"
+      },
+      {
+        "key": "D",
+        "text": "10 เพราะ constructor chaining เรียก this(10)"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Box() เรียก this(10) ซึ่งเป็น constructor chaining ไปเรียก Box(int s) ทำให้ size = 10 ดังนั้นผลลัพธ์คือ 10"
+  },
+  {
+    "id": 37,
+    "type": "choice",
+    "lecture": "Ch8-ClassObject",
+    "question": "ผลลัพธ์ของโค้ดนี้คืออะไร?\nclass Point {\n    private int x, y;\n    Point(int x, int y) { this.x = x; this.y = y; }\n    void setX(int x) { this.x = x; }\n    int getX() { return x; }\n}\nPoint p1 = new Point(1, 2);\nPoint p2 = p1;\np2.setX(99);\nSystem.out.println(p1.getX());",
+    "choices": [
+      {
+        "key": "A",
+        "text": "1 เพราะ p2 เป็น copy แยกจาก p1 โดยสิ้นเชิง"
+      },
+      {
+        "key": "B",
+        "text": "99 เพราะ p1 และ p2 ชี้ไป object เดียวกัน"
+      },
+      {
+        "key": "C",
+        "text": "0 เพราะ object ถูก reset เมื่อมี reference ใหม่"
+      },
+      {
+        "key": "D",
+        "text": "เกิด error เพราะ x เป็น private เข้าถึงไม่ได้"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Point p2 = p1 ไม่ได้ copy object แต่ copy reference ดังนั้น p1 และ p2 ชี้ไป Point object เดียวกัน การเรียก p2.setX(99) จึงเปลี่ยน x ของ object ที่ p1 ชี้อยู่ด้วย"
+  },
+  {
+    "id": 38,
+    "type": "choice",
+    "lecture": "Ch8-ClassObject",
+    "question": "โค้ดนี้มีปัญหาอะไร?\nclass Student {\n    private String name;\n    private int id;\n    Student(String name, int id) {\n        name = name;\n        id = id;\n    }\n}",
+    "choices": [
+      {
+        "key": "A",
+        "text": "ไม่มีปัญหา ค่า name และ id ถูกกำหนดถูกต้อง"
+      },
+      {
+        "key": "B",
+        "text": "runtime error เพราะ name เป็น null ตอนใช้งาน"
+      },
+      {
+        "key": "C",
+        "text": "compile error เพราะชื่อ parameter ซ้ำกับ field"
+      },
+      {
+        "key": "D",
+        "text": "ลืม this. ทำให้ parameter assign ให้ตัวเอง field ยังเป็น null/0"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "name = name กำหนด parameter ให้ตัวเอง (shadowing) ไม่ได้กำหนดให้ field ต้องใช้ this.name = name จึงจะถูกต้อง field จะยังเป็น null และ 0"
+  },
+  {
+    "id": 39,
+    "type": "choice",
+    "lecture": "Ch8-ClassObject",
+    "question": "ผลลัพธ์ของโค้ดนี้คืออะไร?\nclass A {\n    int x = 10;\n    static int y = 20;\n}\nA obj1 = new A();\nA obj2 = new A();\nobj1.x = 100;\nA.y = 200;\nSystem.out.println(obj2.x + \" \" + obj2.y);",
+    "choices": [
+      {
+        "key": "A",
+        "text": "100 200 เพราะทั้ง x และ y เปลี่ยนทุก object"
+      },
+      {
+        "key": "B",
+        "text": "10 200 เพราะ x เป็นของ instance แต่ y เป็น static"
+      },
+      {
+        "key": "C",
+        "text": "10 20 เพราะ obj2 ไม่ได้ถูกเปลี่ยนค่าใดเลย"
+      },
+      {
+        "key": "D",
+        "text": "100 20 เพราะ static y ไม่เปลี่ยนจาก obj2 มุม"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "x เป็น instance variable แต่ละ object มีค่าแยกกัน obj1.x=100 ไม่กระทบ obj2.x=10 แต่ y เป็น static ใช้ร่วมกัน A.y=200 จึงเห็นจาก obj2.y=200"
+  },
+  {
+    "id": 40,
+    "type": "choice",
+    "lecture": "Ch8-ClassObject",
+    "question": "ผลลัพธ์ของโค้ดนี้คืออะไร?\nclass Calc {\n    private int result;\n    Calc(int v) { result = v; }\n    Calc add(int v) { result += v; return this; }\n    Calc mul(int v) { result *= v; return this; }\n    int get() { return result; }\n}\nSystem.out.println(new Calc(2).add(3).mul(4).get());",
+    "choices": [
+      {
+        "key": "A",
+        "text": "20 เพราะ (2+3)×4 = 20 ตามลำดับ method chain"
+      },
+      {
+        "key": "B",
+        "text": "14 เพราะ 2+(3×4) = 14 คำนวณ mul ก่อน"
+      },
+      {
+        "key": "C",
+        "text": "24 เพราะ 2×3×4 = 24 คำนวณทั้งหมดเป็น mul"
+      },
+      {
+        "key": "D",
+        "text": "เกิด error เพราะ method ไม่สามารถ return this ได้"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Method chaining: Calc(2) → result=2, add(3) → result=2+3=5, mul(4) → result=5×4=20, get() → 20 แต่ละ method return this ทำให้ chain ต่อได้"
+  },
+  {
+    "id": 41,
+    "type": "fill-blank",
+    "lecture": "Ch2-Variables",
+    "question": "เติมโค้ดให้สมบูรณ์เพื่อสลับค่าตัวแปร 2 ตัวด้วย XOR bitwise แล้ว cast ผลลัพธ์เป็น byte ดู overflow\n\nExpected Output:\n50 200 50",
+    "code": "int a = 200, b = 50;\na = a __A__ b;\nb = a ^ b;\na = a __B__ b;\nbyte small = (__C__) a;\nSystem.out.println(a + \" \" + b + \" \" + small);",
+    "blanks": [
+      {
+        "label": "A",
+        "correctAnswer": "^",
+        "explanation": "XOR (^) เป็นขั้นตอนแรกของ XOR swap: a = a ^ b"
+      },
+      {
+        "label": "B",
+        "correctAnswer": "^",
+        "explanation": "XOR ขั้นตอนสุดท้าย: a = a ^ b ทำให้ a ได้ค่า b เดิม (50)"
+      },
+      {
+        "label": "C",
+        "correctAnswer": "byte",
+        "explanation": "cast int 50 เป็น byte ด้วย (byte) ค่า 50 อยู่ในช่วง -128 ถึง 127 จึงไม่ overflow"
+      }
+    ],
+    "correctAnswer": "",
+    "explanation": "XOR swap: a^=b, b^=a, a^=b สลับค่าโดยไม่ใช้ temp หลัง swap a=50, b=200 แล้ว cast (byte)50 ยังเป็น 50"
+  },
+  {
+    "id": 42,
+    "type": "fill-blank",
+    "lecture": "Ch2-Variables",
+    "question": "เติมโค้ดสลับค่าตัวแปร 2 ตัวโดยไม่ใช้ตัวแปรชั่วคราว (ใช้ XOR bitwise) หลัง swap a=27, b=15\n\nExpected Output:\n27 15",
+    "code": "int a = 15, b = 27;\na = a ^ b;\nb = __A__;\na = __B__;\nSystem.out.println(a + \" \" + b);",
+    "blanks": [
+      {
+        "label": "A",
+        "correctAnswer": "a ^ b",
+        "explanation": "b = a ^ b: ตอนนี้ a=a^b ดังนั้น (a^b)^b = a เดิม ทำให้ b ได้ค่า 15 (a เดิม)"
+      },
+      {
+        "label": "B",
+        "correctAnswer": "a ^ b",
+        "explanation": "a = a ^ b: ตอนนี้ b=a เดิม ดังนั้น (a^b)^a_เดิม = b เดิม ทำให้ a ได้ค่า 27"
+      }
+    ],
+    "correctAnswer": "",
+    "explanation": "XOR swap 3 ขั้นตอน: a^=b, b^=a, a^=b ใช้คุณสมบัติ x^x=0 และ x^0=x สลับค่าได้โดยไม่ใช้ temp"
+  },
+  {
+    "id": 43,
+    "type": "fill-blank",
+    "lecture": "Ch2-Variables",
+    "question": "เติมโค้ดให้สมบูรณ์เพื่อหาค่าสูงสุดจาก 3 ตัวแปรโดยใช้ Math.max ซ้อนกัน\n\nExpected Output:\n42",
+    "code": "int a = 15, b = 42, c = 28;\nint max = Math.__A__(Math.__B__(a, b), __C__);\nSystem.out.println(max);",
+    "blanks": [
+      {
+        "label": "A",
+        "correctAnswer": "max",
+        "explanation": "Math.max ตัวนอกเปรียบเทียบผลลัพธ์ของ Math.max(a,b)=42 กับ c=28"
+      },
+      {
+        "label": "B",
+        "correctAnswer": "max",
+        "explanation": "Math.max ตัวในหาค่าสูงสุดระหว่าง a=15 กับ b=42 ได้ 42"
+      },
+      {
+        "label": "C",
+        "correctAnswer": "c",
+        "explanation": "นำ c มาเปรียบเทียบกับค่าสูงสุดของ a,b เพื่อหาค่าสูงสุดจากทั้งสาม"
+      }
+    ],
+    "correctAnswer": "",
+    "explanation": "Math.max รับ 2 arguments ต้องซ้อนเป็น Math.max(Math.max(a,b), c) ได้ Math.max(42, 28) = 42"
+  },
+  {
+    "id": 44,
+    "type": "fill-blank",
+    "lecture": "Ch4-Selection",
+    "question": "เติมโค้ดตรวจสอบประเภทตัวอักษรโดยใช้ Character class methods: ถ้าเป็นตัวเลขแสดง Digit ถ้าเป็นตัวอักษรแสดง Letter\n\nExpected Output:\nDigit",
+    "code": "char ch = '7';\nif (Character.__A__(ch)) {\n    System.out.println(\"Digit\");\n} else if (Character.__B__(ch)) {\n    System.out.println(\"Letter\");\n} __C__ {\n    System.out.println(\"Other\");\n}",
+    "blanks": [
+      {
+        "label": "A",
+        "correctAnswer": "isDigit",
+        "explanation": "Character.isDigit('7') คืน true เพราะ '7' เป็นตัวเลข"
+      },
+      {
+        "label": "B",
+        "correctAnswer": "isLetter",
+        "explanation": "Character.isLetter(ch) ตรวจว่า ch เป็นตัวอักษร A-Z หรือ a-z"
+      },
+      {
+        "label": "C",
+        "correctAnswer": "else",
+        "explanation": "else จับกรณีที่ไม่ใช่ทั้ง digit และ letter เช่น @, #, !"
+      }
+    ],
+    "correctAnswer": "",
+    "explanation": "Character class มี static methods: isDigit() ตรวจตัวเลข, isLetter() ตรวจตัวอักษร สำหรับ '7' เข้า isDigit แสดง Digit"
+  },
+  {
+    "id": 45,
+    "type": "fill-blank",
+    "lecture": "Ch4-Selection",
+    "question": "เติมโค้ด nested ternary operator ตรวจสอบเครื่องหมายของตัวเลข (positive/negative/zero)\n\nExpected Output:\nnegative",
+    "code": "int num = -5;\nString sign = (num __A__ 0) ? \"positive\" : (num __B__ 0) ? \"negative\" : __C__;\nSystem.out.println(sign);",
+    "blanks": [
+      {
+        "label": "A",
+        "correctAnswer": ">",
+        "explanation": "ตรวจ num > 0 เพื่อเช็คจำนวนบวก (-5 > 0 = false)"
+      },
+      {
+        "label": "B",
+        "correctAnswer": "<",
+        "explanation": "ตรวจ num < 0 เพื่อเช็คจำนวนลบ (-5 < 0 = true → \"negative\")"
+      },
+      {
+        "label": "C",
+        "correctAnswer": "\"zero\"",
+        "explanation": "กรณีไม่ใช่บวกและไม่ใช่ลบ แสดงว่าเป็นศูนย์"
+      }
+    ],
+    "correctAnswer": "",
+    "explanation": "Nested ternary: num>0 → positive, num<0 → negative, อื่นๆ → zero สำหรับ num=-5 ได้ \"negative\""
+  },
+  {
+    "id": 46,
+    "type": "fill-blank",
+    "lecture": "Ch4-Selection",
+    "question": "เติมโค้ด switch expression (Java 14+) ที่หาจำนวนวันของเดือน โดยใช้ -> syntax\n\nExpected Output:\n29",
+    "code": "String month = \"February\";\nboolean isLeap = true;\nint days = __A__ (month) {\n    case \"February\" -> isLeap ? 29 : 28;\n    case \"April\", \"June\", \"September\", \"November\" -> 30;\n    __B__ -> 31;\n};\nSystem.out.__C__(days);",
+    "blanks": [
+      {
+        "label": "A",
+        "correctAnswer": "switch",
+        "explanation": "ใช้ switch expression คืนค่าจำนวนวันตาม month"
+      },
+      {
+        "label": "B",
+        "correctAnswer": "default",
+        "explanation": "default ครอบคลุมเดือนที่มี 31 วัน (Jan, Mar, May, Jul, Aug, Oct, Dec)"
+      },
+      {
+        "label": "C",
+        "correctAnswer": "println",
+        "explanation": "ใช้ println() แสดงผลจำนวนวัน"
+      }
+    ],
+    "correctAnswer": "",
+    "explanation": "Switch expression (Java 14+) ใช้ -> คืนค่าได้โดยตรง February + isLeap=true ได้ 29 วัน"
+  },
+  {
+    "id": 47,
+    "type": "fill-blank",
+    "lecture": "Ch5-Strings",
+    "question": "เติมโค้ดนับจำนวนสระ (vowels) ใน String โดยแปลงเป็น lowercase ก่อนเช็ค\n\nExpected Output:\n3",
+    "code": "String s = \"Programming\";\nint count = 0;\nfor (int i = 0; i < s.__A__(); i++) {\n    char c = Character.toLowerCase(s.__B__(i));\n    if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == __C__) {\n        count++;\n    }\n}\nSystem.out.println(count);",
+    "blanks": [
+      {
+        "label": "A",
+        "correctAnswer": "length",
+        "explanation": "String ใช้ length() method (มีวงเล็บ ต่างจาก array ที่ไม่มี)"
+      },
+      {
+        "label": "B",
+        "correctAnswer": "charAt",
+        "explanation": "charAt(i) ดึงตัวอักษรที่ตำแหน่ง i"
+      },
+      {
+        "label": "C",
+        "correctAnswer": "'u'",
+        "explanation": "สระ 5 ตัว: a, e, i, o, u ต้องเช็ค 'u' ด้วยจึงครบ ใน Programming มี o, a, i = 3 สระ"
+      }
+    ],
+    "correctAnswer": "",
+    "explanation": "นับสระ: loop ทุกตัวอักษร แปลง lowercase แล้วเช็ค a,e,i,o,u \"Programming\" มี 3 สระ (o, a, i)"
+  },
+  {
+    "id": 48,
+    "type": "fill-blank",
+    "lecture": "Ch5-Strings",
+    "question": "เติมโค้ด reverse String โดยไม่ใช้ StringBuilder วนลูปจากท้ายไปหน้าแล้วต่อ String\n\nExpected Output:\nolleH",
+    "code": "String s = \"Hello\";\nString reversed = __A__;\nfor (int i = s.length() - 1; i >= 0; __B__) {\n    reversed __C__ s.charAt(i);\n}\nSystem.out.println(reversed);",
+    "blanks": [
+      {
+        "label": "A",
+        "correctAnswer": "\"\"",
+        "explanation": "เริ่มด้วย empty String \"\" เพื่อสะสมตัวอักษรที่กลับลำดับ"
+      },
+      {
+        "label": "B",
+        "correctAnswer": "i--",
+        "explanation": "ลดค่า i ทีละ 1 เพื่อ loop จาก index สุดท้ายไป index 0"
+      },
+      {
+        "label": "C",
+        "correctAnswer": "+=",
+        "explanation": "ใช้ += ต่อตัวอักษรเข้ากับ reversed (String concatenation)"
+      }
+    ],
+    "correctAnswer": "",
+    "explanation": "Reverse String: เริ่มจาก \"\" วน i จาก 4 ถึง 0 ต่อทีละตัว: o→ol→oll→olle→olleH"
+  },
+  {
+    "id": 49,
+    "type": "fill-blank",
+    "lecture": "Ch5-Strings",
+    "question": "เติมโค้ดตรวจสอบว่า String เป็น palindrome (อ่านกลับได้เหมือนเดิม) โดยใช้ StringBuilder reverse\n\nExpected Output:\ntrue",
+    "code": "String s = \"racecar\";\nStringBuilder sb = new __A__(s);\nString reversed = sb.__B__().toString();\nboolean isPalin = s.__C__(reversed);\nSystem.out.println(isPalin);",
+    "blanks": [
+      {
+        "label": "A",
+        "correctAnswer": "StringBuilder",
+        "explanation": "สร้าง StringBuilder จาก \"racecar\" เพื่อใช้ method reverse()"
+      },
+      {
+        "label": "B",
+        "correctAnswer": "reverse",
+        "explanation": "reverse() กลับลำดับได้ \"racecar\" (เหมือนเดิมเพราะเป็น palindrome)"
+      },
+      {
+        "label": "C",
+        "correctAnswer": "equals",
+        "explanation": "เปรียบเทียบ String เดิมกับ String ที่กลับแล้ว ถ้าเท่ากัน = palindrome"
+      }
+    ],
+    "correctAnswer": "",
+    "explanation": "Palindrome check: \"racecar\" กลับได้ \"racecar\" เหมือนเดิม equals() คืน true จึงเป็น palindrome"
+  },
+  {
+    "id": 50,
+    "type": "fill-blank",
+    "lecture": "Ch6-Methods",
+    "question": "เติมโค้ด recursive method คำนวณ x ยกกำลัง n แบบ fast exponentiation (O(log n))\n\nเมื่อเรียก power(2, 10) จะได้ผลลัพธ์: 1024",
+    "code": "static long power(long x, int n) {\n    if (n == 0) return 1;\n    long half = power(x, n / 2);\n    if (n % 2 == 0)\n        return half __A__ half;\n    else\n        return half * half __B__;\n}",
+    "blanks": [
+      {
+        "label": "A",
+        "correctAnswer": "*",
+        "explanation": "ถ้า n เป็นเลขคู่: x^n = (x^(n/2))² = half * half"
+      },
+      {
+        "label": "B",
+        "correctAnswer": "* x",
+        "explanation": "ถ้า n เป็นเลขคี่: x^n = (x^(n/2))² × x ต้องคูณ x เพิ่มอีกตัว"
+      }
+    ],
+    "correctAnswer": "",
+    "explanation": "Fast exponentiation: แบ่งครึ่ง n ทุกรอบ ลดจาก O(n) เหลือ O(log n) เช่น 2^10 = (2^5)² = (2^2 × 2)² × ... = 1024"
+  },
+  {
+    "id": 51,
+    "type": "fill-blank",
+    "lecture": "Ch6-Methods",
+    "question": "เติมโค้ด method ตรวจสอบ prime number โดยวนลูปถึง √n เท่านั้น (sqrt optimization)\n\nเมื่อเรียก isPrime(17) ได้ true, isPrime(15) ได้ false",
+    "code": "static boolean isPrime(int n) {\n    if (n <= 1) return __A__;\n    for (int i = 2; i <= Math.__B__(n); i++) {\n        if (n __C__ i == 0) return false;\n    }\n    return true;\n}",
+    "blanks": [
+      {
+        "label": "A",
+        "correctAnswer": "false",
+        "explanation": "ตัวเลข <= 1 (เช่น 0, 1, จำนวนลบ) ไม่เป็นจำนวนเฉพาะ"
+      },
+      {
+        "label": "B",
+        "correctAnswer": "sqrt",
+        "explanation": "Math.sqrt(n) ตรวจแค่ถึง √n ลด complexity จาก O(n) เหลือ O(√n)"
+      },
+      {
+        "label": "C",
+        "correctAnswer": "%",
+        "explanation": "ใช้ % (modulus) ตรวจว่า n หาร i ลงตัว ถ้า n%i==0 มีตัวหาร → ไม่เป็น prime"
+      }
+    ],
+    "correctAnswer": "",
+    "explanation": "Prime check: n<=1 → false, วน 2 ถึง √n ถ้า n%i==0 ไม่เป็น prime เช่น 15%3==0 → false, 17 ไม่มีตัวหาร → true"
+  },
+  {
+    "id": 52,
+    "type": "fill-blank",
+    "lecture": "Ch6-Methods",
+    "question": "เติมโค้ด recursive method หา GCD (ห.ร.ม.) ด้วย Euclidean algorithm\n\nตัวอย่าง: gcd(48, 18) → gcd(18, 12) → gcd(12, 6) → gcd(6, 0) → 6",
+    "code": "static int gcd(int a, int b) {\n    if (__A__ == 0) return __B__;\n    return gcd(b, a __C__ b);\n}",
+    "blanks": [
+      {
+        "label": "A",
+        "correctAnswer": "b",
+        "explanation": "Base case: เมื่อ b == 0 แสดงว่า a คือ GCD (gcd(6,0) → return 6)"
+      },
+      {
+        "label": "B",
+        "correctAnswer": "a",
+        "explanation": "เมื่อ b=0 ค่า GCD คือ a เพราะ gcd(a, 0) = a"
+      },
+      {
+        "label": "C",
+        "correctAnswer": "%",
+        "explanation": "ใช้ % ตาม Euclidean algorithm: gcd(a,b) = gcd(b, a%b)"
+      }
+    ],
+    "correctAnswer": "",
+    "explanation": "Euclidean algorithm: gcd(a,b) = gcd(b, a%b) จนกว่า b=0 แล้ว return a เช่น gcd(48,18)→gcd(18,12)→gcd(12,6)→gcd(6,0)→6"
+  },
+  {
+    "id": 53,
+    "type": "fill-blank",
+    "lecture": "Ch7-Arrays",
+    "question": "เติมโค้ด Binary Search ให้สมบูรณ์ method นี้ค้นหาค่า target ใน sorted array\n\nตัวอย่าง: binarySearch({1,3,5,7,9}, 7) → 3",
+    "code": "static int binarySearch(int[] arr, int target) {\n    int low = 0, high = arr.length - 1;\n    while (__A__) {\n        int mid = (low + high) / 2;\n        if (arr[mid] == target) return mid;\n        else if (arr[mid] < target) low = __B__;\n        else high = __C__;\n    }\n    return -1;\n}",
+    "blanks": [
+      {
+        "label": "A",
+        "correctAnswer": "low <= high",
+        "explanation": "loop ทำงานเมื่อ low <= high ถ้าใช้ < จะพลาดกรณี low==high ซึ่ง target อาจอยู่ตรงนั้น"
+      },
+      {
+        "label": "B",
+        "correctAnswer": "mid + 1",
+        "explanation": "target > arr[mid] อยู่ทางขวา เลื่อน low = mid + 1 (mid ตรวจแล้วไม่ใช่)"
+      },
+      {
+        "label": "C",
+        "correctAnswer": "mid - 1",
+        "explanation": "target < arr[mid] อยู่ทางซ้าย เลื่อน high = mid - 1"
+      }
+    ],
+    "correctAnswer": "",
+    "explanation": "Binary Search: แบ่งครึ่งทุกรอบ O(log n) ข้อมูลต้อง sorted ก่อน ใช้ low<=high, เลื่อน low=mid+1 หรือ high=mid-1"
+  },
+  {
+    "id": 54,
+    "type": "fill-blank",
+    "lecture": "Ch7-Arrays",
+    "question": "เติมโค้ด Bubble Sort ให้สมบูรณ์ เรียงจากน้อยไปมาก โดยแต่ละ pass ค่ามากสุดจะลอยไปท้าย\n\nตัวอย่าง: {5, 3, 8, 1} → {1, 3, 5, 8}",
+    "code": "static void bubbleSort(int[] arr) {\n    int n = arr.length;\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = 0; j < __A__; j++) {\n            if (arr[j] __B__ arr[j + 1]) {\n                int temp = arr[j];\n                arr[j] = arr[__C__];\n                arr[j + 1] = temp;\n            }\n        }\n    }\n}",
+    "blanks": [
+      {
+        "label": "A",
+        "correctAnswer": "n - 1 - i",
+        "explanation": "แต่ละ pass ค่ามากสุดลอยไปท้าย inner loop ลดลงทีละ 1: n-1-i"
+      },
+      {
+        "label": "B",
+        "correctAnswer": ">",
+        "explanation": "เรียง ascending: สลับเมื่อ arr[j] > arr[j+1] (ตัวซ้ายมากกว่าตัวขวา)"
+      },
+      {
+        "label": "C",
+        "correctAnswer": "j + 1",
+        "explanation": "ส่วนหนึ่งของ swap: arr[j] = arr[j+1] ย้ายค่าตัวขวามาแทนซ้าย"
+      }
+    ],
+    "correctAnswer": "",
+    "explanation": "Bubble Sort O(n²): เปรียบเทียบคู่ติดกัน สลับถ้าผิดลำดับ ค่ามากสุดลอยไปท้ายทุก pass"
+  },
+  {
+    "id": 55,
+    "type": "fill-blank",
+    "lecture": "Ch7-Arrays",
+    "question": "เติมโค้ดหาค่า second largest ใน array ด้วย single pass (O(n)) โดยไม่ใช้ sort\n\nExpected Output:\n56",
+    "code": "int[] arr = {34, 12, 56, 78, 23, 45};\nint first = Integer.MIN_VALUE;\nint second = Integer.MIN_VALUE;\nfor (int val : arr) {\n    if (val > __A__) {\n        second = first;\n        __B__ = val;\n    } else if (val > second && val __C__ first) {\n        second = val;\n    }\n}\nSystem.out.println(second);",
+    "blanks": [
+      {
+        "label": "A",
+        "correctAnswer": "first",
+        "explanation": "ถ้า val > first (ค่ามากสุดปัจจุบัน) ต้องเลื่อน first ลงเป็น second"
+      },
+      {
+        "label": "B",
+        "correctAnswer": "first",
+        "explanation": "กำหนด val ให้ first เป็นค่ามากสุดตัวใหม่"
+      },
+      {
+        "label": "C",
+        "correctAnswer": "!=",
+        "explanation": "เช็คว่า val != first เพื่อป้องกันกรณีค่าซ้ำ (distinct second largest)"
+      }
+    ],
+    "correctAnswer": "",
+    "explanation": "Single pass O(n): ถ้า val>first → เลื่อน first→second, val→first ถ้า val>second && val!=first → second=val ได้ 56"
+  },
+  {
+    "id": 56,
+    "type": "fill-blank",
+    "lecture": "Ch7-Arrays",
+    "question": "เติมโค้ด Selection Sort ให้สมบูรณ์ หาตำแหน่งค่าน้อยสุดในแต่ละรอบแล้วสลับ\n\nตัวอย่าง: {64, 25, 12, 22, 11} → {11, 12, 22, 25, 64}",
+    "code": "static void selectionSort(int[] arr) {\n    for (int i = 0; i < arr.length - 1; i++) {\n        int minIdx = __A__;\n        for (int j = i + 1; j < arr.length; j++) {\n            if (arr[j] < arr[__B__]) {\n                minIdx = __C__;\n            }\n        }\n        int temp = arr[i];\n        arr[i] = arr[minIdx];\n        arr[minIdx] = temp;\n    }\n}",
+    "blanks": [
+      {
+        "label": "A",
+        "correctAnswer": "i",
+        "explanation": "เริ่มสมมติตำแหน่ง i เป็นค่าน้อยสุด แล้วหาตัวน้อยกว่าใน loop ด้านใน"
+      },
+      {
+        "label": "B",
+        "correctAnswer": "minIdx",
+        "explanation": "เปรียบเทียบ arr[j] กับ arr[minIdx] ซึ่งเป็นค่าน้อยสุดที่เจอจนถึงตอนนี้"
+      },
+      {
+        "label": "C",
+        "correctAnswer": "j",
+        "explanation": "เจอค่าน้อยกว่า → อัพเดท minIdx = j เพื่อจำตำแหน่งค่าน้อยสุดใหม่"
+      }
+    ],
+    "correctAnswer": "",
+    "explanation": "Selection Sort O(n²): หาค่าน้อยสุดในส่วนที่ยังไม่ sort สลับกับตำแหน่งแรก จำนวน swap น้อยกว่า Bubble Sort"
+  },
+  {
+    "id": 57,
+    "type": "fill-blank",
+    "lecture": "Ch8-ClassObject",
+    "question": "เติมโค้ด constructor chaining ด้วย this() โดย no-arg constructor สร้างสี่เหลี่ยม 1x1 และ 1-arg constructor สร้างสี่เหลี่ยมจัตุรัส\n\nเมื่อสร้าง new Rectangle() → area()=1.0, new Rectangle(5) → area()=25.0",
+    "code": "class Rectangle {\n    private double width, height;\n    \n    Rectangle() {\n        __A__(1.0, 1.0);\n    }\n    \n    Rectangle(double side) {\n        __B__(side, side);\n    }\n    \n    Rectangle(double w, double h) {\n        this.width = __C__;\n        this.height = h;\n    }\n    \n    double area() { return width * height; }\n}",
+    "blanks": [
+      {
+        "label": "A",
+        "correctAnswer": "this",
+        "explanation": "this(1.0, 1.0) เรียก constructor ที่รับ 2 params สร้างสี่เหลี่ยม 1×1"
+      },
+      {
+        "label": "B",
+        "correctAnswer": "this",
+        "explanation": "this(side, side) เรียก constructor ที่รับ 2 params สร้างสี่เหลี่ยมจัตุรัส"
+      },
+      {
+        "label": "C",
+        "correctAnswer": "w",
+        "explanation": "กำหนด parameter w ให้ field this.width"
+      }
+    ],
+    "correctAnswer": "",
+    "explanation": "Constructor chaining: ใช้ this() เรียก constructor อื่นใน class เดียวกัน ต้องเป็นบรรทัดแรก ลด code duplication"
+  },
+  {
+    "id": 58,
+    "type": "fill-blank",
+    "lecture": "Ch8-ClassObject",
+    "question": "เติมโค้ด class BankAccount ที่มี auto-increment ID (static counter) และ validation ใน withdraw\n\nเมื่อสร้าง BankAccount 3 ตัว จะได้ id = 1000, 1001, 1002 ตามลำดับ",
+    "code": "class BankAccount {\n    private static int nextId = 1000;\n    private int id;\n    private double balance;\n    \n    BankAccount(double initialBalance) {\n        this.id = __A__;\n        this.balance = initialBalance;\n    }\n    \n    boolean withdraw(double amount) {\n        if (amount > 0 && amount __B__ balance) {\n            balance -= amount;\n            return true;\n        }\n        return __C__;\n    }\n}",
+    "blanks": [
+      {
+        "label": "A",
+        "correctAnswer": "nextId++",
+        "explanation": "nextId++ กำหนด id ปัจจุบัน (1000) แล้วเพิ่ม nextId เป็น 1001 สำหรับตัวถัดไป"
+      },
+      {
+        "label": "B",
+        "correctAnswer": "<=",
+        "explanation": "amount <= balance ตรวจว่าเงินพอถอน ป้องกันยอดติดลบ"
+      },
+      {
+        "label": "C",
+        "correctAnswer": "false",
+        "explanation": "ถ้าเงินไม่พอหรือ amount <= 0 return false แจ้งว่าถอนไม่สำเร็จ"
+      }
+    ],
+    "correctAnswer": "",
+    "explanation": "Static counter pattern: nextId++ เป็น auto-increment ID ร่วมกับ encapsulation (private fields + validation ป้องกัน invalid withdraw)"
+  },
+  {
+    "id": 59,
+    "type": "fill-blank",
+    "lecture": "Ch8-ClassObject",
+    "question": "เติมโค้ด class Circle ที่ override toString() และ equals() จาก Object class\n\nเมื่อเรียก new Circle(5.0).toString() ได้ \"Circle(r=5.0)\" และ new Circle(5.0).equals(new Circle(5.0)) ได้ true",
+    "code": "class Circle {\n    private double radius;\n    \n    Circle(double r) { this.radius = r; }\n    \n    double getArea() {\n        return __A__ * radius * radius;\n    }\n    \n    public String toString() {\n        return \"Circle(r=\" + __B__ + \")\";\n    }\n    \n    public boolean equals(Object obj) {\n        if (obj instanceof Circle) {\n            Circle other = __C__ obj;\n            return this.radius == other.radius;\n        }\n        return false;\n    }\n}",
+    "blanks": [
+      {
+        "label": "A",
+        "correctAnswer": "Math.PI",
+        "explanation": "ใช้ Math.PI (ค่า π = 3.14159...) คำนวณพื้นที่วงกลม πr²"
+      },
+      {
+        "label": "B",
+        "correctAnswer": "radius",
+        "explanation": "แสดงค่า radius ใน toString() เพื่อให้ข้อมูลที่มีประโยชน์เมื่อ print"
+      },
+      {
+        "label": "C",
+        "correctAnswer": "(Circle)",
+        "explanation": "downcast obj จาก Object เป็น Circle ก่อนจึงจะเข้าถึง radius ได้"
+      }
+    ],
+    "correctAnswer": "",
+    "explanation": "override toString() แสดงข้อมูล object, equals() ต้อง instanceof check ก่อน cast แล้วเปรียบเทียบ field"
+  },
+  {
+    "id": 60,
+    "type": "fill-blank",
+    "lecture": "Ch8-ClassObject",
+    "question": "เติมโค้ด class Student ที่มี copy constructor (deep copy) และ static factory method\n\nCopy constructor ต้อง deep copy array เพื่อป้องกัน aliasing problem",
+    "code": "class Student {\n    private String name;\n    private int[] scores;\n    \n    Student(String name, int[] scores) {\n        this.name = name;\n        this.scores = scores.clone();\n    }\n    \n    Student(__A__ other) {\n        this.name = other.name;\n        this.scores = other.scores.__B__();\n    }\n    \n    static Student createHonor(String name) {\n        int[] perfect = {100, 100, 100};\n        return __C__ Student(name, perfect);\n    }\n}",
+    "blanks": [
+      {
+        "label": "A",
+        "correctAnswer": "Student",
+        "explanation": "Copy constructor รับ Student other เป็น parameter เพื่อสร้าง copy ใหม่"
+      },
+      {
+        "label": "B",
+        "correctAnswer": "clone",
+        "explanation": "clone() สร้าง array ใหม่เป็น deep copy ป้องกัน shared reference (aliasing)"
+      },
+      {
+        "label": "C",
+        "correctAnswer": "new",
+        "explanation": "ใช้ new สร้าง Student ใหม่ใน static factory method"
+      }
+    ],
+    "correctAnswer": "",
+    "explanation": "Copy constructor ต้อง deep copy mutable fields (เช่น array) ด้วย clone() ป้องกัน aliasing: แก้ original ไม่กระทบ copy"
+  }
+]

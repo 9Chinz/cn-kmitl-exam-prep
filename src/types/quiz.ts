@@ -3,13 +3,24 @@ export interface Choice {
   text: string;
 }
 
-export interface Question {
-  id: number;
-  lecture: string;
-  question: string;
-  choices: Choice[];
+export type QuestionType = "choice" | "fill-blank";
+
+export interface FillBlankField {
+  label: string;
   correctAnswer: string;
   explanation: string;
+}
+
+export interface Question {
+  id: number;
+  type?: QuestionType;
+  lecture: string;
+  question: string;
+  choices?: Choice[];
+  correctAnswer: string;
+  explanation: string;
+  code?: string;
+  blanks?: FillBlankField[];
 }
 
 export type Level = "easy" | "normal" | "hard" | "random"

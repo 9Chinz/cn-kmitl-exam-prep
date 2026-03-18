@@ -6,7 +6,9 @@ import { ScoreText } from "@/components/atoms/ScoreText";
 import { StatBox } from "@/components/molecules/StatBox";
 import { LectureStatRow } from "@/components/molecules/LectureStatRow";
 import { Button } from "@/components/atoms/Button";
+import { CodeBlock } from "@/components/atoms/CodeBlock";
 import { formatTime } from "@/lib/utils";
+import { isAnswerCorrect } from "@/lib/quiz-utils";
 
 export function ResultPage() {
   const { questions, answers, level, totalElapsedTime, questionTimes, setPage, resetQuiz } = useQuizStore();
@@ -18,7 +20,7 @@ export function ResultPage() {
 
   const totalQuestions = questions.length;
   const correctCount = questions.filter(
-    (q, i) => answers[i] === q.correctAnswer
+    (q, i) => isAnswerCorrect(q, answers[i])
   ).length;
   const percentage = Math.round((correctCount / totalQuestions) * 100);
 
@@ -26,7 +28,7 @@ export function ResultPage() {
     const indices = questions
       .map((q, i) => (q.lecture === lecKey ? i : -1))
       .filter((i) => i !== -1);
-    const correct = indices.filter((i) => answers[i] === questions[i].correctAnswer).length;
+    const correct = indices.filter((i) => isAnswerCorrect(questions[i], answers[i])).length;
     const total = indices.length;
     const avgTime = indices.length > 0
       ? indices.reduce((sum, i) => sum + (questionTimes[i] || 0), 0) / indices.length
@@ -75,7 +77,9 @@ export function ResultPage() {
         <div className="max-w-lg mx-auto px-4 py-4 space-y-4">
           {questions.map((q, i) => {
             const userAnswer = answers[i];
-            const isCorrect = userAnswer === q.correctAnswer;
+            const isCorrect = isAnswerCorrect(q, userAnswer);
+            const isFillBlank = q.type === "fill-blank";
+
             return (
               <div key={i} className={`p-4 rounded-xl border-2 ${isCorrect ? "border-green-500/30 bg-green-500/5" : "border-red-500/30 bg-red-500/5"}`}>
                 <div className="flex items-start gap-2 mb-2">
@@ -84,20 +88,46 @@ export function ResultPage() {
                   </span>
                   <span className="text-sm font-medium">{i + 1}. {q.question}</span>
                 </div>
-                <div className="ml-7 space-y-1 text-sm">
-                  {q.choices.map((c) => (
-                    <div
-                      key={c.key}
-                      className={`${
-                        c.key === q.correctAnswer ? "text-green-700 dark:text-green-400 font-medium" :
-                        c.key === userAnswer && c.key !== q.correctAnswer ? "text-red-500 dark:text-red-400 line-through" :
-                        "text-muted-foreground"
-                      }`}
-                    >
-                      {c.key}. {c.text}
-                    </div>
-                  ))}
-                </div>
+
+                {isFillBlank ? (
+                  <div className="ml-7 space-y-2">
+                    {q.code && <CodeBlock code={q.code} className="text-xs" />}
+                    {q.blanks?.map((blank) => {
+                      let filled: Record<string, string> = {};
+                      try { filled = JSON.parse(userAnswer); } catch { /* empty */ }
+                      const fieldCorrect = filled[blank.label]?.trim() === blank.correctAnswer.trim();
+                      return (
+                        <div key={blank.label} className="text-sm">
+                          <span className={`font-mono font-bold ${fieldCorrect ? "text-green-700 dark:text-green-400" : "text-red-500 dark:text-red-400"}`}>
+                            {blank.label}: {filled[blank.label] || "(empty)"}
+                          </span>
+                          {!fieldCorrect && (
+                            <span className="text-xs text-muted-foreground ml-2">
+                              → <span className="font-mono font-bold text-green-700 dark:text-green-400">{blank.correctAnswer}</span>
+                            </span>
+                          )}
+                          <p className="text-xs text-muted-foreground mt-0.5">{blank.explanation}</p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <div className="ml-7 space-y-1 text-sm">
+                    {q.choices?.map((c) => (
+                      <div
+                        key={c.key}
+                        className={`${
+                          c.key === q.correctAnswer ? "text-green-700 dark:text-green-400 font-medium" :
+                          c.key === userAnswer && c.key !== q.correctAnswer ? "text-red-500 dark:text-red-400 line-through" :
+                          "text-muted-foreground"
+                        }`}
+                      >
+                        {c.key}. {c.text}
+                      </div>
+                    ))}
+                  </div>
+                )}
+
                 <p className="ml-7 mt-2 text-xs text-muted-foreground">{q.explanation}</p>
               </div>
             );

@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import type { Question, Level, Page, Checkpoint, QuizResult } from "../types/quiz";
 import { generateShuffledChoices } from "../lib/shuffle";
+import { isAnswerCorrect } from "../lib/quiz-utils";
 import { useHistoryStore } from "./historyStore";
 import { useSubjectStore } from "./subjectStore";
 
@@ -159,12 +160,12 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
             lectureBreakdown[q.lecture] = { correct: 0, total: 0 };
           }
           lectureBreakdown[q.lecture].total++;
-          if (answers[i] === q.correctAnswer) {
+          if (isAnswerCorrect(q, answers[i])) {
             lectureBreakdown[q.lecture].correct++;
           }
         });
 
-        const score = questions.filter((q, i) => answers[i] === q.correctAnswer).length;
+        const score = questions.filter((q, i) => isAnswerCorrect(q, answers[i])).length;
         const result: QuizResult = {
           id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
           username: username || "Anonymous",

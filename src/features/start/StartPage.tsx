@@ -33,22 +33,6 @@ export function StartPage() {
             </p>
           </div>
 
-          {config.lectures.length > 0 && (
-            <div className="space-y-2 mb-8">
-              {config.lectures.map((lec) => (
-                <div
-                  key={lec.id}
-                  className="flex items-center gap-3 p-3 rounded-lg bg-card border border-border"
-                >
-                  <span className={`${lec.color} text-white text-xs font-bold px-2 py-1 rounded`}>
-                    {lec.id}
-                  </span>
-                  <span className="text-sm text-foreground">{lec.title}</span>
-                </div>
-              ))}
-            </div>
-          )}
-
           <div className="space-y-3">
             <button
               onClick={openLevelModal}
