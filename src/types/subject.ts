@@ -1,6 +1,6 @@
 import type { Question, Level } from "./quiz";
 
-export type SubjectId = "cn" | "oop";
+export type SubjectId = "cn" | "oop" | "cloud-architecture";
 
 export interface SubjectLecture {
   id: string;

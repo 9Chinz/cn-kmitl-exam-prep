@@ -1,0 +1,278 @@
+[
+  {
+    "id": 1,
+    "type": "choice",
+    "lecture": "Module12-CachingContent",
+    "question": "What is caching?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "A global network for content distribution"
+      },
+      {
+        "key": "B",
+        "text": "A way to store passwords"
+      },
+      {
+        "key": "C",
+        "text": "An in-memory database"
+      },
+      {
+        "key": "D",
+        "text": "A high-speed data storage layer"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "คำตอบที่ถูกต้องคือ D: A high-speed data storage layer"
+  },
+  {
+    "id": 2,
+    "type": "choice",
+    "lecture": "Module12-CachingContent",
+    "question": "Which type of data should you cache?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Data that can be retrieved quickly with simple queries"
+      },
+      {
+        "key": "B",
+        "text": "Specialized data that is needed by a subset of users"
+      },
+      {
+        "key": "C",
+        "text": "Dynamically generated web content"
+      },
+      {
+        "key": "D",
+        "text": "Static data that is frequently accessed"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "คำตอบที่ถูกต้องคือ D: Static data that is frequently accessed"
+  },
+  {
+    "id": 3,
+    "type": "choice",
+    "lecture": "Module12-CachingContent",
+    "question": "Which is a benefit of caching?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Increased application reliability"
+      },
+      {
+        "key": "B",
+        "text": "Decreased costs"
+      },
+      {
+        "key": "C",
+        "text": "Load balancing the application"
+      },
+      {
+        "key": "D",
+        "text": "Reduced response latency"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "คำตอบที่ถูกต้องคือ D: Reduced response latency"
+  },
+  {
+    "id": 4,
+    "type": "multiple-choice",
+    "lecture": "Module12-CachingContent",
+    "question": "Which types of content on a web page can be cached using an edge cache? (Select TWO.)",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Video files, such as a product demo"
+      },
+      {
+        "key": "B",
+        "text": "Web objects, such as hyperlinks"
+      },
+      {
+        "key": "C",
+        "text": "User-generated data, such as search terms entered by user"
+      },
+      {
+        "key": "D",
+        "text": "shopping cart filled with a user's item"
+      },
+      {
+        "key": "E",
+        "text": "Dynamically generated content, such as a user's name"
+      }
+    ],
+    "correctAnswer": "A,B",
+    "explanation": "คำตอบที่ถูกต้องคือ A: Video files, such as a product demo, B: Web objects, such as hyperlinks",
+    "correctAnswers": [
+      "A",
+      "B"
+    ]
+  },
+  {
+    "id": 5,
+    "type": "choice",
+    "lecture": "Module12-CachingContent",
+    "question": "What does Amazon CloudFront enable?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Transactional processing with an in-memory database"
+      },
+      {
+        "key": "B",
+        "text": "Automatic creation of a time to live (TTL) value"
+      },
+      {
+        "key": "C",
+        "text": "Bidirectional caching between users and an origin host"
+      },
+      {
+        "key": "D",
+        "text": "Multi-tiered and regional caching of content"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "คำตอบที่ถูกต้องคือ D: Multi-tiered and regional caching of content"
+  },
+  {
+    "id": 6,
+    "type": "choice",
+    "lecture": "Module12-CachingContent",
+    "question": "How does Amazon CloudFront use edge locations?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "It caches all content from an origin distribution at the edge location and delivers the content to clients through the fastest edge location."
+      },
+      {
+        "key": "B",
+        "text": "It caches frequently accessed content at edge locations. It delivers the cached content to clients through the edge location with the lowest latency to those clients."
+      },
+      {
+        "key": "C",
+        "text": "It caches local content at edge locations. It delivers the cached content to clients through the edge location that requires the fewest network hops to reach those clients."
+      },
+      {
+        "key": "D",
+        "text": "It caches Regional data at Regional edge locations and delivers the content to clients through their Regional edge locations."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "คำตอบที่ถูกต้องคือ B: It caches frequently accessed content at edge locations. It delivers the cached content to clients through the edge location with the lowest latency to those clients."
+  },
+  {
+    "id": 7,
+    "type": "choice",
+    "lecture": "Module12-CachingContent",
+    "question": "Which statement describes an efficient way to deliver on-demand video content?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Launch an Amazon EC2 instance to host your video content. Then use Amazon CloudFront to deliver the content."
+      },
+      {
+        "key": "B",
+        "text": "Use Amazon S3 to store the content. Then use Amazon CloudFront to deliver the content."
+      },
+      {
+        "key": "C",
+        "text": "Launch an Amazon EC2 instance to host and serve your video content."
+      },
+      {
+        "key": "D",
+        "text": "Use Amazon S3 to store and serve the content."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "คำตอบที่ถูกต้องคือ B: Use Amazon S3 to store the content. Then use Amazon CloudFront to deliver the content."
+  },
+  {
+    "id": 8,
+    "type": "choice",
+    "lecture": "Module12-CachingContent",
+    "question": "Which role does Amazon CloudFront play in protecting against distributed denial of service (DDoS) attacks?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Performs deep packet inspection to detect attacks"
+      },
+      {
+        "key": "B",
+        "text": "Routes traffic through edge locations"
+      },
+      {
+        "key": "C",
+        "text": "Controls traffic by the source IP addresses of requests"
+      },
+      {
+        "key": "D",
+        "text": "Restricts traffic by geography to help block attacks that originate from specific countries"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "คำตอบที่ถูกต้องคือ B: Routes traffic through edge locations"
+  },
+  {
+    "id": 9,
+    "type": "multiple-choice",
+    "lecture": "Module12-CachingContent",
+    "question": "How can an application use Amazon ElastiCache to improve database read performance? (Select TWO.)",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Read data from the database first, and write the most frequently read data to ElastiCache."
+      },
+      {
+        "key": "B",
+        "text": "Direct all read requests to the database, and configure it to read from ElastiCache when a cache miss occurs."
+      },
+      {
+        "key": "C",
+        "text": "Replicate the database in ElastiCache, and direct all reads to ElastiCache and all writes to the database."
+      },
+      {
+        "key": "D",
+        "text": "Write data to ElastiCache whenever the application writes to the database."
+      },
+      {
+        "key": "E",
+        "text": "Read data from ElastiCache first, and write to ElastiCache when a cache miss occurs."
+      }
+    ],
+    "correctAnswer": "D,E",
+    "explanation": "คำตอบที่ถูกต้องคือ D: Write data to ElastiCache whenever the application writes to the database., E: Read data from ElastiCache first, and write to ElastiCache when a cache miss occurs.",
+    "correctAnswers": [
+      "D",
+      "E"
+    ]
+  },
+  {
+    "id": 10,
+    "type": "choice",
+    "lecture": "Module12-CachingContent",
+    "question": "Which type of caching strategy should be used when there's data that must be updated in real time?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Lazy loading"
+      },
+      {
+        "key": "B",
+        "text": "Write-through"
+      },
+      {
+        "key": "C",
+        "text": "Time to live (TTL)"
+      },
+      {
+        "key": "D",
+        "text": "Cache-control headers"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "คำตอบที่ถูกต้องคือ B: Write-through"
+  }
+]

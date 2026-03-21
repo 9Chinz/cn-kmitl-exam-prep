@@ -1,0 +1,286 @@
+[
+  {
+    "id": 1,
+    "type": "choice",
+    "lecture": "Module3-SecuringAccess",
+    "question": "Which statement reflects a design principle of the security pillar of the Well-Architected Framework?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Do not deploy a solution to production until you're certain that no security risks exist."
+      },
+      {
+        "key": "B",
+        "text": "Decentralize privilege management."
+      },
+      {
+        "key": "C",
+        "text": "Ensure that staff are actively monitoring potential risks manually."
+      },
+      {
+        "key": "D",
+        "text": "Apply security aall layers of an architecture."
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "คำตอบที่ถูกต้องคือ D: Apply security aall layers of an architecture."
+  },
+  {
+    "id": 2,
+    "type": "multiple-choice",
+    "lecture": "Module3-SecuringAccess",
+    "question": "Which statements about responsibility are accurate based on the AWS shared responsibility model? (Select TWO.)",
+    "choices": [
+      {
+        "key": "A",
+        "text": "AWS is responsible for host-based firewall configurations."
+      },
+      {
+        "key": "B",
+        "text": "Customers are responsible for managing their user data."
+      },
+      {
+        "key": "C",
+        "text": "Customers are responsible for the installation, maintenance, and decommissioning of the hardware that they use in the AWS data center."
+      },
+      {
+        "key": "D",
+        "text": "AWS is responsible for the configuration of security groups."
+      },
+      {
+        "key": "E",
+        "text": "AWS is responsible for the physical security of data centers."
+      }
+    ],
+    "correctAnswer": "B,E",
+    "explanation": "คำตอบที่ถูกต้องคือ B: Customers are responsible for managing their user data., E: AWS is responsible for the physical security of data centers.",
+    "correctAnswers": [
+      "B",
+      "E"
+    ]
+  },
+  {
+    "id": 3,
+    "type": "multiple-choice",
+    "lecture": "Module3-SecuringAccess",
+    "question": "Which options are characteristics of the principle of least privilege? (Select TWO.)",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Use encryption."
+      },
+      {
+        "key": "B",
+        "text": "Grant access only as needed."
+      },
+      {
+        "key": "C",
+        "text": "Monitor actions and changes."
+      },
+      {
+        "key": "D",
+        "text": "Craft security policies that limit access to specific tasks."
+      },
+      {
+        "key": "E",
+        "text": "Always use groups."
+      }
+    ],
+    "correctAnswer": "B,D",
+    "explanation": "คำตอบที่ถูกต้องคือ B: Grant access only as needed., D: Craft security policies that limit access to specific tasks.",
+    "correctAnswers": [
+      "B",
+      "D"
+    ]
+  },
+  {
+    "id": 4,
+    "type": "choice",
+    "lecture": "Module3-SecuringAccess",
+    "question": "Which statement about AWS Identity and Access Management (IAM) is true?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "IAM provides an audit trail of who performed an action, what action they performed, and when they performed it."
+      },
+      {
+        "key": "B",
+        "text": "IAM provides an extra layer of security by offering anomaly detection on resources."
+      },
+      {
+        "key": "C",
+        "text": "With IAM, you can manage encryption for items that require encryption at rest."
+      },
+      {
+        "key": "D",
+        "text": "With IAM, you can grant principals granular access to resources."
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "คำตอบที่ถูกต้องคือ D: With IAM, you can grant principals granular access to resources."
+  },
+  {
+    "id": 5,
+    "type": "multiple-choice",
+    "lecture": "Module3-SecuringAccess",
+    "question": "Which statements describe AWS Identity and Access Management (IAM) roles? (Select TWO.)",
+    "choices": [
+      {
+        "key": "A",
+        "text": "They are uniquely associated to an individual."
+      },
+      {
+        "key": "B",
+        "text": "They provide permanent security credentials."
+      },
+      {
+        "key": "C",
+        "text": "Individuals, applications, and services can assume roles."
+      },
+      {
+        "key": "D",
+        "text": "They can only be used by accounts that are associated to the person who creates the role."
+      },
+      {
+        "key": "E",
+        "text": "They provide temporary security credentials."
+      }
+    ],
+    "correctAnswer": "C,E",
+    "explanation": "คำตอบที่ถูกต้องคือ C: Individuals, applications, and services can assume roles., E: They provide temporary security credentials.",
+    "correctAnswers": [
+      "C",
+      "E"
+    ]
+  },
+  {
+    "id": 6,
+    "type": "choice",
+    "lecture": "Module3-SecuringAccess",
+    "question": "Which statement reflects a best practice for the root user on an AWS account?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "To avoid getting locked out of the account, do not enable multi-factor authentication (MFA) on the root account."
+      },
+      {
+        "key": "B",
+        "text": "Create an admin user and perform most admin tasks with this user instead of the root user."
+      },
+      {
+        "key": "C",
+        "text": "Create two root users with separate credentials and distribute them to vo different individuals. ("
+      },
+      {
+        "key": "D",
+        "text": "Remove unneeded permissions from the root user account."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "คำตอบที่ถูกต้องคือ B: Create an admin user and perform most admin tasks with this user instead of the root user."
+  },
+  {
+    "id": 7,
+    "type": "choice",
+    "lecture": "Module3-SecuringAccess",
+    "question": "How does AWS Identity and Access Management (IAM) evaluate a policy?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "An explicit deny statement does not override an explicit allow statement."
+      },
+      {
+        "key": "B",
+        "text": "It checks for explicit allow statements before it checks for explicit deny statements."
+      },
+      {
+        "key": "C",
+        "text": "It checks for explicit deny statements before it checks for explicit allow statements."
+      },
+      {
+        "key": "D",
+        "text": "If the policy doesn't have any explicit deny statements or explicit allow statements, users have access by default."
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "คำตอบที่ถูกต้องคือ C: It checks for explicit deny statements before it checks for explicit allow statements."
+  },
+  {
+    "id": 8,
+    "type": "choice",
+    "lecture": "Module3-SecuringAccess",
+    "question": "Which statement about AWS Identity and Access Management (IAM) policies is accurate?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Resource-based policies allow access by default."
+      },
+      {
+        "key": "B",
+        "text": "Identity-based policies are attached to a user, group, or role."
+      },
+      {
+        "key": "C",
+        "text": "Identity-based policies can only be attached to a single entity."
+      },
+      {
+        "key": "D",
+        "text": "Resource-based policies are attached to a user, group, or role."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "คำตอบที่ถูกต้องคือ B: Identity-based policies are attached to a user, group, or role."
+  },
+  {
+    "id": 9,
+    "type": "choice",
+    "lecture": "Module3-SecuringAccess",
+    "question": "Which AWS Identity and Access Management (IAM) policy element includes information about whether to allow or deny a request?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Condition"
+      },
+      {
+        "key": "B",
+        "text": "Principal"
+      },
+      {
+        "key": "C",
+        "text": "Effect"
+      },
+      {
+        "key": "D",
+        "text": "Action"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "คำตอบที่ถูกต้องคือ C: Effect"
+  },
+  {
+    "id": 10,
+    "type": "choice",
+    "lecture": "Module3-SecuringAccess",
+    "question": "Which option accurately describes the statement element in an AWS Identity and Access Management (IAM) policy?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "The statement element is an optional part of an IAM policy."
+      },
+      {
+        "key": "B",
+        "text": "A policy can only have one statement element."
+      },
+      {
+        "key": "C",
+        "text": "The statement element does not apply to identity-based policies."
+      },
+      {
+        "key": "D",
+        "text": ") The statement element contains other elements that together define what is allowed or denied."
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "คำตอบที่ถูกต้องคือ D: ) The statement element contains other elements that together define what is allowed or denied."
+  }
+]

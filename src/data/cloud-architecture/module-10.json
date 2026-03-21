@@ -1,0 +1,266 @@
+[
+  {
+    "id": 1,
+    "type": "choice",
+    "lecture": "Module10-ImplementingMonitoringElasticity",
+    "question": "Which statement about Amazon EC2 Auto Scaling is accurate?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "It can launch new Amazon EC2 instances based on a schedule."
+      },
+      {
+        "key": "B",
+        "text": "It can launch Amazon EC2 instances in multiple Availability Zones."
+      },
+      {
+        "key": "C",
+        "text": "It requires the customer to use Reserved Instances only."
+      },
+      {
+        "key": "D",
+        "text": "It can launch Amazon EC2 instances, but customers must terminate instances after they are no longer needed."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "คำตอบที่ถูกต้องคือ B: It can launch Amazon EC2 instances in multiple Availability Zones."
+  },
+  {
+    "id": 2,
+    "type": "choice",
+    "lecture": "Module10-ImplementingMonitoringElasticity",
+    "question": "A devops engineer detected that the demand on a fleet of Amazon EC2 instances in an Auto Scaling group increases by a set amount on weekend days. Which type of scaling is the MOST appropriate in this case?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "scheduled"
+      },
+      {
+        "key": "B",
+        "text": "Predictive"
+      },
+      {
+        "key": "C",
+        "text": "Manual"
+      },
+      {
+        "key": "D",
+        "text": "Dynamic"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "คำตอบที่ถูกต้องคือ A: scheduled"
+  },
+  {
+    "id": 3,
+    "type": "choice",
+    "lecture": "Module10-ImplementingMonitoringElasticity",
+    "question": "A devops engineer launches a fleet of Amazon EC2 instances in an Auto Scaling group behind an Application Load Balancer. The EC2 instances must maintain 50 percent average CPU utilization. Which type of scaling is appropriate to use based on CPU utilization usage? • Step scaling",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Step scaling"
+      },
+      {
+        "key": "B",
+        "text": "Manual scaling"
+      },
+      {
+        "key": "C",
+        "text": "Target tracking scaling"
+      },
+      {
+        "key": "D",
+        "text": "Simple scaling"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "คำตอบที่ถูกต้องคือ C: Target tracking scaling"
+  },
+  {
+    "id": 4,
+    "type": "choice",
+    "lecture": "Module10-ImplementingMonitoringElasticity",
+    "question": "How can a user vertically scale an Amazon RDS database?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "By changing the instance class or size"
+      },
+      {
+        "key": "B",
+        "text": "By creating dedicated read and write nodes"
+      },
+      {
+        "key": "C",
+        "text": "By sharding the database"
+      },
+      {
+        "key": "D",
+        "text": "By adding read replicas"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "คำตอบที่ถูกต้องคือ A: By changing the instance class or size"
+  },
+  {
+    "id": 5,
+    "type": "choice",
+    "lecture": "Module10-ImplementingMonitoringElasticity",
+    "question": "How can an AWS customer horizontally scale an Amazon Aurora database?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "By adding Aurora Replica instances by using Aurora Auto Scaling"
+      },
+      {
+        "key": "B",
+        "text": "By changing the instance type"
+      },
+      {
+        "key": "C",
+        "text": "By creating Amazon CloudWatch alarms"
+      },
+      {
+        "key": "D",
+        "text": "By creating a scaling policy"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "คำตอบที่ถูกต้องคือ A: By adding Aurora Replica instances by using Aurora Auto Scaling"
+  },
+  {
+    "id": 6,
+    "type": "choice",
+    "lecture": "Module10-ImplementingMonitoringElasticity",
+    "question": "How does Amazon DynamoDB perform automatic scaling?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "It adds read replicas in response to increased read demand."
+      },
+      {
+        "key": "B",
+        "text": "It adjusts the provisioned throughput capacity in response to traffic patterns."
+      },
+      {
+        "key": "C",
+        "text": "It adds and removes database instances in response to changes in traffic."
+      },
+      {
+        "key": "D",
+        "text": "It changes the instance type in response to changes in processing load."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "คำตอบที่ถูกต้องคือ B: It adjusts the provisioned throughput capacity in response to traffic patterns."
+  },
+  {
+    "id": 7,
+    "type": "choice",
+    "lecture": "Module10-ImplementingMonitoringElasticity",
+    "question": "A fleet of Amazon EC2 instances is launched in an Amazon EC2 Auto Scaling group. The instances run an application that uses a custom protocol on TCP port 42000. Connections from client systems on the internet must balance across the instances. Which load balancing solution is the best solution? • Classic Load Balancer",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Classic Load Balancer"
+      },
+      {
+        "key": "B",
+        "text": "Application Load Balancer"
+      },
+      {
+        "key": "C",
+        "text": "Network Load Balancer"
+      },
+      {
+        "key": "D",
+        "text": "Gateway Load Balancer"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "คำตอบที่ถูกต้องคือ C: Network Load Balancer"
+  },
+  {
+    "id": 8,
+    "type": "choice",
+    "lecture": "Module10-ImplementingMonitoringElasticity",
+    "question": "A company must build a highly available website that uses server-side scripts to serve dynamic HTML. Which solution provides the HIGHEST availability for the LEAST cost and complexity?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "The customer deploys a second web server in another Region. Amazon Route 53 uses failover routing for disaster recovery (DR)."
+      },
+      {
+        "key": "B",
+        "text": "An Auto Scaling group launches Amazon EC2 instances, which are served by a Network Load Balancer. Amazon Route 53 uses latency-based routing."
+      },
+      {
+        "key": "C",
+        "text": "Amazon S3 hosts the website. DNS name resolution points to the S3 bucket."
+      },
+      {
+        "key": "D",
+        "text": "in Auto Scaling group launches Amazon EC2 instances, which are served by an Application Load Balancer. DNS name resolution points to the load balancer."
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "คำตอบที่ถูกต้องคือ D: in Auto Scaling group launches Amazon EC2 instances, which are served by an Application Load Balancer. DNS name resolution points to the load balancer."
+  },
+  {
+    "id": 9,
+    "type": "choice",
+    "lecture": "Module10-ImplementingMonitoringElasticity",
+    "question": "Users in location A connect to an application in Region A. Users in location B connect to the same application in Region B. If the application in Region A becomes unhealthy, traffic for location A must be redirected to the application in Region B. Which solution meets this requirement? • Use latency-based routing in Amazon Route 53 with Amazon CloudWatch alarms.",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Use latency-based routing in Amazon Route 53 with Amazon CloudWatch alarms."
+      },
+      {
+        "key": "B",
+        "text": "Use geoproximity routing and a Network Load Balancer that is attached to both Regions."
+      },
+      {
+        "key": "C",
+        "text": "Use an Application Load Balancer with Amazon CloudWatch alarms."
+      },
+      {
+        "key": "D",
+        "text": "Use geolocation routing with failover records in Amazon Route 53."
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "คำตอบที่ถูกต้องคือ D: Use geolocation routing with failover records in Amazon Route 53."
+  },
+  {
+    "id": 10,
+    "type": "choice",
+    "lecture": "Module10-ImplementingMonitoringElasticity",
+    "question": "A software engineer has created an AWS account for their own personal development and testing. They want the account to stay within the AWS Free Tier and to not generate unexpected costs. Which approach will work and will require the LEAST effort?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Create a service control policy (SCP) to restrict all services that are not included in the AWS Free Tier."
+      },
+      {
+        "key": "B",
+        "text": "Create an Amazon CloudWatch alarm to send an email messade when the accoun billing exceeds $0"
+      },
+      {
+        "key": "C",
+        "text": "Create an Amazon CloudWatch metric to monitor account billing and limit it to $0."
+      },
+      {
+        "key": "D",
+        "text": "Sign in to the AWS Management Console each month and check the billing dashboard."
+      },
+      {
+        "key": "E",
+        "text": "aws,"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "คำตอบที่ถูกต้องคือ B: Create an Amazon CloudWatch alarm to send an email messade when the accoun billing exceeds $0"
+  }
+]

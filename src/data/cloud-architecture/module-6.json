@@ -1,0 +1,304 @@
+[
+  {
+    "id": 1,
+    "type": "choice",
+    "lecture": "Module6-AddingADatabaseLayer",
+    "question": "Which statement that compares a database service that AWS manages with a database on an Amazon EC2 instance is true?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "AWS manages database patches for a database on a managed database service."
+      },
+      {
+        "key": "B",
+        "text": "Configuring backups for a database on a managed database service isn't needed."
+      },
+      {
+        "key": "C",
+        "text": "AWS manages operating system (OS) patches for a database on an EC2 instance."
+      },
+      {
+        "key": "D",
+        "text": "Configuring backups for a database on an EC2 instance isn't needed."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "คำตอบที่ถูกต้องคือ A: AWS manages database patches for a database on a managed database service."
+  },
+  {
+    "id": 2,
+    "type": "multiple-choice",
+    "lecture": "Module6-AddingADatabaseLayer",
+    "question": "A small startup company is deciding which database service to use for an enrollment system for their online training website. Which requirements might lead them to select Amazon RDS rather than Amazon DynamoDB? (Select TWO.)",
+    "choices": [
+      {
+        "key": "A",
+        "text": "The data is highly structured."
+      },
+      {
+        "key": "B",
+        "text": "Student, course, and registration data are stored in many different tables."
+      },
+      {
+        "key": "C",
+        "text": "Data and transactions must be encrypted to protect personal information."
+      },
+      {
+        "key": "D",
+        "text": "The enrollment system must be highly available."
+      },
+      {
+        "key": "E",
+        "text": "Data must be backed up in case of disasters."
+      }
+    ],
+    "correctAnswer": "A,B",
+    "explanation": "คำตอบที่ถูกต้องคือ A: The data is highly structured., B: Student, course, and registration data are stored in many different tables.",
+    "correctAnswers": [
+      "A",
+      "B"
+    ]
+  },
+  {
+    "id": 3,
+    "type": "choice",
+    "lecture": "Module6-AddingADatabaseLayer",
+    "question": "A startup company is building an order inventory system with a web frontend and is looking for a real-time transactional database. Which service would best meet their needs?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Amazon DynamoDB"
+      },
+      {
+        "key": "B",
+        "text": "Amazon Redshift"
+      },
+      {
+        "key": "C",
+        "text": "Amazon Neptune"
+      },
+      {
+        "key": "D",
+        "text": "Amazon DocumentDB (with MongoDB compatibility)"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "คำตอบที่ถูกต้องคือ A: Amazon DynamoDB"
+  },
+  {
+    "id": 4,
+    "type": "multiple-choice",
+    "lecture": "Module6-AddingADatabaseLayer",
+    "question": "A small game company is designing an online game, where thousands of players can create their own in-game objects. The current design uses a MySQL database in Amazon RDS to store data for player-created objects. Which proposed online game object features could make Amazon DynamoDB a better solution? (Select TWO.)",
+    "choices": [
+      {
+        "key": "A",
+        "text": "A set of common object attributes for player-created objects"
+      },
+      {
+        "key": "B",
+        "text": "Unpredictable object attributes for player-created objects"
+      },
+      {
+        "key": "C",
+        "text": "A high amount of read activity on player-created objects and a low amount of writes"
+      },
+      {
+        "key": "D",
+        "text": "Game data items that include binary data and might exceed 700 MB"
+      },
+      {
+        "key": "E",
+        "text": "Game items that can be modified using data contained in other tables"
+      }
+    ],
+    "correctAnswer": "B,C",
+    "explanation": "คำตอบที่ถูกต้องคือ B: Unpredictable object attributes for player-created objects, C: A high amount of read activity on player-created objects and a low amount of writes",
+    "correctAnswers": [
+      "B",
+      "C"
+    ]
+  },
+  {
+    "id": 5,
+    "type": "choice",
+    "lecture": "Module6-AddingADatabaseLayer",
+    "question": "An organization is concerned about an increase in fraud. Which service could help with building real-time graph database queries for fraud detection?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Amazon RDS"
+      },
+      {
+        "key": "B",
+        "text": "Amazon DynamoDB"
+      },
+      {
+        "key": "C",
+        "text": "Amazon Redshift"
+      },
+      {
+        "key": "D",
+        "text": "Amazon Neptune"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "คำตอบที่ถูกต้องคือ D: Amazon Neptune"
+  },
+  {
+    "id": 6,
+    "type": "choice",
+    "lecture": "Module6-AddingADatabaseLayer",
+    "question": "A data engineer must host a new Microsoft SQL Server database in AWS for a project. Which service could they use to accomplish this task?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Amazon DynamoDB"
+      },
+      {
+        "key": "B",
+        "text": "Amazon Neptune"
+      },
+      {
+        "key": "C",
+        "text": "Amazon Aurora"
+      },
+      {
+        "key": "D",
+        "text": "Amazon DocumentDB (with MongoDB compatibility)"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "คำตอบที่ถูกต้องคือ C: Amazon Aurora"
+  },
+  {
+    "id": 7,
+    "type": "multiple-choice",
+    "lecture": "Module6-AddingADatabaseLayer",
+    "question": "Which techniques should be used to secure an Amazon RDS database? (Select THREE.)",
+    "choices": [
+      {
+        "key": "A",
+        "text": "AWS Identity and Access Management (IAM) policies to define access at the table, row, and column levels"
+      },
+      {
+        "key": "B",
+        "text": "A virtual private gateway (VGW) to filter traffic from restricted networks"
+      },
+      {
+        "key": "C",
+        "text": "n Amazon Virtual Private Cloud (Amazon VPC) gateway endpoint to prevent traffic from traversing the internet"
+      },
+      {
+        "key": "D",
+        "text": "A virtual private cloud (VPC) to provide instance isolation"
+      },
+      {
+        "key": "E",
+        "text": "Security groups to control network access to individual RDS instances"
+      },
+      {
+        "key": "F",
+        "text": "Encryption both at rest and in transit to protect sensitive data"
+      }
+    ],
+    "correctAnswer": "D,E,F",
+    "explanation": "คำตอบที่ถูกต้องคือ D: A virtual private cloud (VPC) to provide instance isolation, E: Security groups to control network access to individual RDS instances, F: Encryption both at rest and in transit to protect sensitive data",
+    "correctAnswers": [
+      "D",
+      "E",
+      "F"
+    ]
+  },
+  {
+    "id": 8,
+    "type": "multiple-choice",
+    "lecture": "Module6-AddingADatabaseLayer",
+    "question": "Which techniques should be used to secure Amazon DynamoDB? (Select THREE.)",
+    "choices": [
+      {
+        "key": "A",
+        "text": "AWS Identity and Access Management (IAM) policies to define access at the table, item, or attribute level"
+      },
+      {
+        "key": "B",
+        "text": "A virtual private cloud (VPC) to provide instance isolation and firewall protection"
+      },
+      {
+        "key": "C",
+        "text": " Encryption to protect sensitive data"
+      },
+      {
+        "key": "D",
+        "text": "A virtual private gateway (VGW) to filter traffic from restricted networks"
+      },
+      {
+        "key": "E",
+        "text": "Security groups to control network access to individual instances"
+      },
+      {
+        "key": "F",
+        "text": "An Amazon Virtual Private Cloud (Amazon VPC) gateway endpoint to prevent traffic from traversing the internet"
+      }
+    ],
+    "correctAnswer": "A,C,F",
+    "explanation": "คำตอบที่ถูกต้องคือ A: AWS Identity and Access Management (IAM) policies to define access at the table, item, or attribute level, C:  Encryption to protect sensitive data, F: An Amazon Virtual Private Cloud (Amazon VPC) gateway endpoint to prevent traffic from traversing the internet",
+    "correctAnswers": [
+      "A",
+      "C",
+      "F"
+    ]
+  },
+  {
+    "id": 9,
+    "type": "choice",
+    "lecture": "Module6-AddingADatabaseLayer",
+    "question": "A company wants to migrate their on-premises Oracle database to Amazon Aurora MySQL. Which process describes the high-level steps most accurately?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Use AWS Schema Conversion Tool (AWS SCT) to synchronously convert the schema and migrate the data."
+      },
+      {
+        "key": "B",
+        "text": "Use AWS Database Migration Service (AWS DMS) to migrate the data, and then use AWS Schema Conversion Tool (AWS SCT) to convert the schema."
+      },
+      {
+        "key": "C",
+        "text": "Use AWS Schema Conversion Tool (AWS SCT) to convert the schema, and then use AWS Database Migration Service (AWS DMS) to migrate the data."
+      },
+      {
+        "key": "D",
+        "text": "Use AWS Database Migration Service (AWS DMS) to directly migrate from the Oracle database to Amazon Aurora MySQL."
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "คำตอบที่ถูกต้องคือ C: Use AWS Schema Conversion Tool (AWS SCT) to convert the schema, and then use AWS Database Migration Service (AWS DMS) to migrate the data."
+  },
+  {
+    "id": 10,
+    "type": "choice",
+    "lecture": "Module6-AddingADatabaseLayer",
+    "question": "A cloud architect is setting up an application to use an Amazon RDS MySQL DB instance. The database must be architected for high availability across Availability Zones and AWS Regions with minimal downtime. How should they meet this requirement?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Set up an RDS MySQL Single-AZ DB instance. Configure a read replica in a different Region."
+      },
+      {
+        "key": "B",
+        "text": "Set up an RDS MySQL Multi-AZ DB instance. Configure a read replica in a different Region."
+      },
+      {
+        "key": "C",
+        "text": "Set up an RDS MySQL Multi-AZ DB instance. Configure an appropriate backup window."
+      },
+      {
+        "key": "D",
+        "text": "Set up an RDS MySQL Single-AZ DB instance. Copy automated snapshots to at least one other Region."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "คำตอบที่ถูกต้องคือ B: Set up an RDS MySQL Multi-AZ DB instance. Configure a read replica in a different Region."
+  }
+]

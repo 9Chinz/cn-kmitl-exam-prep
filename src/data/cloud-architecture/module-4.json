@@ -1,0 +1,291 @@
+[
+  {
+    "id": 1,
+    "type": "choice",
+    "lecture": "Module4-AddingStorageLayerWithAmazonS3",
+    "question": "Due to a company merger, a data engineer needs to increase their object storage capacity. They are not sure how much storage they will need. They want a highly scalable service that can store unstructured, semistructured, and structured data. Which service would be the most cost effective to accomplish this task? • Amazon 53",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Amazon S3"
+      },
+      {
+        "key": "B",
+        "text": "Amazon Elastic Block Store (Amazon EBS)"
+      },
+      {
+        "key": "C",
+        "text": "AWS Storage Gateway"
+      },
+      {
+        "key": "D",
+        "text": "Amazon RDS"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "คำตอบที่ถูกต้องคือ A: Amazon S3"
+  },
+  {
+    "id": 2,
+    "type": "choice",
+    "lecture": "Module4-AddingStorageLayerWithAmazonS3",
+    "question": "Amazon S3 provides a good solution for which use case?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "An internet-accessible storage location for video files that an external website can access"
+      },
+      {
+        "key": "B",
+        "text": "OA data warehouse for business intelligence"
+      },
+      {
+        "key": "C",
+        "text": "Hourly storage of frequently accessed temporary files"
+      },
+      {
+        "key": "D",
+        "text": "Ledger data that is updated and accessed frequently"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "คำตอบที่ถูกต้องคือ A: An internet-accessible storage location for video files that an external website can access"
+  },
+  {
+    "id": 3,
+    "type": "multiple-choice",
+    "lecture": "Module4-AddingStorageLayerWithAmazonS3",
+    "question": "A company is interested in using Amazon S3 to host their website instead of a traditional web server. Which types of content does Amazon S3 support for static web hosting? (Select THREE.)",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Dynamic HTML files"
+      },
+      {
+        "key": "B",
+        "text": "Client-side scripts"
+      },
+      {
+        "key": "C",
+        "text": "Server-side scripts"
+      },
+      {
+        "key": "D",
+        "text": "Database engine"
+      },
+      {
+        "key": "E",
+        "text": "Video and sound files"
+      },
+      {
+        "key": "F",
+        "text": "HTML files and image files"
+      }
+    ],
+    "correctAnswer": "B,E,F",
+    "explanation": "คำตอบที่ถูกต้องคือ B: Client-side scripts, E: Video and sound files, F: HTML files and image files",
+    "correctAnswers": [
+      "B",
+      "E",
+      "F"
+    ]
+  },
+  {
+    "id": 4,
+    "type": "multiple-choice",
+    "lecture": "Module4-AddingStorageLayerWithAmazonS3",
+    "question": "A company wants to use an S3 bucket to store sensitive data. Which actions can they take to protect their data? (Select TWO.)",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Enabling server-side encryption on the S3 bucket after uploading sensitive data"
+      },
+      {
+        "key": "B",
+        "text": "Enabling server-side encryption on the S3 bucket before uploading sensitive data"
+      },
+      {
+        "key": "C",
+        "text": "Using Secure File Transfer Protocol (SFTP) to connect directly to Amazon S3"
+      },
+      {
+        "key": "D",
+        "text": "Using client-side encryption to protect data in transit before it is sent to Amazon S3"
+      },
+      {
+        "key": "E",
+        "text": "Uploading unencrypted files to Amazon S3 because Amazon S3 encrypts the files by default"
+      }
+    ],
+    "correctAnswer": "B,D",
+    "explanation": "คำตอบที่ถูกต้องคือ B: Enabling server-side encryption on the S3 bucket before uploading sensitive data, D: Using client-side encryption to protect data in transit before it is sent to Amazon S3",
+    "correctAnswers": [
+      "B",
+      "D"
+    ]
+  },
+  {
+    "id": 5,
+    "type": "multiple-choice",
+    "lecture": "Module4-AddingStorageLayerWithAmazonS3",
+    "question": "A company must create a common place to store shared files. Which requirements does Amazon S3 support? (Select TWO.)",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Attach comments to files."
+      },
+      {
+        "key": "B",
+        "text": "Lock a file so that only one person at a time can edit it."
+      },
+      {
+        "key": "C",
+        "text": "Compare file contents between files."
+      },
+      {
+        "key": "D",
+        "text": "Recover deleted files."
+      },
+      {
+        "key": "E",
+        "text": "Maintain different versions of files."
+      }
+    ],
+    "correctAnswer": "D,E",
+    "explanation": "คำตอบที่ถูกต้องคือ D: Recover deleted files., E: Maintain different versions of files.",
+    "correctAnswers": [
+      "D",
+      "E"
+    ]
+  },
+  {
+    "id": 6,
+    "type": "choice",
+    "lecture": "Module4-AddingStorageLayerWithAmazonS3",
+    "question": "A customer service team accesses case data daily for up to 30 days. Cases can be reopened and require immediate access for 1 year after they are closed. Reopened cases require 2 days to process. Which solution meets the requirements and is the most cost efficient?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Store case data in S3 Standard. Use a lifecycle policy to move the data into Amazon S3 Glacier Flexible Retrieval after 30 days."
+      },
+      {
+        "key": "B",
+        "text": "Store all case data in S3 Standard so that it is available whenever it is needed."
+      },
+      {
+        "key": "C",
+        "text": "Store case data in S3 Standard. Use a lifecycle policy to move the data into S3 Standard-Infrequent Access (S3 Standard-IA) after 30 days."
+      },
+      {
+        "key": "D",
+        "text": "Store case data in S3 Intelligent-Tiering to automatically move data between tiers based on access frequency."
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "คำตอบที่ถูกต้องคือ C: Store case data in S3 Standard. Use a lifecycle policy to move the data into S3 Standard-Infrequent Access (S3 Standard-IA) after 30 days."
+  },
+  {
+    "id": 7,
+    "type": "choice",
+    "lecture": "Module4-AddingStorageLayerWithAmazonS3",
+    "question": "Which option takes advantage of edge locations in Amazon CloudFront to transfer files over long distances to an S3 bucket?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "AWS SDKS"
+      },
+      {
+        "key": "B",
+        "text": "AWS Transfer Family"
+      },
+      {
+        "key": "C",
+        "text": "Amazon 53 Transfer Acceleration"
+      },
+      {
+        "key": "D",
+        "text": "Amazon S3 REST API"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "คำตอบที่ถูกต้องคือ C: Amazon 53 Transfer Acceleration"
+  },
+  {
+    "id": 8,
+    "type": "choice",
+    "lecture": "Module4-AddingStorageLayerWithAmazonS3",
+    "question": "A video producer must regularly transfer several video files to Amazon S3. The files range from 100-700 MB. The internet connection has been unreliable, causing some uploads to fail. Which solution provides the fastest, most reliable, and most cost- effective way to transfer these files to Amazon S3?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Amazon S3 Transfer Acceleration"
+      },
+      {
+        "key": "B",
+        "text": "AWS Management Console"
+      },
+      {
+        "key": "C",
+        "text": "Amazon 53 multipart uploads"
+      },
+      {
+        "key": "D",
+        "text": "AWS Transfer Family"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "คำตอบที่ถูกต้องคือ C: Amazon 53 multipart uploads"
+  },
+  {
+    "id": 9,
+    "type": "choice",
+    "lecture": "Module4-AddingStorageLayerWithAmazonS3",
+    "question": "Which Amazon S3 storage class is designed for backup copies of on-premises data or easily re-creatable data?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "S3 One Zone-Infrequent Access (S3 One Zone-IA)"
+      },
+      {
+        "key": "B",
+        "text": "S3 Intelligent-Tiering"
+      },
+      {
+        "key": "C",
+        "text": "S3 Glacier Instant Retrieval"
+      },
+      {
+        "key": "D",
+        "text": "S3 Standard-Infrequent Access (S3 Standard-IA)"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "คำตอบที่ถูกต้องคือ A: S3 One Zone-Infrequent Access (S3 One Zone-IA)"
+  },
+  {
+    "id": 10,
+    "type": "choice",
+    "lecture": "Module4-AddingStorageLayerWithAmazonS3",
+    "question": "A company needs to retain records for regulatory purposes for a 7-year period. These records are rarely accessed (once or twice a year). What is the lowest-cost storage class for Amazon S3?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "S3 Glacier Deep Archive"
+      },
+      {
+        "key": "B",
+        "text": "S3 One Zone-Infrequent Access (S3 One Zone-IA)"
+      },
+      {
+        "key": "C",
+        "text": "S3 Intelligent-Tiering"
+      },
+      {
+        "key": "D",
+        "text": "S3 Standard-Infrequent Access (S3 Standard-IA)"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "คำตอบที่ถูกต้องคือ A: S3 Glacier Deep Archive"
+  }
+]

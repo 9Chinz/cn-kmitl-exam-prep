@@ -79,6 +79,9 @@ export function ResultPage() {
             const userAnswer = answers[i];
             const isCorrect = isAnswerCorrect(q, userAnswer);
             const isFillBlank = q.type === "fill-blank";
+            const isMultipleChoice = q.type === "multiple-choice";
+            const correctKeys = new Set(q.correctAnswer.split(","));
+            const userKeys = new Set(userAnswer?.split(",") ?? []);
 
             return (
               <div key={i} className={`p-4 rounded-xl border-2 ${isCorrect ? "border-green-500/30 bg-green-500/5" : "border-red-500/30 bg-red-500/5"}`}>
@@ -107,6 +110,26 @@ export function ResultPage() {
                             </span>
                           )}
                           <p className="text-xs text-muted-foreground mt-0.5">{blank.explanation}</p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ) : isMultipleChoice ? (
+                  <div className="ml-7 space-y-1 text-sm">
+                    {q.choices?.map((c) => {
+                      const isCorrectChoice = correctKeys.has(c.key);
+                      const wasSelected = userKeys.has(c.key);
+                      return (
+                        <div
+                          key={c.key}
+                          className={`${
+                            isCorrectChoice && wasSelected ? "text-green-700 dark:text-green-400 font-medium" :
+                            isCorrectChoice && !wasSelected ? "text-green-700 dark:text-green-400 font-medium" :
+                            wasSelected && !isCorrectChoice ? "text-red-500 dark:text-red-400 line-through" :
+                            "text-muted-foreground"
+                          }`}
+                        >
+                          {isCorrectChoice ? "\u2713" : wasSelected ? "\u2717" : " "} {c.key}. {c.text}
                         </div>
                       );
                     })}

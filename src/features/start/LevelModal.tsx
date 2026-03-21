@@ -30,22 +30,28 @@ export function LevelModal() {
 
   if (!config) return null;
 
+  const isModuleBased = config.id === "cloud-architecture";
+
   return (
     <Modal open={true} onClose={closeLevelModal} maxWidth="max-w-md">
-      <h3 className="text-lg font-bold text-center mb-4">เลือกระดับข้อสอบ</h3>
+      <h3 className="text-lg font-bold text-center mb-4">
+        {isModuleBased ? "เลือก Module ข้อสอบ" : "เลือกระดับข้อสอบ"}
+      </h3>
 
-      {config.levelGroups.map((group, gi) => (
-        <div key={gi} className={gi < config.levelGroups.length - 1 ? "mb-4" : "mb-2"}>
-          <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2 px-1">
-            {group.groupLabel}
+      <div className="max-h-[60vh] overflow-y-auto -mx-1 px-1">
+        {config.levelGroups.map((group, gi) => (
+          <div key={gi} className={gi < config.levelGroups.length - 1 ? "mb-4" : "mb-2"}>
+            <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2 px-1">
+              {group.groupLabel}
+            </div>
+            <div className="space-y-2">
+              {group.levels.map((opt) => (
+                <LevelButton key={opt.level} {...opt} onClick={() => selectLevel(opt.level)} />
+              ))}
+            </div>
           </div>
-          <div className="space-y-2">
-            {group.levels.map((opt) => (
-              <LevelButton key={opt.level} {...opt} onClick={() => selectLevel(opt.level)} />
-            ))}
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
 
       <button
         onClick={closeLevelModal}

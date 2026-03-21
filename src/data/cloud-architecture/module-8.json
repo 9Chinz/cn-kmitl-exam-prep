@@ -1,0 +1,270 @@
+[
+  {
+    "id": 1,
+    "type": "choice",
+    "lecture": "Module8-ConnectingNetworks",
+    "question": "What is the simplest way to connect 100 virtual private clouds (VPCs) together?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Connect each VPC to all the other VPCs by using VPC peering."
+      },
+      {
+        "key": "B",
+        "text": "Create a hub-and-spoke network by using AWS VPN CloudHub."
+      },
+      {
+        "key": "C",
+        "text": "Chain VPCs together by using VPC peering."
+      },
+      {
+        "key": "D",
+        "text": "Connect the VPCs to AWS Transit Gateway."
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "คำตอบที่ถูกต้องคือ D: Connect the VPCs to AWS Transit Gateway."
+  },
+  {
+    "id": 2,
+    "type": "choice",
+    "lecture": "Module8-ConnectingNetworks",
+    "question": "A company needs network traffic to flow between an AWS account in one Region to another account in a different Region. What should they set up between the transit gateways in each region?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "AWS Direct Connect"
+      },
+      {
+        "key": "B",
+        "text": "Transit gateway peering attachment"
+      },
+      {
+        "key": "C",
+        "text": "AWS Site-to-Site VPN"
+      },
+      {
+        "key": "D",
+        "text": "AWS PrivateLink"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "คำตอบที่ถูกต้องคือ B: Transit gateway peering attachment"
+  },
+  {
+    "id": 3,
+    "type": "choice",
+    "lecture": "Module8-ConnectingNetworks",
+    "question": "A company has two virtual private clouds (VPCs). VPC A has a Classless Inter-Domain Routing (CIDR) block of 10.1.0.0/16. VPC B has CIDR block of 10.2.0.0/16. Both VPCs belong to the same AWS account. What is the simplest way to connect the two VPCs so that they can route all traffic between them?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "AWS Site-to-Site VPN"
+      },
+      {
+        "key": "B",
+        "text": "VPC peering"
+      },
+      {
+        "key": "C",
+        "text": "AWS Direct Connect"
+      },
+      {
+        "key": "D",
+        "text": "VPC endpoints"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "คำตอบที่ถูกต้องคือ B: VPC peering"
+  },
+  {
+    "id": 4,
+    "type": "multiple-choice",
+    "lecture": "Module8-ConnectingNetworks",
+    "question": "Systems in a secure subnet in a virtual private cloud (VPC) must access a bucket in Amazon S3. Which solutions stop traffic from crossing the internet? (Select TWO.)",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Create a VPC gateway endpoint for Amazon S3."
+      },
+      {
+        "key": "B",
+        "text": "Use VPC interface endpoints."
+      },
+      {
+        "key": "C",
+        "text": "Use the private IP address of Amazon S3."
+      },
+      {
+        "key": "D",
+        "text": "Create a VPC peering connection to Amazon S3."
+      },
+      {
+        "key": "E",
+        "text": "Use a private IP address for the system."
+      }
+    ],
+    "correctAnswer": "A,B",
+    "explanation": "คำตอบที่ถูกต้องคือ A: Create a VPC gateway endpoint for Amazon S3., B: Use VPC interface endpoints.",
+    "correctAnswers": [
+      "A",
+      "B"
+    ]
+  },
+  {
+    "id": 5,
+    "type": "choice",
+    "lecture": "Module8-ConnectingNetworks",
+    "question": "A company has three virtual private clouds (VPCs). VPCs A, B, and C have Classless Inter- Domain Routing (CIDR) blocks that do not overlap. Both A and C have separate VPC peering connections with B. However, A cannot communicate with C. What is the simplest and most cost-effective way to enable full communication between A and C?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Add routes to B to enable traffic between A and C through B."
+      },
+      {
+        "key": "B",
+        "text": "Add a peering connection between A and C, and route traffic etween A and C through the peering connection."
+      },
+      {
+        "key": "C",
+        "text": "Link all three VPCs through a transit VPC, and route all traffic through the transit VPC."
+      },
+      {
+        "key": "D",
+        "text": "Create VPC endpoints in A and C for the individual hosts that need tig communicate with each other."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "คำตอบที่ถูกต้องคือ B: Add a peering connection between A and C, and route traffic etween A and C through the peering connection."
+  },
+  {
+    "id": 6,
+    "type": "choice",
+    "lecture": "Module8-ConnectingNetworks",
+    "question": "Because of a natural disaster, a company moved a secondary data center to a temporary facility with internet connectivity. It needs a secure connection to the company's virtual private cloud (VPC) that must be operational as soon as possible. The data center will move again in 2 weeks. Which option meets the requirements? AWS Site-to-Site VPN",
+    "choices": [
+      {
+        "key": "A",
+        "text": "AWS Site-to-Site VPN"
+      },
+      {
+        "key": "B",
+        "text": "AWS Direct Connect"
+      },
+      {
+        "key": "C",
+        "text": "VPC endpoints"
+      },
+      {
+        "key": "D",
+        "text": "VPC peering"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "คำตอบที่ถูกต้องคือ A: AWS Site-to-Site VPN"
+  },
+  {
+    "id": 7,
+    "type": "choice",
+    "lecture": "Module8-ConnectingNetworks",
+    "question": "A company is concerned about internet disruptions. It wants to efficiently route traffic from their on-premises network to an AWS edge location close to their customer gateway device. What should they use?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "AWS Global Accelerator"
+      },
+      {
+        "key": "B",
+        "text": "AWS Direct Connect"
+      },
+      {
+        "key": "C",
+        "text": "AWS Transit Gateway"
+      },
+      {
+        "key": "D",
+        "text": "AWS VPN CloudHub"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "คำตอบที่ถูกต้องคือ A: AWS Global Accelerator"
+  },
+  {
+    "id": 8,
+    "type": "choice",
+    "lecture": "Module8-ConnectingNetworks",
+    "question": "A company is implementing a system to back up on-premises systems to AWS. Which network connectivity method provides a solution with the most consistent performance?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Virtual private cloud (VPC) peering"
+      },
+      {
+        "key": "B",
+        "text": "AWS Direct Connect"
+      },
+      {
+        "key": "C",
+        "text": "AWS Site-to-Site VPN"
+      },
+      {
+        "key": "D",
+        "text": "Virtual private cloud (VPC) endpoints"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "คำตอบที่ถูกต้องคือ B: AWS Direct Connect"
+  },
+  {
+    "id": 9,
+    "type": "choice",
+    "lecture": "Module8-ConnectingNetworks",
+    "question": "A company uses a single AWS Direct Connect connection between their on-premises network and their virtual private cloud (VPC). They want to ensure that the network connectivity is highly available by adding a backup connection. Which network connectivity method provides the most cost-effective solution for the backup connection? • Another AWS Direct Connect connection through a different Direct Connect location",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Another AWS Direct Connect connection through a different Direct Connect location"
+      },
+      {
+        "key": "B",
+        "text": "An on-demand AWS Client VPN connection across the internet"
+      },
+      {
+        "key": "C",
+        "text": "Another AWS Direct Connect connection through the same Direct Connect location"
+      },
+      {
+        "key": "D",
+        "text": "An on-demand AWS Site-to-Site VPN connection across the internet"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "คำตอบที่ถูกต้องคือ D: An on-demand AWS Site-to-Site VPN connection across the internet"
+  },
+  {
+    "id": 10,
+    "type": "choice",
+    "lecture": "Module8-ConnectingNetworks",
+    "question": "A company is connecting a virtual private cloud (VPC) to multiple on-premises data centers using a virtual private network (VPN). Which implementation ensures resiliency and predictable bandwidth requirements?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Implement Direct Connect as the primary connection and use the VPN as a secondary failover connection from each data center."
+      },
+      {
+        "key": "B",
+        "text": "Implement AWS Transit Gateway to connect to each on-premises data center."
+      },
+      {
+        "key": "C",
+        "text": "Use a many-to-many mesh topology, such as Amazon VPC peering."
+      },
+      {
+        "key": "D",
+        "text": "Establish multiple Border Gateway Protocol (BGP) sessions for each VPC to create connectivity to multiple VPCs across multiple AWS Regions."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "คำตอบที่ถูกต้องคือ A: Implement Direct Connect as the primary connection and use the VPN as a secondary failover connection from each data center."
+  }
+]

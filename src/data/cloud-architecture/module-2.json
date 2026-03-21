@@ -1,0 +1,294 @@
+[
+  {
+    "id": 1,
+    "type": "choice",
+    "lecture": "Module2-IntroducingCloudArchitecting",
+    "question": "Which is the best definition of cloud architecture?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Combining frontend and backend software and components to create highly available and scalable web services that meet the needs of an organization"
+      },
+      {
+        "key": "B",
+        "text": "Relocating traditional on-premises data centers to internet-accessible data centers that a vendor manages"
+      },
+      {
+        "key": "C",
+        "text": "Applying cloud characteristics to a solution that uses cloud services and features to meet technical and business requirements"
+      },
+      {
+        "key": "D",
+        "text": "Designing applications in cloud-based, shared IT infrastructure by using virtual machines and fault-tolerant data stores in the cloud"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "คำตอบที่ถูกต้องคือ C: Applying cloud characteristics to a solution that uses cloud services and features to meet technical and business requirements"
+  },
+  {
+    "id": 2,
+    "type": "multiple-choice",
+    "lecture": "Module2-IntroducingCloudArchitecting",
+    "question": "The AWS Well-Architected Framework has six pillars. Three of the pillars are security, operational excellence, and sustainability. What are two of the other pillars of the Well- Architected Framework? (Select TWO.)",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Privacy"
+      },
+      {
+        "key": "B",
+        "text": "Governance"
+      },
+      {
+        "key": "C",
+        "text": "Risk management"
+      },
+      {
+        "key": "D",
+        "text": "Reliability"
+      },
+      {
+        "key": "E",
+        "text": "Cost optimization"
+      }
+    ],
+    "correctAnswer": "D,E",
+    "explanation": "คำตอบที่ถูกต้องคือ D: Reliability, E: Cost optimization",
+    "correctAnswers": [
+      "D",
+      "E"
+    ]
+  },
+  {
+    "id": 3,
+    "type": "multiple-choice",
+    "lecture": "Module2-IntroducingCloudArchitecting",
+    "question": "Which actions are consistent with the operational excellence pillar of the AWS Well- Architected Framework? (Select TWO.)",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Plan and manage the full lifecycle of hardware assets."
+      },
+      {
+        "key": "B",
+        "text": "Review and improve processes and procedures on a continuous cycle."
+      },
+      {
+        "key": "C",
+        "text": "Evaluate organizational structures and roles to identify skill gaps."
+      },
+      {
+        "key": "D",
+        "text": "Ensure operations personnel document changes to the infrastructure."
+      },
+      {
+        "key": "E",
+        "text": "Apply software engineering principles and methodology to infrastructure as code."
+      }
+    ],
+    "correctAnswer": "B,E",
+    "explanation": "คำตอบที่ถูกต้องคือ B: Review and improve processes and procedures on a continuous cycle., E: Apply software engineering principles and methodology to infrastructure as code.",
+    "correctAnswers": [
+      "B",
+      "E"
+    ]
+  },
+  {
+    "id": 4,
+    "type": "choice",
+    "lecture": "Module2-IntroducingCloudArchitecting",
+    "question": "A specific application requires a frontend web tier of multiple servers that communicate with a backend application tier of multiple servers. Which design most closely follows AWS best practices?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Assign a dedicated application server and a dedicated connection to each web server."
+      },
+      {
+        "key": "B",
+        "text": "Dosian the vien tier serviunicate with the application tier through the Elastic"
+      },
+      {
+        "key": "C",
+        "text": "Create multiple instances that each combine a web frontend and applicatior backend in the same instance."
+      },
+      {
+        "key": "D",
+        "text": "Create a full mesh network between the web and application tiers, so that each web server can communicate directly with every application server."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "คำตอบที่ถูกต้องคือ B: Dosian the vien tier serviunicate with the application tier through the Elastic"
+  },
+  {
+    "id": 5,
+    "type": "choice",
+    "lecture": "Module2-IntroducingCloudArchitecting",
+    "question": "A solutions architect is developing a process for handling server failures. Which process most closely follows AWS best practices?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Amazon CloudWatch detects a system failure. It notifies the systems administrator, who provisions a new server by using the AWS Management Console."
+      },
+      {
+        "key": "B",
+        "text": "The operations staff detects a system failure. They notify the systems administrator, who provisions a new server by using the AWS Management Console."
+      },
+      {
+        "key": "C",
+        "text": "The operations staff detects a system failure. They initiate automation to provision a new server."
+      },
+      {
+        "key": "D",
+        "text": "Amazon Cloud Watch detects a system failure It initiates automation to provision a"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "คำตอบที่ถูกต้องคือ D: Amazon Cloud Watch detects a system failure It initiates automation to provision a"
+  },
+  {
+    "id": 6,
+    "type": "choice",
+    "lecture": "Module2-IntroducingCloudArchitecting",
+    "question": "A company is considering moving their on-premises data center to the cloud. Their primary motivation is to increase their cost efficiency. Which approach most closely follows AWS best practices?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "provision the servers that are needed and stop services when they are not being"
+      },
+      {
+        "key": "B",
+        "text": "Provision some of the servers in the cloud and ensure the servers run 24/7."
+      },
+      {
+        "key": "C",
+        "text": "Replicate their on-premises data center in the cloud."
+      },
+      {
+        "key": "D",
+        "text": "Maintain the on-premises data center as long as possible."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "คำตอบที่ถูกต้องคือ A: provision the servers that are needed and stop services when they are not being"
+  },
+  {
+    "id": 7,
+    "type": "choice",
+    "lecture": "Module2-IntroducingCloudArchitecting",
+    "question": "A company stores read-only data in Amazon S3. Most users are in the same country as the company headquarters. Some users are located around the world. Which design decision most closely follows AWS best practices?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Use a bucket in the AWS Region that is closest to the company headquarters. All users access the data through Amazon CloudFront."
+      },
+      {
+        "key": "B",
+        "text": "Use a bucket in the Region closest to the company headquarters."
+      },
+      {
+        "key": "C",
+        "text": "Use a bucket in the Region that has the lowest average latency for all users."
+      },
+      {
+        "key": "D",
+        "text": "Replicate objects across buckets in AWS Regions around the world. Users access the bucket in the Region closest that is to them."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "คำตอบที่ถูกต้องคือ A: Use a bucket in the AWS Region that is closest to the company headquarters. All users access the data through Amazon CloudFront."
+  },
+  {
+    "id": 8,
+    "type": "choice",
+    "lecture": "Module2-IntroducingCloudArchitecting",
+    "question": "A consultant must access a large object in an S3 bucket. They need one day to access the file. Which method for granting access most closely follows AWS best practices?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Coeste a presigned URL to the object that expires in 24 hours, and give it to the"
+      },
+      {
+        "key": "B",
+        "text": "Copy the object to a new S3 bucket. Enable public access on the new bucket. From the new bucket, get the object URL, and give it to the consultant."
+      },
+      {
+        "key": "C",
+        "text": "Create a user account for the consultant. Grant the user account permissions to access the S3 bucket through the AWS Management Console."
+      },
+      {
+        "key": "D",
+        "text": "Enable public access on the S3 bucket. Give the object URL to the consultant."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "คำตอบที่ถูกต้องคือ A: Coeste a presigned URL to the object that expires in 24 hours, and give it to the"
+  },
+  {
+    "id": 9,
+    "type": "multiple-choice",
+    "lecture": "Module2-IntroducingCloudArchitecting",
+    "question": "Which are main considerations that influence which AWS Regions to use? (Select TWO.)",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Protection against localized natural disasters"
+      },
+      {
+        "key": "B",
+        "text": "Compliance with laws and regulations"
+      },
+      {
+        "key": "C",
+        "text": "Security and access control"
+      },
+      {
+        "key": "D",
+        "text": "Latency reduction for end users"
+      },
+      {
+        "key": "E",
+        "text": "Application resiliency during system failures"
+      }
+    ],
+    "correctAnswer": "B,D",
+    "explanation": "คำตอบที่ถูกต้องคือ B: Compliance with laws and regulations, D: Latency reduction for end users",
+    "correctAnswers": [
+      "B",
+      "D"
+    ]
+  },
+  {
+    "id": 10,
+    "type": "multiple-choice",
+    "lecture": "Module2-IntroducingCloudArchitecting",
+    "question": "Which are main considerations that influence which Availability Zones to use? (Select TWO.)",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Latency reduction for end users"
+      },
+      {
+        "key": "B",
+        "text": "Compliance with laws and regulations"
+      },
+      {
+        "key": "C",
+        "text": "Application resiliency during system failures"
+      },
+      {
+        "key": "D",
+        "text": "Security and access control"
+      },
+      {
+        "key": "E",
+        "text": "Protection against localized natural disasters"
+      }
+    ],
+    "correctAnswer": "C,E",
+    "explanation": "คำตอบที่ถูกต้องคือ C: Application resiliency during system failures, E: Protection against localized natural disasters",
+    "correctAnswers": [
+      "C",
+      "E"
+    ]
+  }
+]

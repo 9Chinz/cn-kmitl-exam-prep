@@ -1,0 +1,296 @@
+[
+  {
+    "id": 1,
+    "type": "choice",
+    "lecture": "Module7-CreatingANetworkingEnvironment",
+    "question": "Which definition describes a virtual private cloud (VPC)?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "A logically isolated virtual network that you define in the AWS Cloud"
+      },
+      {
+        "key": "B",
+        "text": "A fully managed service that extends the AWS Cloud to customer premises"
+      },
+      {
+        "key": "C",
+        "text": "A virtual private network (VPN) in the AWS Cloud"
+      },
+      {
+        "key": "D",
+        "text": "An extension of an on-premises network into AWS"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "คำตอบที่ถูกต้องคือ A: A logically isolated virtual network that you define in the AWS Cloud"
+  },
+  {
+    "id": 2,
+    "type": "choice",
+    "lecture": "Module7-CreatingANetworkingEnvironment",
+    "question": "Which component does not have direct access to the internet?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Network address translation (NAT) gateway inside a public subnet"
+      },
+      {
+        "key": "B",
+        "text": "OEC2 instance inside a public subnet"
+      },
+      {
+        "key": "C",
+        "text": "Elastic IP address interface"
+      },
+      {
+        "key": "D",
+        "text": "EC2 instance inside a private subnet"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "คำตอบที่ถูกต้องคือ D: EC2 instance inside a private subnet"
+  },
+  {
+    "id": 3,
+    "type": "choice",
+    "lecture": "Module7-CreatingANetworkingEnvironment",
+    "question": "A company's virtual private cloud (VPC) has the Classless Inter-Domain Routing (CIDR) block 172.16.0.0/21 (2048 addresses). It has two subnets (A and B). Each subnet must support 100 usable addresses now, but this number is expected to rise to at most 254 usable addresses soon. Which subnet addressing scheme meets the requirements and follows AWS best practices?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Subnet A: 172.16.0.0/24 (256 addresses) Subnet B: 172.16.1.0/24 (256 addresses)"
+      },
+      {
+        "key": "B",
+        "text": "subnet A: 1/2.16.0.0/22 (1024 addresses) Subnet B: 1/2.16.4.0/22 (1024 addresses)"
+      },
+      {
+        "key": "C",
+        "text": "subnet A: 172.16.0.0/23 (512 addresses) Subnet B: 172.16.2.0/23 (512 addresses)"
+      },
+      {
+        "key": "D",
+        "text": "Subnet A: 172.16.0.0/25 (128 addresses) Subnet B: 172.16.0.128/25 (128 addresses)"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "คำตอบที่ถูกต้องคือ C: subnet A: 172.16.0.0/23 (512 addresses) Subnet B: 172.16.2.0/23 (512 addresses)"
+  },
+  {
+    "id": 4,
+    "type": "choice",
+    "lecture": "Module7-CreatingANetworkingEnvironment",
+    "question": "Several EC2 instances launch in a virtual private cloud (VPC) that has internet access. These instances should not be accessible from the internet, but they must be able to download updates from the internet. How should the instances launch?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "With Elastic IP addresses, in a subnet with a default route to an internet gateway"
+      },
+      {
+        "key": "B",
+        "text": "Without public IP addresses, in a subnet with a default route to an internet gateway"
+      },
+      {
+        "key": "C",
+        "text": "Without public IP addresses, in a subnet with a default route to a network address translation (NAT) gateway"
+      },
+      {
+        "key": "D",
+        "text": "With public IP addresses, in a subnet with a default route to an internet gateway"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "คำตอบที่ถูกต้องคือ C: Without public IP addresses, in a subnet with a default route to a network address translation (NAT) gateway"
+  },
+  {
+    "id": 5,
+    "type": "choice",
+    "lecture": "Module7-CreatingANetworkingEnvironment",
+    "question": "A group of consultants requires access to an EC2 instance from the internet for 3 consecutive days each week. The instance is shut down the rest of the week. The virtual private cloud (VPC) has internet access. How should you assign one IPv4 address to the instance to give the consultants access?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Enable automatic address assignment for the subnet."
+      },
+      {
+        "key": "B",
+        "text": "Enable automatic address assignment for the EC2 instance."
+      },
+      {
+        "key": "C",
+        "text": "Assign the IP address in the operating system (OS) boot configuration."
+      },
+      {
+        "key": "D",
+        "text": "Associate an Elastic IP address with the EC2 instance."
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "คำตอบที่ถูกต้องคือ D: Associate an Elastic IP address with the EC2 instance."
+  },
+  {
+    "id": 6,
+    "type": "multiple-choice",
+    "lecture": "Module7-CreatingANetworkingEnvironment",
+    "question": "An application uses a bastion host to allow access to EC2 instances in a private subnet within a virtual private cloud (VPC). What security group configurations would allow SSH access from the source IP to the EC2 instances? (Select TWO.)",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Add a rule to the private subnet EC2 instance security group to allow return traffic to the bastion host security group."
+      },
+      {
+        "key": "B",
+        "text": "Add a rule to the bastion host security group to deny all traffic from the internet."
+      },
+      {
+        "key": "C",
+        "text": "Add a rule to the bastion host security group to allow return traffic to your source IP address."
+      },
+      {
+        "key": "D",
+        "text": "Add a rule to the EC2 instance security group to allow traffic from the bastion host security group on port 22."
+      },
+      {
+        "key": "E",
+        "text": "Add a rule to the bastion host security group to allow traffic on port 22 from your source IP address."
+      }
+    ],
+    "correctAnswer": "D,E",
+    "explanation": "คำตอบที่ถูกต้องคือ D: Add a rule to the EC2 instance security group to allow traffic from the bastion host security group on port 22., E: Add a rule to the bastion host security group to allow traffic on port 22 from your source IP address.",
+    "correctAnswers": [
+      "D",
+      "E"
+    ]
+  },
+  {
+    "id": 7,
+    "type": "choice",
+    "lecture": "Module7-CreatingANetworkingEnvironment",
+    "question": "A solution deployed in a virtual private cloud (VPC) needs a subnet with limited access to specific internet addresses. How can an architect configure the network to limit traffic from and to the EC2 instances in the subnet using a network access control list (ACL)?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Add rules to the default network ACL to allow traffic from and to allowed internet addresses."
+      },
+      {
+        "key": "B",
+        "text": "dd rules to the subnet custom network ACL to allow traffic from and to allowed internet addresses. Deny all other traffic."
+      },
+      {
+        "key": "C",
+        "text": "Add rules to the subnet custom network ACL to allow traffic trom and to allowec internet addresses."
+      },
+      {
+        "key": "D",
+        "text": "Add rules to the default network ACL to allow traffic from and to allowed internet addresses. Deny all other traffic."
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "คำตอบที่ถูกต้องคือ C: Add rules to the subnet custom network ACL to allow traffic trom and to allowec internet addresses."
+  },
+  {
+    "id": 8,
+    "type": "multiple-choice",
+    "lecture": "Module7-CreatingANetworkingEnvironment",
+    "question": "Which actions are best practices for designing a virtual private cloud (VPC)? (Select THREE.) • Create one subnet per Availability Zone for each group of hosts that have unique routing requirements.",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Create one subnet per Availability Zone for each group of hosts that have unique routing requirements."
+      },
+      {
+        "key": "B",
+        "text": "Reserve some address space for future use."
+      },
+      {
+        "key": "C",
+        "text": "Match the size of the VPC Classless Inter-Domain Routing (CIDR) block to the number of hosts that are required for a workload."
+      },
+      {
+        "key": "D",
+        "text": "Use the same Classless Inter-Domain Routing (CIDR) block as your on-premises network."
+      },
+      {
+        "key": "E",
+        "text": "Use the same Classless Inter-Domain Routing (CIDR) block for subnets in different Availability Zones that are part of the same AWS Auto Scaling group."
+      },
+      {
+        "key": "F",
+        "text": "Divide the VPC network range evenly across all Availability Zones that are available."
+      }
+    ],
+    "correctAnswer": "A,B,F",
+    "explanation": "คำตอบที่ถูกต้องคือ A: Create one subnet per Availability Zone for each group of hosts that have unique routing requirements., B: Reserve some address space for future use., F: Divide the VPC network range evenly across all Availability Zones that are available.",
+    "correctAnswers": [
+      "A",
+      "B",
+      "F"
+    ]
+  },
+  {
+    "id": 9,
+    "type": "multiple-choice",
+    "lecture": "Module7-CreatingANetworkingEnvironment",
+    "question": "Where can you have VPC flow logs delivered? (Select THREE.)",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Amazon S3 bucket"
+      },
+      {
+        "key": "B",
+        "text": "Amazon CloudWatch"
+      },
+      {
+        "key": "C",
+        "text": "AWS Management Console"
+      },
+      {
+        "key": "D",
+        "text": "Amazon Kinesis Data Firehose"
+      },
+      {
+        "key": "E",
+        "text": "Amazon Athena"
+      },
+      {
+        "key": "F",
+        "text": "Amazon OpenSearch Service"
+      }
+    ],
+    "correctAnswer": "A,B,D",
+    "explanation": "คำตอบที่ถูกต้องคือ A: Amazon S3 bucket, B: Amazon CloudWatch, D: Amazon Kinesis Data Firehose",
+    "correctAnswers": [
+      "A",
+      "B",
+      "D"
+    ]
+  },
+  {
+    "id": 10,
+    "type": "choice",
+    "lecture": "Module7-CreatingANetworkingEnvironment",
+    "question": "An EC2 instance must connect to an Amazon S3 bucket. What component provides this connectivity with no additional charge and no throughput packet limits?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Gateway VPC endpoint"
+      },
+      {
+        "key": "B",
+        "text": "Public region access point"
+      },
+      {
+        "key": "C",
+        "text": "Gateway Load Balancer endpoint"
+      },
+      {
+        "key": "D",
+        "text": "Interface VPC endpoint"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "คำตอบที่ถูกต้องคือ A: Gateway VPC endpoint"
+  }
+]

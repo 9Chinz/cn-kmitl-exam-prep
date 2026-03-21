@@ -96,7 +96,7 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
     if (!pendingLevel) return;
     const config = getSubjectConfig();
     const questions = config.buildQuestions(pendingLevel, options.shuffleQuestions);
-    const shuffled = generateShuffledChoices(questions.length, options.shuffleChoices);
+    const shuffled = generateShuffledChoices(questions, options.shuffleChoices);
     localStorage.setItem("quiz-app-last-name", username);
     set({
       level: pendingLevel,
@@ -188,7 +188,7 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
     if (!level) return;
     const config = getSubjectConfig();
     const questions = config.buildQuestions(level, shuffleQuestions);
-    const shuffled = generateShuffledChoices(questions.length, shuffleChoices);
+    const shuffled = generateShuffledChoices(questions, shuffleChoices);
     localStorage.removeItem(CHECKPOINT_KEY(level));
     set({
       questions,

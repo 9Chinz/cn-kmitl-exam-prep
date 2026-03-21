@@ -3,7 +3,7 @@ export interface Choice {
   text: string;
 }
 
-export type QuestionType = "choice" | "fill-blank";
+export type QuestionType = "choice" | "fill-blank" | "multiple-choice";
 
 export interface FillBlankField {
   label: string;
@@ -18,6 +18,7 @@ export interface Question {
   question: string;
   choices?: Choice[];
   correctAnswer: string;
+  correctAnswers?: string[];
   explanation: string;
   code?: string;
   blanks?: FillBlankField[];
@@ -25,7 +26,11 @@ export interface Question {
 
 export type Level = "easy" | "normal" | "hard" | "random"
   | "guideline-easy" | "guideline-normal" | "guideline-hard" | "guideline-random"
-  | "practice-easy" | "practice-normal" | "practice-hard";
+  | "practice-easy" | "practice-normal" | "practice-hard"
+  | "cloud-module-2" | "cloud-module-3" | "cloud-module-4" | "cloud-module-5"
+  | "cloud-module-6" | "cloud-module-7" | "cloud-module-8"
+  | "cloud-module-10" | "cloud-module-11" | "cloud-module-12"
+  | "cloud-module-13" | "cloud-module-14";
 export type Page = "start" | "quiz" | "result" | "stats";
 
 export interface Checkpoint {

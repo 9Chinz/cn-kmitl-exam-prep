@@ -1,0 +1,296 @@
+[
+  {
+    "id": 1,
+    "type": "multiple-choice",
+    "lecture": "Module14-BuildingServerlessArchitecture",
+    "question": "A solutions architect wants to propose a microservice architecture on AWS to management. Which serverless computing benefits should they include in the proposal? (Select THREE.)",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Pay-for-value services"
+      },
+      {
+        "key": "B",
+        "text": "OFull control over runtime environment"
+      },
+      {
+        "key": "C",
+        "text": "Predictable performance"
+      },
+      {
+        "key": "D",
+        "text": "Lessens amount of server maintenance"
+      },
+      {
+        "key": "E",
+        "text": "Continuous scaling"
+      },
+      {
+        "key": "F",
+        "text": "Built-in high availability"
+      }
+    ],
+    "correctAnswer": "A,E,F",
+    "explanation": "คำตอบที่ถูกต้องคือ A: Pay-for-value services, E: Continuous scaling, F: Built-in high availability",
+    "correctAnswers": [
+      "A",
+      "E",
+      "F"
+    ]
+  },
+  {
+    "id": 2,
+    "type": "choice",
+    "lecture": "Module14-BuildingServerlessArchitecture",
+    "question": "A developer needs to create and deploy a simple web form to capture employee commute information for the company internal employee website. Which is a serverless solution for creating the simple web form?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Host website assets in a container in an Amazon Elastic Container Service (Amazon ECS) cluster with EC2 instance nodes, use an Amazon DynamoDB table, and use server-side scripts to interact with the database."
+      },
+      {
+        "key": "B",
+        "text": "Host website assets in a container in an Amazon Elastic Container Service (Amazon •ECS) cluster with Fargate nodes, use an Amazon RDS database, and use server-side scripts to interact with the database."
+      },
+      {
+        "key": "C",
+        "text": "Host static assets in an Amazon S3 bucket, use an Amazon RDS database, and use mazon API Gateway and AWS Lambda functions to interact with the database."
+      },
+      {
+        "key": "D",
+        "text": "Host static assets in an Amazon S3 bucket, use an Amazon DynamoDB table, and use Amazon API Gateway and AWS Lambda functions to interact with the database."
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "คำตอบที่ถูกต้องคือ D: Host static assets in an Amazon S3 bucket, use an Amazon DynamoDB table, and use Amazon API Gateway and AWS Lambda functions to interact with the database."
+  },
+  {
+    "id": 3,
+    "type": "multiple-choice",
+    "lecture": "Module14-BuildingServerlessArchitecture",
+    "question": "Why would a solutions architect recommend to use a microservice architecture? (Select TWO.)",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Solves a specific business problem"
+      },
+      {
+        "key": "B",
+        "text": " Independent from other components"
+      },
+      {
+        "key": "C",
+        "text": "HTTP(S) communication"
+      },
+      {
+        "key": "D",
+        "text": "Open-source code"
+      },
+      {
+        "key": "E",
+        "text": "Industry-standard interfaces"
+      }
+    ],
+    "correctAnswer": "A,B",
+    "explanation": "คำตอบที่ถูกต้องคือ A: Solves a specific business problem, B:  Independent from other components",
+    "correctAnswers": [
+      "A",
+      "B"
+    ]
+  },
+  {
+    "id": 4,
+    "type": "choice",
+    "lecture": "Module14-BuildingServerlessArchitecture",
+    "question": "Which scaling configuration does a team lead need to apply to accomplish Lambda function scaling?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Configure the auto scaling parameter in the function configuration."
+      },
+      {
+        "key": "B",
+        "text": "Launch functions in Auto Scaling groups."
+      },
+      {
+        "key": "C",
+        "text": "Provision enough function instances to meet the maximum predicted load."
+      },
+      {
+        "key": "D",
+        "text": "None because the AWS Lambda service scales functions automatically."
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "คำตอบที่ถูกต้องคือ D: None because the AWS Lambda service scales functions automatically."
+  },
+  {
+    "id": 5,
+    "type": "choice",
+    "lecture": "Module14-BuildingServerlessArchitecture",
+    "question": "A solutions architect has to use a custom library in an architecture that uses Lambda functions as the compute option. Which Lambda feature should be used for optimal function deployments?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Lambda triggers"
+      },
+      {
+        "key": "B",
+        "text": "Lambda function URLs"
+      },
+      {
+        "key": "C",
+        "text": "Lambda destinations"
+      },
+      {
+        "key": "D",
+        "text": "Lambda layers"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "คำตอบที่ถูกต้องคือ D: Lambda layers"
+  },
+  {
+    "id": 6,
+    "type": "choice",
+    "lecture": "Module14-BuildingServerlessArchitecture",
+    "question": "Which set of statements is true for software packaged as a container?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Standardized, portable application code packages that contain code and code dependencies. A container is run by a container engine. A container includes a guest operating system."
+      },
+      {
+        "key": "B",
+        "text": "Portable application code packages that contain code and code dependencies. A container is run by a hypervisor. A container includes a guest operating system."
+      },
+      {
+        "key": "C",
+        "text": "Standardized, portable application code packages that contain code and code dependencies. A container is run by a container engine. A container does not include dependencies. A container is run by a container engine. A container does not include a guest operating system."
+      },
+      {
+        "key": "D",
+        "text": "Portable application code packages that contain code and code dependencies. A container is run by a hypervisor. A container does not include a guest operating system."
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "คำตอบที่ถูกต้องคือ C: Standardized, portable application code packages that contain code and code dependencies. A container is run by a container engine. A container does not include dependencies. A container is run by a container engine. A container does not include a guest operating system."
+  },
+  {
+    "id": 7,
+    "type": "choice",
+    "lecture": "Module14-BuildingServerlessArchitecture",
+    "question": "Which is the most effective container deployment using Amazon Elastic Container Service (Amazon ECS) containers when refactoring a monolithic application to use a microservice architecture?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Create services that each provide a distinct function of the application, and run each service in a separate container that Amazon ECS manages."
+      },
+      {
+        "key": "B",
+        "text": "Port the application to a new image, and run it in a container that Amazon ECS"
+      },
+      {
+        "key": "C",
+        "text": "Create services that each provide a distinct function of the application, and run multiple services in a single container that Amazon ECS manages."
+      },
+      {
+        "key": "D",
+        "text": "feetprorthe application and centralize common functions to create a smaller code"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "คำตอบที่ถูกต้องคือ A: Create services that each provide a distinct function of the application, and run each service in a separate container that Amazon ECS manages."
+  },
+  {
+    "id": 8,
+    "type": "choice",
+    "lecture": "Module14-BuildingServerlessArchitecture",
+    "question": "An environmental science organization wants to provide HTTPS read-only access to its sensor data Amazon DynamoDB database. The user usage pattern is intermittent with 68 percent idle time per month. Which solution is the most cost efficient and secure with the least amount of operational maintenance?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Create a microservices architecture by usina Amazon Elastic Container Service (Amazon ECS) connecting to the DynamoDB sensor database."
+      },
+      {
+        "key": "B",
+        "text": "Create a public interface by using Amazon API Gateway with Lambda functions accessing the DynamoDB sensor database."
+      },
+      {
+        "key": "C",
+        "text": "Create web proxy servers on Amazon EC2 instances in an Auto Scaling group connecting to the DynamoDB sensor database, which is served by an Elastic Load Balancing load balancer."
+      },
+      {
+        "key": "D",
+        "text": "Create user accounts in the organization's svstems to allow direct access to the DynamoDB sensor database."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "คำตอบที่ถูกต้องคือ B: Create a public interface by using Amazon API Gateway with Lambda functions accessing the DynamoDB sensor database."
+  },
+  {
+    "id": 9,
+    "type": "multiple-choice",
+    "lecture": "Module14-BuildingServerlessArchitecture",
+    "question": "Which workflows are suitable to implement with AWS Step Functions when the goal is to implement the solution to reduce operational overhead? (Select THREE.)",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Implement manual approval in a security incident response workflow."
+      },
+      {
+        "key": "B",
+        "text": "Coordinate multi-step analytics and machine learning workflows."
+      },
+      {
+        "key": "C",
+        "text": "Send messages to multiple Amazon ECZ instances when a file is created or modified - in an Amazon 53 bucket."
+      },
+      {
+        "key": "D",
+        "text": "Update inventory and run a shipment workflow when a customer purchases an item on an e-commerce site."
+      },
+      {
+        "key": "E",
+        "text": "Deploy different kinds of infrastructure that are based on environment variables."
+      },
+      {
+        "key": "F",
+        "text": "Notify a group of email addresses when the costs for an AWS account exceed a threshold."
+      }
+    ],
+    "correctAnswer": "A,B,D",
+    "explanation": "คำตอบที่ถูกต้องคือ A: Implement manual approval in a security incident response workflow., B: Coordinate multi-step analytics and machine learning workflows., D: Update inventory and run a shipment workflow when a customer purchases an item on an e-commerce site.",
+    "correctAnswers": [
+      "A",
+      "B",
+      "D"
+    ]
+  },
+  {
+    "id": 10,
+    "type": "choice",
+    "lecture": "Module14-BuildingServerlessArchitecture",
+    "question": "A developer wants to implement a manual approval step using an AWS Step Functions state machine. The manual approval state has to pause until a notification of approval or rejection is received from an approver email. Which should be implemented in the Step Functions state machine? A task or activity state with an activated wait for callback parameter",
+    "choices": [
+      {
+        "key": "A",
+        "text": "A task or activity state with an activated wait for callback parameter"
+      },
+      {
+        "key": "B",
+        "text": "A task or activity state with automated callback parameters"
+      },
+      {
+        "key": "C",
+        "text": "A map state with an activated wait for callback parameter"
+      },
+      {
+        "key": "D",
+        "text": "A map state with automated callback parameters"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "คำตอบที่ถูกต้องคือ A: A task or activity state with an activated wait for callback parameter"
+  }
+]

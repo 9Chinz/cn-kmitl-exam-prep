@@ -7,10 +7,9 @@ import { TimeDisplay } from "@/components/atoms/TimeDisplay";
 import { ChoiceButton } from "@/components/molecules/ChoiceButton";
 import { ExplanationBox } from "@/components/molecules/ExplanationBox";
 import { FillBlankQuestion } from "@/components/organisms/FillBlankQuestion";
+import { MultipleChoiceQuestion } from "@/components/organisms/MultipleChoiceQuestion";
 import { Button } from "@/components/atoms/Button";
 import { getLectureName } from "@/constants/lectures";
-
-const displayLabels = ["A", "B", "C", "D"];
 
 export function QuizPage() {
   const {
@@ -55,14 +54,18 @@ export function QuizPage() {
   if (!question || !level) return null;
 
   const isFillBlank = question.type === "fill-blank";
+  const isMultipleChoice = question.type === "multiple-choice";
   const selectedOriginalKey = answers[currentIndex];
   const isAnswered = selectedOriginalKey !== undefined;
   const isLastQuestion = currentIndex === questions.length - 1;
   const answeredCount = Object.keys(answers).length;
 
   // Choice question helpers
-  const choiceOrder = shuffledChoices[currentIndex] || ["A", "B", "C", "D"];
-  const isChoiceCorrect = !isFillBlank && selectedOriginalKey === question.correctAnswer;
+  const choiceCount = question.choices?.length ?? 4;
+  const defaultKeys = Array.from({ length: choiceCount }, (_, i) => String.fromCharCode(65 + i));
+  const choiceOrder = shuffledChoices[currentIndex] || defaultKeys;
+  const displayLabels = defaultKeys;
+  const isChoiceCorrect = !isFillBlank && !isMultipleChoice && selectedOriginalKey === question.correctAnswer;
   const getOriginalKeyForDisplay = (displayIndex: number) => choiceOrder[displayIndex];
 
   const getChoiceState = (originalKey: string): "default" | "correct" | "wrong" | "dimmed" => {
@@ -122,7 +125,25 @@ export function QuizPage() {
           {currentIndex + 1}. {question.question}
         </h2>
 
-        {isFillBlank ? (
+        {isMultipleChoice ? (
+          <>
+            <MultipleChoiceQuestion
+              key={currentIndex}
+              question={question}
+              choiceOrder={choiceOrder}
+              onAnswer={answerQuestion}
+              isAnswered={isAnswered}
+              storedAnswer={selectedOriginalKey}
+            />
+            {isAnswered && (
+              <Button variant="primary" onClick={nextQuestion} className="py-3.5 text-base mt-4">
+                {isLastQuestion && answeredCount === questions.length
+                  ? "\u0e14\u0e39\u0e1c\u0e25\u0e2a\u0e2d\u0e1a"
+                  : "\u0e02\u0e49\u0e2d\u0e16\u0e31\u0e14\u0e44\u0e1b"}
+              </Button>
+            )}
+          </>
+        ) : isFillBlank ? (
           <>
             <FillBlankQuestion
               key={currentIndex}

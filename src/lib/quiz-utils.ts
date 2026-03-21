@@ -11,5 +11,13 @@ export function isAnswerCorrect(question: Question, answer: string): boolean {
       return false;
     }
   }
+  if (question.type === "multiple-choice") {
+    const userKeys = answer.split(",").sort();
+    const correctKeys = question.correctAnswer.split(",").sort();
+    return (
+      userKeys.length === correctKeys.length &&
+      userKeys.every((k, i) => k === correctKeys[i])
+    );
+  }
   return answer === question.correctAnswer;
 }

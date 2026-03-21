@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useQuizStore } from "@/store/quizStore";
+import { useSubjectStore } from "@/store/subjectStore";
 import { Modal } from "@/components/molecules/Modal";
 import { Button } from "@/components/atoms/Button";
 import { Switch } from "@/components/atoms/Switch";
@@ -11,7 +12,10 @@ export function NameInput() {
   const [shuffleQuestions, setShuffleQuestions] = useState(false);
   const [shuffleChoices, setShuffleChoices] = useState(false);
 
+  const config = useSubjectStore((s) => s.getConfig());
   if (!pendingLevel) return null;
+
+  const questionCount = config?.questions[pendingLevel]?.length ?? 60;
 
   const handleStart = () => {
     if (!name.trim()) return;
@@ -22,7 +26,7 @@ export function NameInput() {
     <Modal open={true} onClose={cancelNameInput}>
       <h3 className="text-lg font-bold text-center mb-1">ใส่ชื่อผู้ทำข้อสอบ</h3>
       <p className="text-sm text-muted-foreground text-center mb-5">
-        ระดับ: {levelLabels[pendingLevel]} · 60 ข้อ
+        ระดับ: {levelLabels[pendingLevel]} · {questionCount} ข้อ
       </p>
 
       <input

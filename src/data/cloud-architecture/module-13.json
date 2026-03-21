@@ -1,0 +1,312 @@
+[
+  {
+    "id": 1,
+    "type": "choice",
+    "lecture": "Module13-BuildingDecoupledArchitectures",
+    "question": "Which statement describes the difference between tightly and loosely coupled architectures?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Components in a tightly coupled architecture are highly dependent on each other. In a loosely coupled architecture, components aren't highly dependent on each other."
+      },
+      {
+        "key": "B",
+        "text": "Tightly coupled architectures are more likely to fail than loosely coupled architectures."
+      },
+      {
+        "key": "C",
+        "text": "Loose coupling increases the complexity of scaling. Tight coupling decreases it."
+      },
+      {
+        "key": "D",
+        "text": "Loosely coupled architectures must use managed services, and tightly coupled architectures don't have this limitation."
+      },
+      {
+        "key": "E",
+        "text": "aws,"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "คำตอบที่ถูกต้องคือ A: Components in a tightly coupled architecture are highly dependent on each other. In a loosely coupled architecture, components aren't highly dependent on each other."
+  },
+  {
+    "id": 2,
+    "type": "multiple-choice",
+    "lecture": "Module13-BuildingDecoupledArchitectures",
+    "question": "Which statements describe Amazon Simple Queue Service (Amazon SQS)? (Select THREE.)",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Stores and optionally encrypts messages until they are processed and deleted"
+      },
+      {
+        "key": "B",
+        "text": "Enables you to decouple and scale microservices, distributed systems, and serverless applications"
+      },
+      {
+        "key": "C",
+        "text": "Supports standard queues and topics"
+      },
+      {
+        "key": "D",
+        "text": "Requires a consumer to poll the queue for messages"
+      },
+      {
+        "key": "E",
+        "text": "Sends push notifications to consumers"
+      },
+      {
+        "key": "F",
+        "text": "Supports email and text messaging"
+      }
+    ],
+    "correctAnswer": "A,B,D",
+    "explanation": "คำตอบที่ถูกต้องคือ A: Stores and optionally encrypts messages until they are processed and deleted, B: Enables you to decouple and scale microservices, distributed systems, and serverless applications, D: Requires a consumer to poll the queue for messages",
+    "correctAnswers": [
+      "A",
+      "B",
+      "D"
+    ]
+  },
+  {
+    "id": 3,
+    "type": "multiple-choice",
+    "lecture": "Module13-BuildingDecoupledArchitectures",
+    "question": "Which statements are true when using an Amazon Simple Queue Service (Amazon SQS) standard queue? (Select TWO.)",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Messages must be processed in the order that they are sent."
+      },
+      {
+        "key": "B",
+        "text": "A message might be delivered more than once."
+      },
+      {
+        "key": "C",
+        "text": "Messages can be sent in any order."
+      },
+      {
+        "key": "D",
+        "text": "A message must be processed only once."
+      },
+      {
+        "key": "E",
+        "text": "Messages can be assigned a priority."
+      }
+    ],
+    "correctAnswer": "B,C",
+    "explanation": "คำตอบที่ถูกต้องคือ B: A message might be delivered more than once., C: Messages can be sent in any order.",
+    "correctAnswers": [
+      "B",
+      "C"
+    ]
+  },
+  {
+    "id": 4,
+    "type": "choice",
+    "lecture": "Module13-BuildingDecoupledArchitectures",
+    "question": "A fleet of Amazon EC2 instances process videos that users upload. Which function can Amazon Simple Queue Service (Amazon SQS) perform in this application?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "The application places job messages in an SQS queue. EC2 instances with available processing capacity pull the next job message from the queue."
+      },
+      {
+        "key": "B",
+        "text": "EC2 instances put edited video files in an SQS queue. The application retrieves the videos from the queue."
+      },
+      {
+        "key": "C",
+        "text": "An sos queue receives messages from the application and notifies all available EC2 instances that videos are available."
+      },
+      {
+        "key": "D",
+        "text": "The application writes the video files to an SQS queue. EC2 instances with available processing capacity pull the next video from the queue."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "คำตอบที่ถูกต้องคือ A: The application places job messages in an SQS queue. EC2 instances with available processing capacity pull the next job message from the queue."
+  },
+  {
+    "id": 5,
+    "type": "choice",
+    "lecture": "Module13-BuildingDecoupledArchitectures",
+    "question": "What is Amazon Simple Notification Service (Amazon SNS)?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "A flexible and scalable outbound and inbound marketing communications service that uses email, short message service (SMS), push, or voice communication channels"
+      },
+      {
+        "key": "B",
+        "text": "A fully managed messaging service for both system-to-system and application-to- person (A2P) communication, which uses publish/subscribe patterns"
+      },
+      {
+        "key": "C",
+        "text": "A cost-effective, flexible, and scalable email service that enables developers to send email from within any application"
+      },
+      {
+        "key": "D",
+        "text": "A serverless event bus that enables easy connection of applications by using data from your own applications, integrated software as a service (SaaS) applications, and AWS services"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "คำตอบที่ถูกต้องคือ B: A fully managed messaging service for both system-to-system and application-to- person (A2P) communication, which uses publish/subscribe patterns"
+  },
+  {
+    "id": 6,
+    "type": "multiple-choice",
+    "lecture": "Module13-BuildingDecoupledArchitectures",
+    "question": "What are some use cases for Amazon Simple Notification Service (Amazon SNS)? (Select THREE.)",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Notify multiple systems that user input is ready for processing."
+      },
+      {
+        "key": "B",
+        "text": "Send a text message to systems operators when unusual activity has been detected."
+      },
+      {
+        "key": "C",
+        "text": "Hold input until it can be processed in the order that it's received."
+      },
+      {
+        "key": "D",
+        "text": "Send a push notification to mobile applications when a new software update is"
+      },
+      {
+        "key": "E",
+        "text": "Gather streaming data from multiple systems."
+      },
+      {
+        "key": "F",
+        "text": "Trigger a single AWS Lambda function when an object is created in an Amazon S3 bucket."
+      },
+      {
+        "key": "G",
+        "text": "aws,"
+      }
+    ],
+    "correctAnswer": "A,B,D",
+    "explanation": "คำตอบที่ถูกต้องคือ A: Notify multiple systems that user input is ready for processing., B: Send a text message to systems operators when unusual activity has been detected., D: Send a push notification to mobile applications when a new software update is",
+    "correctAnswers": [
+      "A",
+      "B",
+      "D"
+    ]
+  },
+  {
+    "id": 7,
+    "type": "multiple-choice",
+    "lecture": "Module13-BuildingDecoupledArchitectures",
+    "question": "What are some features of Amazon Simple Notification Service (Amazon SNS)? (Select TWO.)",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Recall of sent messages"
+      },
+      {
+        "key": "B",
+        "text": "Message delivery to a URL"
+      },
+      {
+        "key": "C",
+        "text": "Message delivery to an Amazon Simple Queue Service (Amazon SQS) queue"
+      },
+      {
+        "key": "D",
+        "text": "Providing strict message ordering with standard topics."
+      },
+      {
+        "key": "E",
+        "text": "Guaranteed message delivery even when an endpoint isn't accessible"
+      }
+    ],
+    "correctAnswer": "B,C",
+    "explanation": "คำตอบที่ถูกต้องคือ B: Message delivery to a URL, C: Message delivery to an Amazon Simple Queue Service (Amazon SQS) queue",
+    "correctAnswers": [
+      "B",
+      "C"
+    ]
+  },
+  {
+    "id": 8,
+    "type": "choice",
+    "lecture": "Module13-BuildingDecoupledArchitectures",
+    "question": "Two different AWS Lambda functions must simultaneously process PDF files that are uploaded to an Amazon S3 bucket. The S3 event notification allows only one action when the PDF files are uploaded. Which solution provides the least complex way to process messages with both Lambda functions efficiently?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Send the S3 event to Amazon MQ for distribution to both Lambda functions."
+      },
+      {
+        "key": "B",
+        "text": "Upload two copies of each PDF file by using different object key prefixes."
+      },
+      {
+        "key": "C",
+        "text": "Send the S3 event to an Amazon Simple Queue Service (Amazon SQS) queue that both Lambda functions poll."
+      },
+      {
+        "key": "D",
+        "text": "Send the S3 event to an Amazon Simple Notification Service (Amazon SNS) topic that both Lambda functions subscribe to."
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "คำตอบที่ถูกต้องคือ D: Send the S3 event to an Amazon Simple Notification Service (Amazon SNS) topic that both Lambda functions subscribe to."
+  },
+  {
+    "id": 9,
+    "type": "choice",
+    "lecture": "Module13-BuildingDecoupledArchitectures",
+    "question": "What is Amazon MQ?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Application monitoring service"
+      },
+      {
+        "key": "B",
+        "text": "Data migration service"
+      },
+      {
+        "key": "C",
+        "text": "Message broker service"
+      },
+      {
+        "key": "D",
+        "text": "Identity broker service"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "คำตอบที่ถูกต้องคือ C: Message broker service"
+  },
+  {
+    "id": 10,
+    "type": "choice",
+    "lecture": "Module13-BuildingDecoupledArchitectures",
+    "question": "Which is a common use case for Amazon MQ?",
+    "choices": [
+      {
+        "key": "A",
+        "text": "Connect a virtual private cloud (VPC) to an on-premises network."
+      },
+      {
+        "key": "B",
+        "text": "Decouple components in a new cloud-native application."
+      },
+      {
+        "key": "C",
+        "text": "Leverage an existing on-premises application that uses Apache ActiveMQ to communicate between microservices."
+      },
+      {
+        "key": "D",
+        "text": "Upload a standalone static website to AWS."
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "คำตอบที่ถูกต้องคือ C: Leverage an existing on-premises application that uses Apache ActiveMQ to communicate between microservices."
+  }
+]
