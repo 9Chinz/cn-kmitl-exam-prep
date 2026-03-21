@@ -31,12 +31,8 @@
       }
     ],
     "correctAnswer": "A,E,F",
-    "explanation": "คำตอบที่ถูกต้องคือ A: Pay-for-value services, E: Continuous scaling, F: Built-in high availability",
-    "correctAnswers": [
-      "A",
-      "E",
-      "F"
-    ]
+    "correctAnswers": ["A", "E", "F"],
+    "explanation": "Serverless มีข้อดีหลักคือ pay-for-value ที่จ่ายเฉพาะเมื่อใช้งาน ไม่ต้องจ่ายค่า idle resources (A), continuous scaling ที่ปรับขนาดอัตโนมัติตาม request (E), และ built-in high availability ที่ AWS จัดการ redundancy ให้ (F) ส่วน full control over runtime และ predictable performance ไม่ใช่จุดแข็งของ serverless เพราะ AWS จัดการ infrastructure ให้"
   },
   {
     "id": 2,
@@ -62,7 +58,7 @@
       }
     ],
     "correctAnswer": "D",
-    "explanation": "คำตอบที่ถูกต้องคือ D: Host static assets in an Amazon S3 bucket, use an Amazon DynamoDB table, and use Amazon API Gateway and AWS Lambda functions to interact with the database."
+    "explanation": "S3 (static hosting) + API Gateway + Lambda + DynamoDB เป็น serverless stack ครบวงจร ไม่ต้องจัดการ server ใดเลย ส่วน ECS with EC2 ไม่ใช่ serverless, RDS ต้องจัดการ instance, และ ECS with Fargate แม้จะเป็น serverless containers แต่ RDS ยังคงไม่ใช่ serverless"
   },
   {
     "id": 3,
@@ -92,11 +88,8 @@
       }
     ],
     "correctAnswer": "A,B",
-    "explanation": "คำตอบที่ถูกต้องคือ A: Solves a specific business problem, B:  Independent from other components",
-    "correctAnswers": [
-      "A",
-      "B"
-    ]
+    "correctAnswers": ["A", "B"],
+    "explanation": "Microservice architecture ออกแบบให้แต่ละ service แก้ปัญหาทางธุรกิจเฉพาะด้าน (A) และเป็นอิสระจาก components อื่น สามารถ develop, deploy, และ scale แยกกันได้ (B) ส่วน HTTP(S) เป็นแค่หนึ่งใน communication protocols ไม่ใช่เหตุผลหลัก"
   },
   {
     "id": 4,
@@ -122,7 +115,7 @@
       }
     ],
     "correctAnswer": "D",
-    "explanation": "คำตอบที่ถูกต้องคือ D: None because the AWS Lambda service scales functions automatically."
+    "explanation": "AWS Lambda scale อัตโนมัติโดยไม่ต้อง configure ใดๆ เพราะเป็น serverless service ที่ AWS จัดการ scaling ให้ทั้งหมด Lambda จะสร้าง concurrent execution instances ตามจำนวน requests ที่เข้ามาโดยอัตโนมัติ ไม่ต้องใช้ Auto Scaling groups หรือ provisioning ล่วงหน้า"
   },
   {
     "id": 5,
@@ -148,7 +141,7 @@
       }
     ],
     "correctAnswer": "D",
-    "explanation": "คำตอบที่ถูกต้องคือ D: Lambda layers"
+    "explanation": "Lambda Layers ช่วยให้สามารถแชร์ custom libraries, dependencies, และ code ร่วมกันระหว่าง Lambda functions หลายตัวได้ โดยไม่ต้องรวม library ไว้ใน deployment package ของทุก function ทำให้ลดขนาด package และจัดการ dependencies ได้ง่ายขึ้น"
   },
   {
     "id": 6,
@@ -174,7 +167,7 @@
       }
     ],
     "correctAnswer": "C",
-    "explanation": "คำตอบที่ถูกต้องคือ C: Standardized, portable application code packages that contain code and code dependencies. A container is run by a container engine. A container does not include dependencies. A container is run by a container engine. A container does not include a guest operating system."
+    "explanation": "Container เป็น standardized, portable package ที่มี code และ dependencies รวมอยู่ ทำงานบน container engine (เช่น Docker) ไม่ใช่ hypervisor และไม่มี guest OS ซึ่งทำให้ container มีขนาดเล็กและ start เร็วกว่า virtual machine ที่ต้องมี full OS"
   },
   {
     "id": 7,
@@ -200,7 +193,7 @@
       }
     ],
     "correctAnswer": "A",
-    "explanation": "คำตอบที่ถูกต้องคือ A: Create services that each provide a distinct function of the application, and run each service in a separate container that Amazon ECS manages."
+    "explanation": "หลักการ microservice คือแยกแต่ละ function ออกเป็น service อิสระ และรันใน container แยกกัน (one service per container) ทำให้สามารถ scale, update, และ deploy แต่ละ service ได้อิสระ ส่วนการรวมหลาย services ใน container เดียวหรือ port ทั้ง monolith ไป container ยังไม่ใช่ microservice architecture"
   },
   {
     "id": 8,
@@ -226,7 +219,7 @@
       }
     ],
     "correctAnswer": "B",
-    "explanation": "คำตอบที่ถูกต้องคือ B: Create a public interface by using Amazon API Gateway with Lambda functions accessing the DynamoDB sensor database."
+    "explanation": "API Gateway + Lambda เป็น serverless solution ที่ cost-efficient ที่สุดเพราะจ่ายเฉพาะเมื่อมี request เข้ามา เหมาะกับ usage pattern ที่ idle 68% ของเดือน ไม่ต้องจ่ายค่า server ตอนไม่มีคนใช้ นอกจากนี้ยัง secure เพราะ API Gateway มี built-in authentication และไม่ต้อง maintain server ใดเลย"
   },
   {
     "id": 9,
@@ -260,12 +253,8 @@
       }
     ],
     "correctAnswer": "A,B,D",
-    "explanation": "คำตอบที่ถูกต้องคือ A: Implement manual approval in a security incident response workflow., B: Coordinate multi-step analytics and machine learning workflows., D: Update inventory and run a shipment workflow when a customer purchases an item on an e-commerce site.",
-    "correctAnswers": [
-      "A",
-      "B",
-      "D"
-    ]
+    "correctAnswers": ["A", "B", "D"],
+    "explanation": "Step Functions เหมาะสำหรับ orchestrate multi-step workflows ที่ซับซ้อน เช่น manual approval steps ใน security workflow (A), coordinate หลายขั้นตอนใน analytics/ML pipeline (B), และ orchestrate business process เช่น inventory update + shipment workflow (D) ส่วนการส่ง messages ไป EC2 เหมาะกับ SNS, deploy infra เหมาะกับ CloudFormation, และ cost alert เหมาะกับ CloudWatch + SNS"
   },
   {
     "id": 10,
@@ -291,6 +280,6 @@
       }
     ],
     "correctAnswer": "A",
-    "explanation": "คำตอบที่ถูกต้องคือ A: A task or activity state with an activated wait for callback parameter"
+    "explanation": "Task state ที่เปิด waitForTaskToken (wait for callback) จะหยุดรอจนกว่าจะได้รับ callback พร้อม task token กลับมา เหมาะสำหรับ manual approval ที่ต้องรอ human input ส่วน Map state ใช้สำหรับ iterate ข้อมูลแบบ parallel ไม่เหมาะกับ approval workflow และ automated callback ไม่รองรับการรอ manual input"
   }
 ]

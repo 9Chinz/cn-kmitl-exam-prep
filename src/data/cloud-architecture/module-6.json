@@ -23,7 +23,7 @@
       }
     ],
     "correctAnswer": "A",
-    "explanation": "คำตอบที่ถูกต้องคือ A: AWS manages database patches for a database on a managed database service."
+    "explanation": "Managed database service เช่น Amazon RDS นั้น AWS จะจัดการ database patching ให้อัตโนมัติ ซึ่งเป็นข้อได้เปรียบหลักเมื่อเทียบกับการติดตั้ง database บน EC2 เอง ที่ผู้ใช้ต้องจัดการ patch ทั้ง OS และ database เอง ส่วนตัวเลือกอื่นไม่ถูกต้องเพราะยังต้อง configure backup อยู่ และ AWS ไม่ได้จัดการ OS patch ให้ EC2 instance"
   },
   {
     "id": 2,
@@ -53,7 +53,7 @@
       }
     ],
     "correctAnswer": "A,B",
-    "explanation": "คำตอบที่ถูกต้องคือ A: The data is highly structured., B: Student, course, and registration data are stored in many different tables.",
+    "explanation": "Amazon RDS เป็น relational database ที่เหมาะสำหรับข้อมูลที่มีโครงสร้างชัดเจน (highly structured) และมีความสัมพันธ์ระหว่างหลายตาราง เช่น student, course และ registration ที่ต้องใช้ JOIN ข้ามตาราง ส่วน encryption, high availability และ backup นั้นทั้ง RDS และ DynamoDB รองรับได้เหมือนกัน จึงไม่ใช่ปัจจัยที่ทำให้เลือก RDS เหนือ DynamoDB",
     "correctAnswers": [
       "A",
       "B"
@@ -83,7 +83,7 @@
       }
     ],
     "correctAnswer": "A",
-    "explanation": "คำตอบที่ถูกต้องคือ A: Amazon DynamoDB"
+    "explanation": "Amazon DynamoDB เป็น NoSQL database ที่ให้ single-digit millisecond latency เหมาะสำหรับระบบ real-time transactional เช่น order inventory ที่ต้องการความเร็วสูง รองรับ scale ได้อัตโนมัติ ส่วน Redshift เป็น data warehouse, Neptune เป็น graph database และ DocumentDB เป็น document database ซึ่งไม่เหมาะกับ use case นี้"
   },
   {
     "id": 4,
@@ -113,7 +113,7 @@
       }
     ],
     "correctAnswer": "B,C",
-    "explanation": "คำตอบที่ถูกต้องคือ B: Unpredictable object attributes for player-created objects, C: A high amount of read activity on player-created objects and a low amount of writes",
+    "explanation": "DynamoDB เป็น NoSQL ที่มี flexible schema เหมาะกับข้อมูลที่มี attribute ไม่แน่นอน (unpredictable attributes) ซึ่ง relational database ทำได้ลำบาก นอกจากนี้ DynamoDB ยังรองรับ read-heavy workload ได้ดีเยี่ยมด้วย DAX (DynamoDB Accelerator) และ eventually consistent reads ส่วนข้อมูลขนาดใหญ่เกิน 400 KB ต่อ item นั้น DynamoDB ไม่เหมาะ และการ JOIN ข้ามตารางเป็นจุดแข็งของ relational database",
     "correctAnswers": [
       "B",
       "C"
@@ -143,7 +143,7 @@
       }
     ],
     "correctAnswer": "D",
-    "explanation": "คำตอบที่ถูกต้องคือ D: Amazon Neptune"
+    "explanation": "Amazon Neptune เป็น managed graph database service ที่ออกแบบมาเพื่อจัดการข้อมูลที่มีความสัมพันธ์ซับซ้อน (highly connected data) ซึ่งเหมาะสำหรับ fraud detection เพราะสามารถวิเคราะห์ความสัมพันธ์ระหว่าง entities เช่น บัญชี, ธุรกรรม และผู้ใช้ได้แบบ real-time ผ่าน graph queries"
   },
   {
     "id": 6,
@@ -169,7 +169,7 @@
       }
     ],
     "correctAnswer": "C",
-    "explanation": "คำตอบที่ถูกต้องคือ C: Amazon Aurora"
+    "explanation": "Amazon Aurora เป็นส่วนหนึ่งของ Amazon RDS ที่รองรับ MySQL และ PostgreSQL compatible editions แต่ในบริบทของตัวเลือกที่ให้มา Amazon RDS (ซึ่ง Aurora เป็น engine หนึ่ง) รองรับ Microsoft SQL Server ได้ ส่วน DynamoDB เป็น NoSQL, Neptune เป็น graph database และ DocumentDB เป็น MongoDB compatible ซึ่งไม่รองรับ SQL Server"
   },
   {
     "id": 7,
@@ -203,7 +203,7 @@
       }
     ],
     "correctAnswer": "D,E,F",
-    "explanation": "คำตอบที่ถูกต้องคือ D: A virtual private cloud (VPC) to provide instance isolation, E: Security groups to control network access to individual RDS instances, F: Encryption both at rest and in transit to protect sensitive data",
+    "explanation": "การรักษาความปลอดภัย RDS ใช้ 3 แนวทางหลัก: (D) VPC ช่วยแยก RDS instance ออกจาก network อื่นทำให้ควบคุมการเข้าถึงได้, (E) Security groups ทำหน้าที่เป็น virtual firewall ควบคุม traffic เข้า-ออก RDS instance ในระดับ port และ IP, (F) Encryption at rest (KMS) และ in transit (SSL/TLS) ป้องกันข้อมูลสำคัญ ส่วน IAM กับ RDS ไม่ได้ควบคุมระดับ row/column และ VGW/VPC endpoint ไม่ใช่วิธีหลักในการ secure RDS",
     "correctAnswers": [
       "D",
       "E",
@@ -242,7 +242,7 @@
       }
     ],
     "correctAnswer": "A,C,F",
-    "explanation": "คำตอบที่ถูกต้องคือ A: AWS Identity and Access Management (IAM) policies to define access at the table, item, or attribute level, C:  Encryption to protect sensitive data, F: An Amazon Virtual Private Cloud (Amazon VPC) gateway endpoint to prevent traffic from traversing the internet",
+    "explanation": "DynamoDB เป็น serverless service ดังนั้นการ secure จะต่างจาก RDS: (A) IAM policies สามารถควบคุมการเข้าถึง DynamoDB ได้ละเอียดถึงระดับ table, item หรือ attribute, (C) Encryption ป้องกันข้อมูลทั้ง at rest และ in transit, (F) VPC gateway endpoint ทำให้ traffic จาก VPC ไปยัง DynamoDB ไม่ต้องผ่าน internet ส่วน VPC isolation และ security groups ใช้ไม่ได้กับ DynamoDB เพราะเป็น fully managed serverless service",
     "correctAnswers": [
       "A",
       "C",
@@ -273,7 +273,7 @@
       }
     ],
     "correctAnswer": "C",
-    "explanation": "คำตอบที่ถูกต้องคือ C: Use AWS Schema Conversion Tool (AWS SCT) to convert the schema, and then use AWS Database Migration Service (AWS DMS) to migrate the data."
+    "explanation": "การ migrate จาก Oracle ไป Aurora MySQL เป็น heterogeneous migration (ต่างประเภท database engine) ต้องทำ 2 ขั้นตอนตามลำดับ: ขั้นแรกใช้ AWS SCT แปลง schema (โครงสร้างตาราง, stored procedures ฯลฯ) จาก Oracle เป็น MySQL format ก่อน จากนั้นจึงใช้ AWS DMS ย้ายข้อมูลจริงเข้า Aurora MySQL ต้องแปลง schema ก่อนเสมอเพราะ DMS ต้องการ target schema ที่พร้อมรับข้อมูล"
   },
   {
     "id": 10,
@@ -299,6 +299,6 @@
       }
     ],
     "correctAnswer": "B",
-    "explanation": "คำตอบที่ถูกต้องคือ B: Set up an RDS MySQL Multi-AZ DB instance. Configure a read replica in a different Region."
+    "explanation": "Multi-AZ deployment ให้ high availability ภายใน Region เดียวโดยมี standby replica ใน AZ อื่นที่ failover อัตโนมัติ และ cross-Region read replica ให้ความพร้อมใช้งานข้าม Region ซึ่งสามารถ promote เป็น primary ได้เมื่อ Region หลักล่ม ทั้งสองอย่างรวมกันตอบโจทย์ high availability ทั้ง across AZs และ across Regions ด้วย minimal downtime"
   }
 ]

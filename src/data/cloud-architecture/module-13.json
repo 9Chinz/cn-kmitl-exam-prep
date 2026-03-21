@@ -27,7 +27,7 @@
       }
     ],
     "correctAnswer": "A",
-    "explanation": "คำตอบที่ถูกต้องคือ A: Components in a tightly coupled architecture are highly dependent on each other. In a loosely coupled architecture, components aren't highly dependent on each other."
+    "explanation": "Tightly coupled architecture หมายถึง components ที่พึ่งพากันสูง ถ้า component หนึ่งล้มเหลวจะกระทบ components อื่นด้วย ส่วน loosely coupled architecture ออกแบบให้ components เป็นอิสระจากกัน สามารถเปลี่ยนแปลงหรือ scale แต่ละ component ได้โดยไม่กระทบส่วนอื่น"
   },
   {
     "id": 2,
@@ -61,12 +61,8 @@
       }
     ],
     "correctAnswer": "A,B,D",
-    "explanation": "คำตอบที่ถูกต้องคือ A: Stores and optionally encrypts messages until they are processed and deleted, B: Enables you to decouple and scale microservices, distributed systems, and serverless applications, D: Requires a consumer to poll the queue for messages",
-    "correctAnswers": [
-      "A",
-      "B",
-      "D"
-    ]
+    "correctAnswers": ["A", "B", "D"],
+    "explanation": "SQS เก็บข้อมูล messages และรองรับการเข้ารหัสข้อมูลด้วย (A), เป็นเครื่องมือหลักสำหรับ decoupling microservices และ distributed systems (B), และใช้ pull-based model ที่ consumer ต้อง poll เพื่อรับ messages จาก queue (D) ส่วน topics เป็นของ SNS, push notifications เป็นของ SNS, และ email/SMS ไม่ใช่หน้าที่ของ SQS"
   },
   {
     "id": 3,
@@ -96,11 +92,8 @@
       }
     ],
     "correctAnswer": "B,C",
-    "explanation": "คำตอบที่ถูกต้องคือ B: A message might be delivered more than once., C: Messages can be sent in any order.",
-    "correctAnswers": [
-      "B",
-      "C"
-    ]
+    "correctAnswers": ["B", "C"],
+    "explanation": "SQS Standard queue ใช้ best-effort ordering ซึ่งไม่รับประกันลำดับ messages จึงส่งในลำดับใดก็ได้ (C) และอาจส่ง message ซ้ำได้ (at-least-once delivery) ทำให้ message อาจถูก deliver มากกว่าหนึ่งครั้ง (B) ต่างจาก FIFO queue ที่รับประกันลำดับและ exactly-once processing"
   },
   {
     "id": 4,
@@ -126,7 +119,7 @@
       }
     ],
     "correctAnswer": "A",
-    "explanation": "คำตอบที่ถูกต้องคือ A: The application places job messages in an SQS queue. EC2 instances with available processing capacity pull the next job message from the queue."
+    "explanation": "SQS ใช้สำหรับส่ง messages (ข้อความขนาดเล็ก) ไม่ใช่ไฟล์ video ดังนั้นแอปพลิเคชันจะวาง job message (เช่น reference ไปยังไฟล์ video) ลงใน queue แล้ว EC2 instances ที่ว่างจะ pull message มาประมวลผล ซึ่งเป็น pull-based model ที่ SQS ไม่ push/notify ไปยัง consumers"
   },
   {
     "id": 5,
@@ -152,7 +145,7 @@
       }
     ],
     "correctAnswer": "B",
-    "explanation": "คำตอบที่ถูกต้องคือ B: A fully managed messaging service for both system-to-system and application-to- person (A2P) communication, which uses publish/subscribe patterns"
+    "explanation": "Amazon SNS เป็น fully managed pub/sub messaging service ที่รองรับทั้ง system-to-system (เช่น SQS, Lambda, HTTP) และ application-to-person (A2P) communication (เช่น SMS, email) ต่างจาก Amazon Pinpoint (marketing communications), SES (email service), และ EventBridge (event bus)"
   },
   {
     "id": 6,
@@ -190,12 +183,8 @@
       }
     ],
     "correctAnswer": "A,B,D",
-    "explanation": "คำตอบที่ถูกต้องคือ A: Notify multiple systems that user input is ready for processing., B: Send a text message to systems operators when unusual activity has been detected., D: Send a push notification to mobile applications when a new software update is",
-    "correctAnswers": [
-      "A",
-      "B",
-      "D"
-    ]
+    "correctAnswers": ["A", "B", "D"],
+    "explanation": "SNS เหมาะสำหรับ fan-out notifications ไปยังหลายระบบพร้อมกัน (A), ส่ง SMS แจ้งเตือนเมื่อตรวจพบ unusual activity (B), และส่ง push notifications ไปยัง mobile apps (D) ส่วนการจัดลำดับ messages เป็นหน้าที่ของ SQS FIFO, การ gather streaming data เป็นของ Kinesis, และ S3 event สามารถ trigger Lambda ได้โดยตรงไม่ต้องใช้ SNS"
   },
   {
     "id": 7,
@@ -225,11 +214,8 @@
       }
     ],
     "correctAnswer": "B,C",
-    "explanation": "คำตอบที่ถูกต้องคือ B: Message delivery to a URL, C: Message delivery to an Amazon Simple Queue Service (Amazon SQS) queue",
-    "correctAnswers": [
-      "B",
-      "C"
-    ]
+    "correctAnswers": ["B", "C"],
+    "explanation": "SNS สามารถส่ง messages ไปยัง HTTP/HTTPS endpoints (URL) ได้ (B) และสามารถส่งไปยัง SQS queue เป็น subscriber ได้ (C) ซึ่งเป็น fanout pattern ที่นิยม ส่วน SNS ไม่สามารถ recall messages ที่ส่งไปแล้ว, standard topics ไม่รับประกันลำดับ, และไม่รับประกัน delivery เมื่อ endpoint ไม่พร้อม"
   },
   {
     "id": 8,
@@ -255,7 +241,7 @@
       }
     ],
     "correctAnswer": "D",
-    "explanation": "คำตอบที่ถูกต้องคือ D: Send the S3 event to an Amazon Simple Notification Service (Amazon SNS) topic that both Lambda functions subscribe to."
+    "explanation": "SNS topic ใช้ fan-out pattern ที่ส่ง message ไปยัง subscribers ทั้งหมดพร้อมกัน ทำให้ทั้งสอง Lambda functions ได้รับ event notification เมื่อมีไฟล์ upload เข้ามา ซึ่งง่ายที่สุด ต่างจาก SQS ที่เป็น pull-based model และ message จะถูก process โดย consumer เดียว"
   },
   {
     "id": 9,
@@ -281,7 +267,7 @@
       }
     ],
     "correctAnswer": "C",
-    "explanation": "คำตอบที่ถูกต้องคือ C: Message broker service"
+    "explanation": "Amazon MQ เป็น managed message broker service ที่รองรับ Apache ActiveMQ และ RabbitMQ ช่วยให้ย้าย messaging workloads จาก on-premises มา cloud ได้ง่าย โดยไม่ต้องเปลี่ยน code ของแอปพลิเคชันที่ใช้ standard messaging protocols อยู่แล้ว"
   },
   {
     "id": 10,
@@ -307,6 +293,6 @@
       }
     ],
     "correctAnswer": "C",
-    "explanation": "คำตอบที่ถูกต้องคือ C: Leverage an existing on-premises application that uses Apache ActiveMQ to communicate between microservices."
+    "explanation": "Amazon MQ เหมาะสำหรับ migrate แอปพลิเคชันที่ใช้ message broker อยู่แล้ว เช่น Apache ActiveMQ มาใช้บน AWS โดยไม่ต้องเปลี่ยน code เพราะรองรับ standard protocols (AMQP, STOMP, MQTT, OpenWire) ส่วน cloud-native apps ใหม่แนะนำใช้ SQS/SNS แทนเพราะ scalable กว่า"
   }
 ]

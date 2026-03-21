@@ -23,7 +23,7 @@
       }
     ],
     "correctAnswer": "A",
-    "explanation": "คำตอบที่ถูกต้องคือ A: A logically isolated virtual network that you define in the AWS Cloud"
+    "explanation": "VPC คือ virtual network ที่แยกออกจากกันอย่างสมบูรณ์ (logically isolated) ภายใน AWS Cloud ผู้ใช้สามารถกำหนด IP range, subnets, route tables และ network gateways ได้เอง VPC ไม่ใช่ VPN (ซึ่งเป็นแค่การเชื่อมต่อแบบเข้ารหัส) และไม่ใช่ extension ของ on-premises network โดยตรง"
   },
   {
     "id": 2,
@@ -49,7 +49,7 @@
       }
     ],
     "correctAnswer": "D",
-    "explanation": "คำตอบที่ถูกต้องคือ D: EC2 instance inside a private subnet"
+    "explanation": "EC2 instance ที่อยู่ใน private subnet ไม่มี route ไปยัง internet gateway โดยตรง จึงไม่สามารถเข้าถึง internet ได้ หากต้องการเข้าถึง internet จะต้องผ่าน NAT gateway ที่อยู่ใน public subnet ส่วน NAT gateway, EC2 ใน public subnet และ Elastic IP ล้วนมีเส้นทางเข้าถึง internet ได้โดยตรง"
   },
   {
     "id": 3,
@@ -75,7 +75,7 @@
       }
     ],
     "correctAnswer": "C",
-    "explanation": "คำตอบที่ถูกต้องคือ C: subnet A: 172.16.0.0/23 (512 addresses) Subnet B: 172.16.2.0/23 (512 addresses)"
+    "explanation": "/23 ให้ 512 addresses ต่อ subnet ซึ่งรองรับทั้ง 100 addresses ปัจจุบันและ 254 addresses ในอนาคตได้สบาย พร้อมมีพื้นที่สำรองสำหรับการขยายตาม AWS best practice (เผื่อ address space ไว้) ส่วน /25 (128 addresses) ไม่พอสำหรับ 254 addresses, /24 พอดีเกินไปไม่เผื่อขยาย, และ /22 (1024) ใช้ address space มากเกินไปรวมกัน 2048 ซึ่งเท่ากับทั้ง VPC"
   },
   {
     "id": 4,
@@ -101,7 +101,7 @@
       }
     ],
     "correctAnswer": "C",
-    "explanation": "คำตอบที่ถูกต้องคือ C: Without public IP addresses, in a subnet with a default route to a network address translation (NAT) gateway"
+    "explanation": "NAT gateway ช่วยให้ instances ใน private subnet สามารถ initiate outbound connection ไปยัง internet ได้ (เช่น download updates) แต่ไม่อนุญาตให้ traffic จาก internet เข้ามาหา instances ได้ การวาง instances ใน private subnet โดยไม่มี public IP และ route ผ่าน NAT gateway จึงตอบโจทย์ทั้งสองข้อ"
   },
   {
     "id": 5,
@@ -127,7 +127,7 @@
       }
     ],
     "correctAnswer": "D",
-    "explanation": "คำตอบที่ถูกต้องคือ D: Associate an Elastic IP address with the EC2 instance."
+    "explanation": "Elastic IP address เป็น static public IPv4 address ที่คงที่ไม่เปลี่ยนแม้ instance จะ stop/start เหมาะกับกรณีที่ต้องการ IP เดิมทุกครั้งที่เปิดเครื่อง ส่วน automatic assignment จะได้ IP ใหม่ทุกครั้งที่ start instance ทำให้ consultants ต้องรู้ IP ใหม่ทุกสัปดาห์ซึ่งไม่สะดวก"
   },
   {
     "id": 6,
@@ -157,7 +157,7 @@
       }
     ],
     "correctAnswer": "D,E",
-    "explanation": "คำตอบที่ถูกต้องคือ D: Add a rule to the EC2 instance security group to allow traffic from the bastion host security group on port 22., E: Add a rule to the bastion host security group to allow traffic on port 22 from your source IP address.",
+    "explanation": "การเข้าถึง EC2 ผ่าน bastion host ต้อง configure 2 จุด: (E) bastion host ต้องอนุญาต SSH (port 22) จาก source IP ของผู้ใช้เข้ามาก่อน จากนั้น (D) EC2 instance ใน private subnet ต้องอนุญาต SSH จาก bastion host security group Security groups เป็น stateful ดังนั้น return traffic จะถูกอนุญาตอัตโนมัติ ไม่ต้องเพิ่ม rule สำหรับ return traffic แยก",
     "correctAnswers": [
       "D",
       "E"
@@ -187,7 +187,7 @@
       }
     ],
     "correctAnswer": "C",
-    "explanation": "คำตอบที่ถูกต้องคือ C: Add rules to the subnet custom network ACL to allow traffic trom and to allowec internet addresses."
+    "explanation": "Custom network ACL ที่สร้างใหม่จะ deny all traffic by default อยู่แล้ว ดังนั้นแค่เพิ่ม allow rules สำหรับ internet addresses ที่ต้องการก็เพียงพอ ไม่ต้องเพิ่ม deny rule แยกเพราะ implicit deny จะจัดการให้ ควรใช้ custom ACL แทน default ACL เพราะ default ACL ของ VPC จะ allow all traffic ซึ่งส่งผลกระทบต่อทุก subnet ใน VPC"
   },
   {
     "id": 8,
@@ -221,7 +221,7 @@
       }
     ],
     "correctAnswer": "A,B,F",
-    "explanation": "คำตอบที่ถูกต้องคือ A: Create one subnet per Availability Zone for each group of hosts that have unique routing requirements., B: Reserve some address space for future use., F: Divide the VPC network range evenly across all Availability Zones that are available.",
+    "explanation": "(A) การสร้าง subnet ต่อ AZ ตาม routing requirements ช่วยให้จัดการ traffic ได้ถูกต้องและรองรับ high availability, (B) การเผื่อ address space ไว้เป็น best practice เพื่อรองรับการขยายตัวในอนาคตโดยไม่ต้อง redesign network, (F) การแบ่ง network range เท่ากันใน AZ ที่มีทั้งหมดช่วยให้ balance resources ได้ดีและรองรับ Multi-AZ deployment ส่วนการใช้ CIDR ซ้ำกับ on-premises จะทำให้เกิด IP conflict เมื่อเชื่อมต่อกัน",
     "correctAnswers": [
       "A",
       "B",
@@ -260,7 +260,7 @@
       }
     ],
     "correctAnswer": "A,B,D",
-    "explanation": "คำตอบที่ถูกต้องคือ A: Amazon S3 bucket, B: Amazon CloudWatch, D: Amazon Kinesis Data Firehose",
+    "explanation": "VPC Flow Logs สามารถส่งไปยัง 3 destinations: (A) Amazon S3 สำหรับ long-term storage และ analysis, (B) Amazon CloudWatch Logs สำหรับ real-time monitoring และ alerting, (D) Amazon Kinesis Data Firehose สำหรับ stream processing และส่งต่อไปยัง destinations อื่น ส่วน Athena และ OpenSearch เป็นเครื่องมือวิเคราะห์ข้อมูลไม่ใช่ destination ของ flow logs โดยตรง",
     "correctAnswers": [
       "A",
       "B",
@@ -291,6 +291,6 @@
       }
     ],
     "correctAnswer": "A",
-    "explanation": "คำตอบที่ถูกต้องคือ A: Gateway VPC endpoint"
+    "explanation": "Gateway VPC endpoint สำหรับ S3 ไม่มีค่าใช้จ่ายเพิ่มเติมและไม่มี throughput limit ซึ่งต่างจาก Interface VPC endpoint ที่มีค่าใช้จ่ายรายชั่วโมงและค่า data processing Gateway endpoint ทำงานโดยเพิ่ม route ใน route table เพื่อให้ traffic ไปยัง S3 ผ่าน AWS network โดยตรงไม่ต้องผ่าน internet"
   }
 ]

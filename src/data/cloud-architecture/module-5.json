@@ -27,7 +27,7 @@
       }
     ],
     "correctAnswer": "A,C",
-    "explanation": "คำตอบที่ถูกต้องคือ A: Ability to run any type of workload, C: Complete control of computing resources",
+    "explanation": "Amazon EC2 เป็น IaaS ที่ให้ผู้ใช้ควบคุม computing resources ได้เต็มที่ (เลือก OS, instance type, network config) และรองรับ workload ทุกประเภท ส่วน AWS ไม่ได้จัดการ OS patches หรือ OS security ให้ (นั่นเป็นหน้าที่ของลูกค้าตาม shared responsibility model) และ serverless applications ใช้บริการอย่าง Lambda ไม่ใช่ EC2",
     "correctAnswers": [
       "A",
       "C"
@@ -65,7 +65,7 @@
       }
     ],
     "correctAnswer": "A,B,F",
-    "explanation": "คำตอบที่ถูกต้องคือ A: Using an AMI as a server backup for Amazon EC2 instances, B: Launching instances with the same configuration, F: Selling or sharing software solutions packaged as an AMI",
+    "explanation": "AMI มีประโยชน์หลัก 3 ด้าน: (1) ใช้เป็น backup/snapshot ของ EC2 instance เพื่อกู้คืนได้ (2) ใช้ launch หลาย instances ที่มี configuration เหมือนกันทุกประการ ทำให้ consistent (3) สามารถ package software solution เป็น AMI แล้วขายหรือแชร์ผ่าน AWS Marketplace ได้ ส่วนการ migrate data, patching AMI และ automate security groups ไม่ใช่ประโยชน์โดยตรงของ AMI",
     "correctAnswers": [
       "A",
       "B",
@@ -96,7 +96,7 @@
       }
     ],
     "correctAnswer": "B",
-    "explanation": "คำตอบที่ถูกต้องคือ B: Stop an Amazon EBS backed instance, change its instance type, and start the instance."
+    "explanation": "เฉพาะ EBS-backed instance เท่านั้นที่สามารถ stop แล้วเปลี่ยน instance type ได้ เพราะข้อมูลถูกเก็บใน EBS volume ที่แยกจาก instance ส่วน instance-store-backed instance ไม่สามารถ stop ได้ (ทำได้แค่ terminate) เพราะข้อมูลใน instance store จะหายไปเมื่อ stop และไม่สามารถเปลี่ยน instance type ขณะ running ได้ไม่ว่าจะเป็นแบบไหน"
   },
   {
     "id": 4,
@@ -126,7 +126,7 @@
       }
     ],
     "correctAnswer": "A,C",
-    "explanation": "คำตอบที่ถูกต้องคือ A: Memory optimized, C: Storage optimized",
+    "explanation": "Storage optimized instances (เช่น I3, D2) ออกแบบมาเพื่อ high sequential read/write access to large datasets บน local storage โดยเฉพาะ ส่วน Memory optimized instances (เช่น R5, X1) มี RAM ขนาดใหญ่ที่ช่วยให้ cache large datasets ใน memory ได้ ทำให้ read/write เร็วมาก ทั้งสองจึงเหมาะกับ workload ที่ต้องการ high I/O กับ large datasets",
     "correctAnswers": [
       "A",
       "C"
@@ -156,7 +156,7 @@
       }
     ],
     "correctAnswer": "D",
-    "explanation": "คำตอบที่ถูกต้องคือ D: Use the user data of each instance to access the MAC address through the instance metadata."
+    "explanation": "EC2 Instance Metadata Service (IMDS) ให้ข้อมูลเกี่ยวกับ instance รวมถึง MAC address ผ่าน endpoint http://169.254.169.254/latest/meta-data/ การใช้ user data script เรียก metadata เป็นวิธีที่ดีที่สุดเพราะ MAC address ของแต่ละ instance ไม่เหมือนกัน จึงไม่สามารถ hardcode ใน AMI หรือ config file ได้ โดยเฉพาะเมื่อ Auto Scaling สร้าง instance ใหม่อัตโนมัติ"
   },
   {
     "id": 6,
@@ -186,7 +186,7 @@
       }
     ],
     "correctAnswer": "C,E",
-    "explanation": "คำตอบที่ถูกต้องคือ C: By default, user data runs only once, when an instance is launched., E: The cloud architect must run the /var/lib/cloud/instance/scripts/part-001 command for the user data script to run again.",
+    "explanation": "EC2 User Data โดย default จะรันเพียงครั้งเดียวตอน launch instance เท่านั้น (cloud-init จะ mark ว่ารันแล้ว) ถ้าต้องการรัน user data script อีกครั้ง ต้องรัน script ที่ /var/lib/cloud/instance/scripts/part-001 ด้วยตนเอง เพราะ cloud-init จะไม่รันซ้ำอัตโนมัติเมื่อ restart instance",
     "correctAnswers": [
       "C",
       "E"
@@ -216,7 +216,7 @@
       }
     ],
     "correctAnswer": "A",
-    "explanation": "คำตอบที่ถูกต้องคือ A: Provisioned IOPS solid state drive (SSD)"
+    "explanation": "Provisioned IOPS SSD (io1/io2) ออกแบบมาสำหรับ I/O-intensive workloads ที่ต้องการ high IOPS อย่างสม่ำเสมอ เช่น transactional databases ที่มีการ read/write บ่อยและต้องการ low latency สามารถกำหนดจำนวน IOPS ที่ต้องการได้ ส่วน General Purpose SSD เหมาะกับ workload ทั่วไป และ HDD ทั้งสองแบบเหมาะกับ throughput-intensive workloads มากกว่า IOPS-intensive"
   },
   {
     "id": 8,
@@ -246,7 +246,7 @@
       }
     ],
     "correctAnswer": "A,B",
-    "explanation": "คำตอบที่ถูกต้องคือ A: High availability, B: Automatic scaling",
+    "explanation": "Amazon EFS มีข้อได้เปรียบเหนือการตั้ง NFS server เองบน EC2 ใน 2 ด้านหลัก: (1) High availability เพราะ EFS เก็บข้อมูลซ้ำข้าม Availability Zones โดยอัตโนมัติ ต่างจาก NFS บน EC2 ที่ถ้า instance ตกก็จะเสีย (2) Automatic scaling เพราะ EFS ขยายและลดขนาดอัตโนมัติตามข้อมูลที่เก็บ ไม่ต้องกำหนดขนาดล่วงหน้าเหมือน EBS volume",
     "correctAnswers": [
       "A",
       "B"
@@ -276,7 +276,7 @@
       }
     ],
     "correctAnswer": "D",
-    "explanation": "คำตอบที่ถูกต้องคือ D: Fully managed Windows file servers"
+    "explanation": "Amazon FSx for Windows File Server เป็น fully managed service ที่ให้บริการ Windows file server บน cloud โดย AWS จัดการ infrastructure, patching และ maintenance ให้ทั้งหมด รองรับ SMB protocol, Windows NTFS และ integrate กับ Active Directory ได้ แต่ตัว FSx ไม่ใช่ AD server เอง ไม่ใช่ management agent และไม่ได้ออกแบบมาเป็น backup solution สำหรับ on-premises โดยเฉพาะ"
   },
   {
     "id": 10,
@@ -306,7 +306,7 @@
       }
     ],
     "correctAnswer": "C,D",
-    "explanation": "คำตอบที่ถูกต้องคือ C: Spot Instances offer spare compute capacity at discounted prices and can be interrupted., D: With On-Demand Instances, customers can pay for compute capacity by usage time with no long-term commitments.",
+    "explanation": "Spot Instances ใช้ spare capacity ของ AWS ที่เหลือจึงราคาถูกกว่า On-Demand ได้ถึง 90% แต่ AWS สามารถเรียกคืน (interrupt) ได้เมื่อต้องการ capacity กลับ ส่วน On-Demand Instances จ่ายตามเวลาใช้งานจริง (per second/hour) โดยไม่ต้องทำสัญญาระยะยาว Reserved Instances ไม่ใช่ physical server แต่เป็น billing discount, Dedicated Hosts คือ physical server เฉพาะลูกค้า และ Savings Plans เป็น pricing model ไม่ใช่ budgeting tool",
     "correctAnswers": [
       "C",
       "D"

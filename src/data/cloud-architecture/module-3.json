@@ -23,7 +23,7 @@
       }
     ],
     "correctAnswer": "D",
-    "explanation": "คำตอบที่ถูกต้องคือ D: Apply security aall layers of an architecture."
+    "explanation": "Security pillar ของ Well-Architected Framework เน้นหลัก defense in depth คือการใส่ security ในทุก layer ของ architecture (เช่น network, subnet, load balancer, instance, OS, application) เพื่อให้มีการป้องกันหลายชั้น ไม่ใช่พึ่งพาจุดเดียว ส่วนตัวเลือกอื่นขัดกับ best practice เช่น ควร centralize privilege management และใช้ automation แทนการ monitor ด้วยมือ"
   },
   {
     "id": 2,
@@ -53,7 +53,7 @@
       }
     ],
     "correctAnswer": "B,E",
-    "explanation": "คำตอบที่ถูกต้องคือ B: Customers are responsible for managing their user data., E: AWS is responsible for the physical security of data centers.",
+    "explanation": "ตาม AWS Shared Responsibility Model ลูกค้ารับผิดชอบ security \"in\" the cloud ซึ่งรวมถึงการจัดการ user data, การตั้งค่า security groups และ firewall ส่วน AWS รับผิดชอบ security \"of\" the cloud ซึ่งรวมถึง physical security ของ data center, hardware และ infrastructure ดังนั้น host-based firewall, security groups เป็นหน้าที่ของลูกค้า ไม่ใช่ AWS",
     "correctAnswers": [
       "B",
       "E"
@@ -87,7 +87,7 @@
       }
     ],
     "correctAnswer": "B,D",
-    "explanation": "คำตอบที่ถูกต้องคือ B: Grant access only as needed., D: Craft security policies that limit access to specific tasks.",
+    "explanation": "หลัก Least Privilege คือการให้สิทธิ์เฉพาะที่จำเป็นเท่านั้น ซึ่งตรงกับการ grant access only as needed (ไม่ให้สิทธิ์เกินความจำเป็น) และการสร้าง security policies ที่จำกัดสิทธิ์เฉพาะ task ที่ต้องทำ ส่วน encryption และ monitoring เป็น security best practice อื่นๆ แต่ไม่ใช่ลักษณะเฉพาะของ least privilege",
     "correctAnswers": [
       "B",
       "D"
@@ -117,7 +117,7 @@
       }
     ],
     "correctAnswer": "D",
-    "explanation": "คำตอบที่ถูกต้องคือ D: With IAM, you can grant principals granular access to resources."
+    "explanation": "IAM มีหน้าที่หลักในการจัดการ access control โดยสามารถกำหนดสิทธิ์แบบ granular ให้กับ principals (users, roles, services) ว่าสามารถทำอะไรกับ resource ใดได้บ้าง ส่วน audit trail เป็นหน้าที่ของ AWS CloudTrail, anomaly detection เป็นของ GuardDuty และ encryption management เป็นของ AWS KMS"
   },
   {
     "id": 5,
@@ -147,7 +147,7 @@
       }
     ],
     "correctAnswer": "C,E",
-    "explanation": "คำตอบที่ถูกต้องคือ C: Individuals, applications, and services can assume roles., E: They provide temporary security credentials.",
+    "explanation": "IAM Roles ต่างจาก IAM Users ตรงที่ไม่ผูกกับบุคคลใดบุคคลหนึ่ง แต่สามารถถูก assume ได้โดยทั้ง users, applications และ AWS services (เช่น EC2 instance assume role เพื่อเข้าถึง S3) และ Role จะให้ temporary security credentials ที่หมดอายุอัตโนมัติ ซึ่งปลอดภัยกว่า permanent credentials ของ IAM User",
     "correctAnswers": [
       "C",
       "E"
@@ -177,7 +177,7 @@
       }
     ],
     "correctAnswer": "B",
-    "explanation": "คำตอบที่ถูกต้องคือ B: Create an admin user and perform most admin tasks with this user instead of the root user."
+    "explanation": "AWS best practice คือหลีกเลี่ยงการใช้ root user ในงานประจำวัน เพราะ root user มีสิทธิ์เต็มที่ไม่สามารถจำกัดได้ ควรสร้าง IAM admin user แยกสำหรับงาน admin ทั่วไป และเปิด MFA บน root account เพื่อความปลอดภัย ส่วน root user ไม่สามารถลบ permission ได้เพราะมีสิทธิ์สูงสุดโดยธรรมชาติ"
   },
   {
     "id": 7,
@@ -203,7 +203,7 @@
       }
     ],
     "correctAnswer": "C",
-    "explanation": "คำตอบที่ถูกต้องคือ C: It checks for explicit deny statements before it checks for explicit allow statements."
+    "explanation": "IAM policy evaluation มีลำดับการประเมินโดยจะตรวจสอบ explicit deny ก่อน ถ้าพบ deny จะปฏิเสธทันทีโดยไม่สนใจ allow ใดๆ (deny always wins) จากนั้นจึงตรวจสอบ explicit allow และถ้าไม่มีทั้ง deny และ allow ก็จะ default เป็น implicit deny (ไม่ใช่ allow)"
   },
   {
     "id": 8,
@@ -229,7 +229,7 @@
       }
     ],
     "correctAnswer": "B",
-    "explanation": "คำตอบที่ถูกต้องคือ B: Identity-based policies are attached to a user, group, or role."
+    "explanation": "IAM policy มี 2 ประเภทหลัก: Identity-based policies แนบกับ IAM identities (user, group, role) เพื่อกำหนดว่า identity นั้นทำอะไรได้บ้าง ส่วน Resource-based policies แนบกับ resource (เช่น S3 bucket policy) เพื่อกำหนดว่าใครเข้าถึง resource นั้นได้ โดย identity-based policies สามารถแนบกับหลาย entity ได้ (managed policy)"
   },
   {
     "id": 9,
@@ -255,7 +255,7 @@
       }
     ],
     "correctAnswer": "C",
-    "explanation": "คำตอบที่ถูกต้องคือ C: Effect"
+    "explanation": "ใน IAM policy statement, Effect element คือตัวกำหนดว่าจะ \"Allow\" หรือ \"Deny\" request ซึ่งมีได้เพียง 2 ค่าเท่านั้น ส่วน Action กำหนดว่าทำอะไรได้ (เช่น s3:GetObject), Principal กำหนดว่าใครได้รับสิทธิ์ และ Condition กำหนดเงื่อนไขเพิ่มเติม"
   },
   {
     "id": 10,
@@ -281,6 +281,6 @@
       }
     ],
     "correctAnswer": "D",
-    "explanation": "คำตอบที่ถูกต้องคือ D: ) The statement element contains other elements that together define what is allowed or denied."
+    "explanation": "Statement element เป็นส่วนหลักของ IAM policy ที่รวบรวม elements อื่นๆ ไว้ด้วยกัน ได้แก่ Effect (allow/deny), Action (การกระทำ), Resource (ทรัพยากร), Principal (ผู้กระทำ) และ Condition (เงื่อนไข) ซึ่งทำงานร่วมกันเพื่อกำหนดว่าอะไรที่อนุญาตหรือปฏิเสธ โดย policy หนึ่งสามารถมีหลาย statement ได้และเป็นส่วนที่จำเป็นต้องมี"
   }
 ]

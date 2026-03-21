@@ -23,7 +23,7 @@
       }
     ],
     "correctAnswer": "B",
-    "explanation": "คำตอบที่ถูกต้องคือ B: It can launch Amazon EC2 instances in multiple Availability Zones."
+    "explanation": "EC2 Auto Scaling สามารถกระจาย instance ข้าม Availability Zones หลายโซนได้ ซึ่งเป็นคุณสมบัติสำคัญที่ช่วยเพิ่ม high availability ให้กับแอปพลิเคชัน โดย Auto Scaling จะ launch และ terminate instance อัตโนมัติ ไม่จำเป็นต้องใช้ Reserved Instances เท่านั้น"
   },
   {
     "id": 2,
@@ -49,7 +49,7 @@
       }
     ],
     "correctAnswer": "A",
-    "explanation": "คำตอบที่ถูกต้องคือ A: scheduled"
+    "explanation": "Scheduled scaling เหมาะสมที่สุดเมื่อรู้รูปแบบ traffic ที่แน่นอนล่วงหน้า เช่น demand เพิ่มขึ้นทุกวันหยุดสุดสัปดาห์ สามารถตั้งเวลา scale out/in ได้ตามตารางเวลาที่กำหนดไว้ ทำให้ไม่ต้องรอให้ metric trigger ก่อนจึงจะ scale"
   },
   {
     "id": 3,
@@ -75,7 +75,7 @@
       }
     ],
     "correctAnswer": "C",
-    "explanation": "คำตอบที่ถูกต้องคือ C: Target tracking scaling"
+    "explanation": "Target tracking scaling เหมาะสมที่สุดเมื่อต้องการรักษา metric ให้อยู่ที่ค่าเป้าหมายที่กำหนด เช่น CPU utilization 50% โดย Auto Scaling จะปรับจำนวน instance อัตโนมัติเพื่อรักษาค่า metric ให้ใกล้เคียงกับ target ที่ตั้งไว้ คล้ายกับระบบ thermostat"
   },
   {
     "id": 4,
@@ -101,7 +101,7 @@
       }
     ],
     "correctAnswer": "A",
-    "explanation": "คำตอบที่ถูกต้องคือ A: By changing the instance class or size"
+    "explanation": "Vertical scaling (scale up) หมายถึงการเพิ่มทรัพยากรให้กับ instance เดิม เช่น เปลี่ยน instance class ให้มี CPU, RAM มากขึ้น ส่วนการเพิ่ม read replicas หรือ sharding เป็น horizontal scaling (scale out) ซึ่งเป็นคนละแนวทางกัน"
   },
   {
     "id": 5,
@@ -127,7 +127,7 @@
       }
     ],
     "correctAnswer": "A",
-    "explanation": "คำตอบที่ถูกต้องคือ A: By adding Aurora Replica instances by using Aurora Auto Scaling"
+    "explanation": "Horizontal scaling ของ Aurora คือการเพิ่ม Aurora Replica instances ผ่าน Aurora Auto Scaling เพื่อกระจาย read workload ออกไปหลาย instance ซึ่งรองรับได้สูงสุด 15 replicas ส่วนการเปลี่ยน instance type เป็น vertical scaling"
   },
   {
     "id": 6,
@@ -153,7 +153,7 @@
       }
     ],
     "correctAnswer": "B",
-    "explanation": "คำตอบที่ถูกต้องคือ B: It adjusts the provisioned throughput capacity in response to traffic patterns."
+    "explanation": "DynamoDB Auto Scaling ทำงานโดยการปรับ provisioned throughput capacity (Read/Write Capacity Units) ตาม traffic patterns โดยอัตโนมัติ DynamoDB เป็น serverless database ที่ไม่มี concept ของ instance หรือ read replicas แบบ RDS แต่ใช้ throughput capacity เป็นหน่วยในการ scale"
   },
   {
     "id": 7,
@@ -179,7 +179,7 @@
       }
     ],
     "correctAnswer": "C",
-    "explanation": "คำตอบที่ถูกต้องคือ C: Network Load Balancer"
+    "explanation": "Network Load Balancer (NLB) ทำงานที่ Layer 4 (TCP/UDP) จึงรองรับ custom protocol บน TCP port ใดก็ได้ ในขณะที่ ALB ทำงานที่ Layer 7 (HTTP/HTTPS) เท่านั้น NLB ยังมี performance สูงและ latency ต่ำ เหมาะสำหรับ non-HTTP traffic"
   },
   {
     "id": 8,
@@ -205,7 +205,7 @@
       }
     ],
     "correctAnswer": "D",
-    "explanation": "คำตอบที่ถูกต้องคือ D: in Auto Scaling group launches Amazon EC2 instances, which are served by an Application Load Balancer. DNS name resolution points to the load balancer."
+    "explanation": "เว็บไซต์ที่ใช้ server-side scripts ต้องใช้ EC2 instances (S3 รองรับแค่ static content) การใช้ Auto Scaling group กับ ALB ให้ high availability ด้วยต้นทุนและความซับซ้อนต่ำที่สุด โดย ALB เหมาะกับ HTTP/HTTPS traffic และ Auto Scaling ช่วย replace unhealthy instances อัตโนมัติ"
   },
   {
     "id": 9,
@@ -231,7 +231,7 @@
       }
     ],
     "correctAnswer": "D",
-    "explanation": "คำตอบที่ถูกต้องคือ D: Use geolocation routing with failover records in Amazon Route 53."
+    "explanation": "Geolocation routing ของ Route 53 จะส่ง traffic ตามตำแหน่งภูมิศาสตร์ของผู้ใช้ (location A ไป Region A, location B ไป Region B) และเมื่อรวมกับ failover records จะสามารถ redirect traffic ไปยัง Region อื่นได้อัตโนมัติเมื่อ health check ตรวจพบว่า Region เดิม unhealthy"
   },
   {
     "id": 10,
@@ -261,6 +261,6 @@
       }
     ],
     "correctAnswer": "B",
-    "explanation": "คำตอบที่ถูกต้องคือ B: Create an Amazon CloudWatch alarm to send an email messade when the accoun billing exceeds $0"
+    "explanation": "CloudWatch Billing Alarm สามารถตั้งค่าให้ส่ง email แจ้งเตือนเมื่อค่าใช้จ่ายเกิน $0 ได้ ซึ่งเป็นวิธีที่ใช้ effort น้อยที่สุดและเป็น automated approach ไม่ต้อง login มาเช็คเอง ส่วน SCP ต้องใช้ AWS Organizations ซึ่งซับซ้อนกว่า และ CloudWatch metric ไม่สามารถ limit billing ได้โดยตรง"
   }
 ]

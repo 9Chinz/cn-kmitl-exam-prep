@@ -27,11 +27,8 @@
       }
     ],
     "correctAnswer": "A,E",
-    "explanation": "คำตอบที่ถูกต้องคือ A: CLack of version control with manual processes, E: Alignment with the reliability design principle",
-    "correctAnswers": [
-      "A",
-      "E"
-    ]
+    "correctAnswers": ["A", "E"],
+    "explanation": "Manual processes ขาด version control ทำให้ไม่สามารถติดตามการเปลี่ยนแปลงหรือ rollback ได้ (A) และ automation สอดคล้องกับ reliability design principle ของ AWS Well-Architected Framework เพราะลด human error และทำให้ infrastructure reproducible ได้อย่างสม่ำเสมอ (E)"
   },
   {
     "id": 2,
@@ -61,11 +58,8 @@
       }
     ],
     "correctAnswer": "A,E",
-    "explanation": "คำตอบที่ถูกต้องคือ A: Propagate updates from a single environment to all environments., E: Deploy environments with configuration consistency.",
-    "correctAnswers": [
-      "A",
-      "E"
-    ]
+    "correctAnswers": ["A", "E"],
+    "explanation": "IaC ช่วยให้สามารถ propagate updates จาก template เดียวไปยังทุก environment ได้ (A) และรับประกัน configuration consistency ในทุกการ deploy เพราะใช้ template เดียวกัน ลดความผิดพลาดจาก manual configuration ที่อาจทำให้แต่ละ environment ต่างกัน (E)"
   },
   {
     "id": 3,
@@ -91,7 +85,7 @@
       }
     ],
     "correctAnswer": "D",
-    "explanation": "คำตอบที่ถูกต้องคือ D: An AWS Quick Start"
+    "explanation": "AWS Quick Start เป็น reference deployments ที่สร้างโดย AWS solutions architects และ partners ซึ่งใช้ CloudFormation templates ที่ผ่านการ review แล้วว่าเป็นไปตาม AWS best practices ทำให้ deploy ได้รวดเร็วและปลอดภัย ต่างจากการดาวน์โหลด template จากอินเทอร์เน็ตที่ไม่มีการรับประกันคุณภาพ"
   },
   {
     "id": 4,
@@ -117,7 +111,7 @@
       }
     ],
     "correctAnswer": "D",
-    "explanation": "คำตอบที่ถูกต้องคือ D: An artificial intelligence (Al)-powered coding companion"
+    "explanation": "Amazon CodeWhisperer เป็น AI-powered coding companion ที่ใช้ machine learning ในการแนะนำ code suggestions แบบ real-time ระหว่างที่ developer เขียนโค้ดใน IDE โดยสามารถ generate code, ช่วย debug, และสแกนหาช่องโหว่ด้านความปลอดภัยได้"
   },
   {
     "id": 5,
@@ -147,11 +141,8 @@
       }
     ],
     "correctAnswer": "A,C",
-    "explanation": "คำตอบที่ถูกต้องคือ A: Accelerate coding tasks., C: MEnhance application security.",
-    "correctAnswers": [
-      "A",
-      "C"
-    ]
+    "correctAnswers": ["A", "C"],
+    "explanation": "CodeWhisperer ช่วย accelerate coding tasks โดยแนะนำ code suggestions แบบ real-time ทำให้เขียนโค้ดได้เร็วขึ้น (A) และยัง enhance application security ด้วยการสแกนโค้ดเพื่อตรวจหาช่องโหว่ด้านความปลอดภัย (security vulnerabilities) อัตโนมัติ (C)"
   },
   {
     "id": 6,
@@ -177,7 +168,7 @@
       }
     ],
     "correctAnswer": "A",
-    "explanation": "คำตอบที่ถูกต้องคือ A: An AWS service that you i can use to create, model, and manage AWS resources"
+    "explanation": "AWS CloudFormation เป็น Infrastructure as Code (IaC) service ที่ให้คุณสร้าง model และจัดการ AWS resources ผ่าน templates (JSON/YAML) โดย template เป็นแค่ส่วนหนึ่งของ CloudFormation ไม่ใช่ตัว service เอง"
   },
   {
     "id": 7,
@@ -203,7 +194,7 @@
       }
     ],
     "correctAnswer": "C",
-    "explanation": "คำตอบที่ถูกต้องคือ C: A graphical design interface for creating AWS CloudFormation templates"
+    "explanation": "CloudFormation Designer เป็น graphical tool ที่ให้ผู้ใช้สร้างและแก้ไข CloudFormation templates ผ่าน drag-and-drop interface โดยสามารถวาด architecture diagram แล้วระบบจะ generate template ให้อัตโนมัติ ช่วยให้เห็นภาพรวมของ infrastructure ได้ง่ายขึ้น"
   },
   {
     "id": 8,
@@ -229,7 +220,7 @@
       }
     ],
     "correctAnswer": "A",
-    "explanation": "คำตอบที่ถูกต้องคือ A: Use conditions."
+    "explanation": "Conditions ใน CloudFormation template ช่วยให้สามารถสร้าง resources ต่างกันตาม environment ได้ เช่น ใช้ condition เพื่อ deploy instance type ต่างกันระหว่าง production และ development โดย drift detection ใช้ตรวจสอบการเปลี่ยนแปลง และ change sets ใช้ preview การเปลี่ยนแปลงก่อน deploy"
   },
   {
     "id": 9,
@@ -255,7 +246,7 @@
       }
     ],
     "correctAnswer": "D",
-    "explanation": "คำตอบที่ถูกต้องคือ D: Create a change set."
+    "explanation": "Change set ช่วยให้เห็น preview ของการเปลี่ยนแปลงที่จะเกิดขึ้นกับ stack ก่อนที่จะ apply จริง ทำให้สามารถตรวจสอบว่า resources ใดจะถูกเพิ่ม แก้ไข หรือลบ ลดความเสี่ยงจากการเปลี่ยนแปลงที่ไม่คาดคิด"
   },
   {
     "id": 10,
@@ -281,6 +272,6 @@
       }
     ],
     "correctAnswer": "C",
-    "explanation": "คำตอบที่ถูกต้องคือ C: Run drift detection on the stack."
+    "explanation": "Drift detection ของ CloudFormation ใช้ตรวจสอบว่า resources ที่ถูกสร้างผ่าน stack มีการเปลี่ยนแปลงจาก template ดั้งเดิมหรือไม่ (configuration drift) ซึ่งเกิดจากการแก้ไข resources ด้วยมือผ่าน console หรือ CLI โดยตรง"
   }
 ]

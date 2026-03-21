@@ -23,7 +23,7 @@
       }
     ],
     "correctAnswer": "D",
-    "explanation": "คำตอบที่ถูกต้องคือ D: Connect the VPCs to AWS Transit Gateway."
+    "explanation": "AWS Transit Gateway ทำหน้าที่เป็น central hub ที่เชื่อมต่อ VPCs ทั้งหมดเข้าด้วยกันในรูปแบบ hub-and-spoke โดยแต่ละ VPC เชื่อมต่อไปที่ Transit Gateway เพียงจุดเดียว ส่วน VPC peering ต้องสร้าง connection แบบ one-to-one ซึ่งสำหรับ 100 VPCs จะต้องสร้างถึง 4,950 peering connections ซึ่งไม่สะดวกและจัดการยาก"
   },
   {
     "id": 2,
@@ -49,7 +49,7 @@
       }
     ],
     "correctAnswer": "B",
-    "explanation": "คำตอบที่ถูกต้องคือ B: Transit gateway peering attachment"
+    "explanation": "Transit gateway peering attachment ช่วยเชื่อมต่อ Transit Gateways ระหว่าง Regions หรือระหว่าง accounts ได้โดยตรง traffic จะวิ่งผ่าน AWS global network ที่เข้ารหัสอัตโนมัติ ซึ่งเป็นวิธีที่ถูกออกแบบมาโดยเฉพาะสำหรับ inter-region transit gateway connectivity ส่วน Direct Connect และ VPN เป็นการเชื่อมต่อกับ on-premises"
   },
   {
     "id": 3,
@@ -75,7 +75,7 @@
       }
     ],
     "correctAnswer": "B",
-    "explanation": "คำตอบที่ถูกต้องคือ B: VPC peering"
+    "explanation": "VPC peering เป็นวิธีที่ง่ายที่สุดในการเชื่อมต่อ 2 VPCs ที่มี CIDR ไม่ซ้อนกัน (10.1.0.0/16 กับ 10.2.0.0/16) ภายใน account เดียวกัน เพียงสร้าง peering connection และเพิ่ม route ใน route tables ก็สามารถ route traffic ระหว่างกันได้ทันที โดย traffic จะวิ่งผ่าน AWS backbone network ไม่ต้อง setup อุปกรณ์เพิ่มเติมอย่าง VPN หรือ Direct Connect"
   },
   {
     "id": 4,
@@ -105,7 +105,7 @@
       }
     ],
     "correctAnswer": "A,B",
-    "explanation": "คำตอบที่ถูกต้องคือ A: Create a VPC gateway endpoint for Amazon S3., B: Use VPC interface endpoints.",
+    "explanation": "(A) Gateway VPC endpoint สร้าง route ใน route table เพื่อส่ง traffic ไป S3 ผ่าน AWS private network โดยไม่ผ่าน internet และไม่มีค่าใช้จ่ายเพิ่ม (B) Interface VPC endpoint (powered by PrivateLink) สร้าง ENI ใน subnet ที่มี private IP ทำให้เข้าถึง S3 ผ่าน private network ได้เช่นกัน ส่วน S3 ไม่มี private IP ให้ใช้ตรงๆ, ไม่สามารถ VPC peer กับ S3 ได้ และการใช้ private IP ของระบบอย่างเดียวไม่ได้ป้องกัน traffic ข้าม internet",
     "correctAnswers": [
       "A",
       "B"
@@ -135,7 +135,7 @@
       }
     ],
     "correctAnswer": "B",
-    "explanation": "คำตอบที่ถูกต้องคือ B: Add a peering connection between A and C, and route traffic etween A and C through the peering connection."
+    "explanation": "VPC peering ไม่รองรับ transitive routing ดังนั้นแม้ A peer กับ B และ C peer กับ B แต่ traffic จาก A ไม่สามารถผ่าน B ไปหา C ได้ วิธีที่ง่ายและประหยัดที่สุดคือสร้าง VPC peering connection ระหว่าง A กับ C โดยตรง ซึ่ง VPC peering ไม่มีค่า bandwidth charge เพิ่มเติม (ใน AZ เดียวกัน) ส่วน transit VPC มีความซับซ้อนและค่าใช้จ่ายสูงกว่า"
   },
   {
     "id": 6,
@@ -161,7 +161,7 @@
       }
     ],
     "correctAnswer": "A",
-    "explanation": "คำตอบที่ถูกต้องคือ A: AWS Site-to-Site VPN"
+    "explanation": "AWS Site-to-Site VPN สามารถตั้งค่าได้ภายในไม่กี่นาทีผ่าน internet connection ที่มีอยู่แล้ว เหมาะกับสถานการณ์เร่งด่วนและชั่วคราว (2 สัปดาห์) เพราะให้ encrypted tunnel ที่ปลอดภัย ส่วน AWS Direct Connect ต้องใช้เวลาหลายสัปดาห์ถึงเดือนในการติดตั้ง physical connection จึงไม่ทันต่อความต้องการ"
   },
   {
     "id": 7,
@@ -187,7 +187,7 @@
       }
     ],
     "correctAnswer": "A",
-    "explanation": "คำตอบที่ถูกต้องคือ A: AWS Global Accelerator"
+    "explanation": "AWS Global Accelerator ใช้ AWS global network เพื่อ route traffic จาก edge location ที่ใกล้ผู้ใช้ที่สุดเข้าสู่ AWS ทำให้ลดผลกระทบจาก internet disruptions เพราะ traffic จะเข้าสู่ AWS network ผ่าน edge location ที่ใกล้ที่สุดแล้ววิ่งผ่าน AWS backbone แทนที่จะผ่าน public internet ทั้งเส้นทาง ช่วยให้ได้ performance ที่สม่ำเสมอกว่า"
   },
   {
     "id": 8,
@@ -213,7 +213,7 @@
       }
     ],
     "correctAnswer": "B",
-    "explanation": "คำตอบที่ถูกต้องคือ B: AWS Direct Connect"
+    "explanation": "AWS Direct Connect เป็น dedicated physical connection ระหว่าง on-premises กับ AWS ที่ให้ bandwidth คงที่และ latency ต่ำสม่ำเสมอ ไม่ขึ้นกับสภาพ internet เหมาะสำหรับ backup ข้อมูลจำนวนมากที่ต้องการ consistent performance ส่วน Site-to-Site VPN ใช้ internet เป็น transport layer จึงมี performance ผันผวนตามสภาพ internet"
   },
   {
     "id": 9,
@@ -239,7 +239,7 @@
       }
     ],
     "correctAnswer": "D",
-    "explanation": "คำตอบที่ถูกต้องคือ D: An on-demand AWS Site-to-Site VPN connection across the internet"
+    "explanation": "AWS Site-to-Site VPN แบบ on-demand เป็น backup ที่ประหยัดที่สุด เพราะจ่ายเฉพาะเมื่อใช้งานจริง ไม่มีค่า dedicated connection รายเดือนเหมือน Direct Connect ใช้ internet ที่มีอยู่แล้วเป็น transport layer และ setup ได้เร็ว ส่วนการเพิ่ม Direct Connect อีกเส้นมีค่าใช้จ่ายสูงกว่ามากทั้ง port fee และค่า cross-connect"
   },
   {
     "id": 10,
@@ -265,6 +265,6 @@
       }
     ],
     "correctAnswer": "A",
-    "explanation": "คำตอบที่ถูกต้องคือ A: Implement Direct Connect as the primary connection and use the VPN as a secondary failover connection from each data center."
+    "explanation": "การใช้ Direct Connect เป็น primary connection ให้ predictable bandwidth ที่คงที่เพราะเป็น dedicated physical connection ไม่แชร์กับ internet traffic และการมี VPN เป็น secondary failover จากทุก data center ให้ resiliency เพราะเมื่อ Direct Connect ล่ม VPN จะรับ traffic แทนอัตโนมัติ เป็น hybrid architecture ที่ AWS แนะนำสำหรับ production workloads"
   }
 ]

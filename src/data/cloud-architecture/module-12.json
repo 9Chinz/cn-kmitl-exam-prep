@@ -23,7 +23,7 @@
       }
     ],
     "correctAnswer": "D",
-    "explanation": "คำตอบที่ถูกต้องคือ D: A high-speed data storage layer"
+    "explanation": "Caching คือ high-speed data storage layer ที่เก็บข้อมูลชั่วคราว (transient data) เพื่อให้สามารถดึงข้อมูลได้เร็วกว่าการ query จาก primary data source โดยตรง ต่างจาก in-memory database ที่เป็น database เต็มรูปแบบ และต่างจาก CDN ที่เป็นเครือข่ายกระจาย content"
   },
   {
     "id": 2,
@@ -49,7 +49,7 @@
       }
     ],
     "correctAnswer": "D",
-    "explanation": "คำตอบที่ถูกต้องคือ D: Static data that is frequently accessed"
+    "explanation": "Static data ที่ถูกเข้าถึงบ่อยเหมาะสมที่สุดสำหรับการ cache เพราะข้อมูลไม่เปลี่ยนแปลงบ่อยและมี request ซ้ำสูง ทำให้ cache hit rate สูงและลด load บน origin server ได้มาก ส่วนข้อมูลที่ query ง่ายอยู่แล้วหรือใช้โดยผู้ใช้กลุ่มเล็กไม่คุ้มกับการ cache"
   },
   {
     "id": 3,
@@ -75,7 +75,7 @@
       }
     ],
     "correctAnswer": "D",
-    "explanation": "คำตอบที่ถูกต้องคือ D: Reduced response latency"
+    "explanation": "ประโยชน์หลักของ caching คือการลด response latency เพราะข้อมูลถูกเก็บใน high-speed storage layer ที่อยู่ใกล้ผู้ใช้มากขึ้น ทำให้ไม่ต้องไป query จาก database หรือ origin server ทุกครั้ง ส่งผลให้ response time เร็วขึ้นอย่างมาก"
   },
   {
     "id": 4,
@@ -105,11 +105,8 @@
       }
     ],
     "correctAnswer": "A,B",
-    "explanation": "คำตอบที่ถูกต้องคือ A: Video files, such as a product demo, B: Web objects, such as hyperlinks",
-    "correctAnswers": [
-      "A",
-      "B"
-    ]
+    "correctAnswers": ["A", "B"],
+    "explanation": "Video files (A) และ web objects เช่น hyperlinks (B) เป็น static content ที่เหมือนกันสำหรับทุกผู้ใช้ จึงเหมาะกับการ cache ที่ edge location ส่วน user-generated data, shopping cart, และ dynamic content เป็นข้อมูลเฉพาะผู้ใช้แต่ละคนที่เปลี่ยนแปลงตลอด ไม่เหมาะกับ edge caching"
   },
   {
     "id": 5,
@@ -135,7 +132,7 @@
       }
     ],
     "correctAnswer": "D",
-    "explanation": "คำตอบที่ถูกต้องคือ D: Multi-tiered and regional caching of content"
+    "explanation": "CloudFront ใช้ระบบ caching แบบหลายชั้น (multi-tiered) โดยมีทั้ง edge locations และ Regional Edge Caches ทำให้ content ถูก cache ในหลายระดับ ลด latency สำหรับผู้ใช้ทั่วโลกและลดจำนวน request กลับไปยัง origin server"
   },
   {
     "id": 6,
@@ -161,7 +158,7 @@
       }
     ],
     "correctAnswer": "B",
-    "explanation": "คำตอบที่ถูกต้องคือ B: It caches frequently accessed content at edge locations. It delivers the cached content to clients through the edge location with the lowest latency to those clients."
+    "explanation": "CloudFront cache เฉพาะ content ที่ถูกเข้าถึงบ่อย (frequently accessed) ที่ edge locations ไม่ใช่ cache ทุกอย่างจาก origin และส่ง content ไปยังผู้ใช้ผ่าน edge location ที่มี latency ต่ำที่สุด ซึ่งเป็นหลักการ CDN ที่ให้ผู้ใช้ได้รับข้อมูลจากจุดที่ใกล้ที่สุด"
   },
   {
     "id": 7,
@@ -187,7 +184,7 @@
       }
     ],
     "correctAnswer": "B",
-    "explanation": "คำตอบที่ถูกต้องคือ B: Use Amazon S3 to store the content. Then use Amazon CloudFront to deliver the content."
+    "explanation": "การใช้ S3 เก็บ video content ร่วมกับ CloudFront เป็นวิธีที่มีประสิทธิภาพสูงสุด เพราะ S3 เป็น object storage ที่ทนทานและราคาถูกสำหรับเก็บไฟล์ขนาดใหญ่ และ CloudFront จะ cache video ที่ edge locations ทั่วโลก ทำให้ผู้ใช้สามารถ stream ได้ด้วย latency ต่ำ"
   },
   {
     "id": 8,
@@ -213,7 +210,7 @@
       }
     ],
     "correctAnswer": "B",
-    "explanation": "คำตอบที่ถูกต้องคือ B: Routes traffic through edge locations"
+    "explanation": "CloudFront ช่วยป้องกัน DDoS attacks โดยการ route traffic ผ่าน edge locations ที่กระจายอยู่ทั่วโลก ทำให้ traffic ถูกดูดซับและกระจายออก ไม่กระทบ origin server โดยตรง นอกจากนี้ยังทำงานร่วมกับ AWS Shield เพื่อเพิ่มการป้องกัน DDoS อีกชั้น"
   },
   {
     "id": 9,
@@ -243,11 +240,8 @@
       }
     ],
     "correctAnswer": "D,E",
-    "explanation": "คำตอบที่ถูกต้องคือ D: Write data to ElastiCache whenever the application writes to the database., E: Read data from ElastiCache first, and write to ElastiCache when a cache miss occurs.",
-    "correctAnswers": [
-      "D",
-      "E"
-    ]
+    "correctAnswers": ["D", "E"],
+    "explanation": "Write-through strategy (D) เขียนข้อมูลลง cache ทุกครั้งที่เขียนลง database ทำให้ cache มีข้อมูลล่าสุดเสมอ และ Lazy loading strategy (E) อ่านจาก cache ก่อน ถ้า cache miss จึงอ่านจาก database แล้วเขียนกลับลง cache ทั้งสองวิธีเป็น caching patterns มาตรฐานที่ช่วยลด read load บน database"
   },
   {
     "id": 10,
@@ -273,6 +267,6 @@
       }
     ],
     "correctAnswer": "B",
-    "explanation": "คำตอบที่ถูกต้องคือ B: Write-through"
+    "explanation": "Write-through strategy เขียนข้อมูลลง cache ทุกครั้งที่มีการเขียนลง database ทำให้ cache มีข้อมูลล่าสุด (up-to-date) อยู่เสมอ เหมาะสำหรับข้อมูลที่ต้อง update แบบ real-time ต่างจาก lazy loading ที่จะ update cache เฉพาะเมื่อมี cache miss เท่านั้น"
   }
 ]

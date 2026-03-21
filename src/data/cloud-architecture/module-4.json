@@ -23,7 +23,7 @@
       }
     ],
     "correctAnswer": "A",
-    "explanation": "คำตอบที่ถูกต้องคือ A: Amazon S3"
+    "explanation": "Amazon S3 เป็น object storage ที่ scale ได้แบบไม่จำกัด รองรับข้อมูลทุกประเภท (unstructured, semistructured, structured) และจ่ายตามที่ใช้จริง ไม่ต้องกำหนดขนาดล่วงหน้า ต่างจาก EBS ที่ต้องกำหนดขนาด volume, RDS ที่เป็น relational database ไม่ใช่ object storage และ Storage Gateway ที่เป็น hybrid storage service"
   },
   {
     "id": 2,
@@ -49,7 +49,7 @@
       }
     ],
     "correctAnswer": "A",
-    "explanation": "คำตอบที่ถูกต้องคือ A: An internet-accessible storage location for video files that an external website can access"
+    "explanation": "Amazon S3 เหมาะสำหรับการเก็บไฟล์ static content เช่น video, images ที่สามารถเข้าถึงผ่าน internet ได้โดยตรงผ่าน URL ส่วน data warehouse ควรใช้ Amazon Redshift, temporary files ที่ access บ่อยควรใช้ EBS หรือ instance store และ ledger data ที่ update บ่อยควรใช้ database service"
   },
   {
     "id": 3,
@@ -83,7 +83,7 @@
       }
     ],
     "correctAnswer": "B,E,F",
-    "explanation": "คำตอบที่ถูกต้องคือ B: Client-side scripts, E: Video and sound files, F: HTML files and image files",
+    "explanation": "S3 static web hosting รองรับเฉพาะ static content ที่ทำงานฝั่ง client ได้แก่: Client-side scripts (JavaScript ที่รันบน browser), Video/sound files (media files ที่ serve ตรงๆ) และ HTML/image files (static content พื้นฐาน) ส่วน server-side scripts, dynamic HTML และ database engine ต้องการ server ประมวลผล ซึ่ง S3 ไม่สามารถรัน code ฝั่ง server ได้",
     "correctAnswers": [
       "B",
       "E",
@@ -118,7 +118,7 @@
       }
     ],
     "correctAnswer": "B,D",
-    "explanation": "คำตอบที่ถูกต้องคือ B: Enabling server-side encryption on the S3 bucket before uploading sensitive data, D: Using client-side encryption to protect data in transit before it is sent to Amazon S3",
+    "explanation": "การปกป้องข้อมูลใน S3 ต้องครอบคลุมทั้ง at rest และ in transit: Server-side encryption ต้องเปิดก่อนอัปโหลดเพื่อให้ข้อมูลถูกเข้ารหัสตั้งแต่แรก (เปิดทีหลังจะไม่มีผลกับไฟล์ที่อัปโหลดไปแล้ว) ส่วน Client-side encryption ช่วยเข้ารหัสข้อมูลก่อนส่งออกจากเครื่อง client ทำให้ข้อมูลปลอดภัยระหว่างการส่ง (in transit)",
     "correctAnswers": [
       "B",
       "D"
@@ -152,7 +152,7 @@
       }
     ],
     "correctAnswer": "D,E",
-    "explanation": "คำตอบที่ถูกต้องคือ D: Recover deleted files., E: Maintain different versions of files.",
+    "explanation": "Amazon S3 Versioning ช่วยเก็บทุก version ของ object ไว้ ทำให้สามารถ maintain different versions ได้ และเมื่อเปิด versioning แล้ว ไฟล์ที่ถูกลบจะได้ delete marker แทนการลบจริง ทำให้สามารถ recover deleted files ได้ ส่วนฟีเจอร์อย่าง attach comments, file locking แบบ edit lock และ compare contents ไม่ใช่ความสามารถของ S3",
     "correctAnswers": [
       "D",
       "E"
@@ -182,7 +182,7 @@
       }
     ],
     "correctAnswer": "C",
-    "explanation": "คำตอบที่ถูกต้องคือ C: Store case data in S3 Standard. Use a lifecycle policy to move the data into S3 Standard-Infrequent Access (S3 Standard-IA) after 30 days."
+    "explanation": "ใน 30 วันแรกข้อมูลถูกเข้าถึงบ่อยจึงเหมาะกับ S3 Standard หลังจากนั้นเข้าถึงน้อยลงแต่ยังต้องการ immediate access เมื่อ reopen case จึงเหมาะกับ S3 Standard-IA ที่ราคาถูกกว่าแต่ยังเข้าถึงได้ทันที ส่วน Glacier Flexible Retrieval ใช้เวลาดึงข้อมูลนานจึงไม่ตอบโจทย์ immediate access และ S3 Standard ตลอดจะแพงเกินไป"
   },
   {
     "id": 7,
@@ -208,7 +208,7 @@
       }
     ],
     "correctAnswer": "C",
-    "explanation": "คำตอบที่ถูกต้องคือ C: Amazon 53 Transfer Acceleration"
+    "explanation": "Amazon S3 Transfer Acceleration ใช้ CloudFront edge locations ทั่วโลกเป็นจุดรับข้อมูล จากนั้นส่งต่อไปยัง S3 bucket ผ่าน AWS backbone network ที่เร็วกว่า internet ปกติ ทำให้การ upload ไฟล์จากระยะไกลเร็วขึ้นมาก ส่วน SDK และ REST API เป็นแค่เครื่องมือเรียก API และ Transfer Family ใช้สำหรับ SFTP/FTPS"
   },
   {
     "id": 8,
@@ -234,7 +234,7 @@
       }
     ],
     "correctAnswer": "C",
-    "explanation": "คำตอบที่ถูกต้องคือ C: Amazon 53 multipart uploads"
+    "explanation": "S3 Multipart Upload เหมาะกับสถานการณ์นี้เพราะแบ่งไฟล์ใหญ่ออกเป็นส่วนย่อยๆ แล้วอัปโหลดแยกกัน ถ้า part ใด fail ก็ retry เฉพาะ part นั้นโดยไม่ต้องเริ่มใหม่ทั้งหมด ซึ่งแก้ปัญหา internet ไม่เสถียรได้ดี และ AWS แนะนำให้ใช้ multipart upload สำหรับไฟล์ที่มีขนาดเกิน 100 MB"
   },
   {
     "id": 9,
@@ -260,7 +260,7 @@
       }
     ],
     "correctAnswer": "A",
-    "explanation": "คำตอบที่ถูกต้องคือ A: S3 One Zone-Infrequent Access (S3 One Zone-IA)"
+    "explanation": "S3 One Zone-IA เก็บข้อมูลใน Availability Zone เดียว ทำให้ราคาถูกกว่า S3 Standard-IA ประมาณ 20% แต่ข้อมูลจะสูญหายถ้า AZ นั้นล่ม จึงเหมาะกับข้อมูลที่สามารถสร้างขึ้นมาใหม่ได้ (re-creatable) หรือเป็น backup copy ที่มีต้นฉบับอยู่ที่อื่น เช่น on-premises"
   },
   {
     "id": 10,
@@ -286,6 +286,6 @@
       }
     ],
     "correctAnswer": "A",
-    "explanation": "คำตอบที่ถูกต้องคือ A: S3 Glacier Deep Archive"
+    "explanation": "S3 Glacier Deep Archive เป็น storage class ที่ราคาถูกที่สุดของ S3 ออกแบบมาสำหรับข้อมูลที่ต้องเก็บระยะยาว (long-term retention) และแทบไม่ต้องเข้าถึง เหมาะกับข้อมูลที่ต้องเก็บตาม regulatory compliance โดยมีเวลาในการดึงข้อมูล 12-48 ชั่วโมง ซึ่งยอมรับได้เมื่อเข้าถึงแค่ 1-2 ครั้งต่อปี"
   }
 ]

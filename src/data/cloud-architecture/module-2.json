@@ -23,7 +23,7 @@
       }
     ],
     "correctAnswer": "C",
-    "explanation": "คำตอบที่ถูกต้องคือ C: Applying cloud characteristics to a solution that uses cloud services and features to meet technical and business requirements"
+    "explanation": "Cloud architecture คือการนำคุณสมบัติของ cloud มาประยุกต์ใช้กับ solution โดยใช้บริการและฟีเจอร์ของ cloud เพื่อตอบสนองทั้งความต้องการทางเทคนิคและธุรกิจ ซึ่งครอบคลุมกว่าแค่การย้าย data center หรือออกแบบ web service เพียงอย่างเดียว"
   },
   {
     "id": 2,
@@ -53,7 +53,7 @@
       }
     ],
     "correctAnswer": "D,E",
-    "explanation": "คำตอบที่ถูกต้องคือ D: Reliability, E: Cost optimization",
+    "explanation": "AWS Well-Architected Framework มี 6 เสาหลัก ได้แก่ Operational Excellence, Security, Reliability, Performance Efficiency, Cost Optimization และ Sustainability โดย Reliability เน้นความสามารถของระบบในการทำงานได้อย่างถูกต้องและสม่ำเสมอ ส่วน Cost Optimization เน้นการใช้ทรัพยากรอย่างคุ้มค่าและลดค่าใช้จ่ายที่ไม่จำเป็น ตัวเลือกอื่นอย่าง Privacy, Governance และ Risk management ไม่ใช่เสาหลักของ Framework นี้",
     "correctAnswers": [
       "D",
       "E"
@@ -87,7 +87,7 @@
       }
     ],
     "correctAnswer": "B,E",
-    "explanation": "คำตอบที่ถูกต้องคือ B: Review and improve processes and procedures on a continuous cycle., E: Apply software engineering principles and methodology to infrastructure as code.",
+    "explanation": "Operational Excellence pillar เน้นการปรับปรุงกระบวนการอย่างต่อเนื่อง (continuous improvement) ซึ่งตรงกับการ review และ improve processes อยู่เสมอ นอกจากนี้ยังเน้นการใช้ Infrastructure as Code (IaC) ซึ่งนำหลักการ software engineering มาใช้กับการจัดการ infrastructure เพื่อให้สามารถทำซ้ำได้ ลดข้อผิดพลาดจากมนุษย์ และจัดการ version control ได้",
     "correctAnswers": [
       "B",
       "E"
@@ -117,7 +117,7 @@
       }
     ],
     "correctAnswer": "B",
-    "explanation": "คำตอบที่ถูกต้องคือ B: Dosian the vien tier serviunicate with the application tier through the Elastic"
+    "explanation": "AWS best practice แนะนำให้ใช้ Elastic Load Balancer (ELB) เป็นตัวกลางระหว่าง web tier และ application tier เพื่อกระจาย traffic อย่างสม่ำเสมอ ทำให้ระบบมี loose coupling, high availability และสามารถ scale แต่ละ tier ได้อิสระจากกัน"
   },
   {
     "id": 5,
@@ -143,7 +143,7 @@
       }
     ],
     "correctAnswer": "D",
-    "explanation": "คำตอบที่ถูกต้องคือ D: Amazon Cloud Watch detects a system failure It initiates automation to provision a"
+    "explanation": "AWS best practice คือการใช้ automation ทั้งในการตรวจจับและแก้ไขปัญหา โดย Amazon CloudWatch สามารถตรวจจับ failure ได้อัตโนมัติ และเมื่อพบปัญหาก็สามารถ trigger automation เพื่อ provision server ใหม่โดยไม่ต้องรอการแทรกแซงจากมนุษย์ ซึ่งช่วยลดเวลา downtime ได้อย่างมาก"
   },
   {
     "id": 6,
@@ -169,7 +169,7 @@
       }
     ],
     "correctAnswer": "A",
-    "explanation": "คำตอบที่ถูกต้องคือ A: provision the servers that are needed and stop services when they are not being"
+    "explanation": "หลักการ cost optimization ของ AWS คือการ provision เฉพาะ resource ที่จำเป็นและหยุดใช้งานเมื่อไม่ต้องการ (pay-for-what-you-use) ซึ่งเป็นข้อได้เปรียบหลักของ cloud ที่สามารถ scale up/down ตามความต้องการจริง แทนที่จะรัน server ตลอด 24/7 หรือ replicate data center ทั้งหมดที่จะสิ้นเปลืองค่าใช้จ่าย"
   },
   {
     "id": 7,
@@ -195,7 +195,7 @@
       }
     ],
     "correctAnswer": "A",
-    "explanation": "คำตอบที่ถูกต้องคือ A: Use a bucket in the AWS Region that is closest to the company headquarters. All users access the data through Amazon CloudFront."
+    "explanation": "การวาง S3 bucket ใน Region ใกล้สำนักงานใหญ่ช่วยให้ผู้ใช้ส่วนใหญ่เข้าถึงข้อมูลได้เร็ว ส่วน Amazon CloudFront (CDN) จะ cache ข้อมูลไว้ที่ edge locations ทั่วโลก ทำให้ผู้ใช้ต่างประเทศเข้าถึงข้อมูลได้เร็วเช่นกัน โดยไม่ต้อง replicate ข้อมูลหลายที่ซึ่งจะเสียค่าใช้จ่ายมากกว่า"
   },
   {
     "id": 8,
@@ -221,7 +221,7 @@
       }
     ],
     "correctAnswer": "A",
-    "explanation": "คำตอบที่ถูกต้องคือ A: Coeste a presigned URL to the object that expires in 24 hours, and give it to the"
+    "explanation": "S3 presigned URL คือวิธีที่ปลอดภัยที่สุดสำหรับการให้สิทธิ์เข้าถึงชั่วคราว เพราะสามารถกำหนดเวลาหมดอายุได้ (เช่น 24 ชั่วโมง) โดยไม่ต้องเปิด public access หรือสร้าง IAM user ใหม่ ซึ่งเป็นไปตามหลัก least privilege และลดความเสี่ยงด้าน security"
   },
   {
     "id": 9,
@@ -251,7 +251,7 @@
       }
     ],
     "correctAnswer": "B,D",
-    "explanation": "คำตอบที่ถูกต้องคือ B: Compliance with laws and regulations, D: Latency reduction for end users",
+    "explanation": "การเลือก AWS Region หลักๆ พิจารณาจาก 2 ปัจจัย: (1) Compliance - บางประเทศมีกฎหมายกำหนดว่าข้อมูลต้องอยู่ในประเทศนั้น (data residency) จึงต้องเลือก Region ที่ถูกต้องตามกฎหมาย (2) Latency - การเลือก Region ที่ใกล้กับผู้ใช้ช่วยลด latency ได้ ส่วน protection against natural disasters และ resiliency เป็นเรื่องของการเลือก Availability Zones มากกว่า",
     "correctAnswers": [
       "B",
       "D"
@@ -285,7 +285,7 @@
       }
     ],
     "correctAnswer": "C,E",
-    "explanation": "คำตอบที่ถูกต้องคือ C: Application resiliency during system failures, E: Protection against localized natural disasters",
+    "explanation": "การเลือก Availability Zones (AZ) เน้นเรื่อง high availability และ fault tolerance โดย (1) การกระจาย resource ไปหลาย AZ ช่วยให้แอปพลิเคชันยังทำงานได้แม้ AZ ใดตกไป (resiliency) (2) แต่ละ AZ แยกจากกันทางกายภาพ ทำให้ภัยธรรมชาติในจุดหนึ่งไม่กระทบทุก AZ ส่วนเรื่อง compliance และ latency เป็นปัจจัยในการเลือก Region มากกว่า",
     "correctAnswers": [
       "C",
       "E"
