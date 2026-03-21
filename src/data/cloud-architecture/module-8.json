@@ -123,7 +123,7 @@
       },
       {
         "key": "B",
-        "text": "Add a peering connection between A and C, and route traffic etween A and C through the peering connection."
+        "text": "Add a peering connection between A and C, and route traffic between A and C through the peering connection."
       },
       {
         "key": "C",
@@ -131,7 +131,7 @@
       },
       {
         "key": "D",
-        "text": "Create VPC endpoints in A and C for the individual hosts that need tig communicate with each other."
+        "text": "Create VPC endpoints in A and C for the individual hosts that need to communicate with each other."
       }
     ],
     "correctAnswer": "B",
@@ -141,7 +141,7 @@
     "id": 6,
     "type": "choice",
     "lecture": "Module8-ConnectingNetworks",
-    "question": "Because of a natural disaster, a company moved a secondary data center to a temporary facility with internet connectivity. It needs a secure connection to the company's virtual private cloud (VPC) that must be operational as soon as possible. The data center will move again in 2 weeks. Which option meets the requirements? AWS Site-to-Site VPN",
+    "question": "Because of a natural disaster, a company moved a secondary data center to a temporary facility with internet connectivity. It needs a secure connection to the company's virtual private cloud (VPC) that must be operational as soon as possible. The data center will move again in 2 weeks. Which option meets the requirements?",
     "choices": [
       {
         "key": "A",
@@ -219,7 +219,7 @@
     "id": 9,
     "type": "choice",
     "lecture": "Module8-ConnectingNetworks",
-    "question": "A company uses a single AWS Direct Connect connection between their on-premises network and their virtual private cloud (VPC). They want to ensure that the network connectivity is highly available by adding a backup connection. Which network connectivity method provides the most cost-effective solution for the backup connection? • Another AWS Direct Connect connection through a different Direct Connect location",
+    "question": "A company uses a single AWS Direct Connect connection between their on-premises network and their virtual private cloud (VPC). They want to ensure that the network connectivity is highly available by adding a backup connection. Which network connectivity method provides the most cost-effective solution for the backup connection?",
     "choices": [
       {
         "key": "A",

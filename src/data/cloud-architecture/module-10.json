@@ -33,7 +33,7 @@
     "choices": [
       {
         "key": "A",
-        "text": "scheduled"
+        "text": "Scheduled"
       },
       {
         "key": "B",
@@ -55,7 +55,7 @@
     "id": 3,
     "type": "choice",
     "lecture": "Module10-ImplementingMonitoringElasticity",
-    "question": "A devops engineer launches a fleet of Amazon EC2 instances in an Auto Scaling group behind an Application Load Balancer. The EC2 instances must maintain 50 percent average CPU utilization. Which type of scaling is appropriate to use based on CPU utilization usage? • Step scaling",
+    "question": "A devops engineer launches a fleet of Amazon EC2 instances in an Auto Scaling group behind an Application Load Balancer. The EC2 instances must maintain 50 percent average CPU utilization. Which type of scaling is appropriate to use based on CPU utilization usage?",
     "choices": [
       {
         "key": "A",
@@ -159,7 +159,7 @@
     "id": 7,
     "type": "choice",
     "lecture": "Module10-ImplementingMonitoringElasticity",
-    "question": "A fleet of Amazon EC2 instances is launched in an Amazon EC2 Auto Scaling group. The instances run an application that uses a custom protocol on TCP port 42000. Connections from client systems on the internet must balance across the instances. Which load balancing solution is the best solution? • Classic Load Balancer",
+    "question": "A fleet of Amazon EC2 instances is launched in an Amazon EC2 Auto Scaling group. The instances run an application that uses a custom protocol on TCP port 42000. Connections from client systems on the internet must balance across the instances. Which load balancing solution is the best solution?",
     "choices": [
       {
         "key": "A",
@@ -201,7 +201,7 @@
       },
       {
         "key": "D",
-        "text": "in Auto Scaling group launches Amazon EC2 instances, which are served by an Application Load Balancer. DNS name resolution points to the load balancer."
+        "text": "An Auto Scaling group launches Amazon EC2 instances, which are served by an Application Load Balancer. DNS name resolution points to the load balancer."
       }
     ],
     "correctAnswer": "D",
@@ -211,7 +211,7 @@
     "id": 9,
     "type": "choice",
     "lecture": "Module10-ImplementingMonitoringElasticity",
-    "question": "Users in location A connect to an application in Region A. Users in location B connect to the same application in Region B. If the application in Region A becomes unhealthy, traffic for location A must be redirected to the application in Region B. Which solution meets this requirement? • Use latency-based routing in Amazon Route 53 with Amazon CloudWatch alarms.",
+    "question": "Users in location A connect to an application in Region A. Users in location B connect to the same application in Region B. If the application in Region A becomes unhealthy, traffic for location A must be redirected to the application in Region B. Which solution meets this requirement?",
     "choices": [
       {
         "key": "A",
@@ -245,7 +245,7 @@
       },
       {
         "key": "B",
-        "text": "Create an Amazon CloudWatch alarm to send an email messade when the accoun billing exceeds $0"
+        "text": "Create an Amazon CloudWatch alarm to send an email message when the account billing exceeds $0."
       },
       {
         "key": "C",
@@ -254,10 +254,6 @@
       {
         "key": "D",
         "text": "Sign in to the AWS Management Console each month and check the billing dashboard."
-      },
-      {
-        "key": "E",
-        "text": "aws,"
       }
     ],
     "correctAnswer": "B",

@@ -37,7 +37,7 @@
       },
       {
         "key": "B",
-        "text": "OEC2 instance inside a public subnet"
+        "text": "EC2 instance inside a public subnet"
       },
       {
         "key": "C",
@@ -63,11 +63,11 @@
       },
       {
         "key": "B",
-        "text": "subnet A: 1/2.16.0.0/22 (1024 addresses) Subnet B: 1/2.16.4.0/22 (1024 addresses)"
+        "text": "Subnet A: 172.16.0.0/22 (1024 addresses) Subnet B: 172.16.4.0/22 (1024 addresses)"
       },
       {
         "key": "C",
-        "text": "subnet A: 172.16.0.0/23 (512 addresses) Subnet B: 172.16.2.0/23 (512 addresses)"
+        "text": "Subnet A: 172.16.0.0/23 (512 addresses) Subnet B: 172.16.2.0/23 (512 addresses)"
       },
       {
         "key": "D",
@@ -175,11 +175,11 @@
       },
       {
         "key": "B",
-        "text": "dd rules to the subnet custom network ACL to allow traffic from and to allowed internet addresses. Deny all other traffic."
+        "text": "Add rules to the subnet custom network ACL to allow traffic from and to allowed internet addresses. Deny all other traffic."
       },
       {
         "key": "C",
-        "text": "Add rules to the subnet custom network ACL to allow traffic trom and to allowec internet addresses."
+        "text": "Add rules to the subnet custom network ACL to allow traffic from and to allowed internet addresses."
       },
       {
         "key": "D",
@@ -193,7 +193,7 @@
     "id": 8,
     "type": "multiple-choice",
     "lecture": "Module7-CreatingANetworkingEnvironment",
-    "question": "Which actions are best practices for designing a virtual private cloud (VPC)? (Select THREE.) • Create one subnet per Availability Zone for each group of hosts that have unique routing requirements.",
+    "question": "Which actions are best practices for designing a virtual private cloud (VPC)? (Select THREE.)",
     "choices": [
       {
         "key": "A",

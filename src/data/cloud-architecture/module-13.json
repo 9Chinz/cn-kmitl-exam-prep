@@ -20,10 +20,6 @@
       {
         "key": "D",
         "text": "Loosely coupled architectures must use managed services, and tightly coupled architectures don't have this limitation."
-      },
-      {
-        "key": "E",
-        "text": "aws,"
       }
     ],
     "correctAnswer": "A",
@@ -111,7 +107,7 @@
       },
       {
         "key": "C",
-        "text": "An sos queue receives messages from the application and notifies all available EC2 instances that videos are available."
+        "text": "An SQS queue receives messages from the application and notifies all available EC2 instances that videos are available."
       },
       {
         "key": "D",
@@ -167,7 +163,7 @@
       },
       {
         "key": "D",
-        "text": "Send a push notification to mobile applications when a new software update is"
+        "text": "Send a push notification to mobile applications when a new software update is available."
       },
       {
         "key": "E",
@@ -176,10 +172,6 @@
       {
         "key": "F",
         "text": "Trigger a single AWS Lambda function when an object is created in an Amazon S3 bucket."
-      },
-      {
-        "key": "G",
-        "text": "aws,"
       }
     ],
     "correctAnswer": "A,B,D",

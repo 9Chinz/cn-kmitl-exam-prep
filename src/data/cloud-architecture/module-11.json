@@ -7,7 +7,7 @@
     "choices": [
       {
         "key": "A",
-        "text": "CLack of version control with manual processes"
+        "text": "Lack of version control with manual processes"
       },
       {
         "key": "B",
@@ -34,7 +34,7 @@
     "id": 2,
     "type": "multiple-choice",
     "lecture": "Module11-AutomatingYourArchitecture",
-    "question": "Which are benefits of using infrastructure as code (laC) over manual processes? (Select TWO.)",
+    "question": "Which are benefits of using infrastructure as code (IaC) over manual processes? (Select TWO.)",
     "choices": [
       {
         "key": "A",
@@ -129,7 +129,7 @@
       },
       {
         "key": "C",
-        "text": "MEnhance application security."
+        "text": "Enhance application security."
       },
       {
         "key": "D",
@@ -152,11 +152,11 @@
     "choices": [
       {
         "key": "A",
-        "text": "An AWS service that you i can use to create, model, and manage AWS resources"
+        "text": "An AWS service that you can use to create, model, and manage AWS resources"
       },
       {
         "key": "B",
-        "text": "OA template that describes your infrastructure"
+        "text": "A template that describes your infrastructure"
       },
       {
         "key": "C",

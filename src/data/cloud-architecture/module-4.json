@@ -3,7 +3,7 @@
     "id": 1,
     "type": "choice",
     "lecture": "Module4-AddingStorageLayerWithAmazonS3",
-    "question": "Due to a company merger, a data engineer needs to increase their object storage capacity. They are not sure how much storage they will need. They want a highly scalable service that can store unstructured, semistructured, and structured data. Which service would be the most cost effective to accomplish this task? • Amazon 53",
+    "question": "Due to a company merger, a data engineer needs to increase their object storage capacity. They are not sure how much storage they will need. They want a highly scalable service that can store unstructured, semistructured, and structured data. Which service would be the most cost effective to accomplish this task?",
     "choices": [
       {
         "key": "A",
@@ -37,7 +37,7 @@
       },
       {
         "key": "B",
-        "text": "OA data warehouse for business intelligence"
+        "text": "A data warehouse for business intelligence"
       },
       {
         "key": "C",
@@ -192,7 +192,7 @@
     "choices": [
       {
         "key": "A",
-        "text": "AWS SDKS"
+        "text": "AWS SDKs"
       },
       {
         "key": "B",
@@ -200,7 +200,7 @@
       },
       {
         "key": "C",
-        "text": "Amazon 53 Transfer Acceleration"
+        "text": "Amazon S3 Transfer Acceleration"
       },
       {
         "key": "D",
@@ -226,7 +226,7 @@
       },
       {
         "key": "C",
-        "text": "Amazon 53 multipart uploads"
+        "text": "Amazon S3 multipart uploads"
       },
       {
         "key": "D",

@@ -19,7 +19,7 @@
       },
       {
         "key": "D",
-        "text": "Apply security aall layers of an architecture."
+        "text": "Apply security at all layers of an architecture."
       }
     ],
     "correctAnswer": "D",
@@ -169,7 +169,7 @@
       },
       {
         "key": "C",
-        "text": "Create two root users with separate credentials and distribute them to vo different individuals. ("
+        "text": "Create two root users with separate credentials and distribute them to two different individuals."
       },
       {
         "key": "D",
@@ -277,7 +277,7 @@
       },
       {
         "key": "D",
-        "text": ") The statement element contains other elements that together define what is allowed or denied."
+        "text": "The statement element contains other elements that together define what is allowed or denied."
       }
     ],
     "correctAnswer": "D",

@@ -136,7 +136,7 @@
     "id": 5,
     "type": "choice",
     "lecture": "Module5-AddingAComputerLayerUsingAmazonEC2",
-    "question": "An application requires the media access control (MAC) address of the host Amazon EC2 instance. The architecture uses an AWS Auto Scaling group to dynamically launch and terminate instances. What is the BEST way for the application to obtain the MAC address? • Write the MAC address in the application configuration file of each instance.",
+    "question": "An application requires the media access control (MAC) address of the host Amazon EC2 instance. The architecture uses an AWS Auto Scaling group to dynamically launch and terminate instances. What is the BEST way for the application to obtain the MAC address?",
     "choices": [
       {
         "key": "A",
@@ -178,7 +178,7 @@
       },
       {
         "key": "D",
-        "text": ", The cloud architect must remove the config_user_scripts file to rerun the user data scripts."
+        "text": "The cloud architect must remove the config_user_scripts file to rerun the user data scripts."
       },
       {
         "key": "E",
@@ -222,7 +222,7 @@
     "id": 8,
     "type": "multiple-choice",
     "lecture": "Module5-AddingAComputerLayerUsingAmazonEC2",
-    "question": "It is possible to create an NFS share on an Amazon Elastic Block Store (Amazon EBS) backed Linux instance by installing and configuring an NFS server on the instance. In this way, multiple Linux systems can share the file system of that instance. Which advantages does Amazon Elastic File System (Amazon EFS) provide compared to this solution? (Select TWO.) • High availability",
+    "question": "It is possible to create an NFS share on an Amazon Elastic Block Store (Amazon EBS) backed Linux instance by installing and configuring an NFS server on the instance. In this way, multiple Linux systems can share the file system of that instance. Which advantages does Amazon Elastic File System (Amazon EFS) provide compared to this solution? (Select TWO.)",
     "choices": [
       {
         "key": "A",

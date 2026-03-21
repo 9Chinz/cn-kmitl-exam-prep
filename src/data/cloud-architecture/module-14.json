@@ -11,7 +11,7 @@
       },
       {
         "key": "B",
-        "text": "OFull control over runtime environment"
+        "text": "Full control over runtime environment"
       },
       {
         "key": "C",
@@ -46,11 +46,11 @@
       },
       {
         "key": "B",
-        "text": "Host website assets in a container in an Amazon Elastic Container Service (Amazon •ECS) cluster with Fargate nodes, use an Amazon RDS database, and use server-side scripts to interact with the database."
+        "text": "Host website assets in a container in an Amazon Elastic Container Service (Amazon ECS) cluster with Fargate nodes, use an Amazon RDS database, and use server-side scripts to interact with the database."
       },
       {
         "key": "C",
-        "text": "Host static assets in an Amazon S3 bucket, use an Amazon RDS database, and use mazon API Gateway and AWS Lambda functions to interact with the database."
+        "text": "Host static assets in an Amazon S3 bucket, use an Amazon RDS database, and use Amazon API Gateway and AWS Lambda functions to interact with the database."
       },
       {
         "key": "D",
@@ -72,7 +72,7 @@
       },
       {
         "key": "B",
-        "text": " Independent from other components"
+        "text": "Independent from other components"
       },
       {
         "key": "C",
@@ -159,7 +159,7 @@
       },
       {
         "key": "C",
-        "text": "Standardized, portable application code packages that contain code and code dependencies. A container is run by a container engine. A container does not include dependencies. A container is run by a container engine. A container does not include a guest operating system."
+        "text": "Standardized, portable application code packages that contain code and code dependencies. A container is run by a container engine. A container does not include a guest operating system."
       },
       {
         "key": "D",
@@ -181,7 +181,7 @@
       },
       {
         "key": "B",
-        "text": "Port the application to a new image, and run it in a container that Amazon ECS"
+        "text": "Port the application to a new image, and run it in a container that Amazon ECS manages."
       },
       {
         "key": "C",
@@ -189,7 +189,7 @@
       },
       {
         "key": "D",
-        "text": "feetprorthe application and centralize common functions to create a smaller code"
+        "text": "Refactor the application and centralize common functions to create a smaller code footprint."
       }
     ],
     "correctAnswer": "A",
@@ -203,7 +203,7 @@
     "choices": [
       {
         "key": "A",
-        "text": "Create a microservices architecture by usina Amazon Elastic Container Service (Amazon ECS) connecting to the DynamoDB sensor database."
+        "text": "Create a microservices architecture by using Amazon Elastic Container Service (Amazon ECS) connecting to the DynamoDB sensor database."
       },
       {
         "key": "B",
@@ -215,7 +215,7 @@
       },
       {
         "key": "D",
-        "text": "Create user accounts in the organization's svstems to allow direct access to the DynamoDB sensor database."
+        "text": "Create user accounts in the organization's systems to allow direct access to the DynamoDB sensor database."
       }
     ],
     "correctAnswer": "B",
@@ -237,7 +237,7 @@
       },
       {
         "key": "C",
-        "text": "Send messages to multiple Amazon ECZ instances when a file is created or modified - in an Amazon 53 bucket."
+        "text": "Send messages to multiple Amazon EC2 instances when a file is created or modified in an Amazon S3 bucket."
       },
       {
         "key": "D",
@@ -260,7 +260,7 @@
     "id": 10,
     "type": "choice",
     "lecture": "Module14-BuildingServerlessArchitecture",
-    "question": "A developer wants to implement a manual approval step using an AWS Step Functions state machine. The manual approval state has to pause until a notification of approval or rejection is received from an approver email. Which should be implemented in the Step Functions state machine? A task or activity state with an activated wait for callback parameter",
+    "question": "A developer wants to implement a manual approval step using an AWS Step Functions state machine. The manual approval state has to pause until a notification of approval or rejection is received from an approver email. Which should be implemented in the Step Functions state machine?",
     "choices": [
       {
         "key": "A",

@@ -105,7 +105,7 @@
       },
       {
         "key": "B",
-        "text": "Dosian the vien tier serviunicate with the application tier through the Elastic"
+        "text": "Design the web tier to communicate with the application tier through the Elastic Load Balancing (ELB) service."
       },
       {
         "key": "C",
@@ -139,7 +139,7 @@
       },
       {
         "key": "D",
-        "text": "Amazon Cloud Watch detects a system failure It initiates automation to provision a"
+        "text": "Amazon CloudWatch detects a system failure. It initiates automation to provision a new server."
       }
     ],
     "correctAnswer": "D",
@@ -153,7 +153,7 @@
     "choices": [
       {
         "key": "A",
-        "text": "provision the servers that are needed and stop services when they are not being"
+        "text": "Provision the servers that are needed and stop services when they are not being used."
       },
       {
         "key": "B",
@@ -205,7 +205,7 @@
     "choices": [
       {
         "key": "A",
-        "text": "Coeste a presigned URL to the object that expires in 24 hours, and give it to the"
+        "text": "Create a presigned URL to the object that expires in 24 hours, and give it to the consultant."
       },
       {
         "key": "B",
